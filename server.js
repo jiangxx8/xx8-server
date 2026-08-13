@@ -149,19 +149,34 @@ app.get("/",(req,res)=>{
 // =====================
 
 
-app.post(
-"/api/login",
-(req,res)=>{
+// =====================
+// LOGIN PAGE
+// =====================
+
+app.get("/", (req,res)=>{
+    res.sendFile(
+        path.join(__dirname,"login.html")
+    );
+});
 
 
-    const {
+// =====================
+// ADMIN PAGE
+// =====================
 
-        username,
+app.get("/admin",(req,res)=>{
+    res.sendFile(
+        path.join(__dirname,"admin.html")
+    );
+});
 
-        password
 
-
-    } = req.body;
+// hỗ trợ /index.html
+app.get("/index.html",(req,res)=>{
+    res.sendFile(
+        path.join(__dirname,"login.html")
+    );
+});
 
 
 

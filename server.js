@@ -15,17 +15,26 @@ const PORT = process.env.PORT || 3000;
 
 
 
+
 // =====================
 // MIDDLEWARE
 // =====================
 
+
 app.use(cors());
+
 
 app.use(express.json());
 
+
 app.use(express.urlencoded({
+
     extended:true
+
 }));
+
+
+
 
 
 
@@ -36,42 +45,67 @@ app.use(express.urlencoded({
 
 
 const configPath = path.join(
+
     __dirname,
+
     "config.json"
+
 );
+
 
 
 
 
 function getConfig(){
 
+
     return JSON.parse(
+
         fs.readFileSync(
+
             configPath,
+
             "utf8"
+
         )
+
     );
 
+
 }
+
+
+
 
 
 
 
 function saveConfig(data){
 
+
     fs.writeFileSync(
 
         configPath,
 
+
         JSON.stringify(
+
             data,
+
             null,
+
             2
+
         )
+
 
     );
 
+
 }
+
+
+
 
 
 
@@ -86,31 +120,46 @@ function saveConfig(data){
 function getClientIP(req){
 
 
+
     let ip =
+
+
     req.headers["x-forwarded-for"]
+
     ||
+
     req.socket.remoteAddress;
+
+
 
 
 
     if(ip && ip.includes(",")){
 
-        ip =
-        ip.split(",")[0];
+
+        ip = ip.split(",")[0];
+
 
     }
+
+
 
 
 
     if(ip){
 
-        ip =
-        ip.replace(
+
+        ip = ip.replace(
+
             "::ffff:",
+
             ""
+
         );
 
+
     }
+
 
 
 
@@ -126,75 +175,125 @@ function getClientIP(req){
 
 
 
-// =====================
-// TEST SERVER
-// =====================
-
-
-app.get("/",(req,res)=>{
-    res.sendFile(
-        path.join(__dirname,"admin.html")
-    );
-});
-
-
-
-
-
-
-
-
-// =====================
-// LOGIN
-// =====================
-
 
 // =====================
 // LOGIN PAGE
 // =====================
 
-app.get("/", (req,res)=>{
+
+app.get("/",(req,res)=>{
+
+
     res.sendFile(
-        path.join(__dirname,"login.html")
+
+        path.join(
+
+            __dirname,
+
+            "login.html"
+
+        )
+
     );
+
+
 });
+
+
+
+
+
+
+
 
 
 // =====================
 // ADMIN PAGE
 // =====================
 
+
 app.get("/admin",(req,res)=>{
+
+
     res.sendFile(
-        path.join(__dirname,"admin.html")
+
+        path.join(
+
+            __dirname,
+
+            "admin.html"
+
+        )
+
     );
+
+
 });
 
 
-// hỗ trợ /index.html
+
+
+
+
+
+// =====================
+// SUPPORT INDEX
+// =====================
+
+
 app.get("/index.html",(req,res)=>{
+
+
     res.sendFile(
-        path.join(__dirname,"login.html")
+
+        path.join(
+
+            __dirname,
+
+            "login.html"
+
+        )
+
     );
+
+
 });
+// =====================
+// LOGIN API
+// =====================
+
+
+app.post("/api/login",(req,res)=>{
+
+
+    const {
+
+        username,
+
+        password
+
+    } = req.body;
 
 
 
 
-    const config =
-    getConfig();
+    const config = getConfig();
 
 
 
 
-    const userIP =
-    getClientIP(req);
+    const userIP = getClientIP(req);
 
 
 
+
+
+    // kiểm tra IP trước
 
     if(
+
         !config.allowIP.includes(userIP)
+
     ){
 
 
@@ -202,8 +301,7 @@ app.get("/index.html",(req,res)=>{
 
             success:false,
 
-            message:
-            "IP chưa được cấp quyền",
+            message:"IP chưa được cấp quyền",
 
             ip:userIP
 
@@ -216,14 +314,17 @@ app.get("/index.html",(req,res)=>{
 
 
 
+    // kiểm tra tài khoản mật khẩu
 
     if(
+
 
         username !== config.username
 
         ||
 
         password !== config.password
+
 
     ){
 
@@ -232,9 +333,7 @@ app.get("/index.html",(req,res)=>{
 
             success:false,
 
-            message:
-            "Sai tài khoản hoặc mật khẩu"
-
+            message:"Sai tài khoản hoặc mật khẩu"
 
         });
 
@@ -245,21 +344,18 @@ app.get("/index.html",(req,res)=>{
 
 
 
-
     res.json({
 
         success:true,
 
-        message:
-        "Login success"
-
+        message:"Login success"
 
     });
 
 
 
-
 });
+
 
 
 
@@ -276,22 +372,18 @@ app.get("/index.html",(req,res)=>{
 // =====================
 
 
-
-app.get(
-
-"/api/ip-list",
-
-(req,res)=>{
+app.get("/api/ip-list",(req,res)=>{
 
 
-    const config =
-    getConfig();
+    const config = getConfig();
+
 
 
 
     res.json({
 
         allowIP:
+
         config.allowIP
 
 
@@ -299,9 +391,10 @@ app.get(
 
 
 
-}
+});
 
-);
+
+
 
 
 
@@ -316,12 +409,7 @@ app.get(
 // =====================
 
 
-
-app.post(
-
-"/api/add-ip",
-
-(req,res)=>{
+app.post("/api/add-ip",(req,res)=>{
 
 
     const {
@@ -333,7 +421,9 @@ app.post(
 
 
 
+
     if(!ip){
+
 
         return res.json({
 
@@ -343,21 +433,24 @@ app.post(
 
         });
 
+
     }
 
 
 
 
 
-    const config =
-    getConfig();
+
+    const config = getConfig();
 
 
 
 
 
     if(
+
         !config.allowIP.includes(ip)
+
     ){
 
 
@@ -374,11 +467,13 @@ app.post(
 
 
 
+
     res.json({
 
         success:true,
 
         allowIP:
+
         config.allowIP
 
 
@@ -386,9 +481,11 @@ app.post(
 
 
 
-}
+});
 
-);
+
+
+
 
 
 
@@ -403,12 +500,7 @@ app.post(
 // =====================
 
 
-
-app.post(
-
-"/api/remove-ip",
-
-(req,res)=>{
+app.post("/api/remove-ip",(req,res)=>{
 
 
     const {
@@ -421,8 +513,8 @@ app.post(
 
 
 
-    const config =
-    getConfig();
+
+    const config = getConfig();
 
 
 
@@ -430,11 +522,12 @@ app.post(
 
     config.allowIP =
 
+
     config.allowIP.filter(
 
-        item =>
 
-        item !== ip
+        item => item !== ip
+
 
     );
 
@@ -455,6 +548,7 @@ app.post(
         success:true,
 
         allowIP:
+
         config.allowIP
 
 
@@ -462,34 +556,21 @@ app.post(
 
 
 
-}
-
-);
-
-
-
-
-
-
-
-
-
+});
 // =====================
-// STATIC
+// STATIC FILE
 // =====================
 
+
+// Cho phép load css, js, image
 
 app.use(
 
-express.static(
+    express.static(
 
-path.join(
-__dirname,
-".."
+        __dirname
 
-)
-
-)
+    )
 
 );
 
@@ -500,37 +581,51 @@ __dirname,
 
 
 
-// =====================
-// START
-// =====================
-
 
 // =====================
-// ADMIN PAGE
+// ERROR HANDLER
 // =====================
 
-app.get("/admin", (req,res)=>{
 
-    res.sendFile(
-        path.join(__dirname,"login.html")
+app.use((req,res)=>{
+
+
+    res.status(404).send(
+
+        "XX8 PAGE NOT FOUND"
+
     );
+
 
 });
 
+
+
+
+
+
+
+
+
+// =====================
+// START SERVER
+// =====================
+
+
 app.listen(
 
-PORT,
+    PORT,
 
-()=>{
-
-
-console.log(
-
-`Server running on port ${PORT}`
-
-);
+    ()=>{
 
 
-}
+        console.log(
+
+            `Server running on port ${PORT}`
+
+        );
+
+
+    }
 
 );

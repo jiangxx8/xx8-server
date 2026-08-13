@@ -132,11 +132,9 @@ function getClientIP(req){
 
 
 app.get("/",(req,res)=>{
-
-    res.send(
-        "XX8 SERVER ONLINE"
+    res.sendFile(
+        path.join(__dirname,"admin.html")
     );
-
 });
 
 

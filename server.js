@@ -492,6 +492,15 @@ __dirname,
 // =====================
 
 
+// =====================
+// ADMIN PAGE
+// =====================
+
+app.get("/", (req,res)=>{
+    res.sendFile(
+        path.join(__dirname,"admin.html")
+    );
+});
 
 app.listen(
 

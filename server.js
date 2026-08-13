@@ -8,11 +8,10 @@ const app = express();
 
 
 // =====================
-// PORT RENDER
+// PORT
 // =====================
 
 const PORT = process.env.PORT || 3000;
-
 
 
 
@@ -20,22 +19,28 @@ const PORT = process.env.PORT || 3000;
 // MIDDLEWARE
 // =====================
 
-
 app.use(cors());
-
 
 app.use(express.json());
 
-
 app.use(express.urlencoded({
-
     extended:true
-
 }));
 
 
 
+// =====================
+// PATH
+// =====================
 
+
+const ROOT_PATH = path.join(__dirname,"..");
+
+
+const configPath = path.join(
+    __dirname,
+    "config.json"
+);
 
 
 
@@ -44,142 +49,78 @@ app.use(express.urlencoded({
 // =====================
 
 
-const configPath = path.join(
-
-    __dirname,
-
-    "config.json"
-
-);
-
-
-
-
-
 function getConfig(){
 
-
     return JSON.parse(
-
         fs.readFileSync(
-
             configPath,
-
             "utf8"
-
         )
-
     );
 
-
 }
-
-
-
-
 
 
 
 function saveConfig(data){
 
-
     fs.writeFileSync(
 
         configPath,
 
-
         JSON.stringify(
-
             data,
-
             null,
-
             2
-
         )
 
-
     );
-
 
 }
 
 
 
-
-
-
-
-
-
 // =====================
-// GET CLIENT IP
+// GET IP
 // =====================
 
 
 function getClientIP(req){
 
 
-
     let ip =
-
-
     req.headers["x-forwarded-for"]
-
     ||
-
-    req.socket.remoteAddress;
-
-
-
+    req.socket.remoteAddress
+    ||
+    "";
 
 
-    if(ip && ip.includes(",")){
-
+    if(ip.includes(",")){
 
         ip = ip.split(",")[0];
 
-
     }
 
 
-
-
-
-    if(ip){
-
-
-        ip = ip.replace(
-
-            "::ffff:",
-
-            ""
-
-        );
-
-
-    }
-
-
+    ip = ip.replace(
+        "::ffff:",
+        ""
+    );
 
 
     return ip;
-
 
 }
 
 
 
+// =================================================
+// PAGE
+// =================================================
 
 
-
-
-
-
-// =====================
 // LOGIN PAGE
-// =====================
-
 
 app.get("/",(req,res)=>{
 
@@ -187,11 +128,8 @@ app.get("/",(req,res)=>{
     res.sendFile(
 
         path.join(
-
-            __dirname,
-
+            ROOT_PATH,
             "login.html"
-
         )
 
     );
@@ -202,44 +140,7 @@ app.get("/",(req,res)=>{
 
 
 
-
-
-
-
-
-// =====================
-// ADMIN PAGE
-// =====================
-
-
-app.get("/admin",(req,res)=>{
-
-
-    res.sendFile(
-
-        path.join(
-
-            __dirname,
-
-            "admin.html"
-
-        )
-
-    );
-
-
-});
-
-
-
-
-
-
-
-// =====================
-// SUPPORT INDEX
-// =====================
-
+// INDEX
 
 app.get("/index.html",(req,res)=>{
 
@@ -247,20 +148,42 @@ app.get("/index.html",(req,res)=>{
     res.sendFile(
 
         path.join(
-
-            __dirname,
-
+            ROOT_PATH,
             "login.html"
-
         )
 
     );
 
 
 });
-// =====================
+
+
+
+
+
+// ADMIN PAGE
+
+app.get("/admin",(req,res)=>{
+
+
+    res.sendFile(
+
+        path.join(
+            ROOT_PATH,
+            "admin.html"
+        )
+
+    );
+
+
+});
+
+
+
+
+// =================================================
 // LOGIN API
-// =====================
+// =================================================
 
 
 app.post("/api/login",(req,res)=>{
@@ -276,24 +199,21 @@ app.post("/api/login",(req,res)=>{
 
 
 
-
-    const config = getConfig();
-
-
-
-
-    const userIP = getClientIP(req);
+    const config =
+    getConfig();
 
 
 
+    const userIP =
+    getClientIP(req);
 
 
-    // kiểm tra IP trước
+
+
+    // CHECK IP
 
     if(
-
         !config.allowIP.includes(userIP)
-
     ){
 
 
@@ -313,18 +233,16 @@ app.post("/api/login",(req,res)=>{
 
 
 
+    // CHECK ACCOUNT
 
-    // kiểm tra tài khoản mật khẩu
 
     if(
-
 
         username !== config.username
 
         ||
 
         password !== config.password
-
 
     ){
 
@@ -343,12 +261,13 @@ app.post("/api/login",(req,res)=>{
 
 
 
-
-    res.json({
+    return res.json({
 
         success:true,
 
-        message:"Login success"
+        message:"Login success",
+
+        redirect:"/admin"
 
     });
 
@@ -359,36 +278,27 @@ app.post("/api/login",(req,res)=>{
 
 
 
+// =================================================
+// IP MANAGEMENT
+// =================================================
 
 
 
-
-
-
-
-
-// =====================
-// GET IP LIST
-// =====================
-
+// GET LIST
 
 app.get("/api/ip-list",(req,res)=>{
 
 
-    const config = getConfig();
-
-
+    const config =
+    getConfig();
 
 
     res.json({
 
         allowIP:
-
         config.allowIP
 
-
     });
-
 
 
 });
@@ -396,17 +306,7 @@ app.get("/api/ip-list",(req,res)=>{
 
 
 
-
-
-
-
-
-
-
-
-// =====================
 // ADD IP
-// =====================
 
 
 app.post("/api/add-ip",(req,res)=>{
@@ -420,10 +320,7 @@ app.post("/api/add-ip",(req,res)=>{
 
 
 
-
-
     if(!ip){
-
 
         return res.json({
 
@@ -433,24 +330,17 @@ app.post("/api/add-ip",(req,res)=>{
 
         });
 
-
     }
 
 
 
-
-
-
-    const config = getConfig();
-
-
+    const config =
+    getConfig();
 
 
 
     if(
-
         !config.allowIP.includes(ip)
-
     ){
 
 
@@ -464,18 +354,12 @@ app.post("/api/add-ip",(req,res)=>{
 
 
 
-
-
-
-
     res.json({
 
         success:true,
 
         allowIP:
-
         config.allowIP
-
 
     });
 
@@ -486,18 +370,7 @@ app.post("/api/add-ip",(req,res)=>{
 
 
 
-
-
-
-
-
-
-
-
-
-// =====================
 // REMOVE IP
-// =====================
 
 
 app.post("/api/remove-ip",(req,res)=>{
@@ -511,35 +384,21 @@ app.post("/api/remove-ip",(req,res)=>{
 
 
 
-
-
-
-    const config = getConfig();
-
-
+    const config =
+    getConfig();
 
 
 
     config.allowIP =
-
-
     config.allowIP.filter(
 
-
         item => item !== ip
-
 
     );
 
 
 
-
-
-
     saveConfig(config);
-
-
-
 
 
 
@@ -548,68 +407,34 @@ app.post("/api/remove-ip",(req,res)=>{
         success:true,
 
         allowIP:
-
         config.allowIP
-
 
     });
 
 
-
 });
-// =====================
-// STATIC FILE
-// =====================
 
 
-// Cho phép load css, js, image
+
+
+// =================================================
+// STATIC WEBSITE
+// =================================================
+
 
 app.use(
 
     express.static(
-
-        __dirname
-
+        ROOT_PATH
     )
 
 );
 
 
 
-
-
-
-
-
-
-// =====================
-// ERROR HANDLER
-// =====================
-
-
-app.use((req,res)=>{
-
-
-    res.status(404).send(
-
-        "XX8 PAGE NOT FOUND"
-
-    );
-
-
-});
-
-
-
-
-
-
-
-
-
-// =====================
-// START SERVER
-// =====================
+// =================================================
+// START
+// =================================================
 
 
 app.listen(
@@ -621,7 +446,7 @@ app.listen(
 
         console.log(
 
-            `Server running on port ${PORT}`
+        `Server running on port ${PORT}`
 
         );
 

@@ -3,16 +3,14 @@ const path = require("path");
 const fs = require("fs");
 const cors = require("cors");
 
-
 const app = express();
 
 
 // =====================
-// PORT
+// PORT RENDER
 // =====================
 
 const PORT = process.env.PORT || 3000;
-
 
 
 // =====================
@@ -24,7 +22,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use(express.urlencoded({
-    extended:true
+    extended: true
 }));
 
 
@@ -33,8 +31,7 @@ app.use(express.urlencoded({
 // PATH
 // =====================
 
-
-const ROOT_PATH = path.join(__dirname,"..");
+const ROOT_PATH = __dirname;
 
 
 const configPath = path.join(
@@ -47,7 +44,6 @@ const configPath = path.join(
 // =====================
 // CONFIG
 // =====================
-
 
 function getConfig(){
 
@@ -65,15 +61,12 @@ function getConfig(){
 function saveConfig(data){
 
     fs.writeFileSync(
-
         configPath,
-
         JSON.stringify(
             data,
             null,
             2
         )
-
     );
 
 }
@@ -81,19 +74,18 @@ function saveConfig(data){
 
 
 // =====================
-// GET IP
+// GET CLIENT IP
 // =====================
-
 
 function getClientIP(req){
 
 
     let ip =
-    req.headers["x-forwarded-for"]
-    ||
-    req.socket.remoteAddress
-    ||
-    "";
+        req.headers["x-forwarded-for"]
+        ||
+        req.socket.remoteAddress
+        ||
+        "";
 
 
     if(ip.includes(",")){
@@ -115,25 +107,21 @@ function getClientIP(req){
 
 
 
-// =================================================
-// PAGE
-// =================================================
+// =====================
+// PAGE ROUTE
+// =====================
 
 
-// LOGIN PAGE
+// LOGIN
 
 app.get("/",(req,res)=>{
 
-
     res.sendFile(
-
         path.join(
             ROOT_PATH,
             "login.html"
         )
-
     );
-
 
 });
 
@@ -144,46 +132,37 @@ app.get("/",(req,res)=>{
 
 app.get("/index.html",(req,res)=>{
 
-
     res.sendFile(
-
         path.join(
             ROOT_PATH,
             "login.html"
         )
-
     );
-
 
 });
 
 
 
 
-
-// ADMIN PAGE
+// ADMIN
 
 app.get("/admin",(req,res)=>{
 
-
     res.sendFile(
-
         path.join(
             ROOT_PATH,
             "admin.html"
         )
-
     );
-
 
 });
 
 
 
 
-// =================================================
+// =====================
 // LOGIN API
-// =================================================
+// =====================
 
 
 app.post("/api/login",(req,res)=>{
@@ -216,7 +195,6 @@ app.post("/api/login",(req,res)=>{
         !config.allowIP.includes(userIP)
     ){
 
-
         return res.json({
 
             success:false,
@@ -227,14 +205,12 @@ app.post("/api/login",(req,res)=>{
 
         });
 
-
     }
 
 
 
 
     // CHECK ACCOUNT
-
 
     if(
 
@@ -246,7 +222,6 @@ app.post("/api/login",(req,res)=>{
 
     ){
 
-
         return res.json({
 
             success:false,
@@ -255,13 +230,12 @@ app.post("/api/login",(req,res)=>{
 
         });
 
-
     }
 
 
 
 
-    return res.json({
+    res.json({
 
         success:true,
 
@@ -272,25 +246,22 @@ app.post("/api/login",(req,res)=>{
     });
 
 
-
 });
 
 
 
 
-// =================================================
-// IP MANAGEMENT
-// =================================================
+// =====================
+// IP LIST
+// =====================
 
-
-
-// GET LIST
 
 app.get("/api/ip-list",(req,res)=>{
 
 
     const config =
     getConfig();
+
 
 
     res.json({
@@ -306,7 +277,10 @@ app.get("/api/ip-list",(req,res)=>{
 
 
 
+
+// =====================
 // ADD IP
+// =====================
 
 
 app.post("/api/add-ip",(req,res)=>{
@@ -334,6 +308,7 @@ app.post("/api/add-ip",(req,res)=>{
 
 
 
+
     const config =
     getConfig();
 
@@ -343,14 +318,12 @@ app.post("/api/add-ip",(req,res)=>{
         !config.allowIP.includes(ip)
     ){
 
-
         config.allowIP.push(ip);
-
 
         saveConfig(config);
 
-
     }
+
 
 
 
@@ -364,13 +337,15 @@ app.post("/api/add-ip",(req,res)=>{
     });
 
 
-
 });
 
 
 
 
+
+// =====================
 // REMOVE IP
+// =====================
 
 
 app.post("/api/remove-ip",(req,res)=>{
@@ -390,6 +365,7 @@ app.post("/api/remove-ip",(req,res)=>{
 
 
     config.allowIP =
+
     config.allowIP.filter(
 
         item => item !== ip
@@ -417,9 +393,10 @@ app.post("/api/remove-ip",(req,res)=>{
 
 
 
-// =================================================
-// STATIC WEBSITE
-// =================================================
+// =====================
+// STATIC FILE
+// CSS JS IMAGE HTML
+// =====================
 
 
 app.use(
@@ -432,9 +409,10 @@ app.use(
 
 
 
-// =================================================
-// START
-// =================================================
+
+// =====================
+// START SERVER
+// =====================
 
 
 app.listen(
@@ -443,13 +421,9 @@ app.listen(
 
     ()=>{
 
-
         console.log(
-
-        `Server running on port ${PORT}`
-
+            `Server running on port ${PORT}`
         );
-
 
     }
 

@@ -25,20 +25,18 @@ body{
 
     color:white;
 
-
-    background:
-
+    background-image:
     linear-gradient(
         rgba(0,0,0,.72),
         rgba(70,0,25,.85)
     ),
-
-    uurl("/images/bg.jpg");
-
+    url("/images/bg.jpg");
 
     background-size:cover;
 
     background-position:center;
+
+    background-repeat:no-repeat;
 
 }
 

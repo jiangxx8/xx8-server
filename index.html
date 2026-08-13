@@ -2,1623 +2,715 @@
 <html lang="vi">
 
 <head>
+<script>
+
+if(localStorage.getItem("login") !== "true"){
+
+    window.location.href="/login.html";
+
+}
+
+</script>
 
 <meta charset="UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>XX8.COM - Hệ Thống Quản Lý</title>
+<title>XX8.COM - Hệ Thống Lưu Trình</title>
 
-
-<style>
-
-/* =========================================================
-   RESET
-========================================================= */
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-html,
-body{
-    width:100%;
-    height:100%;
-}
-
-body{
-
-    font-family:
-    "Segoe UI",
-    Arial,
-    sans-serif;
-
-    color:#fff;
-
-    overflow:hidden;
-
-    background:
-        radial-gradient(
-            circle at 50% 25%,
-            rgba(255,30,90,.20),
-            transparent 34%
-        ),
-        radial-gradient(
-            circle at 15% 80%,
-            rgba(180,0,50,.20),
-            transparent 30%
-        ),
-        linear-gradient(
-            135deg,
-            #050406 0%,
-            #10060a 42%,
-            #24000e 100%
-        );
-}
-
-
-/* =========================================================
-   BACKGROUND DECORATION
-========================================================= */
-
-body::before{
-
-    content:"";
-
-    position:fixed;
-
-    inset:0;
-
-    pointer-events:none;
-
-    background-image:
-        linear-gradient(
-            rgba(255,255,255,.018) 1px,
-            transparent 1px
-        ),
-        linear-gradient(
-            90deg,
-            rgba(255,255,255,.018) 1px,
-            transparent 1px
-        );
-
-    background-size:
-        70px 70px;
-
-    mask-image:
-        linear-gradient(
-            to bottom,
-            rgba(0,0,0,.75),
-            transparent
-        );
-}
-
-
-body::after{
-
-    content:"XX8.COM";
-
-    position:fixed;
-
-    left:50%;
-    top:58%;
-
-    transform:
-        translate(-50%,-50%);
-
-    color:
-        rgba(255,255,255,.018);
-
-    font-size:
-        clamp(120px,22vw,420px);
-
-    font-weight:1000;
-
-    letter-spacing:-20px;
-
-    pointer-events:none;
-
-    user-select:none;
-
-    z-index:0;
-}
-
-
-/* =========================================================
-   TOP WRAPPER
-========================================================= */
-
-.top-wrapper{
-
-    width:calc(100% - 36px);
-
-    height:92px;
-
-    margin:18px;
-
-    position:relative;
-
-    display:flex;
-
-    align-items:center;
-
-    padding:0 22px;
-
-    border-radius:26px;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(255,255,255,.085),
-            rgba(255,255,255,.025)
-        );
-
-    border:
-        1px solid rgba(255,255,255,.12);
-
-    box-shadow:
-        0 25px 70px rgba(0,0,0,.35),
-        inset 0 1px 0 rgba(255,255,255,.09);
-
-    backdrop-filter:
-        blur(28px);
-
-    -webkit-backdrop-filter:
-        blur(28px);
-
-    z-index:10000;
-}
-
-
-/* =========================================================
-   BACK BUTTON
-========================================================= */
-
-.back-home{
-
-    width:135px;
-    height:50px;
-
-    border:none;
-
-    outline:none;
-
-    border-radius:16px;
-
-    color:white;
-
-    font-size:14px;
-
-    font-weight:800;
-
-    letter-spacing:.2px;
-
-    cursor:pointer;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(255,37,93,.82),
-            rgba(170,0,48,.72)
-        );
-
-    border:
-        1px solid rgba(255,110,145,.38);
-
-    box-shadow:
-        0 8px 25px rgba(255,20,80,.17),
-        inset 0 1px 0 rgba(255,255,255,.2);
-
-    transition:
-        transform .25s ease,
-        box-shadow .25s ease,
-        background .25s ease;
-
-    flex-shrink:0;
-}
-
-
-.back-home:hover{
-
-    transform:
-        translateY(-2px);
-
-    background:
-        linear-gradient(
-            135deg,
-            #ff285f,
-            #d70043
-        );
-
-    box-shadow:
-        0 10px 35px rgba(255,20,80,.38);
-}
-
-
-/* =========================================================
-   BRAND
-========================================================= */
-
-.brand{
-
-    margin-left:26px;
-    margin-right:45px;
-
-    display:flex;
-    align-items:center;
-
-    white-space:nowrap;
-}
-
-
-.brand-main{
-
-    font-size:30px;
-
-    font-weight:1000;
-
-    letter-spacing:-1px;
-
-    color:#fff;
-}
-
-
-.brand-com{
-
-    font-size:30px;
-
-    font-weight:1000;
-
-    color:#ff275e;
-
-    text-shadow:
-        0 0 20px rgba(255,39,94,.32);
-}
-
-
-/* =========================================================
-   MENU
-========================================================= */
-
-.top-menu{
-
-    flex:1;
-
-    height:100%;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    gap:12px;
-}
-
-
-.nav-item{
-
-    width:126px;
-    height:64px;
-
-    position:relative;
-
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
-
-    gap:10px;
-
-    color:
-        rgba(255,255,255,.74);
-
-    border-radius:17px;
-
-    cursor:pointer;
-
-    background:
-        rgba(255,255,255,.025);
-
-    border:
-        1px solid transparent;
-
-    transition:
-        all .25s ease;
-}
-
-
-.nav-item:hover{
-
-    color:#fff;
-
-    transform:
-        translateY(-2px);
-
-    background:
-        rgba(255,255,255,.065);
-
-    border-color:
-        rgba(255,255,255,.10);
-}
-
-
-.nav-item.active{
-
-    color:#fff;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(255,40,95,.26),
-            rgba(255,255,255,.045)
-        );
-
-    border:
-        1px solid rgba(255,54,103,.28);
-
-    box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.08);
-}
-
-
-.nav-icon{
-
-    width:34px;
-    height:34px;
-
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
-
-    border-radius:11px;
-
-    font-size:19px;
-
-    background:
-        rgba(255,255,255,.055);
-
-    border:
-        1px solid rgba(255,255,255,.06);
-}
-
-
-.nav-item.active .nav-icon{
-
-    background:
-        rgba(255,39,94,.18);
-
-    color:#ff4779;
-}
-
-
-.nav-title{
-
-    font-size:13px;
-
-    font-weight:700;
-
-    white-space:nowrap;
-}
-
-
-/* =========================================================
-   FINANCE
-========================================================= */
-
-.dropdown .nav-title{
-
-    color:#ff6a91;
-}
-
-
-.dropdown:hover .nav-title{
-
-    color:#fff;
-}
-
-
-/* =========================================================
-   ONLINE STATUS
-========================================================= */
-
-.system-status{
-
-    min-width:160px;
-
-    height:48px;
-
-    margin-left:28px;
-
-    padding:0 18px;
-
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
-
-    gap:9px;
-
-    border-radius:16px;
-
-    background:
-        rgba(255,255,255,.045);
-
-    border:
-        1px solid rgba(255,255,255,.09);
-
-    color:#dcdcdc;
-
-    font-size:12px;
-
-    font-weight:800;
-
-    letter-spacing:.5px;
-}
-
-
-.status-dot{
-
-    width:8px;
-    height:8px;
-
-    border-radius:50%;
-
-    background:#36e58b;
-
-    box-shadow:
-        0 0 12px rgba(54,229,139,.8);
-}
-
-
-/* =========================================================
-   DROPDOWN
-========================================================= */
-
-.dropdown-box{
-
-    position:absolute;
-
-    top:74px;
-    left:50%;
-
-    transform:
-        translateX(-50%);
-
-    width:410px;
-
-    padding:10px;
-
-    display:none;
-
-    border-radius:24px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(25,14,20,.82),
-            rgba(12,8,11,.72)
-        );
-
-    border:
-        1px solid rgba(255,255,255,.12);
-
-    backdrop-filter:
-        blur(34px);
-
-    -webkit-backdrop-filter:
-        blur(34px);
-
-    box-shadow:
-        0 35px 100px rgba(0,0,0,.65),
-        inset 0 1px 0 rgba(255,255,255,.08);
-
-    z-index:999999;
-}
-
-
-.dropdown-box.show{
-
-    display:block;
-
-    animation:
-        dropdownOpen .22s ease;
-}
-
-
-@keyframes dropdownOpen{
-
-    from{
-
-        opacity:0;
-
-        transform:
-            translateX(-50%)
-            translateY(-9px)
-            scale(.98);
-
-    }
-
-    to{
-
-        opacity:1;
-
-        transform:
-            translateX(-50%)
-            translateY(0)
-            scale(1);
-
-    }
-
-}
-
-
-/* =========================================================
-   DROPDOWN HEADER
-========================================================= */
-
-.dropdown-header{
-
-    padding:
-        11px 13px 13px;
-
-    margin-bottom:5px;
-
-    border-bottom:
-        1px solid rgba(255,255,255,.08);
-}
-
-
-.dropdown-header strong{
-
-    display:block;
-
-    color:#fff;
-
-    font-size:14px;
-}
-
-
-.dropdown-header span{
-
-    display:block;
-
-    margin-top:4px;
-
-    color:
-        rgba(255,255,255,.43);
-
-    font-size:11px;
-}
-
-
-/* =========================================================
-   DROPDOWN ITEMS
-========================================================= */
-
-.finance-item{
-
-    width:100%;
-
-    min-height:51px;
-
-    padding:7px 10px;
-
-    display:flex;
-
-    align-items:center;
-
-    gap:12px;
-
-    border-radius:14px;
-
-    cursor:pointer;
-
-    color:
-        rgba(255,255,255,.78);
-
-    transition:
-        all .20s ease;
-
-    border:
-        1px solid transparent;
-}
-
-
-.finance-item + .finance-item{
-
-    margin-top:3px;
-}
-
-
-.finance-icon{
-
-    width:36px;
-    height:36px;
-
-    flex-shrink:0;
-
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
-
-    border-radius:11px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,42,96,.15),
-            rgba(255,255,255,.035)
-        );
-
-    border:
-        1px solid rgba(255,61,109,.10);
-
-    font-size:17px;
-}
-
-
-.finance-text{
-
-    flex:1;
-
-    min-width:0;
-}
-
-
-.finance-text strong{
-
-    display:block;
-
-    font-size:13px;
-
-    color:#eee;
-
-    font-weight:650;
-}
-
-
-.finance-text small{
-
-    display:block;
-
-    margin-top:3px;
-
-    color:
-        rgba(255,255,255,.35);
-
-    font-size:10px;
-}
-
-
-.finance-arrow{
-
-    color:
-        rgba(255,255,255,.2);
-
-    font-size:18px;
-
-    transition:
-        .2s;
-}
-
-
-.finance-item:hover{
-
-    transform:
-        translateX(4px);
-
-    background:
-        linear-gradient(
-            90deg,
-            rgba(255,39,94,.18),
-            rgba(255,255,255,.035)
-        );
-
-    border-color:
-        rgba(255,62,111,.18);
-
-    color:#fff;
-}
-
-
-.finance-item:hover .finance-icon{
-
-    background:
-        rgba(255,39,94,.28);
-}
-
-
-.finance-item:hover .finance-arrow{
-
-    color:#ff4778;
-
-    transform:
-        translateX(3px);
-}
-
-
-/* =========================================================
-   MAIN HOME PANEL
-========================================================= */
-
-.main-content{
-
-    position:relative;
-
-    z-index:2;
-
-    width:
-        calc(100% - 70px);
-
-    height:
-        calc(100vh - 145px);
-
-    margin:
-        15px auto 0;
-
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
-}
-
-
-.welcome-panel{
-
-    width:
-        min(850px,90%);
-
-    padding:
-        45px 50px;
-
-    text-align:center;
-
-    border-radius:32px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.060),
-            rgba(255,255,255,.018)
-        );
-
-    border:
-        1px solid rgba(255,255,255,.09);
-
-    box-shadow:
-        0 35px 90px rgba(0,0,0,.22),
-        inset 0 1px 0 rgba(255,255,255,.07);
-
-    backdrop-filter:
-        blur(18px);
-
-    -webkit-backdrop-filter:
-        blur(18px);
-}
-
-
-.welcome-badge{
-
-    display:inline-flex;
-
-    align-items:center;
-
-    gap:7px;
-
-    padding:7px 15px;
-
-    margin-bottom:20px;
-
-    border-radius:30px;
-
-    background:
-        rgba(255,39,94,.12);
-
-    border:
-        1px solid rgba(255,39,94,.18);
-
-    color:#ff638c;
-
-    font-size:11px;
-
-    font-weight:800;
-
-    letter-spacing:.8px;
-}
-
-
-.welcome-title{
-
-    font-size:
-        clamp(32px,4vw,58px);
-
-    line-height:1;
-
-    font-weight:900;
-
-    letter-spacing:-2px;
-}
-
-
-.welcome-title span{
-
-    color:#ff2b61;
-
-    text-shadow:
-        0 0 30px rgba(255,43,97,.22);
-}
-
-
-.welcome-desc{
-
-    margin-top:17px;
-
-    color:
-        rgba(255,255,255,.50);
-
-    font-size:14px;
-
-    line-height:1.7;
-}
-
-
-/* =========================================================
-   MINI STATS
-========================================================= */
-
-.mini-stats{
-
-    margin-top:30px;
-
-    display:grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
-    gap:12px;
-}
-
-
-.mini-stat{
-
-    padding:16px;
-
-    border-radius:16px;
-
-    background:
-        rgba(255,255,255,.035);
-
-    border:
-        1px solid rgba(255,255,255,.065);
-}
-
-
-.mini-stat strong{
-
-    display:block;
-
-    color:#ff4778;
-
-    font-size:17px;
-}
-
-
-.mini-stat span{
-
-    display:block;
-
-    margin-top:4px;
-
-    color:
-        rgba(255,255,255,.40);
-
-    font-size:10px;
-
-    font-weight:700;
-
-    letter-spacing:.7px;
-}
-
-
-/* =========================================================
-   RESPONSIVE
-========================================================= */
-
-@media(max-width:1050px){
-
-    body{
-        overflow:auto;
-    }
-
-    .top-wrapper{
-
-        height:auto;
-
-        min-height:90px;
-
-        padding:
-            15px;
-
-        flex-wrap:wrap;
-
-        gap:12px;
-    }
-
-    .brand{
-
-        margin:
-            0 20px;
-
-    }
-
-    .top-menu{
-
-        order:3;
-
-        width:100%;
-
-        height:auto;
-
-        flex-wrap:wrap;
-
-        padding:10px 0;
-    }
-
-    .system-status{
-
-        margin-left:auto;
-    }
-
-    .dropdown-box{
-
-        position:fixed;
-
-        top:165px;
-
-        width:
-            min(410px,calc(100vw - 30px));
-    }
-
-    .main-content{
-
-        height:auto;
-
-        padding:
-            40px 0;
-    }
-
-}
-
-
-@media(max-width:600px){
-
-    .brand{
-
-        display:none;
-
-    }
-
-    .system-status{
-
-        min-width:auto;
-
-        padding:
-            0 12px;
-    }
-
-    .system-status span:last-child{
-
-        display:none;
-    }
-
-    .nav-item{
-
-        width:
-            calc(50% - 8px);
-
-    }
-
-    .welcome-panel{
-
-        padding:
-            30px 20px;
-
-    }
-
-}
-
-</style>
+<link rel="stylesheet" href="/css/style.css">
 
 </head>
-
 
 
 <body>
 
 
-<!-- =========================================================
-     HEADER
-========================================================= -->
+<header class="header">
 
-<header class="top-wrapper">
 
+<a href="index.html" class="brand">
 
-    <button
-        class="back-home"
-        onclick="goBack()"
-    >
-        ← QUAY LẠI
-    </button>
+<span class="brand-main">XX8</span>
+<span class="brand-com">.COM</span>
 
+</a>
 
 
-    <div class="brand">
 
-        <span class="brand-main">
-            XX8
-        </span>
+<nav class="top-nav">
 
-        <span class="brand-com">
-            .COM
-        </span>
 
-    </div>
+<a href="index.html" class="active">
+Trang chủ
+</a>
 
 
+<a href="luutrinh/luu_trinh.html">
+Lưu trình
+</a>
 
-    <nav class="top-menu">
 
+<a href="#quick-menu">
+Hướng dẫn
+</a>
 
-        <!-- HOẠT ĐỘNG -->
 
-        <div class="nav-item active">
+<a href="#status">
+Thông báo
+</a>
 
-            <div class="nav-icon">
-                ▤
-            </div>
 
-            <div class="nav-title">
-                Hoạt động
-            </div>
+</nav>
 
-        </div>
 
 
+<a
+href="https://t.me/jiangabcvip"
+target="_blank"
+class="telegram-btn"
+>
 
-        <!-- THÀNH VIÊN -->
+<span class="telegram-icon">
+✈
+</span>
 
-        <div class="nav-item">
+LIÊN HỆ TELEGRAM
 
-            <div class="nav-icon">
-                ◉
-            </div>
-
-            <div class="nav-title">
-                Thành viên
-            </div>
-
-        </div>
-
-
-
-        <!-- KHUYẾN MÃI -->
-
-        <div class="nav-item">
-
-            <div class="nav-icon">
-                ◆
-            </div>
-
-            <div class="nav-title">
-                Khuyến mãi
-            </div>
-
-        </div>
-
-
-
-        <!-- TÀI CHÍNH -->
-
-        <div
-            class="nav-item dropdown"
-            onclick="toggleFinance(event)"
-        >
-
-            <div class="nav-icon">
-                $
-            </div>
-
-            <div class="nav-title">
-                Tài chính ▾
-            </div>
-
-
-
-            <div class="dropdown-box">
-
-
-                <div class="dropdown-header">
-
-                    <strong>
-                        TÀI CHÍNH
-                    </strong>
-
-                    <span>
-                        Chọn chức năng bạn muốn truy cập
-                    </span>
-
-                </div>
-
-
-
-                <!-- 1 -->
-
-                <div
-                    class="finance-item"
-                    onclick="openPage('tong_nap_tien.html')"
-                >
-
-                    <div class="finance-icon">
-                        $
-                    </div>
-
-                    <div class="finance-text">
-
-                        <strong>
-                            Tổng nạp tiền
-                        </strong>
-
-                        <small>
-                            Theo dõi tổng dữ liệu nạp
-                        </small>
-
-                    </div>
-
-                    <div class="finance-arrow">
-                        ›
-                    </div>
-
-                </div>
-
-
-
-                <!-- 2 -->
-
-                <div
-                    class="finance-item"
-                    onclick="openPage('tao_lenh_nap.html')"
-                >
-
-                    <div class="finance-icon">
-                        +
-                    </div>
-
-                    <div class="finance-text">
-
-                        <strong>
-                            Tạo lệnh nạp tiền
-                        </strong>
-
-                        <small>
-                            Khởi tạo lệnh nạp mới
-                        </small>
-
-                    </div>
-
-                    <div class="finance-arrow">
-                        ›
-                    </div>
-
-                </div>
-
-
-
-                <!-- 3 -->
-
-                <div
-                    class="finance-item"
-                    onclick="openPage('tong_nap_nhanh.html')"
-                >
-
-                    <div class="finance-icon">
-                        ⚡
-                    </div>
-
-                    <div class="finance-text">
-
-                        <strong>
-                            Tổng nạp nhanh
-                        </strong>
-
-                        <small>
-                            Kiểm tra dữ liệu nạp nhanh
-                        </small>
-
-                    </div>
-
-                    <div class="finance-arrow">
-                        ›
-                    </div>
-
-                </div>
-
-
-
-                <!-- 4 -->
-
-                <div
-                    class="finance-item"
-                    onclick="openPage('quan_ly_rut_tien.html')"
-                >
-
-                    <div class="finance-icon">
-                        ↓
-                    </div>
-
-                    <div class="finance-text">
-
-                        <strong>
-                            Quản lý rút tiền
-                        </strong>
-
-                        <small>
-                            Quản lý và kiểm tra yêu cầu rút
-                        </small>
-
-                    </div>
-
-                    <div class="finance-arrow">
-                        ›
-                    </div>
-
-                </div>
-
-
-
-                <!-- 5 -->
-
-                <div
-                    class="finance-item"
-                    onclick="openPage('nhiem_vu_co_cuoc.html')"
-                >
-
-                    <div class="finance-icon">
-                        ◎
-                    </div>
-
-                    <div class="finance-text">
-
-                        <strong>
-                            Nhiệm vụ cơ cược (Kiểm toán)
-                        </strong>
-
-                        <small>
-                            Kiểm tra nhiệm vụ và kiểm toán
-                        </small>
-
-                    </div>
-
-                    <div class="finance-arrow">
-                        ›
-                    </div>
-
-                </div>
-
-
-
-                <!-- 6 -->
-
-                <div
-                    class="finance-item"
-                    onclick="openPage('dieu_chinh_tien.html')"
-                >
-
-                    <div class="finance-icon">
-                        ⚙
-                    </div>
-
-                    <div class="finance-text">
-
-                        <strong>
-                            Điều chỉnh tiền thủ công
-                        </strong>
-
-                        <small>
-                            Điều chỉnh dữ liệu theo nghiệp vụ
-                        </small>
-
-                    </div>
-
-                    <div class="finance-arrow">
-                        ›
-                    </div>
-
-                </div>
-
-
-
-                <!-- 7 -->
-
-                <div
-                    class="finance-item"
-                    onclick="openPage('ty_gia_ngan_hang.html')"
-                >
-
-                    <div class="finance-icon">
-                        ◫
-                    </div>
-
-                    <div class="finance-text">
-
-                        <strong>
-                            Tỷ giá hối đoái và quản lý ngân hàng
-                        </strong>
-
-                        <small>
-                            Quản lý tỷ giá và thông tin ngân hàng
-                        </small>
-
-                    </div>
-
-                    <div class="finance-arrow">
-                        ›
-                    </div>
-
-                </div>
-
-
-
-                <!-- 8 -->
-
-                <div
-                    class="finance-item"
-                    onclick="openPage('xep_hang_thanh_toan.html')"
-                >
-
-                    <div class="finance-icon">
-                        ≡
-                    </div>
-
-                    <div class="finance-text">
-
-                        <strong>
-                            Xếp hạng thanh toán ba đảng
-                        </strong>
-
-                        <small>
-                            Theo dõi thứ hạng thanh toán
-                        </small>
-
-                    </div>
-
-                    <div class="finance-arrow">
-                        ›
-                    </div>
-
-                </div>
-
-
-            </div>
-
-        </div>
-
-
-
-        <!-- BÁO CÁO -->
-
-        <div class="nav-item">
-
-            <div class="nav-icon">
-                ◫
-            </div>
-
-            <div class="nav-title">
-                Báo cáo
-            </div>
-
-        </div>
-
-
-    </nav>
-
-
-
-    <div class="system-status">
-
-        <span class="status-dot"></span>
-
-        <span>
-            SYSTEM ONLINE
-        </span>
-
-    </div>
+</a>
 
 
 </header>
 
 
 
-<!-- =========================================================
-     MAIN CONTENT
-========================================================= -->
-
-<main class="main-content">
 
 
-    <section class="welcome-panel">
-
-
-        <div class="welcome-badge">
-            ● XX8 BACKEND SYSTEM
-        </div>
-
-
-        <h1 class="welcome-title">
-
-            HỆ THỐNG
-            <span>QUẢN LÝ XX8</span>
-
-        </h1>
-
-
-        <p class="welcome-desc">
-
-            Trung tâm quản lý vận hành, tài chính,
-            thành viên, khuyến mãi và báo cáo hệ thống.
-            Chọn chức năng phía trên để bắt đầu thao tác.
-
-        </p>
+<main class="dashboard">
 
 
 
-        <div class="mini-stats">
+<section class="intro-panel">
 
 
-            <div class="mini-stat">
+<div class="system-tag">
 
-                <strong>
-                    ONLINE
-                </strong>
+<span class="tag-dot"></span>
 
-                <span>
-                    SYSTEM STATUS
-                </span>
+XX8 BACKEND SYSTEM
 
-            </div>
+</div>
 
 
-            <div class="mini-stat">
 
-                <strong>
-                    24/7
-                </strong>
+<h1>
 
-                <span>
-                    OPERATION
-                </span>
+HỆ THỐNG
 
-            </div>
+<span>
+LƯU TRÌNH XX8
+</span>
 
-
-            <div class="mini-stat">
-
-                <strong>
-                    SECURE
-                </strong>
-
-                <span>
-                    BACKEND ACCESS
-                </span>
-
-            </div>
+</h1>
 
 
-        </div>
+
+<p class="intro-desc">
+
+Quản lý tài liệu • Quy trình vận hành • Hướng dẫn Backend
+
+</p>
 
 
-    </section>
+
+<div class="intro-actions">
+
+
+<a 
+href="taichinh/index.html"
+class="btn btn-primary"
+>
+
+KHÁM PHÁ HỆ THỐNG
+
+</a>
+
+
+
+</div>
+
+
+
+
+<div class="mini-info">
+
+
+<div>
+
+<strong>
+24/7
+</strong>
+
+<span>
+VẬN HÀNH
+</span>
+
+</div>
+
+
+
+<div>
+
+<strong>
+FAST
+</strong>
+
+<span>
+TRUY CẬP
+</span>
+
+</div>
+
+
+
+<div>
+
+<strong>
+SAFE
+</strong>
+
+<span>
+BẢO MẬT
+</span>
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+<section 
+class="department-menu"
+id="department-menu"
+>
+
+
+
+<a 
+href="luutrinh/luu_trinh.html"
+class="department-card xnk-card"
+>
+
+
+<div class="department-number">
+01
+</div>
+
+
+<div class="department-icon">
+⇄
+</div>
+
+
+<h2>
+XNK
+</h2>
+
+
+<p>
+Khu vực lưu trình XNK
+</p>
+
+
+<span class="enter-btn">
+TRUY CẬP →
+</span>
+
+
+</a>
+
+
+
+
+
+<a
+href="/fk/index.html"
+class="department-card fk-card"
+>
+
+
+<div class="department-number">
+02
+</div>
+
+
+<div class="department-icon">
+⚙
+</div>
+
+
+<h2>
+FK
+</h2>
+
+
+<p>
+Khu vực lưu trình FK
+</p>
+
+
+<span class="enter-btn">
+TRUY CẬP →
+</span>
+
+
+</a>
+
+
+
+
+
+<a
+href="/cskh/index.html"
+class="department-card cskh-card"
+>
+
+
+<div class="department-number">
+03
+</div>
+
+
+<div class="department-icon">
+◉
+</div>
+
+
+<h2>
+CSKH
+</h2>
+
+
+<p>
+Chăm sóc khách hàng
+</p>
+
+
+<span class="enter-btn">
+TRUY CẬP →
+</span>
+
+
+</a>
+
+
+
+</section>
+
+
+
+<aside
+class="status-panel"
+id="status"
+>
+
+
+<div class="status-top">
+
+
+<div>
+
+<span class="status-label">
+SYSTEM STATUS
+</span>
+
+
+<h3>
+XX8 CORE
+</h3>
+
+
+</div>
+
+
+
+<div class="status-live">
+
+<span></span>
+
+ONLINE
+
+</div>
+
+
+</div>
+
+
+
+<div class="status-line"></div>
+
+
+<div class="status-item">
+
+<div class="status-item-left">
+
+<span class="status-icon">
+▤
+</span>
+
+<span>
+Tài liệu
+</span>
+
+
+</div>
+
+
+<strong>
+128
+</strong>
+
+
+</div>
+<div class="status-item">
+
+<div class="status-item-left">
+
+<span class="status-icon">
+▣
+</span>
+
+<span>
+Lưu trình
+</span>
+
+</div>
+
+
+<strong>
+46
+</strong>
+
+
+</div>
+
+
+
+
+<div class="status-item">
+
+
+<div class="status-item-left">
+
+
+<span class="status-icon">
+◈
+</span>
+
+
+<span>
+Cập nhật
+</span>
+
+
+</div>
+
+
+<strong>
+12
+</strong>
+
+
+</div>
+
+
+
+
+
+<div class="status-line"></div>
+
+
+
+
+<div class="security-box">
+
+
+<div class="security-icon">
+
+◉
+
+</div>
+
+
+<div>
+
+
+<strong>
+SECURITY ACTIVE
+</strong>
+
+
+<span>
+Hệ thống đang được bảo vệ
+</span>
+
+
+</div>
+
+
+</div>
+
+
+</aside>
+
 
 
 </main>
 
 
 
-<script>
-
-/* =========================================================
-   TOGGLE FINANCE
-========================================================= */
-
-function toggleFinance(e){
-
-    e.stopPropagation();
-
-    const menu =
-        document.querySelector(".dropdown-box");
-
-    if(menu){
-
-        menu.classList.toggle("show");
-
-    }
-
-}
 
 
 
-/* =========================================================
-   CLICK OUTSIDE
-========================================================= */
 
-document.addEventListener(
-    "click",
-    function(){
-
-        const menu =
-            document.querySelector(".dropdown-box");
-
-        if(menu){
-
-            menu.classList.remove("show");
-
-        }
-
-    }
-);
+<section
+class="quick-menu"
+id="quick-menu"
+>
 
 
 
-/* =========================================================
-   KEEP MENU CLICK
-========================================================= */
-
-const dropdownBox =
-    document.querySelector(".dropdown-box");
+<a href="/taichinh/index.html" class="quick-card">
 
 
-if(dropdownBox){
-
-    dropdownBox.addEventListener(
-        "click",
-        function(e){
-
-            e.stopPropagation();
-
-        }
-    );
-
-}
+<div class="quick-icon">
+▤
+</div>
 
 
+<div>
 
-/* =========================================================
-   OPEN PAGE
-========================================================= */
+<strong>
+TÀI LIỆU
+</strong>
 
-function openPage(url){
 
-    window.location.href=url;
+<span>
+Tài liệu hệ thống
+</span>
 
-}
+
+</div>
+
+
+</a>
 
 
 
-/* =========================================================
-   BACK
-========================================================= */
 
-function goBack(){
 
-    window.history.back();
+<a href="luutrinh/luu_trinh.html" class="quick-card">
 
-}
 
-</script>
+<div class="quick-icon">
+
+▣
+
+</div>
+
+
+<div>
+
+<strong>
+LƯU TRÌNH
+</strong>
+
+
+<span>
+Quy trình vận hành
+</span>
+
+
+</div>
+
+
+</a>
+
+
+
+
+
+<a href="#" class="quick-card">
+
+
+<div class="quick-icon">
+◉
+</div>
+
+
+<div>
+
+<strong>
+HƯỚNG DẪN
+</strong>
+
+
+<span>
+Hướng dẫn nghiệp vụ
+</span>
+
+
+</div>
+
+
+</a>
+
+
+
+
+
+<a href="#" class="quick-card">
+
+
+<div class="quick-icon">
+◈
+</div>
+
+
+<div>
+
+<strong>
+THÔNG BÁO
+</strong>
+
+
+<span>
+Cập nhật hệ thống
+</span>
+
+
+</div>
+
+
+</a>
+
+
+
+
+
+<a href="#" class="quick-card">
+
+
+<div class="quick-icon">
+◇
+</div>
+
+
+<div>
+
+<strong>
+BẢO MẬT
+</strong>
+
+
+<span>
+Quyền hạn hệ thống
+</span>
+
+
+</div>
+
+
+</a>
+
+
+
+
+
+<a
+href="https://t.me/jiangabcvip"
+target="_blank"
+class="quick-card"
+>
+
+
+<div class="quick-icon">
+
+✦
+
+</div>
+
+
+<div>
+
+<strong>
+HỖ TRỢ
+</strong>
+
+
+<span>
+Telegram hỗ trợ
+</span>
+
+
+</div>
+
+
+</a>
+
+
+
+</section>
+
+
+
+
+
+
+
+<footer class="footer">
+
+
+<span>
+
+© 2026 XX8.COM
+
+</span>
+
+
+
+<span class="footer-center">
+
+HỆ THỐNG LƯU TRÌNH BACKEND
+
+</span>
+
+
+
+<span class="footer-status">
+
+<i></i>
+
+SYSTEM READY
+
+</span>
+
+
+
+</footer>
+
+
+
+
+
+
+<script src="/js/main.js"></script>
 
 
 </body>

@@ -1,0 +1,3199 @@
+<!DOCTYPE html>
+
+<html lang="vi">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>
+Tổng Nạp Tiền - Hướng Dẫn Nghiệp Vụ
+</title>
+
+
+<style>
+
+
+/* ================= RESET ================= */
+
+
+*{
+
+margin:0;
+
+padding:0;
+
+box-sizing:border-box;
+
+}
+
+
+
+body{
+
+font-family:
+
+Arial,
+sans-serif;
+
+background:#f5f7fb;
+
+color:#333;
+
+line-height:1.6;
+
+}
+
+
+
+/* ================= QUAY LẠI ================= */
+
+
+.back-btn{
+
+
+position:fixed;
+
+
+top:20px;
+
+
+left:20px;
+
+
+z-index:9999;
+
+
+background:
+
+linear-gradient(
+135deg,
+#1677ff,
+#0047b8
+);
+
+
+
+color:white;
+
+
+border:none;
+
+
+padding:12px 25px;
+
+
+border-radius:12px;
+
+
+font-size:15px;
+
+
+font-weight:bold;
+
+
+cursor:pointer;
+
+
+box-shadow:
+
+0 8px 20px rgba(0,0,0,.25);
+
+
+transition:.3s;
+
+
+}
+
+
+
+.back-btn:hover{
+
+
+transform:
+
+translateY(-3px);
+
+
+}
+
+
+
+/* ================= HEADER ================= */
+
+
+.header{
+
+
+height:100px;
+
+
+background:
+
+
+linear-gradient(
+135deg,
+#0066ff,
+#003bb5
+);
+
+
+
+display:flex;
+
+
+align-items:center;
+
+
+padding-left:220px;
+
+
+color:white;
+
+
+box-shadow:
+
+0 5px 25px rgba(0,0,0,.25);
+
+
+}
+
+
+
+.header h1{
+
+
+font-size:30px;
+
+
+}
+
+
+
+.header p{
+
+
+margin-left:25px;
+
+
+font-size:15px;
+
+
+opacity:.85;
+
+
+}
+
+
+
+/* ================= CONTAINER ================= */
+
+
+.container{
+
+
+width:92%;
+
+
+max-width:1600px;
+
+
+margin:30px auto;
+
+
+}
+
+
+
+/* ================= CARD ================= */
+
+
+.card{
+
+
+background:white;
+
+
+border-radius:18px;
+
+
+padding:25px;
+
+
+margin-bottom:25px;
+
+
+box-shadow:
+
+
+0 5px 20px rgba(0,0,0,.08);
+
+
+}
+
+
+
+.card-title{
+
+
+font-size:22px;
+
+
+font-weight:bold;
+
+
+color:#1677ff;
+
+
+margin-bottom:20px;
+
+
+display:flex;
+
+
+align-items:center;
+
+
+gap:10px;
+
+
+}
+
+
+
+.card-title span{
+
+
+font-size:28px;
+
+
+}
+
+
+
+/* ================= TEXT ================= */
+
+
+.text{
+
+
+font-size:15px;
+
+
+color:#4b5563;
+
+
+line-height:1.9;
+
+
+}
+
+
+
+.highlight{
+
+
+color:#1677ff;
+
+
+font-weight:bold;
+
+
+}
+
+
+
+/* ================= FEATURE ================= */
+
+
+.feature-box{
+
+
+display:grid;
+
+
+grid-template-columns:
+
+repeat(4,1fr);
+
+
+gap:15px;
+
+
+margin-top:20px;
+
+
+}
+
+
+
+.feature{
+
+
+padding:18px;
+
+
+border-radius:14px;
+
+
+background:#f8fbff;
+
+
+border:
+
+1px solid #e4ecf8;
+
+
+}
+
+
+
+.feature h3{
+
+
+font-size:16px;
+
+
+color:#1677ff;
+
+
+margin-bottom:8px;
+
+
+}
+
+
+
+.feature p{
+
+
+font-size:13px;
+
+
+color:#667085;
+
+
+}
+
+
+
+
+
+/* ================= PROCESS ================= */
+
+
+.process{
+
+
+display:flex;
+
+
+justify-content:center;
+
+
+align-items:center;
+
+
+gap:15px;
+
+
+margin-top:25px;
+
+
+flex-wrap:wrap;
+
+
+}
+
+
+
+.step{
+
+
+width:190px;
+
+
+padding:20px;
+
+
+border-radius:15px;
+
+
+background:#eef6ff;
+
+
+text-align:center;
+
+
+border:
+
+1px solid #cfe1ff;
+
+
+}
+
+
+
+.step strong{
+
+
+display:block;
+
+
+color:#1677ff;
+
+
+font-size:18px;
+
+
+margin-bottom:8px;
+
+
+}
+
+
+
+.arrow{
+
+
+font-size:35px;
+
+
+color:#1677ff;
+
+
+}
+
+
+
+
+
+/* ================= TAG ================= */
+
+
+.tags{
+
+
+display:flex;
+
+
+gap:10px;
+
+
+flex-wrap:wrap;
+
+
+margin-top:15px;
+
+
+}
+
+
+
+.tag{
+
+
+padding:
+
+6px 15px;
+
+
+border-radius:20px;
+
+
+font-size:13px;
+
+
+font-weight:bold;
+
+
+background:#eaf3ff;
+
+
+color:#1677ff;
+
+
+}
+
+
+
+
+/* ================= RESPONSIVE ================= */
+
+
+@media(max-width:900px){
+
+
+.header{
+
+
+padding-left:40px;
+
+
+}
+
+
+.feature-box{
+
+
+grid-template-columns:
+
+repeat(2,1fr);
+
+
+}
+
+
+}
+
+
+
+
+</style>
+
+
+</head>
+
+
+<body>
+
+
+
+<button
+
+class="back-btn"
+
+onclick="goBack()"
+
+>
+
+⬅ Quay lại
+
+</button>
+
+
+
+
+
+<header class="header">
+
+
+<h1>
+
+💵 Tổng Nạp Tiền
+
+</h1>
+
+
+<p>
+
+Hướng dẫn chức năng quản lý giao dịch nạp tiền
+
+</p>
+
+
+</header>
+
+
+
+
+
+<div class="container">
+
+
+
+
+
+<!-- ================= GIỚI THIỆU ================= -->
+
+
+<div class="card">
+
+
+<div class="card-title">
+
+<span>
+📌
+</span>
+
+1. Giới thiệu chức năng
+
+</div>
+
+
+
+<div class="text">
+
+
+Chức năng
+
+<span class="highlight">
+Tổng Nạp Tiền
+</span>
+
+dùng để quản lý toàn bộ giao dịch nạp tiền của thành viên trong hệ thống.
+
+
+Bao gồm:
+
+
+</div>
+
+
+
+
+<div class="feature-box">
+
+
+
+<div class="feature">
+
+
+<h3>
+🌐 Nạp Online
+</h3>
+
+
+<p>
+
+Quản lý các giao dịch thông qua cổng thanh toán trực tuyến.
+
+</p>
+
+
+</div>
+
+
+
+
+<div class="feature">
+
+
+<h3>
+🏦 Chuyển khoản
+</h3>
+
+
+<p>
+
+Theo dõi các đơn nạp bằng phương thức chuyển khoản ngân hàng.
+
+</p>
+
+
+</div>
+
+
+
+
+<div class="feature">
+
+
+<h3>
+🎧 CSKH nạp hộ
+</h3>
+
+
+<p>
+
+Quản lý các trường hợp nhân viên hỗ trợ thành viên nạp tiền.
+
+</p>
+
+
+</div>
+
+
+
+
+<div class="feature">
+
+
+<h3>
+📊 Theo dõi đơn
+</h3>
+
+
+<p>
+
+Kiểm tra trạng thái, lịch sử và kết quả xử lý giao dịch.
+
+</p>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+<div class="tags">
+
+
+<div class="tag">
+Nạp tiền
+</div>
+
+
+<div class="tag">
+Thanh toán
+</div>
+
+
+<div class="tag">
+Kiểm tra đơn
+</div>
+
+
+<div class="tag">
+Xử lý giao dịch
+</div>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+<!-- ================= QUY TRÌNH ================= -->
+
+
+<div class="card">
+
+
+<div class="card-title">
+
+<span>
+🔄
+</span>
+
+2. Quy trình xử lý nạp tiền
+
+</div>
+
+
+
+
+<div class="text">
+
+
+Luồng xử lý cơ bản:
+
+
+</div>
+
+
+
+
+<div class="process">
+
+
+
+<div class="step">
+
+<strong>
+Bước 1
+</strong>
+
+Thành viên tạo đơn nạp
+
+</div>
+
+
+
+<div class="arrow">
+→
+</div>
+
+
+
+
+<div class="step">
+
+<strong>
+Bước 2
+</strong>
+
+Hệ thống tiếp nhận đơn
+
+</div>
+
+
+
+<div class="arrow">
+→
+</div>
+
+
+
+
+<div class="step">
+
+<strong>
+Bước 3
+</strong>
+
+Kiểm tra thanh toán
+
+</div>
+
+
+
+<div class="arrow">
+→
+</div>
+
+
+
+
+<div class="step">
+
+<strong>
+Bước 4
+</strong>
+
+Xác nhận cộng tiền
+
+</div>
+
+
+
+<div class="arrow">
+→
+</div>
+
+
+
+
+<div class="step">
+
+<strong>
+Bước 5
+</strong>
+
+Hoàn tất giao dịch
+
+</div>
+
+
+
+</div>
+
+
+
+</div>
+<!-- =========================================================
+3. MÔ PHỎNG GIAO DIỆN BACKEND
+========================================================= -->
+
+
+<div class="card">
+
+
+<div class="card-title">
+
+<span>
+🖥️
+</span>
+
+3. Mô phỏng giao diện quản lý Backend
+
+</div>
+
+
+
+<div class="text">
+
+Đây là khu vực nhân viên thường xuyên sử dụng để kiểm tra,
+tìm kiếm và xử lý các đơn nạp tiền.
+
+</div>
+
+
+
+<br>
+
+
+
+<div style="
+background:#f8fafc;
+border:1px solid #e5e7eb;
+border-radius:15px;
+padding:20px;
+">
+
+
+
+<!-- HEADER BACKEND -->
+
+<div style="
+background:#1677ff;
+color:white;
+padding:15px;
+border-radius:10px 10px 0 0;
+font-weight:bold;
+font-size:18px;
+">
+
+💵 Tổng Nạp Tiền
+
+</div>
+
+
+
+
+
+<!-- SEARCH -->
+
+<div style="
+background:white;
+padding:20px;
+border:1px solid #eee;
+">
+
+
+
+<h3 style="
+color:#1677ff;
+margin-bottom:15px;
+">
+
+🔍 Bộ lọc tìm kiếm
+
+</h3>
+
+
+
+
+<div style="
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:15px;
+">
+
+
+
+<div>
+
+<label>
+Mã đơn hàng
+</label>
+
+<input
+style="
+width:100%;
+height:38px;
+border:1px solid #ddd;
+border-radius:8px;
+padding:8px;
+"
+placeholder="Nhập mã đơn"
+/>
+
+</div>
+
+
+
+
+
+<div>
+
+<label>
+Member ID
+</label>
+
+<input
+style="
+width:100%;
+height:38px;
+border:1px solid #ddd;
+border-radius:8px;
+padding:8px;
+"
+placeholder="Nhập ID"
+/>
+
+</div>
+
+
+
+
+
+<div>
+
+<label>
+Tài khoản
+</label>
+
+<input
+style="
+width:100%;
+height:38px;
+border:1px solid #ddd;
+border-radius:8px;
+padding:8px;
+"
+placeholder="Username"
+/>
+
+</div>
+
+
+
+
+
+<div>
+
+<label>
+Loại nạp
+</label>
+
+
+<select
+
+style="
+width:100%;
+height:38px;
+border:1px solid #ddd;
+border-radius:8px;
+padding:5px;
+"
+
+>
+
+
+<option>
+Tất cả
+</option>
+
+
+<option>
+Nạp Online
+</option>
+
+
+<option>
+Chuyển khoản
+</option>
+
+
+<option>
+CSKH nạp hộ
+</option>
+
+
+</select>
+
+
+</div>
+
+
+
+
+</div>
+
+
+
+
+
+<br>
+
+
+
+<div style="
+display:flex;
+gap:10px;
+">
+
+
+<button class="btn btn-blue">
+
+🔍 Tìm kiếm
+
+</button>
+
+
+<button class="btn btn-gray">
+
+🔄 Làm mới
+
+</button>
+
+
+<button class="btn btn-green">
+
+➕ Tạo bổ sung đơn
+
+</button>
+
+
+<button class="btn btn-orange">
+
+⚙ Cài đặt nạp
+
+</button>
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+<!-- TABLE MOCKUP -->
+
+
+<div style="
+background:white;
+margin-top:20px;
+border:1px solid #eee;
+padding:20px;
+">
+
+
+
+<h3 style="
+color:#1677ff;
+margin-bottom:15px;
+">
+
+📋 Danh sách đơn nạp tiền
+
+</h3>
+
+
+
+
+<div style="
+overflow:auto;
+">
+
+
+
+<table
+style="
+width:100%;
+min-width:1800px;
+border-collapse:collapse;
+"
+>
+
+
+<thead>
+
+
+<tr
+style="
+background:#eef5ff;
+"
+>
+
+
+<th>
+Mã đơn
+</th>
+
+
+<th>
+Member ID
+</th>
+
+
+<th>
+Tài khoản
+</th>
+
+
+<th>
+VIP
+</th>
+
+
+<th>
+Thời gian tạo
+</th>
+
+
+<th>
+Loại tiền
+</th>
+
+
+<th>
+Số lượng gốc
+</th>
+
+
+<th>
+Tỷ giá
+</th>
+
+
+<th>
+Tiền đơn hàng
+</th>
+
+
+<th>
+Tiền thưởng
+</th>
+
+
+<th>
+Phí
+</th>
+
+
+<th>
+Tổng tiền cộng
+</th>
+
+
+<th>
+Loại nạp
+</th>
+
+
+<th>
+Kênh thanh toán
+</th>
+
+
+<th>
+Trạng thái
+</th>
+
+
+<th>
+Thao tác
+</th>
+
+
+</tr>
+
+
+</thead>
+
+
+
+
+
+<tbody>
+
+
+
+<tr>
+
+
+
+<td>
+DP202608110001
+</td>
+
+
+
+<td>
+1000888
+</td>
+
+
+
+<td>
+user888
+</td>
+
+
+
+<td>
+VIP5
+</td>
+
+
+
+<td>
+2026-08-11 15:20
+</td>
+
+
+
+<td>
+USDT
+</td>
+
+
+
+<td>
+100
+</td>
+
+
+
+<td>
+25000
+</td>
+
+
+
+<td>
+2.500.000
+</td>
+
+
+
+<td>
+100.000
+</td>
+
+
+
+<td>
+0
+</td>
+
+
+
+<td>
+2.600.000
+</td>
+
+
+
+<td>
+Nạp Online
+</td>
+
+
+
+<td>
+USDT TRC20
+</td>
+
+
+
+<td>
+
+<span style="
+background:#dcfce7;
+color:#16a34a;
+padding:5px 12px;
+border-radius:20px;
+font-weight:bold;
+">
+
+Thành công
+
+</span>
+
+</td>
+
+
+
+<td>
+
+<button
+class="btn btn-blue"
+style="
+height:32px;
+padding:0 12px;
+"
+>
+
+Chi tiết
+
+</button>
+
+
+</td>
+
+
+
+</tr>
+
+
+
+
+
+
+<tr>
+
+
+
+<td>
+DP202608110002
+</td>
+
+
+
+<td>
+1000999
+</td>
+
+
+
+<td>
+abc888
+</td>
+
+
+
+<td>
+VIP2
+</td>
+
+
+
+<td>
+2026-08-11 14:30
+</td>
+
+
+
+<td>
+VND
+</td>
+
+
+
+<td>
+5.000.000
+</td>
+
+
+
+<td>
+1
+</td>
+
+
+
+<td>
+5.000.000
+</td>
+
+
+
+<td>
+50.000
+</td>
+
+
+
+<td>
+10.000
+</td>
+
+
+
+<td>
+5.040.000
+</td>
+
+
+
+<td>
+Chuyển khoản
+</td>
+
+
+
+<td>
+Ngân hàng
+</td>
+
+
+
+<td>
+
+<span style="
+background:#fef3c7;
+color:#d97706;
+padding:5px 12px;
+border-radius:20px;
+font-weight:bold;
+">
+
+Chờ xử lý
+
+</span>
+
+</td>
+
+
+
+<td>
+
+
+<button
+class="btn btn-blue"
+style="
+height:32px;
+padding:0 12px;
+"
+>
+
+Chi tiết
+
+</button>
+
+
+</td>
+
+
+</tr>
+
+
+
+
+</tbody>
+
+
+
+</table>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+<!-- =========================================================
+4. GIẢI THÍCH KHU VỰC BACKEND
+========================================================= -->
+
+
+<div class="card">
+
+
+<div class="card-title">
+
+<span>
+📖
+</span>
+
+4. Giải thích từng khu vực
+
+</div>
+
+
+
+
+<div class="feature-box">
+
+
+
+<div class="feature">
+
+
+<h3>
+🔍 Bộ lọc
+</h3>
+
+
+<p>
+
+Dùng để tìm nhanh đơn nạp theo mã đơn,
+ID thành viên, tài khoản hoặc loại nạp.
+
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="feature">
+
+
+<h3>
+📋 Danh sách đơn
+</h3>
+
+
+<p>
+
+Hiển thị toàn bộ giao dịch nạp tiền
+và trạng thái xử lý.
+
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="feature">
+
+
+<h3>
+💰 Thông tin tiền
+</h3>
+
+
+<p>
+
+Bao gồm số tiền gốc, tỷ giá,
+tiền đơn hàng, thưởng, phí.
+
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="feature">
+
+
+<h3>
+⚙ Xử lý đơn
+</h3>
+
+
+<p>
+
+Nhân viên kiểm tra,
+bổ sung hoặc cập nhật trạng thái.
+
+</p>
+
+
+</div>
+
+
+
+</div>
+
+
+</div>
+<!-- =========================================================
+5. GIẢI THÍCH CHI TIẾT TRƯỜNG DỮ LIỆU
+========================================================= -->
+
+
+<div class="card">
+
+
+<div class="card-title">
+
+<span>
+🧾
+</span>
+
+5. Giải thích chi tiết trường dữ liệu
+
+</div>
+
+
+
+<div class="text">
+
+Mỗi đơn nạp tiền bao gồm nhiều thông tin để nhân viên kiểm tra,
+đối chiếu và xử lý giao dịch.
+
+</div>
+
+
+
+
+<br>
+
+
+
+
+<table
+style="
+width:100%;
+border-collapse:collapse;
+"
+>
+
+
+<thead>
+
+
+<tr
+style="
+background:#eef5ff;
+"
+>
+
+
+<th style="padding:12px">
+Trường dữ liệu
+</th>
+
+
+<th style="padding:12px">
+Ý nghĩa
+</th>
+
+
+<th style="padding:12px">
+Mục đích sử dụng
+</th>
+
+
+</tr>
+
+
+</thead>
+
+
+
+
+<tbody>
+
+
+
+<tr>
+
+
+<td style="padding:12px;border-bottom:1px solid #eee">
+
+<b>Mã đơn hàng</b>
+
+</td>
+
+
+<td style="padding:12px;border-bottom:1px solid #eee">
+
+Mã nhận diện duy nhất của giao dịch nạp tiền.
+
+</td>
+
+
+<td style="padding:12px;border-bottom:1px solid #eee">
+
+Dùng để tra cứu, kiểm tra và xử lý đơn.
+
+</td>
+
+
+</tr>
+
+
+
+
+
+<tr>
+
+
+<td style="padding:12px;border-bottom:1px solid #eee">
+
+<b>Member ID</b>
+
+</td>
+
+
+<td style="padding:12px;border-bottom:1px solid #eee">
+
+Mã định danh của thành viên trong hệ thống.
+
+</td>
+
+
+<td style="padding:12px;border-bottom:1px solid #eee">
+
+Kiểm tra đúng người dùng trước khi xử lý.
+
+</td>
+
+
+</tr>
+
+
+
+
+
+<tr>
+
+
+<td style="padding:12px;border-bottom:1px solid #eee">
+
+<b>Tài khoản thành viên</b>
+
+</td>
+
+
+<td style="padding:12px;border-bottom:1px solid #eee">
+
+Tên đăng nhập của thành viên.
+
+</td>
+
+
+<td style="padding:12px;border-bottom:1px solid #eee">
+
+Đối chiếu với yêu cầu của khách hàng.
+
+</td>
+
+
+</tr>
+
+
+
+
+
+<tr>
+
+
+<td style="padding:12px;border-bottom:1px solid #eee">
+
+<b>Thời gian tạo</b>
+
+</td>
+
+
+<td style="padding:12px;border-bottom:1px solid #eee">
+
+Thời điểm hệ thống tạo đơn nạp.
+
+</td>
+
+
+<td style="padding:12px;border-bottom:1px solid #eee">
+
+Kiểm tra lịch sử phát sinh đơn.
+
+</td>
+
+
+</tr>
+
+
+
+
+
+<tr>
+
+
+<td style="padding:12px;border-bottom:1px solid #eee">
+
+<b>Thời gian thành công</b>
+
+</td>
+
+
+<td style="padding:12px;border-bottom:1px solid #eee">
+
+Thời điểm giao dịch được xác nhận hoàn tất.
+
+</td>
+
+
+<td style="padding:12px;border-bottom:1px solid #eee">
+
+Xác nhận thời gian tiền được cộng.
+
+</td>
+
+
+</tr>
+
+
+
+
+
+<tr>
+
+
+<td style="padding:12px;border-bottom:1px solid #eee">
+
+<b>VIP / Cấp thành viên</b>
+
+</td>
+
+
+<td style="padding:12px;border-bottom:1px solid #eee">
+
+Thông tin cấp độ của thành viên.
+
+</td>
+
+
+<td style="padding:12px;border-bottom:1px solid #eee">
+
+Kiểm tra quyền lợi, ưu đãi áp dụng.
+
+</td>
+
+
+</tr>
+
+
+
+
+
+<tr>
+
+
+<td style="padding:12px;border-bottom:1px solid #eee">
+
+<b>Loại tiền nạp</b>
+
+</td>
+
+
+<td style="padding:12px;border-bottom:1px solid #eee">
+
+Loại tiền mà thành viên sử dụng để nạp.
+
+</td>
+
+
+<td style="padding:12px;border-bottom:1px solid #eee">
+
+Xác định phương thức quy đổi.
+
+</td>
+
+
+</tr>
+
+
+
+
+
+<tr>
+
+
+<td style="padding:12px;border-bottom:1px solid #eee">
+
+<b>Số lượng gốc</b>
+
+</td>
+
+
+<td style="padding:12px;border-bottom:1px solid #eee">
+
+Số lượng tiền ban đầu thành viên thanh toán.
+
+</td>
+
+
+<td style="padding:12px;border-bottom:1px solid #eee">
+
+Đối chiếu với giao dịch thực tế.
+
+</td>
+
+
+</tr>
+
+
+
+
+
+<tr>
+
+
+<td style="padding:12px;border-bottom:1px solid #eee">
+
+<b>Tỷ giá</b>
+
+</td>
+
+
+<td style="padding:12px;border-bottom:1px solid #eee">
+
+Tỷ lệ chuyển đổi giữa loại tiền nạp và tiền thành viên.
+
+</td>
+
+
+<td style="padding:12px;border-bottom:1px solid #eee">
+
+Kiểm tra số tiền sau quy đổi.
+
+</td>
+
+
+</tr>
+
+
+
+
+
+<tr>
+
+
+<td style="padding:12px;border-bottom:1px solid #eee">
+
+<b>Tiền đơn hàng</b>
+
+</td>
+
+
+<td style="padding:12px;border-bottom:1px solid #eee">
+
+Giá trị tiền sau khi hệ thống xử lý.
+
+</td>
+
+
+<td style="padding:12px;border-bottom:1px solid #eee">
+
+Xác định số tiền chính được cộng.
+
+</td>
+
+
+</tr>
+
+
+
+
+
+<tr>
+
+
+<td style="padding:12px;border-bottom:1px solid #eee">
+
+<b>Tiền thưởng</b>
+
+</td>
+
+
+<td style="padding:12px;border-bottom:1px solid #eee">
+
+Khoản thưởng đi kèm giao dịch.
+
+</td>
+
+
+<td style="padding:12px;border-bottom:1px solid #eee">
+
+Kiểm tra chương trình ưu đãi.
+
+</td>
+
+
+</tr>
+
+
+
+
+
+<tr>
+
+
+<td style="padding:12px;border-bottom:1px solid #eee">
+
+<b>Phí</b>
+
+</td>
+
+
+<td style="padding:12px;border-bottom:1px solid #eee">
+
+Khoản phí phát sinh trong giao dịch.
+
+</td>
+
+
+<td style="padding:12px;border-bottom:1px solid #eee">
+
+Đối chiếu số tiền cuối cùng.
+
+</td>
+
+
+</tr>
+
+
+
+
+
+<tr>
+
+
+<td style="padding:12px;border-bottom:1px solid #eee">
+
+<b>Tổng tiền cộng</b>
+
+</td>
+
+
+<td style="padding:12px;border-bottom:1px solid #eee">
+
+Tổng giá trị cuối cùng được cộng vào tài khoản.
+
+</td>
+
+
+<td style="padding:12px;border-bottom:1px solid #eee">
+
+Xác nhận kết quả giao dịch.
+
+</td>
+
+
+</tr>
+
+
+
+
+
+<tr>
+
+
+<td style="padding:12px;border-bottom:1px solid #eee">
+
+<b>Loại nạp</b>
+
+</td>
+
+
+<td style="padding:12px;border-bottom:1px solid #eee">
+
+Phương thức thành viên sử dụng để nạp tiền.
+
+</td>
+
+
+<td style="padding:12px;border-bottom:1px solid #eee">
+
+Phân loại giao dịch.
+
+</td>
+
+
+</tr>
+
+
+
+
+
+<tr>
+
+
+<td style="padding:12px;border-bottom:1px solid #eee">
+
+<b>Kênh thanh toán</b>
+
+</td>
+
+
+<td style="padding:12px;border-bottom:1px solid #eee">
+
+Thông tin nhà cung cấp hoặc kênh nhận tiền.
+
+</td>
+
+
+<td style="padding:12px;border-bottom:1px solid #eee">
+
+Kiểm tra nguồn thanh toán.
+
+</td>
+
+
+</tr>
+
+
+
+
+
+<tr>
+
+
+<td style="padding:12px">
+
+<b>Trạng thái đơn</b>
+
+</td>
+
+
+<td style="padding:12px">
+
+Tình trạng hiện tại của giao dịch.
+
+</td>
+
+
+<td style="padding:12px">
+
+Quyết định bước xử lý tiếp theo.
+
+</td>
+
+
+</tr>
+
+
+
+</tbody>
+
+
+</table>
+
+
+</div>
+
+
+
+
+
+
+
+
+<!-- =========================================================
+6. TRẠNG THÁI ĐƠN NẠP
+========================================================= -->
+
+
+<div class="card">
+
+
+<div class="card-title">
+
+<span>
+🚦
+</span>
+
+6. Giải thích trạng thái đơn
+
+</div>
+
+
+
+<div class="feature-box">
+
+
+
+<div class="feature">
+
+<h3 style="color:#16a34a">
+
+🟢 Thành công
+
+</h3>
+
+
+<p>
+
+Giao dịch đã hoàn tất.
+Tiền đã được xử lý theo kết quả hệ thống.
+
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="feature">
+
+<h3 style="color:#d97706">
+
+🟡 Chờ xử lý
+
+</h3>
+
+
+<p>
+
+Đơn đã tạo nhưng đang chờ kiểm tra hoặc xác nhận.
+
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="feature">
+
+<h3 style="color:#dc2626">
+
+🔴 Thất bại
+
+</h3>
+
+
+<p>
+
+Giao dịch không hoàn thành hoặc không hợp lệ.
+
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="feature">
+
+<h3 style="color:#666">
+
+⚪ Đã hủy
+
+</h3>
+
+
+<p>
+
+Đơn không tiếp tục xử lý.
+
+</p>
+
+
+</div>
+
+
+
+</div>
+
+
+</div>
+<!-- =========================================================
+7. QUY TRÌNH XỬ LÝ ĐƠN NẠP
+========================================================= -->
+
+
+<div class="card">
+
+
+<div class="card-title">
+
+<span>
+📝
+</span>
+
+7. Hướng dẫn xử lý đơn nạp tiền
+
+</div>
+
+
+
+<div class="text">
+
+Nhân viên cần thực hiện đúng thứ tự kiểm tra trước khi xử lý
+để đảm bảo thông tin giao dịch chính xác.
+
+</div>
+
+
+
+
+<br>
+
+
+
+<div class="process">
+
+
+
+<div class="step">
+
+<strong>
+Bước 1
+</strong>
+
+Tìm kiếm đơn
+
+<br>
+
+Nhập mã đơn,
+Member ID hoặc tài khoản.
+
+</div>
+
+
+
+<div class="arrow">
+→
+</div>
+
+
+
+<div class="step">
+
+<strong>
+Bước 2
+</strong>
+
+Kiểm tra thông tin
+
+<br>
+
+Đối chiếu thành viên,
+số tiền và kênh nạp.
+
+</div>
+
+
+
+<div class="arrow">
+→
+</div>
+
+
+
+<div class="step">
+
+<strong>
+Bước 3
+</strong>
+
+Kiểm tra trạng thái
+
+<br>
+
+Xác nhận đơn đang ở trạng thái nào.
+
+</div>
+
+
+
+<div class="arrow">
+→
+</div>
+
+
+
+<div class="step">
+
+<strong>
+Bước 4
+</strong>
+
+Thực hiện xử lý
+
+<br>
+
+Cập nhật kết quả và ghi chú.
+
+</div>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<!-- =========================================================
+8. TẠO BỔ SUNG ĐƠN
+========================================================= -->
+
+
+<div class="card">
+
+
+<div class="card-title">
+
+<span>
+➕
+</span>
+
+8. Hướng dẫn tạo bổ sung đơn
+
+</div>
+
+
+
+<div class="text">
+
+Chức năng tạo bổ sung đơn dùng trong trường hợp cần xử lý
+lại giao dịch sau khi kiểm tra thông tin.
+
+</div>
+
+
+
+<br>
+
+
+
+
+<div style="
+background:#f8fbff;
+padding:20px;
+border-radius:15px;
+border:1px solid #dbeafe;
+">
+
+
+
+<h3 style="
+color:#1677ff;
+margin-bottom:15px;
+">
+
+Quy trình bổ sung
+
+</h3>
+
+
+
+
+<p>
+
+<b>Bước 1:</b>
+Nhập mã đơn cần kiểm tra.
+
+</p>
+
+
+<p>
+
+<b>Bước 2:</b>
+Kiểm tra thông tin đơn hàng.
+
+</p>
+
+
+<p>
+
+<b>Bước 3:</b>
+Xác nhận điều kiện xử lý.
+
+</p>
+
+
+<p>
+
+<b>Bước 4:</b>
+Thực hiện bổ sung và ghi chú.
+
+</p>
+
+
+
+</div>
+
+
+
+<br>
+
+
+
+
+<div style="
+background:#fff7ed;
+padding:15px;
+border-radius:12px;
+color:#c2410c;
+">
+
+
+⚠ Lưu ý:
+
+Không thực hiện bổ sung khi chưa xác nhận
+đúng thông tin giao dịch.
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<!-- =========================================================
+9. THỐNG KÊ NẠP TIỀN
+========================================================= -->
+
+
+<div class="card">
+
+
+<div class="card-title">
+
+<span>
+📊
+</span>
+
+9. Thống kê nạp tiền
+
+</div>
+
+
+
+<div class="text">
+
+Khu vực thống kê giúp quản lý tổng quan tình trạng nạp tiền
+trong khoảng thời gian được chọn.
+
+</div>
+
+
+
+<br>
+
+
+
+
+<div class="feature-box">
+
+
+
+<div class="feature">
+
+<h3>
+👥 Tổng người nạp
+</h3>
+
+
+<p>
+
+Số lượng thành viên phát sinh giao dịch nạp.
+
+</p>
+
+
+</div>
+
+
+
+
+<div class="feature">
+
+<h3>
+✅ Người nạp thành công
+</h3>
+
+
+<p>
+
+Số lượng thành viên có đơn hoàn tất.
+
+</p>
+
+
+</div>
+
+
+
+
+<div class="feature">
+
+<h3>
+📄 Tổng số đơn
+</h3>
+
+
+<p>
+
+Tổng tất cả giao dịch nạp tiền.
+
+</p>
+
+
+</div>
+
+
+
+
+<div class="feature">
+
+<h3>
+❌ Đơn thất bại
+</h3>
+
+
+<p>
+
+Các giao dịch không hoàn thành.
+
+</p>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+<br>
+
+
+
+
+<table
+style="
+width:100%;
+border-collapse:collapse;
+"
+>
+
+
+<thead>
+
+
+<tr
+style="
+background:#eef5ff;
+"
+>
+
+
+<th>
+Loại nạp
+</th>
+
+
+<th>
+Người nạp
+</th>
+
+
+<th>
+Người thành công
+</th>
+
+
+<th>
+Tổng đơn
+</th>
+
+
+<th>
+Thành công
+</th>
+
+
+<th>
+Thất bại
+</th>
+
+
+</tr>
+
+
+</thead>
+
+
+
+<tbody>
+
+
+<tr>
+
+<td>
+Nạp Online
+</td>
+
+<td>
+620
+</td>
+
+<td>
+580
+</td>
+
+<td>
+1550
+</td>
+
+<td>
+1420
+</td>
+
+<td>
+130
+</td>
+
+
+</tr>
+
+
+
+<tr>
+
+<td>
+Chuyển khoản
+</td>
+
+<td>
+460
+</td>
+
+<td>
+398
+</td>
+
+<td>
+1170
+</td>
+
+<td>
+1025
+</td>
+
+<td>
+145
+</td>
+
+
+</tr>
+
+
+
+
+<tr>
+
+<td>
+CSKH nạp hộ
+</td>
+
+<td>
+178
+</td>
+
+<td>
+125
+</td>
+
+<td>
+806
+</td>
+
+<td>
+743
+</td>
+
+<td>
+63
+</td>
+
+
+</tr>
+
+
+</tbody>
+
+
+
+</table>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<!-- =========================================================
+10. NẠP TIỀN THÔNG MINH
+========================================================= -->
+
+
+<div class="card">
+
+
+<div class="card-title">
+
+<span>
+🤖
+</span>
+
+10. Nạp tiền thông minh
+
+</div>
+
+
+
+<div class="text">
+
+Chức năng hỗ trợ hiển thị gợi ý nạp tiền
+dựa trên tình trạng sử dụng của thành viên.
+
+</div>
+
+
+
+<br>
+
+
+
+<div class="feature-box">
+
+
+
+<div class="feature">
+
+<h3>
+Tình huống 1
+</h3>
+
+
+<p>
+
+Thành viên đã từng nạp,
+số dư thấp.
+
+<br><br>
+
+Hệ thống có thể hiển thị nhắc nạp.
+
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="feature">
+
+<h3>
+Tình huống 2
+</h3>
+
+
+<p>
+
+Thành viên đã từng nạp,
+đăng nhập thường xuyên.
+
+<br><br>
+
+Hiển thị nội dung gợi ý phù hợp.
+
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="feature">
+
+<h3>
+Tình huống 3
+</h3>
+
+
+<p>
+
+Thành viên chưa từng nạp.
+
+<br><br>
+
+Có thể đề xuất mức nạp tham khảo.
+
+</p>
+
+
+</div>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<!-- =========================================================
+11. LƯU Ý VẬN HÀNH
+========================================================= -->
+
+
+<div class="card">
+
+
+<div class="card-title">
+
+<span>
+⚠
+</span>
+
+11. Lưu ý vận hành
+
+</div>
+
+
+
+<div class="text">
+
+
+<div class="tags">
+
+
+<div class="tag">
+Kiểm tra đúng Member ID
+</div>
+
+
+<div class="tag">
+Đối chiếu số tiền
+</div>
+
+
+<div class="tag">
+Kiểm tra trạng thái
+</div>
+
+
+<div class="tag">
+Ghi chú đầy đủ
+</div>
+
+
+<div class="tag">
+Không thao tác sai đơn
+</div>
+
+
+</div>
+
+
+<br>
+
+
+- Luôn kiểm tra thông tin thành viên trước khi xử lý.
+
+<br>
+
+- Đối chiếu số tiền thực tế với thông tin trên hệ thống.
+
+<br>
+
+- Kiểm tra trạng thái đơn trước khi thực hiện bổ sung.
+
+<br>
+
+- Ghi chú rõ ràng khi có thao tác thủ công.
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+<!-- =========================================================
+FOOTER
+========================================================= -->
+
+
+<div style="
+text-align:center;
+padding:30px;
+color:#667085;
+">
+
+
+Hệ thống hướng dẫn nghiệp vụ Tổng Nạp Tiền
+
+
+</div>
+
+
+
+
+
+<script>
+
+
+function goBack(){
+
+
+    if(history.length > 1){
+
+        history.back();
+
+    }else{
+
+        window.location.href="index.html";
+
+    }
+
+
+}
+
+
+
+</script>
+
+
+
+</div>
+
+
+</body>
+
+
+</html>

@@ -1,19 +1,32 @@
 const express = require("express");
 const path = require("path");
 const fs = require("fs");
+const cors = require("cors");
 
 
 const app = express();
 
-const PORT = 3000;
+
+// =====================
+// PORT RENDER
+// =====================
+
+const PORT = process.env.PORT || 3000;
 
 
+
+// =====================
+// MIDDLEWARE
+// =====================
+
+app.use(cors());
 
 app.use(express.json());
 
 app.use(express.urlencoded({
     extended:true
 }));
+
 
 
 
@@ -29,6 +42,7 @@ const configPath = path.join(
 
 
 
+
 function getConfig(){
 
     return JSON.parse(
@@ -39,6 +53,7 @@ function getConfig(){
     );
 
 }
+
 
 
 
@@ -61,8 +76,10 @@ function saveConfig(data){
 
 
 
+
+
 // =====================
-// GET IP USER
+// GET CLIENT IP
 // =====================
 
 
@@ -76,7 +93,7 @@ function getClientIP(req){
 
 
 
-    if(ip.includes(",")){
+    if(ip && ip.includes(",")){
 
         ip =
         ip.split(",")[0];
@@ -85,17 +102,45 @@ function getClientIP(req){
 
 
 
-    ip =
-    ip.replace(
-        "::ffff:",
-        ""
-    );
+    if(ip){
+
+        ip =
+        ip.replace(
+            "::ffff:",
+            ""
+        );
+
+    }
+
 
 
     return ip;
 
 
 }
+
+
+
+
+
+
+
+
+// =====================
+// TEST SERVER
+// =====================
+
+
+app.get("/",(req,res)=>{
+
+    res.send(
+        "XX8 SERVER ONLINE"
+    );
+
+});
+
+
+
 
 
 
@@ -135,7 +180,6 @@ app.post(
 
 
 
-
     if(
         !config.allowIP.includes(userIP)
     ){
@@ -153,8 +197,8 @@ app.post(
         });
 
 
-
     }
+
 
 
 
@@ -187,6 +231,8 @@ app.post(
 
 
 
+
+
     res.json({
 
         success:true,
@@ -199,6 +245,7 @@ app.post(
 
 
 
+
 });
 
 
@@ -208,18 +255,25 @@ app.post(
 
 
 
+
+
+
 // =====================
-// ADMIN IP LIST
+// GET IP LIST
 // =====================
+
 
 
 app.get(
+
 "/api/ip-list",
+
 (req,res)=>{
 
 
     const config =
     getConfig();
+
 
 
     res.json({
@@ -231,7 +285,11 @@ app.get(
     });
 
 
-});
+
+}
+
+);
+
 
 
 
@@ -245,8 +303,11 @@ app.get(
 // =====================
 
 
+
 app.post(
+
 "/api/add-ip",
+
 (req,res)=>{
 
 
@@ -255,6 +316,22 @@ app.post(
         ip
 
     } = req.body;
+
+
+
+
+    if(!ip){
+
+        return res.json({
+
+            success:false,
+
+            message:"Missing IP"
+
+        });
+
+    }
+
 
 
 
@@ -274,7 +351,6 @@ app.post(
         config.allowIP.push(ip);
 
 
-
         saveConfig(config);
 
 
@@ -284,17 +360,22 @@ app.post(
 
 
 
+
     res.json({
 
-        success:true
+        success:true,
+
+        allowIP:
+        config.allowIP
 
 
     });
 
 
 
-});
+}
 
+);
 
 
 
@@ -309,8 +390,11 @@ app.post(
 // =====================
 
 
+
 app.post(
+
 "/api/remove-ip",
+
 (req,res)=>{
 
 
@@ -322,17 +406,26 @@ app.post(
 
 
 
+
+
     const config =
     getConfig();
 
 
 
 
+
     config.allowIP =
+
     config.allowIP.filter(
+
         item =>
+
         item !== ip
+
     );
+
+
 
 
 
@@ -341,15 +434,24 @@ app.post(
 
 
 
+
+
+
     res.json({
 
-        success:true
+        success:true,
+
+        allowIP:
+        config.allowIP
+
 
     });
 
 
 
-});
+}
+
+);
 
 
 
@@ -360,30 +462,51 @@ app.post(
 
 
 // =====================
-// WEB FILE
+// STATIC
 // =====================
 
 
 app.use(
+
 express.static(
-path.join(__dirname,"..")
+
+path.join(
+__dirname,
+".."
+
 )
+
+)
+
 );
 
 
 
 
+
+
+
+
+// =====================
+// START
+// =====================
 
 
 
 app.listen(
+
 PORT,
+
 ()=>{
 
 
 console.log(
-`Server chạy tại http://localhost:${PORT}`
+
+`Server running on port ${PORT}`
+
 );
 
 
-});
+}
+
+);

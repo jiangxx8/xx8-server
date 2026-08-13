@@ -1,0 +1,389 @@
+const express = require("express");
+const path = require("path");
+const fs = require("fs");
+
+
+const app = express();
+
+const PORT = 3000;
+
+
+
+app.use(express.json());
+
+app.use(express.urlencoded({
+    extended:true
+}));
+
+
+
+// =====================
+// CONFIG
+// =====================
+
+
+const configPath = path.join(
+    __dirname,
+    "config.json"
+);
+
+
+
+function getConfig(){
+
+    return JSON.parse(
+        fs.readFileSync(
+            configPath,
+            "utf8"
+        )
+    );
+
+}
+
+
+
+function saveConfig(data){
+
+    fs.writeFileSync(
+
+        configPath,
+
+        JSON.stringify(
+            data,
+            null,
+            2
+        )
+
+    );
+
+}
+
+
+
+
+// =====================
+// GET IP USER
+// =====================
+
+
+function getClientIP(req){
+
+
+    let ip =
+    req.headers["x-forwarded-for"]
+    ||
+    req.socket.remoteAddress;
+
+
+
+    if(ip.includes(",")){
+
+        ip =
+        ip.split(",")[0];
+
+    }
+
+
+
+    ip =
+    ip.replace(
+        "::ffff:",
+        ""
+    );
+
+
+    return ip;
+
+
+}
+
+
+
+
+
+// =====================
+// LOGIN
+// =====================
+
+
+app.post(
+"/api/login",
+(req,res)=>{
+
+
+    const {
+
+        username,
+
+        password
+
+
+    } = req.body;
+
+
+
+
+    const config =
+    getConfig();
+
+
+
+
+    const userIP =
+    getClientIP(req);
+
+
+
+
+
+    if(
+        !config.allowIP.includes(userIP)
+    ){
+
+
+        return res.json({
+
+            success:false,
+
+            message:
+            "IP chưa được cấp quyền",
+
+            ip:userIP
+
+        });
+
+
+
+    }
+
+
+
+
+
+    if(
+
+        username !== config.username
+
+        ||
+
+        password !== config.password
+
+    ){
+
+
+        return res.json({
+
+            success:false,
+
+            message:
+            "Sai tài khoản hoặc mật khẩu"
+
+
+        });
+
+
+    }
+
+
+
+
+    res.json({
+
+        success:true,
+
+        message:
+        "Login success"
+
+
+    });
+
+
+
+});
+
+
+
+
+
+
+
+
+// =====================
+// ADMIN IP LIST
+// =====================
+
+
+app.get(
+"/api/ip-list",
+(req,res)=>{
+
+
+    const config =
+    getConfig();
+
+
+    res.json({
+
+        allowIP:
+        config.allowIP
+
+
+    });
+
+
+});
+
+
+
+
+
+
+
+
+// =====================
+// ADD IP
+// =====================
+
+
+app.post(
+"/api/add-ip",
+(req,res)=>{
+
+
+    const {
+
+        ip
+
+    } = req.body;
+
+
+
+
+    const config =
+    getConfig();
+
+
+
+
+
+    if(
+        !config.allowIP.includes(ip)
+    ){
+
+
+        config.allowIP.push(ip);
+
+
+
+        saveConfig(config);
+
+
+    }
+
+
+
+
+
+    res.json({
+
+        success:true
+
+
+    });
+
+
+
+});
+
+
+
+
+
+
+
+
+
+
+// =====================
+// REMOVE IP
+// =====================
+
+
+app.post(
+"/api/remove-ip",
+(req,res)=>{
+
+
+    const {
+
+        ip
+
+    } = req.body;
+
+
+
+    const config =
+    getConfig();
+
+
+
+
+    config.allowIP =
+    config.allowIP.filter(
+        item =>
+        item !== ip
+    );
+
+
+
+
+    saveConfig(config);
+
+
+
+    res.json({
+
+        success:true
+
+    });
+
+
+
+});
+
+
+
+
+
+
+
+
+
+// =====================
+// WEB FILE
+// =====================
+
+
+app.use(
+express.static(
+path.join(__dirname,"..")
+)
+);
+
+
+
+
+
+
+
+app.listen(
+PORT,
+()=>{
+
+
+console.log(
+`Server chạy tại http://localhost:${PORT}`
+);
+
+
+});

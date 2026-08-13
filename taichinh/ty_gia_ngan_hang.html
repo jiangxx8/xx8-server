@@ -1,0 +1,4467 @@
+<!DOCTYPE html>
+
+<html lang="vi">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<title>
+Tỷ Giá Và Quản Lý Ngân Hàng
+</title>
+
+
+
+<style>
+
+
+*{
+
+margin:0;
+
+padding:0;
+
+box-sizing:border-box;
+
+font-family:
+
+"Microsoft YaHei",
+"Segoe UI",
+Arial,
+sans-serif;
+
+}
+
+
+
+body{
+
+background:#f4f7fc;
+
+color:#333;
+
+}
+
+
+
+
+
+
+/* ======================
+ HEADER
+====================== */
+
+
+.header{
+
+
+height:90px;
+
+
+background:
+
+linear-gradient(
+135deg,
+#1677ff,
+#0052cc
+);
+
+
+
+display:flex;
+
+
+align-items:center;
+
+
+padding:0 35px;
+
+
+color:white;
+
+
+}
+
+
+
+.logo{
+
+
+width:58px;
+
+
+height:58px;
+
+
+background:white;
+
+
+border-radius:15px;
+
+
+display:flex;
+
+
+align-items:center;
+
+
+justify-content:center;
+
+
+font-size:30px;
+
+
+}
+
+
+
+.header-info{
+
+
+margin-left:20px;
+
+
+}
+
+
+
+.header-title{
+
+
+font-size:26px;
+
+
+font-weight:800;
+
+
+}
+
+
+
+.header-desc{
+
+
+margin-top:8px;
+
+
+font-size:14px;
+
+
+opacity:.85;
+
+
+}
+
+
+
+.back-btn{
+
+
+margin-left:auto;
+
+
+padding:12px 25px;
+
+
+border-radius:10px;
+
+
+border:none;
+
+
+background:
+rgba(255,255,255,.2);
+
+
+color:white;
+
+
+cursor:pointer;
+
+
+font-weight:bold;
+
+
+}
+
+
+
+
+
+
+
+
+
+/* ======================
+ MENU
+====================== */
+
+
+.menu{
+
+
+width:95%;
+
+
+margin:20px auto;
+
+
+display:flex;
+
+
+gap:12px;
+
+
+}
+
+
+
+.menu-item{
+
+
+background:white;
+
+
+padding:13px 30px;
+
+
+border-radius:10px;
+
+
+border:1px solid #e3eaf5;
+
+
+cursor:pointer;
+
+
+font-weight:bold;
+
+
+}
+
+
+
+.menu-item:hover{
+
+
+color:#1677ff;
+
+
+}
+
+
+
+.menu-item.active{
+
+
+background:#1677ff;
+
+
+color:white;
+
+
+}
+
+
+
+
+
+
+
+
+
+/* ======================
+ CONTAINER
+====================== */
+
+
+.container{
+
+
+width:95%;
+
+
+margin:auto;
+
+
+}
+
+
+
+
+
+
+
+
+/* ======================
+ CARD
+====================== */
+
+
+.card{
+
+
+background:white;
+
+
+border-radius:18px;
+
+
+margin-bottom:20px;
+
+
+box-shadow:
+
+0 8px 25px rgba(0,0,0,.06);
+
+
+overflow:hidden;
+
+
+}
+
+
+
+.card-title{
+
+
+padding:18px 25px;
+
+
+font-size:20px;
+
+
+font-weight:bold;
+
+
+color:#1677ff;
+
+
+border-bottom:1px solid #eee;
+
+
+}
+
+
+
+.card-body{
+
+
+padding:25px;
+
+
+}
+
+
+
+
+
+
+
+
+
+/* ======================
+ GRID
+====================== */
+
+
+.grid-3{
+
+
+display:grid;
+
+
+grid-template-columns:
+
+repeat(3,1fr);
+
+
+gap:20px;
+
+
+}
+
+
+
+
+.box{
+
+
+background:white;
+
+
+border:1px solid #e5ecf7;
+
+
+border-radius:14px;
+
+
+padding:20px;
+
+
+}
+
+
+
+.box-title{
+
+
+font-size:16px;
+
+
+font-weight:bold;
+
+
+color:#1677ff;
+
+
+margin-bottom:15px;
+
+
+}
+
+
+
+
+
+
+/* ======================
+ INPUT
+====================== */
+
+
+.input{
+
+
+height:38px;
+
+
+border:
+
+1px solid #d9e2f0;
+
+
+border-radius:8px;
+
+
+padding:0 12px;
+
+
+outline:none;
+
+
+}
+
+
+
+.input:focus{
+
+
+border-color:#1677ff;
+
+
+}
+
+
+
+
+
+
+
+
+
+/* ======================
+ BUTTON
+====================== */
+
+
+.btn{
+
+
+padding:10px 18px;
+
+
+border:none;
+
+
+border-radius:8px;
+
+
+cursor:pointer;
+
+
+font-weight:bold;
+
+
+}
+
+
+
+.primary{
+
+
+background:#1677ff;
+
+
+color:white;
+
+
+}
+
+
+
+.success{
+
+
+background:#13c2c2;
+
+
+color:white;
+
+
+}
+
+
+
+.warning{
+
+
+background:#fa8c16;
+
+
+color:white;
+
+
+}
+
+
+
+.danger{
+
+
+background:#ff4d4f;
+
+
+color:white;
+
+
+}
+
+
+
+
+
+
+
+
+
+/* ======================
+ TABLE
+====================== */
+
+
+.table-box{
+
+
+overflow:auto;
+
+
+}
+
+
+
+
+table{
+
+
+width:100%;
+
+
+border-collapse:collapse;
+
+
+}
+
+
+
+
+th{
+
+
+background:#f1f6ff;
+
+
+padding:14px;
+
+
+white-space:nowrap;
+
+
+}
+
+
+
+
+td{
+
+
+padding:13px;
+
+
+text-align:center;
+
+
+border-bottom:
+
+1px solid #eee;
+
+
+white-space:nowrap;
+
+
+}
+
+
+
+tr:hover{
+
+
+background:#fafcff;
+
+
+}
+
+
+
+
+
+
+
+
+/* STATUS */
+
+
+.status{
+
+
+padding:5px 12px;
+
+
+border-radius:20px;
+
+
+font-size:13px;
+
+
+}
+
+
+
+.status-on{
+
+
+background:#e6fffb;
+
+
+color:#13c2c2;
+
+
+}
+
+
+
+.status-off{
+
+
+background:#fff1f0;
+
+
+color:#ff4d4f;
+
+
+}
+
+
+
+
+
+.status-sync{
+
+
+background:#fff7e6;
+
+
+color:#fa8c16;
+
+
+}
+
+
+
+
+
+
+
+
+@media(max-width:900px){
+
+
+.grid-3{
+
+
+grid-template-columns:1fr;
+
+
+}
+
+
+
+.menu{
+
+
+flex-wrap:wrap;
+
+
+}
+
+
+}
+
+
+
+</style>
+
+
+</head>
+
+
+
+
+
+
+<body>
+
+
+
+
+
+<!-- HEADER -->
+
+
+<div class="header">
+
+
+
+<div class="logo">
+
+💱
+
+</div>
+
+
+
+
+
+<div class="header-info">
+
+
+<div class="header-title">
+
+TỶ GIÁ & QUẢN LÝ NGÂN HÀNG
+
+</div>
+
+
+
+<div class="header-desc">
+
+汇率和银行管理 - Cấu hình tỷ giá, ngân hàng nạp và rút tiền
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+<a href="index.html" class="back-btn">
+
+← Quay lại
+
+</a>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- MENU -->
+
+
+<div class="menu">
+
+
+<div class="menu-item active">
+
+💱 Cấu hình tỷ giá
+
+</div>
+
+
+
+
+<div class="menu-item">
+
+🏦 Quản lý ngân hàng
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- CONTENT -->
+
+
+<div class="container">
+    <!-- ==================================
+ PHẦN 2
+ 汇率配置 - CẤU HÌNH TỶ GIÁ
+================================== -->
+
+
+
+<div class="card">
+
+
+<div class="card-title">
+
+💱 Cấu hình tỷ giá
+
+</div>
+
+
+
+
+
+<div class="card-body">
+
+
+
+
+
+<!-- TOOLBAR -->
+
+
+<div style="
+display:flex;
+gap:12px;
+flex-wrap:wrap;
+align-items:center;
+">
+
+
+
+
+
+<select class="input">
+
+
+<option>
+
+Cấu hình nạp & rút riêng
+
+</option>
+
+
+<option>
+
+Nạp rút dùng chung
+
+</option>
+
+
+</select>
+
+
+
+
+
+
+
+<select class="input">
+
+
+<option>
+
+Chế độ thủ công
+
+</option>
+
+
+<option>
+
+Tự động đồng bộ
+
+</option>
+
+
+</select>
+
+
+
+
+
+
+
+<select class="input">
+
+
+<option>
+
+Tần suất đồng bộ: 1 phút
+
+</option>
+
+
+<option>
+
+5 phút
+
+</option>
+
+
+<option>
+
+10 phút
+
+</option>
+
+
+<option>
+
+30 phút
+
+</option>
+
+
+<option>
+
+1 giờ
+
+</option>
+
+
+</select>
+
+
+
+
+
+
+
+<button class="btn primary">
+
+🔄 Đồng bộ tỷ giá
+
+</button>
+
+
+
+
+
+
+
+<button class="btn success">
+
+➕ Thêm loại tiền
+
+</button>
+
+
+
+
+</div>
+
+
+
+
+
+
+<br>
+
+
+
+
+
+
+
+
+
+<!-- TABLE -->
+
+
+<div class="table-box">
+
+
+<table>
+
+
+<thead>
+
+
+<tr>
+
+
+<th>
+
+Nguyên tệ
+
+</th>
+
+
+
+<th>
+
+Đổi sang
+
+</th>
+
+
+
+<th>
+
+Nguồn tỷ giá
+
+</th>
+
+
+
+<th>
+
+Tỷ giá thị trường
+
+</th>
+
+
+
+<th>
+
+Chiều tỷ giá
+
+</th>
+
+
+
+<th>
+
+Đơn vị
+
+</th>
+
+
+
+<th>
+
+Chênh lệch
+
+</th>
+
+
+
+<th>
+
+Tỷ giá hiệu lực
+
+</th>
+
+
+
+<th>
+
+Đồng bộ
+
+</th>
+
+
+
+<th>
+
+Kích hoạt
+
+</th>
+
+
+
+<th>
+
+Thao tác
+
+</th>
+
+
+
+</tr>
+
+
+</thead>
+
+
+
+
+
+
+<tbody>
+
+
+
+
+<tr>
+
+
+
+<td>
+
+USDT
+
+</td>
+
+
+
+<td>
+
+CNY
+
+</td>
+
+
+
+<td>
+
+Third API
+
+</td>
+
+
+
+<td>
+
+7.2000
+
+</td>
+
+
+
+<td>
+
+
+<button class="btn">
+
+USDT=CNY
+
+</button>
+
+
+</td>
+
+
+
+<td>
+
+%
+
+</td>
+
+
+
+<td>
+
+
+<input class="input"
+style="width:80px"
+value="1">
+
+
+</td>
+
+
+
+<td>
+
+7.2720
+
+</td>
+
+
+
+<td>
+
+
+<span class="status status-on">
+
+Tự động
+
+</span>
+
+
+</td>
+
+
+
+<td>
+
+0.5%
+
+</td>
+
+
+
+<td>
+
+
+
+<button class="btn primary">
+
+Sửa
+
+</button>
+
+
+
+</td>
+
+
+
+</tr>
+
+
+
+
+
+
+
+
+
+<tr>
+
+
+
+<td>
+
+USDT
+
+</td>
+
+
+
+<td>
+
+VND
+
+</td>
+
+
+
+<td>
+
+Market API
+
+</td>
+
+
+
+<td>
+
+26500
+
+</td>
+
+
+
+<td>
+
+
+<button class="btn">
+
+USDT=VND
+
+</button>
+
+
+</td>
+
+
+
+<td>
+
+Giá trị
+
+</td>
+
+
+
+<td>
+
+
+<input class="input"
+style="width:80px"
+value="50">
+
+
+</td>
+
+
+
+<td>
+
+26550
+
+</td>
+
+
+
+<td>
+
+
+<span class="status status-sync">
+
+Đồng bộ
+
+</span>
+
+
+</td>
+
+
+
+<td>
+
+100
+
+</td>
+
+
+
+<td>
+
+
+
+<button class="btn primary">
+
+Sửa
+
+</button>
+
+
+
+</td>
+
+
+
+</tr>
+
+
+
+
+
+
+
+
+
+<tr>
+
+
+
+<td>
+
+CNY
+
+</td>
+
+
+
+<td>
+
+USDT
+
+</td>
+
+
+
+<td>
+
+Third API
+
+</td>
+
+
+
+<td>
+
+0.1388
+
+</td>
+
+
+
+<td>
+
+
+<button class="btn">
+
+CNY=USDT
+
+</button>
+
+
+</td>
+
+
+
+<td>
+
+%
+
+</td>
+
+
+
+<td>
+
+
+<input class="input"
+style="width:80px"
+value="-1">
+
+
+</td>
+
+
+
+<td>
+
+0.1374
+
+</td>
+
+
+
+<td>
+
+
+<span class="status status-on">
+
+Bật
+
+</span>
+
+
+</td>
+
+
+
+<td>
+
+1%
+
+</td>
+
+
+
+<td>
+
+
+
+<button class="btn primary">
+
+Sửa
+
+</button>
+
+
+
+</td>
+
+
+
+</tr>
+
+
+
+
+
+
+</tbody>
+
+
+
+</table>
+
+
+
+</div>
+
+
+
+
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- ============================
+ CHI TIẾT QUY TẮC TỶ GIÁ
+============================= -->
+
+
+<div class="card">
+
+
+<div class="card-title">
+
+📌 Quy tắc tính tỷ giá
+
+</div>
+
+
+
+
+<div class="card-body">
+
+
+
+
+
+<div class="grid-3">
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+➕ Sai lệch dương
+
+</div>
+
+
+
+<div class="box-text">
+
+
+Công thức:
+
+
+<br><br>
+
+
+Giá thị trường
+
++
+
+Giá thị trường × X
+
+
+<br><br>
+
+
+Ví dụ:
+
+
+<br>
+
+
+7.2 + 7.2×1%
+
+<br>
+
+
+= 7.272
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+➖ Sai lệch âm
+
+</div>
+
+
+
+<div class="box-text">
+
+
+Công thức:
+
+
+<br><br>
+
+
+Giá thị trường
+
+-
+
+Giá thị trường × Y
+
+
+<br><br>
+
+
+Ví dụ:
+
+
+<br>
+
+
+7.2 - 7.2×1%
+
+<br>
+
+
+= 7.128
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+⚙️ Giới hạn
+
+</div>
+
+
+
+<div class="box-text">
+
+
+Sai lệch tối đa:
+
+
+<br>
+
+
+100%
+
+
+<br><br>
+
+
+Số chữ số thập phân:
+
+
+<br>
+
+
+10 số
+
+
+</div>
+
+
+</div>
+
+
+
+
+</div>
+
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- ============================
+ CÀI ĐẶT ĐỒNG BỘ
+============================= -->
+
+
+<div class="card">
+
+
+<div class="card-title">
+
+🔄 Cài đặt đồng bộ tỷ giá
+
+</div>
+
+
+
+
+<div class="card-body">
+
+
+
+
+
+<div class="grid-3">
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+🌐 Nguồn tỷ giá
+
+</div>
+
+
+
+<div class="box-text">
+
+
+Chọn nguồn:
+
+
+<br>
+
+
+<select class="input">
+
+
+<option>
+
+Third API
+
+</option>
+
+
+<option>
+
+Market API
+
+</option>
+
+
+</select>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+⏱ Tần suất
+
+</div>
+
+
+
+<div class="box-text">
+
+
+Chu kỳ:
+
+
+<br>
+
+
+<select class="input">
+
+
+<option>
+
+5 phút
+
+</option>
+
+
+<option>
+
+10 phút
+
+</option>
+
+
+<option>
+
+30 phút
+
+</option>
+
+
+</select>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+📈 Kích hoạt đồng bộ
+
+</div>
+
+
+
+<div class="box-text">
+
+
+So sánh lần trước:
+
+
+<br>
+
+
+<input class="input"
+value="0.5%">
+
+
+
+<br><br>
+
+
+Tự động cập nhật:
+
+
+<br>
+
+
+<select class="input">
+
+
+<option>
+
+Bật
+
+</option>
+
+
+<option>
+
+Tắt
+
+</option>
+
+
+</select>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+</div>
+
+
+
+
+</div>
+
+
+</div>
+<!-- ==================================
+ PHẦN 3
+ 编辑汇率 - CHỈNH SỬA TỶ GIÁ
+================================== -->
+
+
+
+
+
+<!-- BUTTON DEMO MỞ POPUP -->
+
+
+<div class="card">
+
+
+<div class="card-title">
+
+📝 Chỉnh sửa cấu hình tỷ giá
+
+</div>
+
+
+
+<div class="card-body">
+
+
+<button class="btn primary"
+onclick="openRateModal()">
+
+✏️ Mở chỉnh sửa tỷ giá
+
+</button>
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- ===============================
+ POPUP EDIT RATE
+=============================== -->
+
+
+<div id="rateModal"
+
+style="
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.45);
+z-index:9999;
+align-items:center;
+justify-content:center;
+">
+
+
+
+
+
+<div style="
+background:white;
+width:850px;
+max-width:95%;
+border-radius:18px;
+padding:30px;
+">
+
+
+
+
+
+<div style="
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:20px;
+">
+
+
+
+<h2 style="
+color:#1677ff;
+">
+
+💱 Chỉnh sửa tỷ giá
+
+</h2>
+
+
+
+<button class="btn danger"
+onclick="closeRateModal()">
+
+×
+
+</button>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="grid-3">
+
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+💵 Loại tiền
+
+</div>
+
+
+
+<div class="box-text">
+
+
+Nguyên tệ:
+
+
+<br>
+
+
+<input class="input"
+value="USDT">
+
+
+
+<br><br>
+
+
+Đổi sang:
+
+
+<br>
+
+
+<input class="input"
+value="CNY">
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+🌐 Nguồn tỷ giá
+
+</div>
+
+
+
+<div class="box-text">
+
+
+Nguồn:
+
+
+<br>
+
+
+<select class="input">
+
+
+<option>
+
+Third API
+
+</option>
+
+
+<option>
+
+Market API
+
+</option>
+
+
+</select>
+
+
+
+<br><br>
+
+
+Tỷ giá thị trường:
+
+
+<br>
+
+
+<input class="input"
+value="7.2000">
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+⚙️ Chế độ
+
+</div>
+
+
+
+<div class="box-text">
+
+
+Phương thức:
+
+
+<br>
+
+
+<select class="input">
+
+
+<option>
+
+Tự động đồng bộ
+
+</option>
+
+
+<option>
+
+Thủ công
+
+</option>
+
+
+</select>
+
+
+
+<br><br>
+
+
+Sử dụng:
+
+
+<br>
+
+
+<select class="input">
+
+
+<option>
+
+Nạp + Rút
+
+</option>
+
+
+<option>
+
+Chỉ nạp
+
+</option>
+
+
+<option>
+
+Chỉ rút
+
+</option>
+
+
+</select>
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<br>
+
+
+
+
+
+
+
+
+
+<div class="grid-3">
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+📊 Đơn vị cài đặt
+
+</div>
+
+
+
+<div class="box-text">
+
+
+Đơn vị:
+
+
+<br>
+
+
+<select class="input">
+
+
+<option>
+
+%
+
+</option>
+
+
+<option>
+
+Giá trị cố định
+
+</option>
+
+
+</select>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+➕ Sai lệch tỷ giá
+
+</div>
+
+
+
+<div class="box-text">
+
+
+Nhập sai lệch:
+
+
+<br>
+
+
+<input class="input"
+id="rateDiff"
+value="1">
+
+
+
+<br><br>
+
+
+Có thể nhập:
+
+
+<br>
+
+
+Số dương / số âm
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+📈 Tỷ giá hiệu lực
+
+</div>
+
+
+
+<div class="box-text">
+
+
+Giá hiện tại:
+
+
+<br>
+
+
+7.2000
+
+
+
+<br><br>
+
+
+Sau điều chỉnh:
+
+
+<br>
+
+
+<span id="newRate"
+
+style="
+font-size:22px;
+font-weight:bold;
+color:#1677ff;
+">
+
+7.2720
+
+</span>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<br>
+
+
+
+
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+🔄 Đồng bộ tự động
+
+</div>
+
+
+
+<div class="grid-3">
+
+
+
+
+
+<div>
+
+
+Quy tắc đồng bộ
+
+
+<br>
+
+
+<select class="input">
+
+
+<option>
+
+Theo biến động thị trường
+
+</option>
+
+
+<option>
+
+Theo thời gian
+
+</option>
+
+
+</select>
+
+
+</div>
+
+
+
+
+
+
+<div>
+
+
+Giá trị kích hoạt
+
+
+<br>
+
+
+<input class="input"
+value="0.5%">
+
+
+</div>
+
+
+
+
+
+
+
+<div>
+
+
+Trạng thái
+
+
+<br>
+
+
+<select class="input">
+
+
+<option>
+
+Bật
+
+</option>
+
+
+<option>
+
+Tắt
+
+</option>
+
+
+</select>
+
+
+</div>
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<br>
+
+
+
+
+
+
+<button class="btn success"
+onclick="saveRate()">
+
+💾 Lưu tỷ giá
+
+</button>
+
+
+
+
+<button class="btn warning"
+onclick="syncRate()">
+
+🔄 Đồng bộ ngay
+
+</button>
+
+
+
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<script>
+
+
+// ============================
+// RATE MODAL
+// ============================
+
+
+function openRateModal(){
+
+
+document.getElementById(
+"rateModal"
+)
+.style.display="flex";
+
+
+}
+
+
+
+
+function closeRateModal(){
+
+
+document.getElementById(
+"rateModal"
+)
+.style.display="none";
+
+
+}
+
+
+
+
+
+
+
+// TÍNH TỶ GIÁ HIỆU LỰC
+
+
+let diffInput =
+document.getElementById(
+"rateDiff"
+);
+
+
+
+if(diffInput){
+
+
+diffInput.oninput=function(){
+
+
+
+let market=7.2;
+
+
+let diff=parseFloat(
+this.value
+)||0;
+
+
+
+let result =
+market + market*(diff/100);
+
+
+
+document.getElementById(
+"newRate"
+)
+.innerHTML =
+result.toFixed(4);
+
+
+
+}
+
+
+}
+
+
+
+
+
+
+
+function saveRate(){
+
+
+showToast(
+"Đã lưu cấu hình tỷ giá"
+);
+
+
+closeRateModal();
+
+
+}
+
+
+
+
+
+
+function syncRate(){
+
+
+showToast(
+"Đang đồng bộ tỷ giá thị trường"
+);
+
+
+}
+
+
+
+</script>
+<!-- ==================================
+ PHẦN 4
+ 银行管理 - QUẢN LÝ NGÂN HÀNG
+================================== -->
+
+
+
+<div class="card">
+
+
+<div class="card-title">
+
+🏦 Quản lý ngân hàng
+
+</div>
+
+
+
+
+
+<div class="card-body">
+
+
+
+
+
+
+<!-- TOOLBAR -->
+
+
+<div style="
+display:flex;
+gap:12px;
+flex-wrap:wrap;
+">
+
+
+
+<button class="btn success">
+
+🔄 Đồng bộ ngân hàng
+
+</button>
+
+
+
+
+<button class="btn primary">
+
+✏️ Chỉnh sửa hàng loạt
+
+</button>
+
+
+
+
+<button class="btn">
+
+➕ Thêm ngân hàng
+
+</button>
+
+
+
+
+
+
+<select class="input">
+
+
+<option>
+
+Tất cả loại tiền
+
+</option>
+
+
+<option>
+
+VND
+
+</option>
+
+
+<option>
+
+CNY
+
+</option>
+
+
+<option>
+
+USDT
+
+</option>
+
+
+
+</select>
+
+
+
+
+
+
+<select class="input">
+
+
+<option>
+
+Tất cả trạng thái
+
+</option>
+
+
+<option>
+
+Đang bật
+
+</option>
+
+
+<option>
+
+Đã tắt
+
+</option>
+
+
+
+</select>
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+<br>
+
+
+
+
+
+
+
+<!-- BANK TABLE -->
+
+
+<div class="table-box">
+
+
+<table>
+
+
+
+<thead>
+
+
+<tr>
+
+
+<th>
+
+STT
+
+</th>
+
+
+<th>
+
+Loại tiền
+
+</th>
+
+
+<th>
+
+Tên ngân hàng
+
+</th>
+
+
+<th>
+
+Tên hiển thị frontend
+
+</th>
+
+
+<th>
+
+Icon ngân hàng
+
+</th>
+
+
+<th>
+
+Nguồn
+
+</th>
+
+
+<th>
+
+Trạng thái
+
+</th>
+
+
+<th>
+
+Thao tác
+
+</th>
+
+
+</tr>
+
+
+</thead>
+
+
+
+
+
+
+<tbody>
+
+
+
+
+<tr>
+
+
+
+<td>
+
+1
+
+</td>
+
+
+
+<td>
+
+VND
+
+</td>
+
+
+
+<td>
+
+Vietcombank
+
+</td>
+
+
+
+<td>
+
+VCB Bank
+
+</td>
+
+
+
+<td>
+
+🏦
+
+</td>
+
+
+
+<td>
+
+Hệ thống
+
+</td>
+
+
+
+<td>
+
+
+<span class="status status-on">
+
+Đang bật
+
+</span>
+
+
+</td>
+
+
+
+<td>
+
+
+
+<button class="btn primary">
+
+Sửa
+
+</button>
+
+
+
+<br><br>
+
+
+
+<button class="btn danger">
+
+Tắt
+
+</button>
+
+
+
+</td>
+
+
+
+</tr>
+
+
+
+
+
+
+
+
+<tr>
+
+
+
+<td>
+
+2
+
+</td>
+
+
+
+<td>
+
+CNY
+
+</td>
+
+
+
+<td>
+
+中国工商银行
+
+</td>
+
+
+
+<td>
+
+ICBC Bank
+
+</td>
+
+
+
+<td>
+
+🏦
+
+</td>
+
+
+
+<td>
+
+Hệ thống
+
+</td>
+
+
+
+<td>
+
+
+<span class="status status-on">
+
+Đang bật
+
+</span>
+
+
+</td>
+
+
+
+<td>
+
+
+
+<button class="btn primary">
+
+Sửa
+
+</button>
+
+
+
+<br><br>
+
+
+
+<button class="btn danger">
+
+Tắt
+
+</button>
+
+
+
+</td>
+
+
+
+</tr>
+
+
+
+
+
+
+
+
+<tr>
+
+
+
+<td>
+
+3
+
+</td>
+
+
+
+<td>
+
+VND
+
+</td>
+
+
+
+<td>
+
+Ngân hàng ABC
+
+</td>
+
+
+
+<td>
+
+ABC Bank
+
+</td>
+
+
+
+<td>
+
+🏛️
+
+</td>
+
+
+
+<td>
+
+Tự thêm
+
+</td>
+
+
+
+<td>
+
+
+<span class="status status-off">
+
+Đã tắt
+
+</span>
+
+
+</td>
+
+
+
+<td>
+
+
+
+<button class="btn primary">
+
+Sửa
+
+</button>
+
+
+
+<br><br>
+
+
+
+<button class="btn">
+
+Xóa
+
+</button>
+
+
+
+</td>
+
+
+
+</tr>
+
+
+
+
+
+</tbody>
+
+
+</table>
+
+
+
+</div>
+
+
+
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- ==========================
+ CHỈNH SỬA NGÂN HÀNG
+========================== -->
+
+
+<div class="card">
+
+
+<div class="card-title">
+
+📝 Chỉnh sửa thông tin ngân hàng
+
+</div>
+
+
+
+
+
+<div class="card-body">
+
+
+
+
+
+<div class="grid-3">
+
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+💱 Loại tiền
+
+</div>
+
+
+
+<div class="box-text">
+
+
+Loại tiền:
+
+
+<br>
+
+
+<select class="input">
+
+
+<option>
+
+VND
+
+</option>
+
+
+<option>
+
+CNY
+
+</option>
+
+
+<option>
+
+USDT
+
+</option>
+
+
+</select>
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+🏦 Thông tin ngân hàng
+
+</div>
+
+
+
+<div class="box-text">
+
+
+Tên ngân hàng:
+
+
+<br>
+
+
+<input class="input"
+value="Vietcombank">
+
+
+
+<br><br>
+
+
+Tên hiển thị:
+
+
+<br>
+
+
+<input class="input"
+value="VCB Bank">
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+🖼 Icon ngân hàng
+
+</div>
+
+
+
+<div class="box-text">
+
+
+Icon hiện tại:
+
+
+<br>
+
+
+🏦
+
+
+
+<br><br>
+
+
+Thay icon:
+
+
+<br>
+
+
+<input type="file">
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+<br>
+
+
+
+
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+⚙️ Trạng thái ngân hàng
+
+</div>
+
+
+
+<div class="box-text">
+
+
+<select class="input">
+
+
+<option>
+
+Bật
+
+</option>
+
+
+<option>
+
+Tắt
+
+</option>
+
+
+</select>
+
+
+
+<br><br>
+
+
+Lưu ý:
+
+
+<br>
+
+
+Ngân hàng đang bật không thể xóa.
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+<br>
+
+
+
+
+<button class="btn success">
+
+💾 Lưu thay đổi
+
+</button>
+
+
+
+<button class="btn danger">
+
+Hủy
+
+</button>
+
+
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- ==========================
+ QUY TẮC XÓA NGÂN HÀNG
+========================== -->
+
+
+<div class="card">
+
+
+<div class="card-title">
+
+📌 Quy tắc quản lý ngân hàng
+
+</div>
+
+
+
+
+
+<div class="card-body">
+
+
+
+
+
+<div class="grid-3">
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+🏦 Ngân hàng hệ thống
+
+</div>
+
+
+
+<div class="box-text">
+
+
+✔ Không được xóa
+
+
+<br>
+
+
+✔ Chỉ được tắt
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+➕ Ngân hàng tự thêm
+
+</div>
+
+
+
+<div class="box-text">
+
+
+✔ Có thể chỉnh sửa
+
+
+<br>
+
+
+✔ Có thể xóa
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+⚠️ Trạng thái bật
+
+</div>
+
+
+
+<div class="box-text">
+
+
+Ngân hàng đang bật:
+
+
+<br>
+
+
+❌ Không thể xóa
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+</div>
+
+
+
+</div>
+
+
+</div>
+<!-- ==================================
+ PHẦN 5
+ JS HOÀN THIỆN + ĐÓNG FILE
+================================== -->
+
+
+
+
+
+
+<!-- ===============================
+ POPUP CHỈNH SỬA HÀNG LOẠT
+=============================== -->
+
+
+<div id="bankModal"
+
+style="
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.45);
+z-index:9999;
+align-items:center;
+justify-content:center;
+">
+
+
+
+
+
+<div style="
+background:white;
+width:700px;
+max-width:90%;
+border-radius:18px;
+padding:30px;
+">
+
+
+
+
+
+<div style="
+display:flex;
+justify-content:space-between;
+align-items:center;
+">
+
+
+<h2 style="
+color:#1677ff;
+">
+
+🏦 Chỉnh sửa ngân hàng
+
+</h2>
+
+
+
+<button class="btn danger"
+onclick="closeBankModal()">
+
+×
+
+</button>
+
+
+
+</div>
+
+
+
+
+
+<br>
+
+
+
+
+
+
+
+<div class="grid-3">
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+Tên ngân hàng
+
+</div>
+
+
+
+<input class="input"
+value="Vietcombank">
+
+
+
+</div>
+
+
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+Tên hiển thị frontend
+
+</div>
+
+
+
+<input class="input"
+value="VCB Bank">
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+Icon ngân hàng
+
+</div>
+
+
+
+<input type="file">
+
+
+
+</div>
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+<br>
+
+
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+Trạng thái
+
+</div>
+
+
+
+<select class="input">
+
+
+<option>
+
+Bật
+
+</option>
+
+
+<option>
+
+Tắt
+
+</option>
+
+
+</select>
+
+
+
+</div>
+
+
+
+
+
+
+<br>
+
+
+
+
+
+
+<button class="btn success"
+onclick="saveBank()">
+
+💾 Lưu
+
+</button>
+
+
+
+<button class="btn danger"
+onclick="closeBankModal()">
+
+Hủy
+
+</button>
+
+
+
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- ===============================
+ TOAST
+=============================== -->
+
+
+<div id="toast"
+
+style="
+display:none;
+position:fixed;
+right:30px;
+bottom:30px;
+background:#1677ff;
+color:white;
+padding:15px 25px;
+border-radius:12px;
+z-index:10000;
+font-weight:bold;
+">
+
+
+Thành công
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<script>
+
+
+
+
+
+// =======================
+// TOAST
+// =======================
+
+
+
+function showToast(msg){
+
+
+
+let box =
+document.getElementById(
+"toast"
+);
+
+
+
+box.innerHTML=msg;
+
+
+
+box.style.display="block";
+
+
+
+setTimeout(()=>{
+
+
+box.style.display="none";
+
+
+},2500);
+
+
+
+}
+
+
+
+
+
+
+
+
+// =======================
+// BANK MODAL
+// =======================
+
+
+
+function openBankModal(){
+
+
+
+document.getElementById(
+"bankModal"
+)
+.style.display="flex";
+
+
+
+}
+
+
+
+
+
+
+
+function closeBankModal(){
+
+
+
+document.getElementById(
+"bankModal"
+)
+.style.display="none";
+
+
+}
+
+
+
+
+
+
+
+function saveBank(){
+
+
+
+showToast(
+"Đã lưu thông tin ngân hàng"
+);
+
+
+
+closeBankModal();
+
+
+}
+
+
+
+
+
+
+
+
+
+// =======================
+// ĐỒNG BỘ NGÂN HÀNG
+// =======================
+
+
+
+document
+.querySelectorAll(
+".btn"
+)
+.forEach(btn=>{
+
+
+btn.onclick=function(){
+
+
+
+let text =
+this.innerText;
+
+
+
+if(
+text.includes(
+"Đồng bộ ngân hàng"
+)
+
+){
+
+
+
+showToast(
+"Đang đồng bộ ngân hàng hệ thống..."
+);
+
+
+
+setTimeout(()=>{
+
+
+showToast(
+"Đồng bộ ngân hàng hoàn tất"
+);
+
+
+
+},1500);
+
+
+
+}
+
+
+
+
+
+
+
+if(
+text.includes(
+"Chỉnh sửa hàng loạt"
+)
+
+){
+
+
+
+openBankModal();
+
+
+}
+
+
+
+
+
+}
+
+
+
+});
+
+
+
+
+
+
+
+
+
+// =======================
+// CLICK NGOÀI POPUP
+// =======================
+
+
+
+window.onclick=function(e){
+
+
+
+let modal =
+document.getElementById(
+"bankModal"
+);
+
+
+
+if(e.target==modal){
+
+
+
+modal.style.display="none";
+
+
+}
+
+
+
+}
+
+
+
+
+
+
+
+// =======================
+// MENU TAB
+// =======================
+
+
+
+document
+.querySelectorAll(
+".menu-item"
+)
+.forEach(item=>{
+
+
+
+item.onclick=function(){
+
+
+
+document
+.querySelectorAll(
+".menu-item"
+)
+.forEach(i=>{
+
+
+i.classList.remove(
+"active"
+);
+
+
+});
+
+
+
+
+this.classList.add(
+"active"
+);
+
+
+
+showToast(
+"Đã chuyển: "
++
+this.innerText
+);
+
+
+
+}
+
+
+
+});
+
+
+
+
+</script>
+
+
+
+
+
+
+
+</div>
+<!-- END CONTAINER -->
+
+
+
+
+
+<footer style="
+
+width:95%;
+
+margin:30px auto;
+
+background:white;
+
+padding:20px;
+
+border-radius:15px;
+
+text-align:center;
+
+color:#999;
+
+">
+
+
+汇率和银行管理
+
+
+<br>
+
+
+Tỷ giá và quản lý ngân hàng
+
+
+<br><br>
+
+
+© 2026 Admin System
+
+
+</footer>
+
+
+
+
+
+
+
+</body>
+
+
+</html>

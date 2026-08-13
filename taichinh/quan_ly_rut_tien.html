@@ -1,0 +1,13888 @@
+<!DOCTYPE html>
+
+<html lang="vi">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<title>
+Quản Lý Rút Tiền
+</title>
+
+
+
+<style>
+
+
+/* =====================
+ RESET
+===================== */
+
+
+*{
+
+margin:0;
+
+padding:0;
+
+box-sizing:border-box;
+
+font-family:
+
+"Microsoft YaHei",
+"Segoe UI",
+Arial,
+sans-serif;
+
+}
+
+
+
+body{
+
+
+background:#f3f6fb;
+
+color:#333;
+
+
+}
+
+
+
+
+
+
+/* =====================
+ HEADER
+===================== */
+
+
+.header{
+
+
+height:88px;
+
+
+background:
+
+linear-gradient(
+135deg,
+#1677ff,
+#0052cc
+);
+
+
+display:flex;
+
+
+align-items:center;
+
+
+padding:0 35px;
+
+
+color:white;
+
+
+}
+
+
+
+.logo{
+
+
+width:55px;
+
+
+height:55px;
+
+
+background:white;
+
+
+border-radius:15px;
+
+
+display:flex;
+
+
+align-items:center;
+
+
+justify-content:center;
+
+
+font-size:28px;
+
+
+color:#1677ff;
+
+
+font-weight:bold;
+
+
+}
+
+
+
+.header-content{
+
+
+margin-left:20px;
+
+
+}
+
+
+
+.header-title{
+
+
+font-size:26px;
+
+
+font-weight:800;
+
+
+}
+
+
+
+.header-desc{
+
+
+font-size:14px;
+
+
+margin-top:6px;
+
+
+opacity:.85;
+
+
+}
+
+
+
+.back{
+
+
+margin-left:auto;
+
+
+padding:12px 25px;
+
+
+border-radius:10px;
+
+
+border:1px solid rgba(255,255,255,.3);
+
+
+background:
+
+rgba(255,255,255,.15);
+
+
+color:white;
+
+
+cursor:pointer;
+
+
+font-weight:bold;
+
+
+}
+
+
+
+
+
+
+/* =====================
+ MENU TAB
+===================== */
+
+
+.menu{
+
+
+width:95%;
+
+
+margin:20px auto;
+
+
+display:flex;
+
+
+gap:10px;
+
+
+flex-wrap:wrap;
+
+
+}
+
+
+
+
+.menu-item{
+
+
+background:white;
+
+
+border:1px solid #e1e8f5;
+
+
+padding:12px 18px;
+
+
+border-radius:10px;
+
+
+cursor:pointer;
+
+
+font-weight:600;
+
+
+font-size:14px;
+
+
+transition:.2s;
+
+
+}
+
+
+
+.menu-item:hover{
+
+
+background:#1677ff;
+
+
+color:white;
+
+
+}
+
+
+
+.menu-item.active{
+
+
+background:#1677ff;
+
+
+color:white;
+
+
+}
+
+
+
+
+
+
+
+
+/* =====================
+ MAIN
+===================== */
+
+
+.container{
+
+
+width:95%;
+
+
+margin:auto;
+
+
+}
+
+
+
+
+
+
+
+/* CARD */
+
+
+.card{
+
+
+background:white;
+
+
+border-radius:18px;
+
+
+box-shadow:
+
+
+0 8px 25px rgba(0,0,0,.06);
+
+
+margin-bottom:22px;
+
+
+overflow:hidden;
+
+
+}
+
+
+
+
+.card-title{
+
+
+padding:18px 25px;
+
+
+font-size:20px;
+
+
+font-weight:bold;
+
+
+color:#1677ff;
+
+
+border-bottom:
+
+1px solid #eee;
+
+
+}
+
+
+
+
+.card-body{
+
+
+padding:25px;
+
+
+}
+
+
+
+
+
+
+
+
+/* GRID */
+
+
+.grid-3{
+
+
+display:grid;
+
+
+grid-template-columns:
+
+repeat(3,1fr);
+
+
+gap:20px;
+
+
+}
+
+
+
+
+.box{
+
+
+border:
+
+1px solid #e5ecf7;
+
+
+border-radius:14px;
+
+
+padding:20px;
+
+
+background:white;
+
+
+}
+
+
+
+.box-title{
+
+
+color:#1677ff;
+
+
+font-weight:bold;
+
+
+font-size:16px;
+
+
+margin-bottom:12px;
+
+
+}
+
+
+
+.box-text{
+
+
+font-size:14px;
+
+
+line-height:1.8;
+
+
+color:#666;
+
+
+}
+
+
+
+
+
+
+
+
+/* INPUT */
+
+
+.input{
+
+
+height:38px;
+
+
+border:
+
+1px solid #d9e2f0;
+
+
+border-radius:8px;
+
+
+padding:0 12px;
+
+
+outline:none;
+
+
+}
+
+
+
+
+.input:focus{
+
+
+border-color:#1677ff;
+
+
+}
+
+
+
+
+
+
+
+
+/* BUTTON */
+
+
+.btn{
+
+
+border:none;
+
+
+padding:10px 20px;
+
+
+border-radius:8px;
+
+
+cursor:pointer;
+
+
+font-weight:bold;
+
+
+}
+
+
+
+.primary{
+
+
+background:#1677ff;
+
+
+color:white;
+
+
+}
+
+
+
+.success{
+
+
+background:#13c2c2;
+
+
+color:white;
+
+
+}
+
+
+
+.danger{
+
+
+background:#ff4d4f;
+
+
+color:white;
+
+
+}
+
+
+
+
+
+
+
+/* TABLE */
+
+
+.table-box{
+
+
+overflow:auto;
+
+
+}
+
+
+
+
+table{
+
+
+width:100%;
+
+
+border-collapse:collapse;
+
+
+}
+
+
+
+
+th{
+
+
+background:#f3f7ff;
+
+
+padding:14px;
+
+
+white-space:nowrap;
+
+
+}
+
+
+
+
+td{
+
+
+padding:13px;
+
+
+border-bottom:
+
+1px solid #eee;
+
+
+text-align:center;
+
+
+white-space:nowrap;
+
+
+}
+
+
+
+tr:hover{
+
+
+background:#fafcff;
+
+
+}
+
+
+
+
+
+
+
+
+
+/* STATUS */
+
+
+.status{
+
+
+padding:5px 12px;
+
+
+border-radius:20px;
+
+
+font-size:13px;
+
+
+}
+
+
+
+.status-ok{
+
+
+background:#e6fffb;
+
+
+color:#13c2c2;
+
+
+}
+
+
+
+.status-wait{
+
+
+background:#fff7e6;
+
+
+color:#fa8c16;
+
+
+}
+
+
+
+.status-error{
+
+
+background:#fff1f0;
+
+
+color:#ff4d4f;
+
+
+}
+
+
+
+
+
+
+
+@media(max-width:900px){
+
+
+.grid-3{
+
+
+grid-template-columns:1fr;
+
+
+}
+
+
+}
+
+
+
+
+
+</style>
+
+
+</head>
+
+
+
+
+
+
+<body>
+
+
+
+
+
+<!-- HEADER -->
+
+
+<div class="header">
+
+
+
+<div class="logo">
+
+💸
+
+</div>
+
+
+
+
+<div class="header-content">
+
+
+<div class="header-title">
+
+QUẢN LÝ RÚT TIỀN
+
+</div>
+
+
+<div class="header-desc">
+
+提现管理 - Kiểm duyệt, thanh toán và quản lý dòng tiền
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+<button class="back"
+onclick="history.back()">
+
+← Quay lại
+
+</button>
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- MENU -->
+
+
+<div class="menu">
+
+
+
+<div class="menu-item active">
+
+🔍 Kiểm duyệt rủi ro
+
+</div>
+
+
+
+<div class="menu-item">
+
+👤 Rủi ro của tôi
+
+</div>
+
+
+
+
+<div class="menu-item">
+
+💰 Xuất tiền tài chính
+
+</div>
+
+
+
+
+<div class="menu-item">
+
+🏦 Tôi xử lý xuất tiền
+
+</div>
+
+
+
+
+<div class="menu-item">
+
+🔄 Thanh toán lại
+
+</div>
+
+
+
+
+<div class="menu-item">
+
+⚠️ Callback bất thường
+
+</div>
+
+
+
+
+<div class="menu-item">
+
+🚀 Xuất tiền miễn duyệt
+
+</div>
+
+
+
+
+<div class="menu-item">
+
+↔️ Rút chuyển nạp
+
+</div>
+
+
+
+
+<div class="menu-item">
+
+💎 Rút tiền lớn
+
+</div>
+
+
+
+
+<div class="menu-item">
+
+📋 Toàn bộ rút tiền
+
+</div>
+
+
+
+
+<div class="menu-item">
+
+⚙️ Cài đặt rút tiền
+
+</div>
+
+
+
+
+<div class="menu-item">
+
+🏦 Thanh toán bên thứ ba
+
+</div>
+
+
+
+
+<div class="menu-item">
+
+📊 Thống kê thanh toán
+
+</div>
+
+
+
+
+</div>
+
+
+
+
+
+
+
+<!-- CONTENT -->
+
+<div class="container">
+    <!-- ==================================
+ PHẦN 2
+ 风控审核 - KIỂM DUYỆT RỦI RO
+================================== -->
+
+
+<div class="card">
+
+
+<div class="card-title">
+
+🔍 Kiểm duyệt rủi ro rút tiền
+
+</div>
+
+
+
+
+<div class="card-body">
+
+
+
+
+
+<!-- SEARCH -->
+
+
+<div style="
+display:flex;
+gap:12px;
+flex-wrap:wrap;
+">
+
+
+
+<input class="input"
+placeholder="🔎 Mã đơn rút">
+
+
+
+<input class="input"
+placeholder="👤 ID hội viên">
+
+
+
+<input class="input"
+placeholder="🎮 Tài khoản">
+
+
+
+
+
+<select class="input">
+
+
+<option>
+
+Tất cả trạng thái
+
+</option>
+
+
+<option>
+
+Chờ kiểm duyệt
+
+</option>
+
+
+<option>
+
+Đang xử lý
+
+</option>
+
+
+<option>
+
+Đã duyệt
+
+</option>
+
+
+<option>
+
+Từ chối
+
+</option>
+
+
+</select>
+
+
+
+
+
+
+<select class="input">
+
+
+<option>
+
+Loại tiền
+
+</option>
+
+
+<option>
+
+USDT
+
+</option>
+
+
+<option>
+
+VND
+
+</option>
+
+
+<option>
+
+CNY
+
+</option>
+
+
+</select>
+
+
+
+
+
+
+<button class="btn primary">
+
+🔍 Tìm kiếm
+
+</button>
+
+
+
+
+<button class="btn">
+
+🔄 Làm mới
+
+</button>
+
+
+
+
+</div>
+
+
+
+
+
+
+
+<br>
+
+
+
+
+
+
+<!-- TABLE -->
+
+
+<div class="table-box">
+
+
+<table>
+
+
+<thead>
+
+
+
+<tr>
+
+
+<th>
+
+Mã đơn
+
+</th>
+
+
+
+<th>
+
+ID hội viên
+
+</th>
+
+
+
+<th>
+
+Tài khoản
+
+</th>
+
+
+
+<th>
+
+VIP
+
+</th>
+
+
+
+<th>
+
+Thời gian tạo
+
+</th>
+
+
+
+<th>
+
+Loại tiền
+
+</th>
+
+
+
+<th>
+
+Số tiền rút
+
+</th>
+
+
+
+<th>
+
+Phí
+
+</th>
+
+
+
+<th>
+
+Thực nhận
+
+</th>
+
+
+
+<th>
+
+Phương thức
+
+</th>
+
+
+
+<th>
+
+Điểm rủi ro
+
+</th>
+
+
+
+<th>
+
+Trạng thái
+
+</th>
+
+
+
+<th>
+
+Thao tác
+
+</th>
+
+
+
+</tr>
+
+
+</thead>
+
+
+
+
+
+<tbody>
+
+
+
+<tr>
+
+
+
+<td>
+
+WD20260812001
+
+</td>
+
+
+
+
+<td>
+
+888888
+
+</td>
+
+
+
+
+<td>
+
+vip_user01
+
+</td>
+
+
+
+
+<td>
+
+VIP8
+
+</td>
+
+
+
+
+<td>
+
+2026-08-12
+10:20
+
+</td>
+
+
+
+
+<td>
+
+USDT
+
+</td>
+
+
+
+
+<td>
+
+5000
+
+</td>
+
+
+
+
+<td>
+
+5
+
+</td>
+
+
+
+
+<td>
+
+4995
+
+</td>
+
+
+
+
+<td>
+
+USDT TRC20
+
+</td>
+
+
+
+
+<td>
+
+<span style="
+color:#fa8c16;
+font-weight:bold;
+">
+
+65
+
+</span>
+
+</td>
+
+
+
+
+<td>
+
+
+<span class="status status-wait">
+
+Chờ duyệt
+
+</span>
+
+
+</td>
+
+
+
+
+<td>
+
+
+<button class="btn primary">
+
+查看
+
+</button>
+
+
+<br><br>
+
+
+<button class="btn success">
+
+通过
+
+</button>
+
+
+<br><br>
+
+
+<button class="btn danger">
+
+拒绝
+
+</button>
+
+
+</td>
+
+
+
+</tr>
+
+
+
+
+
+
+
+<tr>
+
+
+
+<td>
+
+WD20260812002
+
+</td>
+
+
+
+
+<td>
+
+666666
+
+</td>
+
+
+
+
+<td>
+
+test888
+
+</td>
+
+
+
+
+<td>
+
+VIP5
+
+</td>
+
+
+
+
+<td>
+
+2026-08-12
+10:45
+
+</td>
+
+
+
+
+<td>
+
+VND
+
+</td>
+
+
+
+
+<td>
+
+20000000
+
+</td>
+
+
+
+
+<td>
+
+50000
+
+</td>
+
+
+
+
+<td>
+
+19950000
+
+</td>
+
+
+
+
+<td>
+
+Ngân hàng
+
+</td>
+
+
+
+
+<td>
+
+<span style="
+color:#ff4d4f;
+font-weight:bold;
+">
+
+90
+
+</span>
+
+</td>
+
+
+
+
+<td>
+
+
+<span class="status status-error">
+
+Nguy hiểm
+
+</span>
+
+
+</td>
+
+
+
+
+<td>
+
+
+<button class="btn primary">
+
+Chi tiết
+
+</button>
+
+
+<br><br>
+
+
+<button class="btn danger">
+
+Khóa
+
+</button>
+
+
+</td>
+
+
+
+
+</tr>
+
+
+
+
+
+
+
+</tbody>
+
+
+
+</table>
+
+
+
+</div>
+
+
+
+
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- =========================
+ RISK SUMMARY
+========================= -->
+
+
+<div class="card">
+
+
+<div class="card-title">
+
+📊 Tổng quan rủi ro
+
+</div>
+
+
+
+<div class="card-body">
+
+
+
+<div class="grid-3">
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+⏳ Chờ kiểm duyệt
+
+</div>
+
+
+<div class="box-text">
+
+
+<h2 style="
+color:#fa8c16;
+">
+
+128
+
+</h2>
+
+
+Đơn đang chờ xử lý
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+⚠️ Điểm rủi ro cao
+
+</div>
+
+
+<div class="box-text">
+
+
+<h2 style="
+color:#ff4d4f;
+">
+
+26
+
+</h2>
+
+
+Đơn cần kiểm tra kỹ
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+✅ Đã xử lý hôm nay
+
+</div>
+
+
+<div class="box-text">
+
+
+<h2 style="
+color:#13c2c2;
+">
+
+568
+
+</h2>
+
+
+Đơn đã hoàn tất
+
+
+</div>
+
+
+</div>
+
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+</div>
+<!-- ==================================
+ PHẦN 3
+ 由我风控 - RỦI RO CỦA TÔI
+================================== -->
+
+
+<div class="card">
+
+
+<div class="card-title">
+
+👤 Rủi ro của tôi
+
+</div>
+
+
+
+
+<div class="card-body">
+
+
+
+
+
+<!-- SEARCH -->
+
+
+<div style="
+display:flex;
+gap:12px;
+flex-wrap:wrap;
+">
+
+
+
+<input class="input"
+placeholder="🔎 Mã đơn">
+
+
+
+<input class="input"
+placeholder="👤 ID hội viên">
+
+
+
+<input class="input"
+placeholder="Người xử lý">
+
+
+
+
+
+<select class="input">
+
+
+<option>
+
+Tất cả trạng thái
+
+</option>
+
+
+<option>
+
+Đang kiểm tra
+
+</option>
+
+
+<option>
+
+Chờ xử lý
+
+</option>
+
+
+<option>
+
+Đã hoàn thành
+
+</option>
+
+
+</select>
+
+
+
+
+
+<button class="btn primary">
+
+🔍 Tìm kiếm
+
+</button>
+
+
+
+
+<button class="btn">
+
+🔄 Reset
+
+</button>
+
+
+
+</div>
+
+
+
+
+
+
+<br>
+
+
+
+
+
+
+<!-- TABLE -->
+
+
+<div class="table-box">
+
+
+<table>
+
+
+<thead>
+
+
+<tr>
+
+
+<th>
+
+Mã đơn
+
+</th>
+
+
+<th>
+
+ID hội viên
+
+</th>
+
+
+<th>
+
+Tài khoản
+
+</th>
+
+
+<th>
+
+VIP
+
+</th>
+
+
+<th>
+
+Số tiền rút
+
+</th>
+
+
+<th>
+
+Loại tiền
+
+</th>
+
+
+<th>
+
+Phương thức nhận
+
+</th>
+
+
+<th>
+
+Người nhận xử lý
+
+</th>
+
+
+<th>
+
+Thời gian nhận
+
+</th>
+
+
+<th>
+
+Trạng thái
+
+</th>
+
+
+<th>
+
+Thao tác
+
+</th>
+
+
+</tr>
+
+
+
+</thead>
+
+
+
+
+
+<tbody>
+
+
+
+<tr>
+
+
+
+<td>
+
+WD20260812001
+
+</td>
+
+
+
+<td>
+
+888888
+
+</td>
+
+
+
+<td>
+
+vip_user01
+
+</td>
+
+
+
+<td>
+
+VIP8
+
+</td>
+
+
+
+<td>
+
+5000
+
+</td>
+
+
+
+<td>
+
+USDT
+
+</td>
+
+
+
+<td>
+
+TRC20
+
+</td>
+
+
+
+<td>
+
+admin01
+
+</td>
+
+
+
+<td>
+
+10:30:25
+
+</td>
+
+
+
+<td>
+
+
+<span class="status status-wait">
+
+Đang kiểm tra
+
+</span>
+
+
+</td>
+
+
+
+<td>
+
+
+
+<button class="btn primary">
+
+Chi tiết
+
+</button>
+
+
+<br><br>
+
+
+<button class="btn danger">
+
+Trả về
+
+</button>
+
+
+</td>
+
+
+
+</tr>
+
+
+
+
+
+
+
+
+<tr>
+
+
+
+<td>
+
+WD20260812005
+
+</td>
+
+
+
+<td>
+
+999999
+
+</td>
+
+
+
+<td>
+
+agent888
+
+</td>
+
+
+
+<td>
+
+VIP10
+
+</td>
+
+
+
+<td>
+
+20000
+
+</td>
+
+
+
+<td>
+
+VND
+
+</td>
+
+
+
+<td>
+
+Ngân hàng
+
+</td>
+
+
+
+<td>
+
+admin01
+
+</td>
+
+
+
+<td>
+
+10:45:10
+
+</td>
+
+
+
+<td>
+
+
+<span class="status status-wait">
+
+Kiểm tra
+
+</span>
+
+
+</td>
+
+
+
+<td>
+
+
+
+<button class="btn primary">
+
+Xem
+
+</button>
+
+
+<br><br>
+
+
+<button class="btn success">
+
+Hoàn tất
+
+</button>
+
+
+</td>
+
+
+
+</tr>
+
+
+
+
+</tbody>
+
+
+</table>
+
+
+</div>
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- =============================
+ CHI TIẾT XỬ LÝ CỦA TÔI
+============================= -->
+
+
+<div class="card">
+
+
+<div class="card-title">
+
+📝 Nhật ký xử lý của tôi
+
+</div>
+
+
+
+
+<div class="card-body">
+
+
+
+<div class="grid-3">
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+📌 Đơn đang giữ
+
+</div>
+
+
+
+<div class="box-text">
+
+
+Số lượng:
+
+
+<br>
+
+
+26 đơn
+
+
+<br><br>
+
+
+Tổng tiền:
+
+
+<br>
+
+
+250,000 USDT
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+⏱ Thời gian xử lý
+
+</div>
+
+
+
+<div class="box-text">
+
+
+Trung bình:
+
+
+<br>
+
+
+3 phút / đơn
+
+
+<br><br>
+
+
+Nhanh nhất:
+
+
+<br>
+
+
+30 giây
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+📊 Kết quả hôm nay
+
+</div>
+
+
+
+<div class="box-text">
+
+
+Đã duyệt:
+
+
+<br>
+
+
+520 đơn
+
+
+<br><br>
+
+
+Đã trả lại:
+
+
+<br>
+
+
+18 đơn
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+</div>
+
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- =============================
+ BUTTON ACTION
+============================= -->
+
+
+<div class="card">
+
+
+<div class="card-title">
+
+⚙️ Thao tác nhanh
+
+</div>
+
+
+
+
+<div class="card-body">
+
+
+
+<button class="btn primary">
+
+🔍 Nhận đơn mới
+
+</button>
+
+
+
+<button class="btn success">
+
+✅ Hoàn tất kiểm tra
+
+</button>
+
+
+
+<button class="btn danger">
+
+↩ Trả đơn về hàng chờ
+
+</button>
+
+
+
+</div>
+
+
+
+</div>
+<!-- ==================================
+ PHẦN 4
+ 财务出款 - XUẤT TIỀN TÀI CHÍNH
+================================== -->
+
+
+<div class="card">
+
+
+<div class="card-title">
+
+💰 Xuất tiền tài chính
+
+</div>
+
+
+
+
+<div class="card-body">
+
+
+
+
+
+<!-- SEARCH -->
+
+
+<div style="
+display:flex;
+gap:12px;
+flex-wrap:wrap;
+">
+
+
+
+<input class="input"
+placeholder="🔎 Mã đơn rút">
+
+
+
+<input class="input"
+placeholder="👤 ID hội viên">
+
+
+
+<input class="input"
+placeholder="🏦 Ngân hàng / Ví">
+
+
+
+
+
+<select class="input">
+
+
+<option>
+
+Tất cả trạng thái
+
+</option>
+
+
+<option>
+
+Chờ xuất tiền
+
+</option>
+
+
+<option>
+
+Đang thanh toán
+
+</option>
+
+
+<option>
+
+Đã hoàn thành
+
+</option>
+
+
+<option>
+
+Thất bại
+
+</option>
+
+
+</select>
+
+
+
+
+
+<button class="btn primary">
+
+🔍 Tìm kiếm
+
+</button>
+
+
+
+
+<button class="btn">
+
+🔄 Làm mới
+
+</button>
+
+
+
+</div>
+
+
+
+
+
+
+
+<br>
+
+
+
+
+
+
+<!-- TABLE -->
+
+
+<div class="table-box">
+
+
+<table>
+
+
+<thead>
+
+
+<tr>
+
+
+<th>
+
+Mã đơn
+
+</th>
+
+
+<th>
+
+ID hội viên
+
+</th>
+
+
+<th>
+
+Tài khoản
+
+</th>
+
+
+<th>
+
+VIP
+
+</th>
+
+
+<th>
+
+Loại tiền
+
+</th>
+
+
+<th>
+
+Số tiền rút
+
+</th>
+
+
+<th>
+
+Phí
+
+</th>
+
+
+<th>
+
+Thực trả
+
+</th>
+
+
+<th>
+
+Phương thức
+
+</th>
+
+
+<th>
+
+Thông tin nhận tiền
+
+</th>
+
+
+<th>
+
+Trạng thái
+
+</th>
+
+
+<th>
+
+Thao tác
+
+</th>
+
+
+</tr>
+
+
+</thead>
+
+
+
+
+
+<tbody>
+
+
+
+<tr>
+
+
+
+<td>
+
+WD20260812001
+
+</td>
+
+
+
+<td>
+
+888888
+
+</td>
+
+
+
+<td>
+
+vip_user01
+
+</td>
+
+
+
+<td>
+
+VIP8
+
+</td>
+
+
+
+<td>
+
+USDT
+
+</td>
+
+
+
+<td>
+
+5000
+
+</td>
+
+
+
+<td>
+
+5
+
+</td>
+
+
+
+<td>
+
+4995
+
+</td>
+
+
+
+<td>
+
+USDT TRC20
+
+</td>
+
+
+
+<td>
+
+T9x88xxxx
+
+</td>
+
+
+
+<td>
+
+
+<span class="status status-wait">
+
+Chờ xuất
+
+</span>
+
+
+</td>
+
+
+
+<td>
+
+
+<button class="btn primary">
+
+Chi tiết
+
+</button>
+
+
+<br><br>
+
+
+<button class="btn success">
+
+Xuất tiền
+
+</button>
+
+
+<br><br>
+
+
+<button class="btn danger">
+
+Từ chối
+
+</button>
+
+
+</td>
+
+
+
+</tr>
+
+
+
+
+
+
+
+
+<tr>
+
+
+
+<td>
+
+WD20260812008
+
+</td>
+
+
+
+<td>
+
+777777
+
+</td>
+
+
+
+<td>
+
+user777
+
+</td>
+
+
+
+<td>
+
+VIP6
+
+</td>
+
+
+
+<td>
+
+VND
+
+</td>
+
+
+
+<td>
+
+30000000
+
+</td>
+
+
+
+<td>
+
+50000
+
+</td>
+
+
+
+<td>
+
+29950000
+
+</td>
+
+
+
+<td>
+
+Ngân hàng
+
+</td>
+
+
+
+<td>
+
+VCB ****8888
+
+</td>
+
+
+
+<td>
+
+
+<span class="status status-wait">
+
+Đang thanh toán
+
+</span>
+
+
+</td>
+
+
+
+<td>
+
+
+<button class="btn primary">
+
+Theo dõi
+
+</button>
+
+
+</td>
+
+
+
+</tr>
+
+
+
+
+</tbody>
+
+
+</table>
+
+
+</div>
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- =============================
+ THÔNG TIN XUẤT TIỀN
+============================= -->
+
+
+<div class="card">
+
+
+<div class="card-title">
+
+🏦 Thông tin thanh toán
+
+</div>
+
+
+
+
+<div class="card-body">
+
+
+
+<div class="grid-3">
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+👤 Hội viên
+
+</div>
+
+
+
+<div class="box-text">
+
+
+ID:
+
+888888
+
+
+<br><br>
+
+
+Tài khoản:
+
+vip_user01
+
+
+<br><br>
+
+
+VIP:
+
+VIP8
+
+
+<br><br>
+
+
+Trạng thái:
+
+Bình thường
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+💰 Số tiền
+
+</div>
+
+
+
+<div class="box-text">
+
+
+Số tiền rút:
+
+
+<br>
+
+
+5000 USDT
+
+
+<br><br>
+
+
+Phí:
+
+
+<br>
+
+
+5 USDT
+
+
+<br><br>
+
+
+Thực nhận:
+
+
+<br>
+
+
+4995 USDT
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+💳 Thông tin nhận
+
+</div>
+
+
+
+<div class="box-text">
+
+
+Loại nhận:
+
+<br>
+
+
+USDT TRC20
+
+
+<br><br>
+
+
+Địa chỉ ví:
+
+<br>
+
+
+T9x88xxxx
+
+
+<br><br>
+
+
+Trạng thái kiểm tra:
+
+<br>
+
+
+<span class="status status-ok">
+
+Đã xác minh
+
+</span>
+
+
+</div>
+
+
+</div>
+
+
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- =============================
+ XÁC NHẬN XUẤT TIỀN
+============================= -->
+
+
+<div class="card">
+
+
+<div class="card-title">
+
+⚙️ Thao tác tài chính
+
+</div>
+
+
+
+
+
+<div class="card-body">
+
+
+
+<button class="btn success">
+
+✅ Xác nhận xuất tiền
+
+</button>
+
+
+
+<button class="btn danger">
+
+❌ Từ chối thanh toán
+
+</button>
+
+
+
+<button class="btn primary">
+
+📝 Ghi chú
+
+</button>
+
+
+
+<button class="btn">
+
+📋 Xem lịch sử
+
+</button>
+
+
+
+</div>
+
+
+
+</div>
+<!-- ==================================
+ PHẦN 5
+ 由我出款 - TÔI XỬ LÝ XUẤT TIỀN
+================================== -->
+
+
+<div class="card">
+
+
+<div class="card-title">
+
+🏦 Tôi xử lý xuất tiền
+
+</div>
+
+
+
+
+
+<div class="card-body">
+
+
+
+
+
+<!-- SEARCH -->
+
+
+<div style="
+display:flex;
+gap:12px;
+flex-wrap:wrap;
+">
+
+
+
+<input class="input"
+placeholder="🔎 Mã đơn">
+
+
+
+<input class="input"
+placeholder="👤 ID hội viên">
+
+
+
+<input class="input"
+placeholder="Người xử lý">
+
+
+
+
+
+
+<select class="input">
+
+
+<option>
+
+Tất cả trạng thái
+
+</option>
+
+
+<option>
+
+Đang xuất tiền
+
+</option>
+
+
+<option>
+
+Đã hoàn tất
+
+</option>
+
+
+<option>
+
+Thất bại
+
+</option>
+
+
+</select>
+
+
+
+
+
+<button class="btn primary">
+
+🔍 Tìm kiếm
+
+</button>
+
+
+
+
+<button class="btn">
+
+🔄 Làm mới
+
+</button>
+
+
+
+</div>
+
+
+
+
+
+
+
+<br>
+
+
+
+
+
+
+<!-- TABLE -->
+
+
+<div class="table-box">
+
+
+<table>
+
+
+<thead>
+
+
+<tr>
+
+
+<th>
+
+Mã đơn
+
+</th>
+
+
+<th>
+
+ID hội viên
+
+</th>
+
+
+<th>
+
+Tài khoản
+
+</th>
+
+
+<th>
+
+VIP
+
+</th>
+
+
+<th>
+
+Loại tiền
+
+</th>
+
+
+<th>
+
+Số tiền
+
+</th>
+
+
+<th>
+
+Phương thức
+
+</th>
+
+
+<th>
+
+Người xử lý
+
+</th>
+
+
+<th>
+
+Thời gian nhận
+
+</th>
+
+
+<th>
+
+Trạng thái
+
+</th>
+
+
+<th>
+
+Thao tác
+
+</th>
+
+
+</tr>
+
+
+
+</thead>
+
+
+
+
+
+<tbody>
+
+
+
+<tr>
+
+
+
+<td>
+
+WD20260812001
+
+</td>
+
+
+
+<td>
+
+888888
+
+</td>
+
+
+
+<td>
+
+vip_user01
+
+</td>
+
+
+
+<td>
+
+VIP8
+
+</td>
+
+
+
+<td>
+
+USDT
+
+</td>
+
+
+
+<td>
+
+5000
+
+</td>
+
+
+
+<td>
+
+TRC20
+
+</td>
+
+
+
+<td>
+
+admin01
+
+</td>
+
+
+
+<td>
+
+11:00:25
+
+</td>
+
+
+
+<td>
+
+
+<span class="status status-wait">
+
+Đang xử lý
+
+</span>
+
+
+</td>
+
+
+
+<td>
+
+
+
+<button class="btn primary">
+
+Chi tiết
+
+</button>
+
+
+
+<br><br>
+
+
+
+<button class="btn success">
+
+Hoàn tất
+
+</button>
+
+
+
+<br><br>
+
+
+
+<button class="btn danger">
+
+Trả đơn
+
+</button>
+
+
+
+</td>
+
+
+
+</tr>
+
+
+
+
+
+
+
+
+<tr>
+
+
+
+<td>
+
+WD20260812015
+
+</td>
+
+
+
+<td>
+
+777777
+
+</td>
+
+
+
+<td>
+
+user777
+
+</td>
+
+
+
+<td>
+
+VIP6
+
+</td>
+
+
+
+<td>
+
+VND
+
+</td>
+
+
+
+<td>
+
+30000000
+
+</td>
+
+
+
+<td>
+
+Ngân hàng
+
+</td>
+
+
+
+<td>
+
+admin01
+
+</td>
+
+
+
+<td>
+
+11:20:10
+
+</td>
+
+
+
+<td>
+
+
+<span class="status status-wait">
+
+Chờ chuyển khoản
+
+</span>
+
+
+</td>
+
+
+
+<td>
+
+
+
+<button class="btn primary">
+
+Xem
+
+</button>
+
+
+
+</td>
+
+
+
+</tr>
+
+
+
+
+
+</tbody>
+
+
+</table>
+
+
+</div>
+
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- =============================
+ CHI TIẾT XỬ LÝ XUẤT TIỀN
+============================= -->
+
+
+<div class="card">
+
+
+<div class="card-title">
+
+📝 Chi tiết xử lý thanh toán
+
+</div>
+
+
+
+
+
+<div class="card-body">
+
+
+
+<div class="grid-3">
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+📄 Thông tin đơn
+
+</div>
+
+
+
+<div class="box-text">
+
+
+Mã đơn:
+
+<br>
+
+
+WD20260812001
+
+
+<br><br>
+
+
+ID:
+
+<br>
+
+
+888888
+
+
+<br><br>
+
+
+Tài khoản:
+
+<br>
+
+
+vip_user01
+
+
+<br><br>
+
+
+VIP:
+
+<br>
+
+
+VIP8
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+💰 Số tiền thanh toán
+
+</div>
+
+
+
+<div class="box-text">
+
+
+Số tiền rút:
+
+
+<br>
+
+
+5000 USDT
+
+
+<br><br>
+
+
+Phí:
+
+
+<br>
+
+
+5 USDT
+
+
+<br><br>
+
+
+Thực trả:
+
+
+<br>
+
+
+4995 USDT
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+🏦 Thông tin chuyển
+
+</div>
+
+
+
+<div class="box-text">
+
+
+Phương thức:
+
+
+<br>
+
+
+USDT TRC20
+
+
+<br><br>
+
+
+Địa chỉ:
+
+
+<br>
+
+
+T9xxxxxx
+
+
+<br><br>
+
+
+Kiểm tra:
+
+
+<br>
+
+
+<span class="status status-ok">
+
+OK
+
+</span>
+
+
+</div>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- =============================
+ THAO TÁC NHANH
+============================= -->
+
+
+<div class="card">
+
+
+<div class="card-title">
+
+⚙️ Thao tác xuất tiền
+
+</div>
+
+
+
+
+<div class="card-body">
+
+
+
+<button class="btn success">
+
+✅ Xác nhận đã chuyển
+
+</button>
+
+
+
+<button class="btn primary">
+
+📤 Gửi lại thanh toán
+
+</button>
+
+
+
+<button class="btn danger">
+
+↩ Trả về tài chính
+
+</button>
+
+
+
+<button class="btn">
+
+📝 Thêm ghi chú
+
+</button>
+
+
+
+</div>
+
+
+
+</div>
+<!-- ==================================
+ PHẦN 6
+ 重新代付 - THANH TOÁN LẠI
+================================== -->
+
+
+<div class="card">
+
+
+<div class="card-title">
+
+🔄 Thanh toán lại
+
+</div>
+
+
+
+
+<div class="card-body">
+
+
+
+
+
+
+<!-- SEARCH -->
+
+
+<div style="
+display:flex;
+gap:12px;
+flex-wrap:wrap;
+">
+
+
+
+<input class="input"
+placeholder="🔎 Mã đơn thanh toán">
+
+
+
+<input class="input"
+placeholder="👤 ID hội viên">
+
+
+
+<input class="input"
+placeholder="Mã giao dịch">
+
+
+
+
+
+<select class="input">
+
+
+<option>
+
+Tất cả trạng thái
+
+</option>
+
+
+<option>
+
+Thanh toán thất bại
+
+</option>
+
+
+<option>
+
+Timeout
+
+</option>
+
+
+<option>
+
+Đang retry
+
+</option>
+
+
+<option>
+
+Hoàn tất
+
+</option>
+
+
+</select>
+
+
+
+
+<button class="btn primary">
+
+🔍 Tìm kiếm
+
+</button>
+
+
+
+<button class="btn">
+
+🔄 Reset
+
+</button>
+
+
+
+</div>
+
+
+
+
+
+
+
+<br>
+
+
+
+
+
+
+<!-- TABLE -->
+
+
+<div class="table-box">
+
+
+<table>
+
+
+
+<thead>
+
+
+<tr>
+
+
+<th>
+
+Mã đơn
+
+</th>
+
+
+<th>
+
+ID hội viên
+
+</th>
+
+
+<th>
+
+Tài khoản
+
+</th>
+
+
+<th>
+
+Số tiền
+
+</th>
+
+
+<th>
+
+Kênh cũ
+
+</th>
+
+
+<th>
+
+Lý do lỗi
+
+</th>
+
+
+<th>
+
+Số lần retry
+
+</th>
+
+
+<th>
+
+Trạng thái
+
+</th>
+
+
+<th>
+
+Thao tác
+
+</th>
+
+
+</tr>
+
+
+
+</thead>
+
+
+
+
+
+<tbody>
+
+
+
+
+<tr>
+
+
+<td>
+
+WD20260812020
+
+</td>
+
+
+
+<td>
+
+888888
+
+</td>
+
+
+
+<td>
+
+vip_user01
+
+</td>
+
+
+
+<td>
+
+5000 USDT
+
+</td>
+
+
+
+<td>
+
+USDT TRC20
+
+</td>
+
+
+
+<td>
+
+Callback timeout
+
+</td>
+
+
+
+<td>
+
+2
+
+</td>
+
+
+
+<td>
+
+
+<span class="status status-error">
+
+Thất bại
+
+</span>
+
+
+</td>
+
+
+
+<td>
+
+
+
+<button class="btn primary">
+
+Chi tiết
+
+</button>
+
+
+
+<br><br>
+
+
+<button class="btn success">
+
+Thanh toán lại
+
+</button>
+
+
+
+</td>
+
+
+
+</tr>
+
+
+
+
+
+
+
+
+
+<tr>
+
+
+<td>
+
+WD20260812021
+
+</td>
+
+
+
+<td>
+
+777777
+
+</td>
+
+
+
+<td>
+
+user777
+
+</td>
+
+
+
+<td>
+
+20000000 VND
+
+</td>
+
+
+
+<td>
+
+Bank Pay
+
+</td>
+
+
+
+<td>
+
+Ngân hàng không phản hồi
+
+</td>
+
+
+
+<td>
+
+1
+
+</td>
+
+
+
+<td>
+
+
+<span class="status status-wait">
+
+Đang retry
+
+</span>
+
+
+</td>
+
+
+
+<td>
+
+
+
+<button class="btn primary">
+
+Theo dõi
+
+</button>
+
+
+
+</td>
+
+
+
+</tr>
+
+
+
+
+
+
+</tbody>
+
+
+</table>
+
+
+</div>
+
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- ===============================
+ CHỌN THANH TOÁN LẠI
+=============================== -->
+
+
+<div class="card">
+
+
+<div class="card-title">
+
+⚙️ Cấu hình thanh toán lại
+
+</div>
+
+
+
+
+
+<div class="card-body">
+
+
+
+
+
+<div class="grid-3">
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+📄 Thông tin đơn
+
+</div>
+
+
+
+<div class="box-text">
+
+
+Mã đơn:
+
+
+<br>
+
+
+WD20260812020
+
+
+<br><br>
+
+
+Số tiền:
+
+
+<br>
+
+
+5000 USDT
+
+
+<br><br>
+
+
+Trạng thái:
+
+
+<br>
+
+
+Thất bại
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+🏦 Chọn kênh mới
+
+</div>
+
+
+
+<div class="box-text">
+
+
+Kênh hiện tại:
+
+
+<br>
+
+
+USDT TRC20
+
+
+
+<br><br>
+
+
+
+Chọn lại:
+
+
+<br>
+
+
+
+<select class="input">
+
+
+<option>
+
+USDT TRC20
+
+</option>
+
+
+<option>
+
+USDT ERC20
+
+</option>
+
+
+<option>
+
+Ví khác
+
+</option>
+
+
+
+</select>
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+💰 Phí thanh toán
+
+</div>
+
+
+
+<div class="box-text">
+
+
+Phí cũ:
+
+
+<br>
+
+
+5 USDT
+
+
+<br><br>
+
+
+Phí mới:
+
+
+<br>
+
+
+<input class="input"
+value="5">
+
+
+
+<br><br>
+
+
+Thực nhận:
+
+
+<br>
+
+
+4995 USDT
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+</div>
+
+
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- ===============================
+ LỊCH SỬ RETRY
+=============================== -->
+
+
+<div class="card">
+
+
+<div class="card-title">
+
+📜 Lịch sử thanh toán lại
+
+</div>
+
+
+
+
+
+<div class="card-body">
+
+
+
+<div class="table-box">
+
+
+<table>
+
+
+<thead>
+
+
+<tr>
+
+
+<th>
+
+Lần
+
+</th>
+
+
+<th>
+
+Thời gian
+
+</th>
+
+
+<th>
+
+Kênh
+
+</th>
+
+
+<th>
+
+Kết quả
+
+</th>
+
+
+<th>
+
+Người thao tác
+
+</th>
+
+
+</tr>
+
+
+
+</thead>
+
+
+
+
+
+<tbody>
+
+
+
+<tr>
+
+
+<td>
+
+1
+
+</td>
+
+
+<td>
+
+10:30:20
+
+</td>
+
+
+<td>
+
+USDT TRC20
+
+</td>
+
+
+<td>
+
+
+<span class="status status-error">
+
+Thất bại
+
+</span>
+
+
+</td>
+
+
+<td>
+
+admin01
+
+</td>
+
+
+</tr>
+
+
+
+
+
+
+<tr>
+
+
+<td>
+
+2
+
+</td>
+
+
+<td>
+
+11:05:15
+
+</td>
+
+
+<td>
+
+USDT ERC20
+
+</td>
+
+
+<td>
+
+
+<span class="status status-wait">
+
+Đang xử lý
+
+</span>
+
+
+</td>
+
+
+<td>
+
+admin01
+
+</td>
+
+
+</tr>
+
+
+
+</tbody>
+
+
+
+</table>
+
+
+</div>
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- ===============================
+ ACTION
+=============================== -->
+
+
+<div class="card">
+
+
+<div class="card-title">
+
+⚙️ Thao tác
+
+</div>
+
+
+
+<div class="card-body">
+
+
+
+<button class="btn success">
+
+✅ Xác nhận thanh toán lại
+
+</button>
+
+
+
+<button class="btn primary">
+
+🔄 Kiểm tra trạng thái
+
+</button>
+
+
+
+<button class="btn danger">
+
+❌ Hủy retry
+
+</button>
+
+
+
+</div>
+
+
+</div>
+<!-- ==================================
+ PHẦN 7
+ 回调异常订单 - CALLBACK BẤT THƯỜNG
+================================== -->
+
+
+
+<div class="card">
+
+
+<div class="card-title">
+
+⚠️ Callback bất thường
+
+</div>
+
+
+
+
+
+<div class="card-body">
+
+
+
+
+
+
+<!-- SEARCH -->
+
+
+<div style="
+display:flex;
+gap:12px;
+flex-wrap:wrap;
+">
+
+
+
+<input class="input"
+placeholder="🔎 Mã callback">
+
+
+
+<input class="input"
+placeholder="📄 Mã đơn rút">
+
+
+
+<input class="input"
+placeholder="👤 ID hội viên">
+
+
+
+
+
+
+<select class="input">
+
+
+<option>
+
+Tất cả lỗi
+
+</option>
+
+
+<option>
+
+Sai số tiền
+
+</option>
+
+
+<option>
+
+Callback timeout
+
+</option>
+
+
+<option>
+
+Không tìm thấy đơn
+
+</option>
+
+
+<option>
+
+Sai trạng thái
+
+</option>
+
+
+</select>
+
+
+
+
+<button class="btn primary">
+
+🔍 Tìm kiếm
+
+</button>
+
+
+
+<button class="btn">
+
+🔄 Reset
+
+</button>
+
+
+
+</div>
+
+
+
+
+
+
+<br>
+
+
+
+
+
+
+
+<!-- TABLE -->
+
+
+<div class="table-box">
+
+
+<table>
+
+
+<thead>
+
+
+<tr>
+
+
+
+<th>
+
+Callback ID
+
+</th>
+
+
+
+<th>
+
+Mã đơn rút
+
+</th>
+
+
+
+<th>
+
+ID hội viên
+
+</th>
+
+
+
+<th>
+
+Số tiền yêu cầu
+
+</th>
+
+
+
+<th>
+
+Số tiền callback
+
+</th>
+
+
+
+<th>
+
+Chênh lệch
+
+</th>
+
+
+
+<th>
+
+Ví gửi
+
+</th>
+
+
+
+<th>
+
+Trạng thái
+
+</th>
+
+
+
+<th>
+
+Thao tác
+
+</th>
+
+
+
+</tr>
+
+
+
+</thead>
+
+
+
+
+
+
+<tbody>
+
+
+
+
+<tr>
+
+
+<td>
+
+CB20260812001
+
+</td>
+
+
+
+<td>
+
+WD20260812020
+
+</td>
+
+
+
+<td>
+
+888888
+
+</td>
+
+
+
+<td>
+
+5000 USDT
+
+</td>
+
+
+
+<td>
+
+4800 USDT
+
+</td>
+
+
+
+<td>
+
+-200 USDT
+
+</td>
+
+
+
+<td>
+
+TX88ABC999
+
+</td>
+
+
+
+<td>
+
+
+<span class="status status-error">
+
+Sai số tiền
+
+</span>
+
+
+</td>
+
+
+
+<td>
+
+
+
+<button class="btn primary">
+
+Chi tiết
+
+</button>
+
+
+
+<br><br>
+
+
+
+<button class="btn success">
+
+Xử lý
+
+</button>
+
+
+
+</td>
+
+
+
+</tr>
+
+
+
+
+
+
+
+
+<tr>
+
+
+<td>
+
+CB20260812002
+
+</td>
+
+
+
+<td>
+
+WD20260812025
+
+</td>
+
+
+
+<td>
+
+777777
+
+</td>
+
+
+
+<td>
+
+20000 VND
+
+</td>
+
+
+
+<td>
+
+20000 VND
+
+</td>
+
+
+
+<td>
+
+0
+
+</td>
+
+
+
+<td>
+
+BANK8899
+
+</td>
+
+
+
+<td>
+
+
+<span class="status status-wait">
+
+Callback trễ
+
+</span>
+
+
+</td>
+
+
+
+<td>
+
+
+
+<button class="btn primary">
+
+Kiểm tra
+
+</button>
+
+
+
+</td>
+
+
+
+</tr>
+
+
+
+
+
+
+</tbody>
+
+
+</table>
+
+
+
+</div>
+
+
+
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- ===============================
+ CHI TIẾT CALLBACK
+=============================== -->
+
+
+<div class="card">
+
+
+<div class="card-title">
+
+📄 Chi tiết Callback
+
+</div>
+
+
+
+
+<div class="card-body">
+
+
+
+
+
+<div class="grid-3">
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+📌 Thông tin đơn
+
+</div>
+
+
+
+<div class="box-text">
+
+
+Callback ID:
+
+
+<br>
+
+
+CB20260812001
+
+
+<br><br>
+
+
+Mã đơn:
+
+
+<br>
+
+
+WD20260812020
+
+
+<br><br>
+
+
+ID hội viên:
+
+
+<br>
+
+
+888888
+
+
+<br><br>
+
+
+Tài khoản:
+
+
+<br>
+
+
+vip_user01
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+💰 Đối chiếu tiền
+
+</div>
+
+
+
+<div class="box-text">
+
+
+Số tiền yêu cầu:
+
+
+<br>
+
+
+5000 USDT
+
+
+<br><br>
+
+
+Callback nhận:
+
+
+<br>
+
+
+4800 USDT
+
+
+<br><br>
+
+
+Chênh lệch:
+
+
+<br>
+
+
+<span style="
+color:#ff4d4f;
+font-weight:bold;
+">
+
+-200 USDT
+
+</span>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+🏦 Thông tin giao dịch
+
+</div>
+
+
+
+<div class="box-text">
+
+
+Ví gửi:
+
+
+<br>
+
+
+TX88ABC999
+
+
+<br><br>
+
+
+Ví nhận:
+
+
+<br>
+
+
+USER888
+
+
+<br><br>
+
+
+Kênh:
+
+
+<br>
+
+
+USDT TRC20
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+</div>
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- ===============================
+ XỬ LÝ CALLBACK
+=============================== -->
+
+
+<div class="card">
+
+
+<div class="card-title">
+
+⚙️ Xử lý callback bất thường
+
+</div>
+
+
+
+
+
+<div class="card-body">
+
+
+
+<div class="grid-3">
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+Cách xử lý
+
+</div>
+
+
+
+<select class="input">
+
+
+<option>
+
+Cộng theo callback
+
+</option>
+
+
+<option>
+
+Cộng theo đơn gốc
+
+</option>
+
+
+<option>
+
+Từ chối
+
+</option>
+
+
+<option>
+
+Kiểm tra thủ công
+
+</option>
+
+
+</select>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+Điều chỉnh số tiền
+
+</div>
+
+
+<input class="input"
+placeholder="Nhập số tiền">
+
+
+</div>
+
+
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+Ghi chú
+
+</div>
+
+
+<input class="input"
+placeholder="Lý do xử lý">
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+<br>
+
+
+
+
+<button class="btn success">
+
+✅ Xác nhận xử lý
+
+</button>
+
+
+
+<button class="btn danger">
+
+❌ Đóng đơn
+
+</button>
+
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- ===============================
+ LỊCH SỬ CALLBACK
+=============================== -->
+
+
+<div class="card">
+
+
+<div class="card-title">
+
+📜 Lịch sử Callback
+
+</div>
+
+
+
+
+
+<div class="card-body">
+
+
+<div class="table-box">
+
+
+<table>
+
+
+
+<thead>
+
+
+<tr>
+
+
+<th>
+
+Thời gian
+
+</th>
+
+
+<th>
+
+Người xử lý
+
+</th>
+
+
+<th>
+
+Thao tác
+
+</th>
+
+
+<th>
+
+Kết quả
+
+</th>
+
+
+</tr>
+
+
+</thead>
+
+
+
+
+<tbody>
+
+
+
+<tr>
+
+
+<td>
+
+2026-08-12 11:20
+
+</td>
+
+
+<td>
+
+admin01
+
+</td>
+
+
+<td>
+
+Kiểm tra giao dịch
+
+</td>
+
+
+<td>
+
+
+<span class="status status-wait">
+
+Chờ xử lý
+
+</span>
+
+
+</td>
+
+
+</tr>
+
+
+
+
+
+<tr>
+
+
+<td>
+
+2026-08-12 11:35
+
+</td>
+
+
+<td>
+
+admin02
+
+</td>
+
+
+<td>
+
+Điều chỉnh số tiền
+
+</td>
+
+
+<td>
+
+
+<span class="status status-ok">
+
+Hoàn tất
+
+</span>
+
+
+</td>
+
+
+</tr>
+
+
+
+</tbody>
+
+
+
+</table>
+
+
+</div>
+
+
+
+</div>
+
+
+</div>
+<!-- ==================================
+ PHẦN 8
+ 免审出款 - XUẤT TIỀN MIỄN DUYỆT
+================================== -->
+
+
+
+<div class="card">
+
+
+<div class="card-title">
+
+🚀 Xuất tiền miễn duyệt
+
+</div>
+
+
+
+
+
+<div class="card-body">
+
+
+
+
+
+
+<!-- SEARCH -->
+
+
+<div style="
+display:flex;
+gap:12px;
+flex-wrap:wrap;
+">
+
+
+
+<input class="input"
+placeholder="🔎 ID hội viên">
+
+
+
+<input class="input"
+placeholder="👤 Tài khoản">
+
+
+
+<input class="input"
+placeholder="VIP">
+
+
+
+
+
+<select class="input">
+
+
+<option>
+
+Tất cả trạng thái
+
+</option>
+
+
+<option>
+
+Đang bật
+
+</option>
+
+
+<option>
+
+Đã tắt
+
+</option>
+
+
+</select>
+
+
+
+
+
+<button class="btn primary">
+
+🔍 Tìm kiếm
+
+</button>
+
+
+
+<button class="btn">
+
+🔄 Làm mới
+
+</button>
+
+
+
+<button class="btn success">
+
+➕ Thêm miễn duyệt
+
+</button>
+
+
+
+</div>
+
+
+
+
+
+
+<br>
+
+
+
+
+
+
+<!-- TABLE -->
+
+
+<div class="table-box">
+
+
+<table>
+
+
+
+<thead>
+
+
+<tr>
+
+
+<th>
+
+ID hội viên
+
+</th>
+
+
+<th>
+
+Tài khoản
+
+</th>
+
+
+<th>
+
+VIP
+
+</th>
+
+
+<th>
+
+Loại tiền
+
+</th>
+
+
+<th>
+
+Hạn mức/lần
+
+</th>
+
+
+<th>
+
+Số lần/ngày
+
+</th>
+
+
+<th>
+
+Điều kiện
+
+</th>
+
+
+<th>
+
+Trạng thái
+
+</th>
+
+
+<th>
+
+Thao tác
+
+</th>
+
+
+
+</tr>
+
+
+
+</thead>
+
+
+
+
+
+
+<tbody>
+
+
+
+
+<tr>
+
+
+<td>
+
+888888
+
+</td>
+
+
+
+<td>
+
+vip_user01
+
+</td>
+
+
+
+<td>
+
+VIP8
+
+</td>
+
+
+
+<td>
+
+USDT
+
+</td>
+
+
+
+<td>
+
+10000
+
+</td>
+
+
+
+<td>
+
+5
+
+</td>
+
+
+
+<td>
+
+VIP cao + xác minh đầy đủ
+
+</td>
+
+
+
+<td>
+
+
+<span class="status status-ok">
+
+Đang bật
+
+</span>
+
+
+</td>
+
+
+
+<td>
+
+
+
+<button class="btn primary">
+
+Sửa
+
+</button>
+
+
+
+<br><br>
+
+
+
+<button class="btn danger">
+
+Tắt
+
+</button>
+
+
+
+</td>
+
+
+
+</tr>
+
+
+
+
+
+
+
+
+
+<tr>
+
+
+<td>
+
+999999
+
+</td>
+
+
+
+<td>
+
+agent888
+
+</td>
+
+
+
+<td>
+
+VIP10
+
+</td>
+
+
+
+<td>
+
+VND
+
+</td>
+
+
+
+<td>
+
+50000000
+
+</td>
+
+
+
+<td>
+
+3
+
+</td>
+
+
+
+<td>
+
+Tài khoản tin cậy
+
+</td>
+
+
+
+<td>
+
+
+<span class="status status-ok">
+
+Đang bật
+
+</span>
+
+
+</td>
+
+
+
+<td>
+
+
+
+<button class="btn primary">
+
+Chi tiết
+
+</button>
+
+
+
+</td>
+
+
+
+</tr>
+
+
+
+
+
+
+</tbody>
+
+
+
+</table>
+
+
+
+</div>
+
+
+
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- ===============================
+ CẤU HÌNH MIỄN DUYỆT
+=============================== -->
+
+
+<div class="card">
+
+
+<div class="card-title">
+
+⚙️ Cấu hình xuất tiền miễn duyệt
+
+</div>
+
+
+
+
+
+<div class="card-body">
+
+
+
+
+
+<div class="grid-3">
+
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+👤 Hội viên áp dụng
+
+</div>
+
+
+
+<div class="box-text">
+
+
+ID hội viên:
+
+
+<br>
+
+
+<input class="input"
+value="888888">
+
+
+<br><br>
+
+
+Tài khoản:
+
+
+<br>
+
+
+<input class="input"
+value="vip_user01">
+
+
+<br><br>
+
+
+VIP:
+
+
+<br>
+
+
+<select class="input">
+
+
+<option>
+
+VIP8
+
+</option>
+
+
+<option>
+
+VIP10
+
+</option>
+
+
+</select>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+💰 Hạn mức rút
+
+</div>
+
+
+
+<div class="box-text">
+
+
+Thấp nhất:
+
+
+<br>
+
+
+<input class="input"
+value="100">
+
+
+<br><br>
+
+
+Cao nhất:
+
+
+<br>
+
+
+<input class="input"
+value="10000">
+
+
+<br><br>
+
+
+Số lần/ngày:
+
+
+<br>
+
+
+<input class="input"
+value="5">
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+🔐 Điều kiện kiểm tra
+
+</div>
+
+
+
+<div class="box-text">
+
+
+Xác minh KYC:
+
+
+<br>
+
+
+<select class="input">
+
+
+<option>
+
+Bắt buộc
+
+</option>
+
+
+<option>
+
+Không bắt buộc
+
+</option>
+
+
+</select>
+
+
+
+<br><br>
+
+
+Thiết bị:
+
+
+<br>
+
+
+<select class="input">
+
+
+<option>
+
+Thiết bị tin cậy
+
+</option>
+
+
+<option>
+
+Tất cả
+
+</option>
+
+
+</select>
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+</div>
+
+
+
+
+
+<br>
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+📝 Ghi chú cấu hình
+
+</div>
+
+
+
+<textarea
+
+style="
+width:100%;
+height:90px;
+border-radius:10px;
+border:1px solid #ddd;
+padding:12px;
+"
+
+placeholder="
+Nhập lý do thêm miễn duyệt
+">
+
+</textarea>
+
+
+
+</div>
+
+
+
+
+
+<br>
+
+
+
+
+<button class="btn success">
+
+✅ Lưu cấu hình
+
+</button>
+
+
+
+
+<button class="btn danger">
+
+❌ Hủy
+
+</button>
+
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- ===============================
+ LỊCH SỬ MIỄN DUYỆT
+=============================== -->
+
+
+<div class="card">
+
+
+<div class="card-title">
+
+📜 Lịch sử xuất tiền miễn duyệt
+
+</div>
+
+
+
+
+
+<div class="card-body">
+
+
+
+<div class="table-box">
+
+
+<table>
+
+
+<thead>
+
+
+<tr>
+
+
+<th>
+
+Mã đơn
+
+</th>
+
+
+<th>
+
+Hội viên
+
+</th>
+
+
+<th>
+
+Số tiền
+
+</th>
+
+
+<th>
+
+Thời gian
+
+</th>
+
+
+<th>
+
+Kết quả
+
+</th>
+
+
+<th>
+
+Người xử lý
+
+</th>
+
+
+
+</tr>
+
+
+</thead>
+
+
+
+
+<tbody>
+
+
+
+<tr>
+
+
+<td>
+
+WD20260812030
+
+</td>
+
+
+<td>
+
+vip_user01
+
+</td>
+
+
+<td>
+
+5000 USDT
+
+</td>
+
+
+<td>
+
+2026-08-12 12:00
+
+</td>
+
+
+<td>
+
+
+<span class="status status-ok">
+
+Thành công
+
+</span>
+
+
+</td>
+
+
+<td>
+
+SYSTEM
+
+</td>
+
+
+</tr>
+
+
+
+
+
+
+<tr>
+
+
+<td>
+
+WD20260812031
+
+</td>
+
+
+<td>
+
+agent888
+
+</td>
+
+
+<td>
+
+20000000 VND
+
+</td>
+
+
+<td>
+
+2026-08-12 12:20
+
+</td>
+
+
+<td>
+
+
+<span class="status status-wait">
+
+Đang xử lý
+
+</span>
+
+
+</td>
+
+
+<td>
+
+admin01
+
+</td>
+
+
+</tr>
+
+
+
+</tbody>
+
+
+
+</table>
+
+
+</div>
+
+
+
+</div>
+
+
+</div>
+<!-- ==================================
+ PHẦN 9
+ 提现转充值 - CHUYỂN RÚT TIỀN THÀNH NẠP TIỀN
+================================== -->
+
+
+
+<div class="card">
+
+
+<div class="card-title">
+
+↔️ Chuyển rút tiền thành nạp tiền
+
+</div>
+
+
+
+
+
+<div class="card-body">
+
+
+
+
+
+
+<!-- SEARCH -->
+
+
+<div style="
+display:flex;
+gap:12px;
+flex-wrap:wrap;
+">
+
+
+
+<input class="input"
+placeholder="🔎 Mã đơn rút">
+
+
+
+<input class="input"
+placeholder="👤 ID hội viên">
+
+
+
+<input class="input"
+placeholder="Tài khoản">
+
+
+
+
+
+<select class="input">
+
+
+<option>
+
+Tất cả trạng thái
+
+</option>
+
+
+<option>
+
+Chờ chuyển
+
+</option>
+
+
+<option>
+
+Đã chuyển nạp
+
+</option>
+
+
+<option>
+
+Thất bại
+
+</option>
+
+
+</select>
+
+
+
+
+
+<button class="btn primary">
+
+🔍 Tìm kiếm
+
+</button>
+
+
+
+<button class="btn">
+
+🔄 Làm mới
+
+</button>
+
+
+
+</div>
+
+
+
+
+
+
+
+<br>
+
+
+
+
+
+
+<!-- TABLE -->
+
+
+<div class="table-box">
+
+
+<table>
+
+
+
+<thead>
+
+
+<tr>
+
+
+<th>
+
+Mã rút tiền
+
+</th>
+
+
+<th>
+
+ID hội viên
+
+</th>
+
+
+<th>
+
+Tài khoản
+
+</th>
+
+
+<th>
+
+Loại tiền
+
+</th>
+
+
+<th>
+
+Số tiền rút
+
+</th>
+
+
+<th>
+
+Đơn nạp tạo mới
+
+</th>
+
+
+<th>
+
+Lý do chuyển
+
+</th>
+
+
+<th>
+
+Người thao tác
+
+</th>
+
+
+<th>
+
+Trạng thái
+
+</th>
+
+
+<th>
+
+Thao tác
+
+</th>
+
+
+
+</tr>
+
+
+</thead>
+
+
+
+
+
+
+<tbody>
+
+
+
+
+<tr>
+
+
+
+<td>
+
+WD20260812040
+
+</td>
+
+
+
+<td>
+
+888888
+
+</td>
+
+
+
+<td>
+
+vip_user01
+
+</td>
+
+
+
+<td>
+
+USDT
+
+</td>
+
+
+
+<td>
+
+5000
+
+</td>
+
+
+
+<td>
+
+DEP20260812001
+
+</td>
+
+
+
+<td>
+
+Khách yêu cầu giữ tiền trong ví
+
+</td>
+
+
+
+<td>
+
+admin01
+
+</td>
+
+
+
+<td>
+
+
+<span class="status status-ok">
+
+Đã chuyển
+
+</span>
+
+
+</td>
+
+
+
+<td>
+
+
+
+<button class="btn primary">
+
+Chi tiết
+
+</button>
+
+
+<br><br>
+
+
+<button class="btn">
+
+查看充值单
+
+</button>
+
+
+
+</td>
+
+
+
+</tr>
+
+
+
+
+
+
+
+
+
+<tr>
+
+
+
+<td>
+
+WD20260812041
+
+</td>
+
+
+
+<td>
+
+777777
+
+</td>
+
+
+
+<td>
+
+user777
+
+</td>
+
+
+
+<td>
+
+VND
+
+</td>
+
+
+
+<td>
+
+20000000
+
+</td>
+
+
+
+<td>
+
+-
+
+</td>
+
+
+
+<td>
+
+Hủy xuất tiền chuyển lại số dư
+
+</td>
+
+
+
+<td>
+
+admin02
+
+</td>
+
+
+
+<td>
+
+
+<span class="status status-wait">
+
+Chờ xử lý
+
+</span>
+
+
+</td>
+
+
+
+<td>
+
+
+
+<button class="btn success">
+
+Xử lý
+
+</button>
+
+
+
+</td>
+
+
+
+</tr>
+
+
+
+
+
+
+</tbody>
+
+
+
+</table>
+
+
+
+</div>
+
+
+
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- ===============================
+ TẠO ĐƠN NẠP TƯƠNG ỨNG
+=============================== -->
+
+
+<div class="card">
+
+
+<div class="card-title">
+
+➕ Tạo đơn nạp tương ứng
+
+</div>
+
+
+
+
+
+<div class="card-body">
+
+
+
+
+
+<div class="grid-3">
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+📄 Đơn rút gốc
+
+</div>
+
+
+
+<div class="box-text">
+
+
+Mã rút:
+
+
+<br>
+
+
+WD20260812040
+
+
+<br><br>
+
+
+Hội viên:
+
+
+<br>
+
+
+888888
+
+
+<br><br>
+
+
+Tài khoản:
+
+
+<br>
+
+
+vip_user01
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+💰 Thông tin chuyển
+
+</div>
+
+
+
+<div class="box-text">
+
+
+Loại tiền:
+
+
+<br>
+
+
+USDT
+
+
+<br><br>
+
+
+Số tiền:
+
+
+<br>
+
+
+5000
+
+
+<br><br>
+
+
+Tỷ giá:
+
+
+<br>
+
+
+1:1
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+📝 Lý do
+
+</div>
+
+
+
+<div class="box-text">
+
+
+<select class="input">
+
+
+<option>
+
+Khách yêu cầu chuyển nạp
+
+</option>
+
+
+<option>
+
+Hủy giao dịch rút
+
+</option>
+
+
+<option>
+
+Điều chỉnh tài chính
+
+</option>
+
+
+</select>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+<br>
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+Ghi chú chuyển đổi
+
+</div>
+
+
+
+<textarea
+
+style="
+width:100%;
+height:90px;
+border-radius:10px;
+border:1px solid #ddd;
+padding:12px;
+"
+
+placeholder="
+Nhập nội dung ghi chú
+">
+
+</textarea>
+
+
+
+</div>
+
+
+
+
+
+
+<br>
+
+
+
+
+
+<button class="btn success">
+
+✅ Xác nhận chuyển thành nạp
+
+</button>
+
+
+
+<button class="btn danger">
+
+❌ Hủy thao tác
+
+</button>
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- ===============================
+ LỊCH SỬ CHUYỂN ĐỔI
+=============================== -->
+
+
+<div class="card">
+
+
+<div class="card-title">
+
+📜 Lịch sử chuyển đổi
+
+</div>
+
+
+
+
+<div class="card-body">
+
+
+
+<div class="table-box">
+
+
+<table>
+
+
+
+<thead>
+
+
+<tr>
+
+
+<th>
+
+Thời gian
+
+</th>
+
+
+<th>
+
+Mã rút
+
+</th>
+
+
+<th>
+
+Mã nạp
+
+</th>
+
+
+<th>
+
+Số tiền
+
+</th>
+
+
+<th>
+
+Người xử lý
+
+</th>
+
+
+<th>
+
+Kết quả
+
+</th>
+
+
+
+</tr>
+
+
+</thead>
+
+
+
+
+
+<tbody>
+
+
+
+<tr>
+
+
+<td>
+
+2026-08-12 13:20
+
+</td>
+
+
+<td>
+
+WD20260812040
+
+</td>
+
+
+<td>
+
+DEP20260812001
+
+</td>
+
+
+<td>
+
+5000 USDT
+
+</td>
+
+
+<td>
+
+admin01
+
+</td>
+
+
+<td>
+
+
+<span class="status status-ok">
+
+Hoàn tất
+
+</span>
+
+
+</td>
+
+
+</tr>
+
+
+
+</tbody>
+
+
+
+</table>
+
+
+</div>
+
+
+
+</div>
+
+
+</div>
+<!-- ==================================
+ PHẦN 10
+ 大额提现 - RÚT TIỀN LỚN
+================================== -->
+
+
+
+<div class="card">
+
+
+<div class="card-title">
+
+💎 Rút tiền lớn
+
+</div>
+
+
+
+
+
+<div class="card-body">
+
+
+
+
+
+<!-- SEARCH -->
+
+
+<div style="
+display:flex;
+gap:12px;
+flex-wrap:wrap;
+">
+
+
+
+<input class="input"
+placeholder="🔎 Mã đơn">
+
+
+
+<input class="input"
+placeholder="👤 ID hội viên">
+
+
+
+<input class="input"
+placeholder="VIP">
+
+
+
+
+
+
+<select class="input">
+
+
+<option>
+
+Tất cả mức tiền
+
+</option>
+
+
+<option>
+
+> 10,000
+
+</option>
+
+
+<option>
+
+> 50,000
+
+</option>
+
+
+<option>
+
+> 100,000
+
+</option>
+
+
+</select>
+
+
+
+
+
+
+
+<select class="input">
+
+
+<option>
+
+Tất cả trạng thái
+
+</option>
+
+
+<option>
+
+Chờ kiểm tra
+
+</option>
+
+
+<option>
+
+Đã duyệt
+
+</option>
+
+
+<option>
+
+Từ chối
+
+</option>
+
+
+</select>
+
+
+
+
+
+<button class="btn primary">
+
+🔍 Tìm kiếm
+
+</button>
+
+
+
+
+<button class="btn">
+
+🔄 Reset
+
+</button>
+
+
+
+</div>
+
+
+
+
+
+
+
+<br>
+
+
+
+
+
+
+<!-- TABLE -->
+
+
+<div class="table-box">
+
+
+<table>
+
+
+
+<thead>
+
+
+<tr>
+
+
+
+<th>
+
+Mã đơn
+
+</th>
+
+
+
+<th>
+
+ID hội viên
+
+</th>
+
+
+
+<th>
+
+Tài khoản
+
+</th>
+
+
+
+<th>
+
+VIP
+
+</th>
+
+
+
+<th>
+
+Loại tiền
+
+</th>
+
+
+
+<th>
+
+Số tiền rút
+
+</th>
+
+
+
+<th>
+
+Phương thức
+
+</th>
+
+
+
+<th>
+
+Mức cảnh báo
+
+</th>
+
+
+
+<th>
+
+Người duyệt
+
+</th>
+
+
+
+<th>
+
+Trạng thái
+
+</th>
+
+
+
+<th>
+
+Thao tác
+
+</th>
+
+
+
+</tr>
+
+
+</thead>
+
+
+
+
+
+<tbody>
+
+
+
+
+
+<tr>
+
+
+<td>
+
+WD20260812050
+
+</td>
+
+
+
+<td>
+
+888888
+
+</td>
+
+
+
+<td>
+
+vip_user01
+
+</td>
+
+
+
+<td>
+
+VIP10
+
+</td>
+
+
+
+<td>
+
+USDT
+
+</td>
+
+
+
+<td>
+
+100000
+
+</td>
+
+
+
+<td>
+
+USDT TRC20
+
+</td>
+
+
+
+<td>
+
+
+
+<span style="
+color:#ff4d4f;
+font-weight:bold;
+">
+
+Cao
+
+</span>
+
+
+
+</td>
+
+
+
+<td>
+
+Chưa phân công
+
+</td>
+
+
+
+<td>
+
+
+<span class="status status-wait">
+
+Chờ duyệt
+
+</span>
+
+
+</td>
+
+
+
+<td>
+
+
+
+<button class="btn primary">
+
+Chi tiết
+
+</button>
+
+
+
+<br><br>
+
+
+
+<button class="btn success">
+
+Duyệt
+
+</button>
+
+
+
+<br><br>
+
+
+
+<button class="btn danger">
+
+Từ chối
+
+</button>
+
+
+
+</td>
+
+
+
+</tr>
+
+
+
+
+
+
+
+
+
+<tr>
+
+
+<td>
+
+WD20260812051
+
+</td>
+
+
+
+<td>
+
+999999
+
+</td>
+
+
+
+<td>
+
+agent888
+
+</td>
+
+
+
+<td>
+
+VIP10
+
+</td>
+
+
+
+<td>
+
+VND
+
+</td>
+
+
+
+<td>
+
+500000000
+
+</td>
+
+
+
+<td>
+
+Ngân hàng
+
+</td>
+
+
+
+<td>
+
+
+<span style="
+color:#fa8c16;
+font-weight:bold;
+">
+
+Cần kiểm tra
+
+</span>
+
+
+</td>
+
+
+
+<td>
+
+admin02
+
+</td>
+
+
+
+<td>
+
+
+<span class="status status-wait">
+
+Đang kiểm tra
+
+</span>
+
+
+</td>
+
+
+
+<td>
+
+
+
+<button class="btn primary">
+
+Xem
+
+</button>
+
+
+
+</td>
+
+
+
+</tr>
+
+
+
+
+
+</tbody>
+
+
+</table>
+
+
+
+</div>
+
+
+
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- ===============================
+ CHI TIẾT RÚT TIỀN LỚN
+=============================== -->
+
+
+<div class="card">
+
+
+<div class="card-title">
+
+📄 Chi tiết đơn rút lớn
+
+</div>
+
+
+
+
+<div class="card-body">
+
+
+
+
+
+<div class="grid-3">
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+👤 Thông tin hội viên
+
+</div>
+
+
+
+<div class="box-text">
+
+
+ID:
+
+
+<br>
+
+
+888888
+
+
+<br><br>
+
+
+Tài khoản:
+
+
+<br>
+
+
+vip_user01
+
+
+<br><br>
+
+
+VIP:
+
+
+<br>
+
+
+VIP10
+
+
+<br><br>
+
+
+Cấp độ:
+
+
+<br>
+
+
+Khách hàng cao cấp
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+💰 Thông tin tiền
+
+</div>
+
+
+
+<div class="box-text">
+
+
+Số tiền rút:
+
+
+<br>
+
+
+100000 USDT
+
+
+<br><br>
+
+
+Phí:
+
+
+<br>
+
+
+100 USDT
+
+
+<br><br>
+
+
+Thực nhận:
+
+
+<br>
+
+
+99900 USDT
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+🔍 Kiểm tra rủi ro
+
+</div>
+
+
+
+<div class="box-text">
+
+
+Điểm rủi ro:
+
+
+<br>
+
+
+85
+
+
+<br><br>
+
+
+Lịch sử nạp:
+
+
+<br>
+
+
+Tốt
+
+
+<br><br>
+
+
+Trạng thái KYC:
+
+
+<br>
+
+
+<span class="status status-ok">
+
+Đã xác minh
+
+</span>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- ===============================
+ PHÊ DUYỆT ĐƠN LỚN
+=============================== -->
+
+
+<div class="card">
+
+
+<div class="card-title">
+
+⚙️ Quy trình duyệt rút tiền lớn
+
+</div>
+
+
+
+
+<div class="card-body">
+
+
+
+
+
+<div class="grid-3">
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+Bước 1
+
+</div>
+
+
+
+<div class="box-text">
+
+
+Kiểm tra thông tin hội viên
+
+
+<br>
+
+
+✔ Hoàn thành
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+Bước 2
+
+</div>
+
+
+
+<div class="box-text">
+
+
+Kiểm tra nguồn tiền
+
+
+<br>
+
+
+✔ Hoàn thành
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+Bước 3
+
+</div>
+
+
+
+<div class="box-text">
+
+
+Phê duyệt tài chính
+
+
+<br>
+
+
+⏳ Chờ xử lý
+
+
+</div>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+<br>
+
+
+
+
+
+<button class="btn success">
+
+✅ Đồng ý xuất tiền
+
+</button>
+
+
+
+<button class="btn danger">
+
+❌ Không duyệt
+
+</button>
+
+
+
+<button class="btn primary">
+
+📝 Thêm ghi chú
+
+</button>
+
+
+
+
+</div>
+
+
+</div>
+<!-- ==================================
+ PHẦN 11
+ 全部提现 - TẤT CẢ ĐƠN RÚT TIỀN
+================================== -->
+
+
+
+<div class="card">
+
+
+<div class="card-title">
+
+📋 Tất cả đơn rút tiền
+
+</div>
+
+
+
+
+
+<div class="card-body">
+
+
+
+
+
+
+<!-- SEARCH ADVANCED -->
+
+
+<div style="
+display:flex;
+gap:12px;
+flex-wrap:wrap;
+">
+
+
+
+<input class="input"
+placeholder="🔎 Mã đơn rút">
+
+
+
+<input class="input"
+placeholder="👤 ID hội viên">
+
+
+
+<input class="input"
+placeholder="🎮 Tài khoản">
+
+
+
+<input class="input"
+placeholder="🏦 Ngân hàng / Ví">
+
+
+
+
+
+
+<select class="input">
+
+
+<option>
+
+Tất cả VIP
+
+</option>
+
+
+<option>
+
+VIP1
+
+</option>
+
+
+<option>
+
+VIP5
+
+</option>
+
+
+<option>
+
+VIP10
+
+</option>
+
+
+</select>
+
+
+
+
+
+
+<select class="input">
+
+
+<option>
+
+Tất cả loại tiền
+
+</option>
+
+
+<option>
+
+USDT
+
+</option>
+
+
+<option>
+
+VND
+
+</option>
+
+
+<option>
+
+CNY
+
+</option>
+
+
+
+</select>
+
+
+
+
+
+
+
+<select class="input">
+
+
+<option>
+
+Tất cả trạng thái
+
+</option>
+
+
+<option>
+
+Chờ duyệt
+
+</option>
+
+
+<option>
+
+Đang thanh toán
+
+</option>
+
+
+<option>
+
+Thành công
+
+</option>
+
+
+<option>
+
+Thất bại
+
+</option>
+
+
+<option>
+
+Đã hủy
+
+</option>
+
+
+
+</select>
+
+
+
+
+
+
+
+<button class="btn primary">
+
+🔍 Tìm kiếm
+
+</button>
+
+
+
+<button class="btn">
+
+🔄 Reset
+
+</button>
+
+
+
+<button class="btn success">
+
+📥 Xuất Excel
+
+</button>
+
+
+
+</div>
+
+
+
+
+
+
+<br>
+
+
+
+
+
+
+
+<!-- TABLE -->
+
+
+<div class="table-box">
+
+
+<table>
+
+
+
+<thead>
+
+
+<tr>
+
+
+<th>
+
+Mã đơn
+
+</th>
+
+
+<th>
+
+ID hội viên
+
+</th>
+
+
+<th>
+
+Tài khoản
+
+</th>
+
+
+<th>
+
+VIP
+
+</th>
+
+
+<th>
+
+Thời gian tạo
+
+</th>
+
+
+<th>
+
+Loại tiền
+
+</th>
+
+
+<th>
+
+Số tiền rút
+
+</th>
+
+
+<th>
+
+Phí
+
+</th>
+
+
+<th>
+
+Thực nhận
+
+</th>
+
+
+<th>
+
+Phương thức
+
+</th>
+
+
+<th>
+
+Trạng thái
+
+</th>
+
+
+<th>
+
+Người xử lý
+
+</th>
+
+
+<th>
+
+Thao tác
+
+</th>
+
+
+
+</tr>
+
+
+
+</thead>
+
+
+
+
+
+
+<tbody>
+
+
+
+
+
+<tr>
+
+
+<td>
+
+WD20260812001
+
+</td>
+
+
+
+<td>
+
+888888
+
+</td>
+
+
+
+<td>
+
+vip_user01
+
+</td>
+
+
+
+<td>
+
+VIP8
+
+</td>
+
+
+
+<td>
+
+2026-08-12
+10:20
+
+</td>
+
+
+
+<td>
+
+USDT
+
+</td>
+
+
+
+<td>
+
+5000
+
+</td>
+
+
+
+<td>
+
+5
+
+</td>
+
+
+
+<td>
+
+4995
+
+</td>
+
+
+
+<td>
+
+USDT TRC20
+
+</td>
+
+
+
+<td>
+
+
+<span class="status status-ok">
+
+Thành công
+
+</span>
+
+
+</td>
+
+
+
+<td>
+
+admin01
+
+</td>
+
+
+
+<td>
+
+
+
+<button class="btn primary">
+
+Chi tiết
+
+</button>
+
+
+
+</td>
+
+
+
+</tr>
+
+
+
+
+
+
+
+
+
+<tr>
+
+
+<td>
+
+WD20260812002
+
+</td>
+
+
+
+<td>
+
+777777
+
+</td>
+
+
+
+<td>
+
+user777
+
+</td>
+
+
+
+<td>
+
+VIP6
+
+</td>
+
+
+
+<td>
+
+2026-08-12
+11:00
+
+</td>
+
+
+
+<td>
+
+VND
+
+</td>
+
+
+
+<td>
+
+30000000
+
+</td>
+
+
+
+<td>
+
+50000
+
+</td>
+
+
+
+<td>
+
+29950000
+
+</td>
+
+
+
+<td>
+
+Ngân hàng
+
+</td>
+
+
+
+<td>
+
+
+<span class="status status-wait">
+
+Đang xử lý
+
+</span>
+
+
+</td>
+
+
+
+<td>
+
+admin02
+
+</td>
+
+
+
+<td>
+
+
+
+<button class="btn primary">
+
+Chi tiết
+
+</button>
+
+
+
+</td>
+
+
+
+</tr>
+
+
+
+
+
+
+
+
+
+<tr>
+
+
+<td>
+
+WD20260812003
+
+</td>
+
+
+
+<td>
+
+666666
+
+</td>
+
+
+
+<td>
+
+test888
+
+</td>
+
+
+
+<td>
+
+VIP5
+
+</td>
+
+
+
+<td>
+
+2026-08-12
+12:00
+
+</td>
+
+
+
+<td>
+
+USDT
+
+</td>
+
+
+
+<td>
+
+2000
+
+</td>
+
+
+
+<td>
+
+2
+
+</td>
+
+
+
+<td>
+
+1998
+
+</td>
+
+
+
+<td>
+
+TRC20
+
+</td>
+
+
+
+<td>
+
+
+<span class="status status-error">
+
+Thất bại
+
+</span>
+
+
+</td>
+
+
+
+<td>
+
+admin03
+
+</td>
+
+
+
+<td>
+
+
+
+<button class="btn primary">
+
+Xem lỗi
+
+</button>
+
+
+
+</td>
+
+
+
+</tr>
+
+
+
+
+</tbody>
+
+
+
+</table>
+
+
+
+</div>
+
+
+
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- ===============================
+ THỐNG KÊ TỔNG QUAN
+=============================== -->
+
+
+<div class="card">
+
+
+<div class="card-title">
+
+📊 Tổng quan rút tiền
+
+</div>
+
+
+
+
+
+<div class="card-body">
+
+
+
+
+
+<div class="grid-3">
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+📄 Tổng đơn hôm nay
+
+</div>
+
+
+
+<div class="box-text">
+
+
+<h2 style="
+color:#1677ff;
+">
+
+3580
+
+</h2>
+
+
+Đơn rút phát sinh
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+💰 Tổng tiền rút
+
+</div>
+
+
+
+<div class="box-text">
+
+
+<h2 style="
+color:#fa8c16;
+">
+
+58,800,000
+
+</h2>
+
+
+Tổng giá trị giao dịch
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+✅ Thành công
+
+</div>
+
+
+
+<div class="box-text">
+
+
+<h2 style="
+color:#13c2c2;
+">
+
+97.8%
+
+</h2>
+
+
+Tỷ lệ hoàn tất
+
+
+</div>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- ===============================
+ CHI TIẾT LỊCH SỬ
+=============================== -->
+
+
+<div class="card">
+
+
+<div class="card-title">
+
+📜 Lịch sử thao tác đơn
+
+</div>
+
+
+
+
+
+<div class="card-body">
+
+
+
+<div class="table-box">
+
+
+<table>
+
+
+
+<thead>
+
+
+<tr>
+
+
+<th>
+
+Thời gian
+
+</th>
+
+
+<th>
+
+Người thao tác
+
+</th>
+
+
+<th>
+
+Nội dung
+
+</th>
+
+
+<th>
+
+Kết quả
+
+</th>
+
+
+
+</tr>
+
+
+
+</thead>
+
+
+
+
+
+
+<tbody>
+
+
+
+<tr>
+
+
+<td>
+
+10:20
+
+</td>
+
+
+<td>
+
+admin01
+
+</td>
+
+
+<td>
+
+Duyệt rút tiền
+
+</td>
+
+
+<td>
+
+
+<span class="status status-ok">
+
+Hoàn tất
+
+</span>
+
+
+</td>
+
+
+</tr>
+
+
+
+
+
+<tr>
+
+
+<td>
+
+10:25
+
+</td>
+
+
+<td>
+
+system
+
+</td>
+
+
+<td>
+
+Gửi thanh toán
+
+</td>
+
+
+<td>
+
+
+<span class="status status-ok">
+
+Thành công
+
+</span>
+
+
+</td>
+
+
+</tr>
+
+
+
+
+</tbody>
+
+
+
+</table>
+
+
+</div>
+
+
+
+</div>
+
+
+</div>
+<!-- ==================================
+ PHẦN 12
+ 提现设置 - CÀI ĐẶT RÚT TIỀN
+================================== -->
+
+
+
+<div class="card">
+
+
+<div class="card-title">
+
+⚙️ Cài đặt rút tiền
+
+</div>
+
+
+
+
+
+<div class="card-body">
+
+
+
+
+
+<!-- ===========================
+ CẤU HÌNH CƠ BẢN
+=========================== -->
+
+
+<div class="grid-3">
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+💰 Hạn mức rút tiền
+
+</div>
+
+
+
+<div class="box-text">
+
+
+Số tiền tối thiểu:
+
+
+<br>
+
+
+<input class="input"
+value="100">
+
+
+
+<br><br>
+
+
+Số tiền tối đa:
+
+
+<br>
+
+
+<input class="input"
+value="100000">
+
+
+
+<br><br>
+
+
+Giới hạn mỗi ngày:
+
+
+<br>
+
+
+<input class="input"
+value="500000">
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+💸 Phí rút tiền
+
+</div>
+
+
+
+<div class="box-text">
+
+
+Loại phí:
+
+
+<br>
+
+
+<select class="input">
+
+
+<option>
+
+Theo phần trăm
+
+</option>
+
+
+<option>
+
+Theo số tiền cố định
+
+</option>
+
+
+</select>
+
+
+
+<br><br>
+
+
+Tỷ lệ phí:
+
+
+<br>
+
+
+<input class="input"
+value="1%">
+
+
+
+<br><br>
+
+
+Phí tối thiểu:
+
+
+<br>
+
+
+<input class="input"
+value="1">
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+💎 Điều kiện VIP
+
+</div>
+
+
+
+<div class="box-text">
+
+
+VIP thấp nhất:
+
+
+<br>
+
+
+<select class="input">
+
+
+<option>
+
+VIP1
+
+</option>
+
+
+<option>
+
+VIP5
+
+</option>
+
+
+<option>
+
+VIP10
+
+</option>
+
+
+</select>
+
+
+
+
+<br><br>
+
+
+VIP đặc biệt:
+
+
+<br>
+
+
+<input class="input"
+placeholder="VIP miễn phí">
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+</div>
+
+
+
+
+
+
+<br>
+
+
+
+
+
+
+
+<!-- ===========================
+ LOẠI TIỀN
+=========================== -->
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+💱 Cấu hình loại tiền rút
+
+</div>
+
+
+
+
+<div class="table-box">
+
+
+<table>
+
+
+<thead>
+
+
+<tr>
+
+
+<th>
+
+Loại tiền
+
+</th>
+
+
+<th>
+
+Trạng thái
+
+</th>
+
+
+<th>
+
+Giới hạn thấp nhất
+
+</th>
+
+
+<th>
+
+Giới hạn cao nhất
+
+</th>
+
+
+<th>
+
+Phí
+
+</th>
+
+
+<th>
+
+Thao tác
+
+</th>
+
+
+</tr>
+
+
+
+</thead>
+
+
+
+
+
+<tbody>
+
+
+
+<tr>
+
+
+<td>
+
+USDT
+
+</td>
+
+
+
+<td>
+
+
+<span class="status status-ok">
+
+Bật
+
+</span>
+
+
+</td>
+
+
+
+<td>
+
+100
+
+</td>
+
+
+
+<td>
+
+100000
+
+</td>
+
+
+
+<td>
+
+1%
+
+</td>
+
+
+
+<td>
+
+
+
+<button class="btn primary">
+
+Sửa
+
+</button>
+
+
+
+</td>
+
+
+
+</tr>
+
+
+
+
+
+
+
+<tr>
+
+
+<td>
+
+VND
+
+</td>
+
+
+
+<td>
+
+
+<span class="status status-ok">
+
+Bật
+
+</span>
+
+
+</td>
+
+
+
+<td>
+
+50000
+
+</td>
+
+
+
+<td>
+
+500000000
+
+</td>
+
+
+
+<td>
+
+0.5%
+
+</td>
+
+
+
+<td>
+
+
+
+<button class="btn primary">
+
+Sửa
+
+</button>
+
+
+
+</td>
+
+
+
+</tr>
+
+
+
+
+
+
+<tr>
+
+
+<td>
+
+CNY
+
+</td>
+
+
+
+<td>
+
+
+<span class="status status-error">
+
+Tắt
+
+</span>
+
+
+</td>
+
+
+
+<td>
+
+-
+
+</td>
+
+
+
+<td>
+
+-
+
+</td>
+
+
+
+<td>
+
+-
+
+</td>
+
+
+
+<td>
+
+
+
+<button class="btn">
+
+Mở
+
+</button>
+
+
+
+</td>
+
+
+
+</tr>
+
+
+
+
+
+
+</tbody>
+
+
+
+</table>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+<br>
+
+
+
+
+
+
+
+<!-- ===========================
+ KYC & KIỂM TRA
+=========================== -->
+
+
+<div class="grid-3">
+
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+🔐 Kiểm tra KYC
+
+</div>
+
+
+
+<div class="box-text">
+
+
+Yêu cầu KYC:
+
+
+<br>
+
+
+<select class="input">
+
+
+<option>
+
+Bắt buộc
+
+</option>
+
+
+<option>
+
+Không bắt buộc
+
+</option>
+
+
+</select>
+
+
+
+<br><br>
+
+
+Xác minh số điện thoại:
+
+
+<br>
+
+
+<select class="input">
+
+
+<option>
+
+Bật
+
+</option>
+
+
+<option>
+
+Tắt
+
+</option>
+
+
+</select>
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+🤖 Tự động duyệt
+
+</div>
+
+
+
+<div class="box-text">
+
+
+Tự động duyệt:
+
+
+<br>
+
+
+<select class="input">
+
+
+<option>
+
+Tắt
+
+</option>
+
+
+<option>
+
+Bật
+
+</option>
+
+
+</select>
+
+
+
+
+<br><br>
+
+
+Hạn mức tự duyệt:
+
+
+<br>
+
+
+<input class="input"
+value="10000">
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+⏱ Thời gian xử lý
+
+</div>
+
+
+
+<div class="box-text">
+
+
+Thời gian kiểm duyệt:
+
+
+<br>
+
+
+<select class="input">
+
+
+<option>
+
+5 phút
+
+</option>
+
+
+<option>
+
+10 phút
+
+</option>
+
+
+<option>
+
+30 phút
+
+</option>
+
+
+</select>
+
+
+
+
+<br><br>
+
+
+Thời gian hết hạn đơn:
+
+
+<br>
+
+
+<input class="input"
+value="24 giờ">
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<br>
+
+
+
+
+
+
+
+<!-- ===========================
+ PHƯƠNG THỨC NHẬN TIỀN
+=========================== -->
+
+
+<div class="card">
+
+
+<div class="card-title">
+
+🏦 Cấu hình phương thức nhận tiền
+
+</div>
+
+
+
+
+
+<div class="card-body">
+
+
+
+
+
+<div class="grid-3">
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+USDT
+
+</div>
+
+
+<div class="box-text">
+
+
+Mạng:
+
+
+<br>
+
+
+<select class="input">
+
+
+<option>
+
+TRC20
+
+</option>
+
+
+<option>
+
+ERC20
+
+</option>
+
+
+</select>
+
+
+
+<br><br>
+
+
+Cho phép:
+
+
+<br>
+
+
+<select class="input">
+
+
+<option>
+
+Bật
+
+</option>
+
+
+<option>
+
+Tắt
+
+</option>
+
+
+</select>
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+Ngân hàng
+
+</div>
+
+
+
+<div class="box-text">
+
+
+Ngân hàng hỗ trợ:
+
+
+<br>
+
+
+<input class="input"
+value="VCB, TCB, MB">
+
+
+
+<br><br>
+
+
+Kiểm tra tên:
+
+
+<br>
+
+
+<select class="input">
+
+
+<option>
+
+Bật
+
+</option>
+
+
+<option>
+
+Tắt
+
+</option>
+
+
+</select>
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+Ví điện tử
+
+</div>
+
+
+
+<div class="box-text">
+
+
+Ví hỗ trợ:
+
+
+<br>
+
+
+<input class="input"
+value="Momo">
+
+
+
+<br><br>
+
+
+Trạng thái:
+
+
+<br>
+
+
+<select class="input">
+
+
+<option>
+
+Bật
+
+</option>
+
+
+<option>
+
+Tắt
+
+</option>
+
+
+</select>
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+</div>
+
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<br>
+
+
+
+
+
+
+<button class="btn success">
+
+💾 Lưu toàn bộ cấu hình
+
+</button>
+
+
+
+<button class="btn danger">
+
+Hủy thay đổi
+
+</button>
+
+
+
+</div>
+
+
+</div>
+<!-- ==================================
+ PHẦN 13
+ 三方代付 - THANH TOÁN BÊN THỨ BA
+================================== -->
+
+
+
+<div class="card">
+
+
+<div class="card-title">
+
+🏦 Thanh toán bên thứ ba
+
+</div>
+
+
+
+
+
+<div class="card-body">
+
+
+
+
+
+<!-- SEARCH -->
+
+
+<div style="
+display:flex;
+gap:12px;
+flex-wrap:wrap;
+">
+
+
+
+<input class="input"
+placeholder="🔎 Tên nhà cung cấp">
+
+
+
+<input class="input"
+placeholder="Merchant ID">
+
+
+
+
+
+<select class="input">
+
+
+<option>
+
+Tất cả trạng thái
+
+</option>
+
+
+<option>
+
+Đang hoạt động
+
+</option>
+
+
+<option>
+
+Tạm dừng
+
+</option>
+
+
+</select>
+
+
+
+
+
+<button class="btn primary">
+
+🔍 Tìm kiếm
+
+</button>
+
+
+
+
+<button class="btn success">
+
+➕ Thêm kênh
+
+</button>
+
+
+
+
+</div>
+
+
+
+
+
+
+
+<br>
+
+
+
+
+
+
+<!-- TABLE PROVIDER -->
+
+
+<div class="table-box">
+
+
+<table>
+
+
+
+<thead>
+
+
+<tr>
+
+
+<th>
+
+Nhà cung cấp
+
+</th>
+
+
+<th>
+
+Merchant ID
+
+</th>
+
+
+<th>
+
+Loại thanh toán
+
+</th>
+
+
+<th>
+
+Phí
+
+</th>
+
+
+<th>
+
+Hạn mức
+
+</th>
+
+
+<th>
+
+Callback
+
+</th>
+
+
+<th>
+
+Trạng thái
+
+</th>
+
+
+<th>
+
+Thao tác
+
+</th>
+
+
+
+</tr>
+
+
+</thead>
+
+
+
+
+
+<tbody>
+
+
+
+
+<tr>
+
+
+
+<td>
+
+USDT Pay
+
+</td>
+
+
+
+<td>
+
+MER998811
+
+</td>
+
+
+
+<td>
+
+USDT TRC20
+
+</td>
+
+
+
+<td>
+
+0.5%
+
+</td>
+
+
+
+<td>
+
+100 - 100000
+
+</td>
+
+
+
+<td>
+
+
+<span class="status status-ok">
+
+正常
+
+</span>
+
+
+</td>
+
+
+
+<td>
+
+
+<span class="status status-ok">
+
+Đang bật
+
+</span>
+
+
+</td>
+
+
+
+<td>
+
+
+
+<button class="btn primary">
+
+Cấu hình
+
+</button>
+
+
+
+<br><br>
+
+
+
+<button class="btn">
+
+Kiểm tra
+
+</button>
+
+
+
+</td>
+
+
+
+</tr>
+
+
+
+
+
+
+
+
+
+<tr>
+
+
+
+<td>
+
+Bank Pay
+
+</td>
+
+
+
+<td>
+
+BANK556677
+
+</td>
+
+
+
+<td>
+
+Ngân hàng
+
+</td>
+
+
+
+<td>
+
+1%
+
+</td>
+
+
+
+<td>
+
+50000 - 500000000
+
+</td>
+
+
+
+<td>
+
+
+<span class="status status-wait">
+
+Chậm
+
+</span>
+
+
+</td>
+
+
+
+<td>
+
+
+<span class="status status-error">
+
+Tạm dừng
+
+</span>
+
+
+</td>
+
+
+
+<td>
+
+
+
+<button class="btn primary">
+
+Sửa
+
+</button>
+
+
+
+</td>
+
+
+
+</tr>
+
+
+
+
+
+
+
+</tbody>
+
+
+</table>
+
+
+</div>
+
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- ===============================
+ THÊM / SỬA NHÀ CUNG CẤP
+=============================== -->
+
+
+<div class="card">
+
+
+<div class="card-title">
+
+⚙️ Cấu hình nhà cung cấp thanh toán
+
+</div>
+
+
+
+
+
+<div class="card-body">
+
+
+
+
+
+<div class="grid-3">
+
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+📌 Thông tin cơ bản
+
+</div>
+
+
+
+<div class="box-text">
+
+
+Tên nhà cung cấp:
+
+
+<br>
+
+
+<input class="input"
+value="USDT Pay">
+
+
+
+<br><br>
+
+
+Merchant ID:
+
+
+<br>
+
+
+<input class="input"
+value="MER998811">
+
+
+
+<br><br>
+
+
+Loại thanh toán:
+
+
+<br>
+
+
+<select class="input">
+
+
+<option>
+
+USDT TRC20
+
+</option>
+
+
+<option>
+
+Ngân hàng
+
+</option>
+
+
+<option>
+
+Ví điện tử
+
+</option>
+
+
+</select>
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+🔗 API Config
+
+</div>
+
+
+
+<div class="box-text">
+
+
+API đặt lệnh:
+
+
+<br>
+
+
+<input class="input"
+placeholder="https://api.xxx/create">
+
+
+
+<br><br>
+
+
+API truy vấn:
+
+
+<br>
+
+
+<input class="input"
+placeholder="https://api.xxx/query">
+
+
+
+<br><br>
+
+
+Callback URL:
+
+
+<br>
+
+
+<input class="input"
+placeholder="https://domain/callback">
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+🔐 Bảo mật
+
+</div>
+
+
+
+<div class="box-text">
+
+
+Secret Key:
+
+
+<br>
+
+
+<input class="input"
+value="********">
+
+
+
+<br><br>
+
+
+Sign Key:
+
+
+<br>
+
+
+<input class="input"
+value="********">
+
+
+
+<br><br>
+
+
+IP White List:
+
+
+<br>
+
+
+<input class="input"
+placeholder="127.0.0.1">
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+</div>
+
+
+
+
+
+
+<br>
+
+
+
+
+
+
+
+<!-- LIMIT -->
+
+
+<div class="grid-3">
+
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+💰 Hạn mức
+
+</div>
+
+
+
+<div class="box-text">
+
+
+Tối thiểu:
+
+
+<br>
+
+
+<input class="input"
+value="100">
+
+
+
+<br><br>
+
+
+Tối đa:
+
+
+<br>
+
+
+<input class="input"
+value="100000">
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+💸 Chi phí
+
+</div>
+
+
+
+<div class="box-text">
+
+
+Phí giao dịch:
+
+
+<br>
+
+
+<input class="input"
+value="0.5%">
+
+
+
+<br><br>
+
+
+Phí cố định:
+
+
+<br>
+
+
+<input class="input"
+value="0">
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+⚡ Trạng thái
+
+</div>
+
+
+
+<div class="box-text">
+
+
+Kênh:
+
+
+<br>
+
+
+<select class="input">
+
+
+<option>
+
+Bật
+
+</option>
+
+
+<option>
+
+Tắt
+
+</option>
+
+
+</select>
+
+
+
+<br><br>
+
+
+Tự động chọn:
+
+
+<br>
+
+
+<select class="input">
+
+
+<option>
+
+Có
+
+</option>
+
+
+<option>
+
+Không
+
+</option>
+
+
+</select>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+<br>
+
+
+
+
+
+<button class="btn primary">
+
+🔗 Kiểm tra kết nối
+
+</button>
+
+
+
+
+<button class="btn success">
+
+💾 Lưu cấu hình
+
+</button>
+
+
+
+
+<button class="btn danger">
+
+Xóa kênh
+
+</button>
+
+
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- ===============================
+ CALLBACK MONITOR
+=============================== -->
+
+
+<div class="card">
+
+
+<div class="card-title">
+
+📡 Theo dõi Callback
+
+</div>
+
+
+
+
+
+<div class="card-body">
+
+
+
+<div class="grid-3">
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+Request hôm nay
+
+</div>
+
+
+<div class="box-text">
+
+
+12580
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+Thành công
+
+</div>
+
+
+<div class="box-text">
+
+
+98.5%
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+Lỗi Callback
+
+</div>
+
+
+<div class="box-text">
+
+
+120
+
+
+</div>
+
+
+</div>
+
+
+
+
+</div>
+
+
+</div>
+
+
+</div>
+<!-- ==================================
+ PHẦN 14
+ 代付统计 - THỐNG KÊ THANH TOÁN
+================================== -->
+
+
+
+<div class="card">
+
+
+<div class="card-title">
+
+📊 Thống kê thanh toán
+
+</div>
+
+
+
+
+
+<div class="card-body">
+
+
+
+
+
+
+<!-- FILTER -->
+
+
+<div style="
+display:flex;
+gap:12px;
+flex-wrap:wrap;
+">
+
+
+
+<input class="input"
+type="date">
+
+
+
+<input class="input"
+type="date">
+
+
+
+
+
+<select class="input">
+
+
+<option>
+
+Tất cả kênh
+
+</option>
+
+
+<option>
+
+USDT Pay
+
+</option>
+
+
+<option>
+
+Bank Pay
+
+</option>
+
+
+<option>
+
+Wallet Pay
+
+</option>
+
+
+</select>
+
+
+
+
+
+
+
+<select class="input">
+
+
+<option>
+
+Hôm nay
+
+</option>
+
+
+<option>
+
+7 ngày gần nhất
+
+</option>
+
+
+<option>
+
+30 ngày
+
+</option>
+
+
+
+</select>
+
+
+
+
+
+
+<button class="btn primary">
+
+🔍 Tra cứu
+
+</button>
+
+
+
+<button class="btn">
+
+🔄 Reset
+
+</button>
+
+
+
+</div>
+
+
+
+
+
+
+
+<br>
+
+
+
+
+
+
+<!-- ===========================
+ TỔNG QUAN
+=========================== -->
+
+
+<div class="grid-3">
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+📄 Tổng đơn thanh toán
+
+</div>
+
+
+
+<div class="box-text">
+
+
+<h2 style="
+color:#1677ff;
+">
+
+58,620
+
+</h2>
+
+
+Tổng số yêu cầu xuất tiền
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+💰 Tổng tiền thanh toán
+
+</div>
+
+
+
+<div class="box-text">
+
+
+<h2 style="
+color:#fa8c16;
+">
+
+580,000,000
+
+</h2>
+
+
+Tổng giá trị giao dịch
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+💸 Tổng phí
+
+</div>
+
+
+
+<div class="box-text">
+
+
+<h2 style="
+color:#13c2c2;
+">
+
+580,000
+
+</h2>
+
+
+Phí kênh thanh toán
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<br>
+
+
+
+
+
+
+
+<div class="grid-3">
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+✅ Thành công
+
+</div>
+
+
+
+<div class="box-text">
+
+
+<h2 style="
+color:#13c2c2;
+">
+
+57,800
+
+</h2>
+
+
+Tỷ lệ:
+
+<br>
+
+
+98.6%
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+❌ Thất bại
+
+</div>
+
+
+
+<div class="box-text">
+
+
+<h2 style="
+color:#ff4d4f;
+">
+
+520
+
+</h2>
+
+
+Tỷ lệ:
+
+<br>
+
+
+0.9%
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+⏱ Timeout
+
+</div>
+
+
+
+<div class="box-text">
+
+
+<h2 style="
+color:#fa8c16;
+">
+
+300
+
+</h2>
+
+
+Tỷ lệ:
+
+<br>
+
+
+0.5%
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<!-- ===========================
+ THỐNG KÊ THEO KÊNH
+=========================== -->
+
+
+<div class="card">
+
+
+<div class="card-title">
+
+🏦 Thống kê theo kênh thanh toán
+
+</div>
+
+
+
+
+
+<div class="card-body">
+
+
+
+<div class="table-box">
+
+
+<table>
+
+
+<thead>
+
+
+<tr>
+
+
+<th>
+
+Kênh
+
+</th>
+
+
+<th>
+
+Tổng đơn
+
+</th>
+
+
+<th>
+
+Thành công
+
+</th>
+
+
+<th>
+
+Thất bại
+
+</th>
+
+
+<th>
+
+Timeout
+
+</th>
+
+
+<th>
+
+Tỷ lệ thành công
+
+</th>
+
+
+<th>
+
+Phí
+
+</th>
+
+
+
+</tr>
+
+
+</thead>
+
+
+
+
+
+<tbody>
+
+
+
+<tr>
+
+
+<td>
+
+USDT Pay
+
+</td>
+
+
+<td>
+
+30000
+
+</td>
+
+
+<td>
+
+29800
+
+</td>
+
+
+<td>
+
+100
+
+</td>
+
+
+<td>
+
+100
+
+</td>
+
+
+<td>
+
+99.3%
+
+</td>
+
+
+<td>
+
+150000
+
+</td>
+
+
+
+</tr>
+
+
+
+
+
+
+
+<tr>
+
+
+<td>
+
+Bank Pay
+
+</td>
+
+
+<td>
+
+20000
+
+</td>
+
+
+<td>
+
+19500
+
+</td>
+
+
+<td>
+
+300
+
+</td>
+
+
+<td>
+
+200
+
+</td>
+
+
+<td>
+
+97.5%
+
+</td>
+
+
+<td>
+
+300000
+
+</td>
+
+
+
+</tr>
+
+
+
+
+
+
+
+<tr>
+
+
+<td>
+
+Wallet Pay
+
+</td>
+
+
+<td>
+
+8620
+
+</td>
+
+
+<td>
+
+8500
+
+</td>
+
+
+<td>
+
+120
+
+</td>
+
+
+<td>
+
+0
+
+</td>
+
+
+<td>
+
+98.6%
+
+</td>
+
+
+<td>
+
+130000
+
+</td>
+
+
+
+</tr>
+
+
+
+
+
+
+</tbody>
+
+
+</table>
+
+
+</div>
+
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- ===========================
+ BIỂU ĐỒ
+=========================== -->
+
+
+<div class="card">
+
+
+<div class="card-title">
+
+📈 Xu hướng thanh toán
+
+</div>
+
+
+
+
+
+<div class="card-body">
+
+
+
+
+
+<div style="
+height:260px;
+background:
+linear-gradient(
+90deg,
+#e6f4ff,
+#ffffff
+);
+border-radius:15px;
+display:flex;
+align-items:center;
+justify-content:center;
+color:#1677ff;
+font-size:22px;
+font-weight:bold;
+">
+
+
+BIỂU ĐỒ THANH TOÁN THEO THỜI GIAN
+
+
+</div>
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- ===========================
+ TOP NHÀ CUNG CẤP
+=========================== -->
+
+
+<div class="card">
+
+
+<div class="card-title">
+
+🏆 Xếp hạng nhà cung cấp
+
+</div>
+
+
+
+
+
+<div class="card-body">
+
+
+
+<div class="table-box">
+
+
+<table>
+
+
+<thead>
+
+
+<tr>
+
+
+<th>
+
+Xếp hạng
+
+</th>
+
+
+<th>
+
+Nhà cung cấp
+
+</th>
+
+
+<th>
+
+Số đơn
+
+</th>
+
+
+<th>
+
+Tỷ lệ thành công
+
+</th>
+
+
+<th>
+
+Đánh giá
+
+</th>
+
+
+
+</tr>
+
+
+</thead>
+
+
+
+
+
+<tbody>
+
+
+
+<tr>
+
+
+<td>
+
+1
+
+</td>
+
+
+<td>
+
+USDT Pay
+
+</td>
+
+
+<td>
+
+30000
+
+</td>
+
+
+<td>
+
+99.3%
+
+</td>
+
+
+<td>
+
+
+<span class="status status-ok">
+
+Tốt
+
+</span>
+
+
+</td>
+
+
+
+</tr>
+
+
+
+
+
+<tr>
+
+
+<td>
+
+2
+
+</td>
+
+
+<td>
+
+Bank Pay
+
+</td>
+
+
+<td>
+
+20000
+
+</td>
+
+
+<td>
+
+97.5%
+
+</td>
+
+
+<td>
+
+
+<span class="status status-wait">
+
+Ổn định
+
+</span>
+
+
+</td>
+
+
+
+</tr>
+
+
+
+</tbody>
+
+
+
+</table>
+
+
+
+</div>
+
+
+</div>
+
+
+</div>
+<!-- ==================================
+ PHẦN 15
+ JS HOÀN THIỆN + FOOTER
+================================== -->
+
+
+
+</div>
+<!-- END CONTAINER -->
+
+
+
+
+
+<!-- ==========================
+ POPUP CHI TIẾT CHUNG
+========================== -->
+
+
+<div id="detailModal"
+
+style="
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:
+rgba(0,0,0,.45);
+z-index:9999;
+align-items:center;
+justify-content:center;
+">
+
+
+
+
+
+<div style="
+background:white;
+width:800px;
+max-width:90%;
+border-radius:18px;
+padding:25px;
+">
+
+
+
+<h2 style="
+color:#1677ff;
+margin-bottom:20px;
+">
+
+📄 Chi tiết đơn rút tiền
+
+</h2>
+
+
+
+
+
+<div class="grid-3">
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+Thông tin đơn
+
+</div>
+
+
+<div class="box-text">
+
+
+Mã đơn:
+
+<br>
+
+
+WD20260812001
+
+
+<br><br>
+
+
+Trạng thái:
+
+<br>
+
+
+Đang xử lý
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+Hội viên
+
+</div>
+
+
+<div class="box-text">
+
+
+ID:
+
+888888
+
+
+<br><br>
+
+
+VIP:
+
+VIP8
+
+
+<br><br>
+
+
+Tài khoản:
+
+vip_user01
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+Tiền
+
+</div>
+
+
+<div class="box-text">
+
+
+Rút:
+
+5000 USDT
+
+
+<br><br>
+
+
+Phí:
+
+5 USDT
+
+
+<br><br>
+
+
+Nhận:
+
+4995 USDT
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+</div>
+
+
+
+
+
+<br>
+
+
+
+
+<button class="btn primary"
+onclick="closeModal()">
+
+Đóng
+
+</button>
+
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- ==========================
+ TOAST
+========================== -->
+
+
+<div id="toast"
+
+style="
+display:none;
+position:fixed;
+right:30px;
+bottom:30px;
+background:#1677ff;
+color:white;
+padding:15px 25px;
+border-radius:12px;
+z-index:10000;
+font-weight:bold;
+">
+
+
+Thao tác thành công
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- ==========================
+ FOOTER
+========================== -->
+
+
+<div style="
+
+width:95%;
+margin:30px auto;
+
+background:white;
+
+padding:20px;
+
+border-radius:15px;
+
+text-align:center;
+
+color:#999;
+
+">
+
+
+提现管理系统
+
+<br>
+
+Quản lý rút tiền VIP
+
+
+<br><br>
+
+
+© 2026 Admin System
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<script>
+
+
+
+
+
+/* =====================
+ MENU TAB
+===================== */
+
+
+
+let menuItems =
+document.querySelectorAll(
+".menu-item"
+);
+
+
+
+
+menuItems.forEach(
+item=>{
+
+
+item.onclick=function(){
+
+
+
+menuItems.forEach(
+i=>{
+
+i.classList.remove(
+"active"
+);
+
+
+});
+
+
+
+this.classList.add(
+"active"
+);
+
+
+
+showToast(
+
+"Đã chuyển sang: "
+
++
+
+this.innerText
+
+);
+
+
+
+}
+
+
+});
+
+
+
+
+
+
+
+
+/* =====================
+ TOAST
+===================== */
+
+
+function showToast(text){
+
+
+
+let toast =
+document.getElementById(
+"toast"
+);
+
+
+
+toast.innerHTML=text;
+
+
+
+toast.style.display="block";
+
+
+
+setTimeout(()=>{
+
+
+toast.style.display="none";
+
+
+},2500);
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+/* =====================
+ MODAL
+===================== */
+
+
+function openModal(){
+
+
+
+document.getElementById(
+"detailModal"
+)
+.style.display="flex";
+
+
+
+}
+
+
+
+
+function closeModal(){
+
+
+
+document.getElementById(
+"detailModal"
+)
+.style.display="none";
+
+
+
+}
+
+
+
+
+
+
+
+
+
+/* =====================
+ CLICK NGOÀI ĐÓNG
+===================== */
+
+
+window.onclick=function(e){
+
+
+
+let modal =
+document.getElementById(
+"detailModal"
+);
+
+
+
+if(e.target==modal){
+
+
+modal.style.display="none";
+
+
+}
+
+
+
+}
+
+
+
+
+
+
+
+
+
+/* =====================
+ BUTTON DEMO
+===================== */
+
+
+
+document
+.querySelectorAll(
+".btn"
+)
+.forEach(btn=>{
+
+
+btn.onclick=function(){
+
+
+
+let text=this.innerText;
+
+
+
+if(
+
+text.includes("Lưu")
+
+||
+
+text.includes("Xác nhận")
+
+||
+
+text.includes("Hoàn tất")
+
+||
+
+text.includes("Duyệt")
+
+){
+
+
+
+showToast(
+"Xử lý thành công"
+);
+
+
+
+}
+
+
+
+}
+
+
+
+});
+
+
+
+
+
+
+
+</script>
+
+
+
+
+
+
+
+</body>
+
+
+</html>

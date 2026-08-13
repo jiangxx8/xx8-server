@@ -1,0 +1,3868 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Tạo Lệnh Nạp Tiền - 充值补单</title>
+
+
+<style>
+
+/* =========================================================
+   01. RESET
+========================================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#f3f6fb;
+    color:#344054;
+    line-height:1.65;
+}
+
+button,
+input,
+select{
+    font-family:inherit;
+}
+
+
+/* =========================================================
+   02. SCROLLBAR
+========================================================= */
+
+::-webkit-scrollbar{
+    width:10px;
+    height:10px;
+}
+
+::-webkit-scrollbar-track{
+    background:#edf1f7;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#b6c2d3;
+    border-radius:20px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background:#8fa1b9;
+}
+
+
+/* =========================================================
+   03. NÚT QUAY LẠI
+========================================================= */
+
+.back-btn{
+    position:fixed;
+    top:18px;
+    left:18px;
+    z-index:99999;
+
+    border:none;
+    border-radius:12px;
+
+    padding:12px 22px;
+
+    background:linear-gradient(
+        135deg,
+        #1677ff,
+        #0052cc
+    );
+
+    color:#fff;
+
+    font-size:15px;
+    font-weight:800;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 8px 22px rgba(0,82,204,.30);
+
+    transition:.2s;
+}
+
+.back-btn:hover{
+    transform:translateY(-2px);
+    box-shadow:
+        0 12px 26px rgba(0,82,204,.38);
+}
+
+
+/* =========================================================
+   04. HEADER
+========================================================= */
+
+.page-header{
+    min-height:100px;
+
+    background:linear-gradient(
+        135deg,
+        #0878ff,
+        #0648b4
+    );
+
+    color:white;
+
+    display:flex;
+    align-items:center;
+
+    padding:
+        18px
+        35px
+        18px
+        190px;
+
+    box-shadow:
+        0 5px 22px rgba(0,0,0,.18);
+}
+
+.header-main{
+    display:flex;
+    flex-direction:column;
+    gap:4px;
+}
+
+.header-title{
+    font-size:29px;
+    font-weight:900;
+}
+
+.header-subtitle{
+    font-size:14px;
+    opacity:.88;
+}
+
+.header-badge{
+    margin-left:auto;
+
+    padding:8px 15px;
+
+    border:1px solid rgba(255,255,255,.22);
+    border-radius:30px;
+
+    background:rgba(255,255,255,.14);
+
+    font-size:13px;
+    font-weight:700;
+}
+
+
+/* =========================================================
+   05. MỤC LỤC NHANH
+========================================================= */
+
+.quick-nav{
+    width:94%;
+    max-width:1650px;
+
+    margin:20px auto 0;
+
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+}
+
+.quick-nav button{
+    border:1px solid #d9e3f0;
+    border-radius:8px;
+
+    background:white;
+    color:#516075;
+
+    padding:9px 14px;
+
+    font-size:12px;
+    font-weight:800;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 2px 8px rgba(0,0,0,.04);
+}
+
+.quick-nav button:hover{
+    background:#eaf3ff;
+    border-color:#bcd8ff;
+    color:#1677ff;
+}
+
+
+/* =========================================================
+   06. CONTAINER
+========================================================= */
+
+.container{
+    width:94%;
+    max-width:1650px;
+
+    margin:20px auto 50px;
+}
+
+
+/* =========================================================
+   07. CARD
+========================================================= */
+
+.card{
+    background:#fff;
+
+    border:1px solid #e8edf4;
+    border-radius:17px;
+
+    margin-bottom:22px;
+
+    box-shadow:
+        0 5px 18px rgba(31,51,82,.07);
+
+    overflow:hidden;
+}
+
+.card-header{
+    padding:19px 22px;
+
+    display:flex;
+    align-items:center;
+    gap:11px;
+
+    border-bottom:1px solid #edf1f6;
+}
+
+.card-icon{
+    width:38px;
+    height:38px;
+
+    border-radius:10px;
+
+    background:#eaf3ff;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:20px;
+}
+
+.card-title{
+    font-size:21px;
+    font-weight:900;
+    color:#1677ff;
+}
+
+.card-body{
+    padding:22px;
+}
+
+.text{
+    color:#566273;
+    font-size:14px;
+    line-height:1.85;
+}
+
+.highlight{
+    color:#1677ff;
+    font-weight:800;
+}
+
+
+/* =========================================================
+   08. KHỐI GIỚI THIỆU
+========================================================= */
+
+.feature-grid{
+    margin-top:18px;
+
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:14px;
+}
+
+.feature{
+    padding:17px;
+
+    border:1px solid #e3ebf5;
+    border-radius:12px;
+
+    background:#fbfdff;
+}
+
+.feature-title{
+    font-size:15px;
+    font-weight:900;
+    color:#1677ff;
+    margin-bottom:7px;
+}
+
+.feature-desc{
+    font-size:13px;
+    color:#6e798a;
+    line-height:1.65;
+}
+
+
+/* =========================================================
+   09. TAG
+========================================================= */
+
+.tags{
+    margin-top:18px;
+
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+}
+
+.tag{
+    padding:6px 13px;
+
+    border-radius:30px;
+
+    background:#eaf3ff;
+    color:#1677ff;
+
+    font-size:12px;
+    font-weight:800;
+}
+
+
+/* =========================================================
+   10. FLOW
+========================================================= */
+
+.flow{
+    margin-top:22px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    gap:12px;
+    flex-wrap:wrap;
+}
+
+.flow-step{
+    width:190px;
+    min-height:108px;
+
+    padding:16px;
+
+    border:1px solid #cfe1ff;
+    border-radius:13px;
+
+    background:#eef6ff;
+
+    text-align:center;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+.flow-step strong{
+    color:#1677ff;
+    font-size:16px;
+    margin-bottom:6px;
+}
+
+.flow-step span{
+    color:#58677a;
+    font-size:13px;
+}
+
+.flow-arrow{
+    color:#1677ff;
+    font-size:30px;
+}
+
+
+/* =========================================================
+   11. BACKEND MOCKUP
+========================================================= */
+
+.backend{
+    border:1px solid #dce4ef;
+    border-radius:13px;
+    overflow:hidden;
+    background:#f7f9fc;
+}
+
+.backend-top{
+    background:#fff;
+
+    padding:15px 18px;
+
+    border-bottom:1px solid #e6ebf2;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.backend-name{
+    font-size:18px;
+    font-weight:900;
+    color:#202939;
+}
+
+.backend-help{
+    font-size:12px;
+    color:#1677ff;
+    font-weight:800;
+}
+
+.backend-tabs{
+    background:#fff;
+
+    padding:0 18px;
+
+    display:flex;
+    gap:26px;
+
+    border-bottom:1px solid #e6ebf2;
+}
+
+.backend-tab{
+    border:none;
+    background:none;
+
+    padding:14px 4px 11px;
+
+    color:#687386;
+
+    font-size:13px;
+    font-weight:800;
+
+    cursor:pointer;
+
+    border-bottom:3px solid transparent;
+}
+
+.backend-tab.active{
+    color:#1677ff;
+    border-color:#1677ff;
+}
+
+.backend-panel{
+    display:none;
+}
+
+.backend-panel.active{
+    display:block;
+}
+
+
+/* =========================================================
+   12. FILTER
+========================================================= */
+
+.filter-area{
+    padding:18px;
+    background:#fff;
+}
+
+.filter-title{
+    color:#1677ff;
+    font-size:16px;
+    font-weight:900;
+    margin-bottom:15px;
+}
+
+.filter-grid{
+    display:grid;
+    grid-template-columns:repeat(4,minmax(170px,1fr));
+    gap:12px;
+}
+
+.form-group{
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+}
+
+.form-group label{
+    font-size:12px;
+    font-weight:800;
+    color:#526071;
+}
+
+.form-control{
+    width:100%;
+    height:38px;
+
+    padding:0 10px;
+
+    border:1px solid #d7dfe9;
+    border-radius:7px;
+
+    background:#fff;
+    color:#344054;
+
+    outline:none;
+}
+
+.form-control:focus{
+    border-color:#1677ff;
+    box-shadow:
+        0 0 0 3px rgba(22,119,255,.10);
+}
+
+
+/* =========================================================
+   13. BUTTON
+========================================================= */
+
+.action-bar{
+    margin-top:16px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    gap:10px;
+    flex-wrap:wrap;
+}
+
+.action-left,
+.action-right{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    min-height:38px;
+
+    padding:0 16px;
+
+    border:none;
+    border-radius:7px;
+
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:6px;
+
+    font-size:12px;
+    font-weight:900;
+
+    cursor:pointer;
+
+    transition:.2s;
+}
+
+.btn:hover{
+    transform:translateY(-1px);
+}
+
+.btn-blue{
+    background:#1677ff;
+    color:#fff;
+}
+
+.btn-green{
+    background:#16a35f;
+    color:#fff;
+}
+
+.btn-gray{
+    background:#fff;
+    color:#526071;
+    border:1px solid #d7dfe9;
+}
+
+.btn-red{
+    background:#df3f3f;
+    color:#fff;
+}
+
+
+/* =========================================================
+   14. TABLE
+========================================================= */
+
+.table-area{
+    border-top:10px solid #f5f7fb;
+    background:#fff;
+    padding:18px;
+}
+
+.table-title{
+    color:#1677ff;
+    font-weight:900;
+    margin-bottom:13px;
+}
+
+.table-scroll{
+    overflow:auto;
+
+    border:1px solid #e5eaf1;
+    border-radius:8px;
+}
+
+.data-table{
+    width:100%;
+    min-width:1900px;
+
+    border-collapse:collapse;
+
+    font-size:12px;
+}
+
+.data-table th{
+    padding:11px 9px;
+
+    background:#eef5ff;
+    color:#344054;
+
+    border-bottom:1px solid #dce4ee;
+
+    white-space:nowrap;
+    text-align:center;
+}
+
+.data-table td{
+    padding:11px 9px;
+
+    border-bottom:1px solid #edf0f4;
+
+    text-align:center;
+    white-space:nowrap;
+}
+
+.data-table tbody tr:hover{
+    background:#f8fbff;
+}
+
+.link{
+    color:#1677ff;
+    font-weight:800;
+    cursor:pointer;
+}
+
+.changed{
+    color:#1677ff;
+    font-weight:900;
+}
+
+.total-after{
+    color:#16a35f;
+    font-weight:900;
+}
+
+
+/* =========================================================
+   15. STATUS
+========================================================= */
+
+.status{
+    display:inline-block;
+
+    padding:5px 11px;
+
+    border-radius:30px;
+
+    font-size:11px;
+    font-weight:900;
+}
+
+.status-wait{
+    background:#fff3d8;
+    color:#d98200;
+}
+
+.status-pass{
+    background:#e7f8ee;
+    color:#159456;
+}
+
+.status-reject{
+    background:#ffe8e8;
+    color:#d83d3d;
+}
+
+
+/* =========================================================
+   16. FIELD EXPLANATION
+========================================================= */
+
+.field-table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+.field-table th{
+    background:#eef5ff;
+    color:#344054;
+    padding:12px;
+    border:1px solid #dce4ee;
+}
+
+.field-table td{
+    padding:13px;
+    vertical-align:top;
+    border:1px solid #e7ebf0;
+    font-size:13px;
+}
+
+.field-name{
+    min-width:170px;
+    color:#1677ff;
+    font-weight:900;
+}
+
+
+/* =========================================================
+   17. COMPARE BOX
+========================================================= */
+
+.compare-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:13px;
+}
+
+.compare-box{
+    padding:16px;
+
+    border:1px solid #dce7f5;
+    border-radius:12px;
+
+    background:#fbfdff;
+}
+
+.compare-title{
+    color:#1677ff;
+    font-weight:900;
+    margin-bottom:10px;
+}
+
+.compare-values{
+    display:grid;
+    grid-template-columns:1fr auto 1fr;
+    align-items:center;
+    gap:8px;
+}
+
+.before,
+.after{
+    padding:10px;
+
+    border-radius:8px;
+
+    text-align:center;
+}
+
+.before{
+    background:#f1f3f6;
+}
+
+.after{
+    background:#eaf3ff;
+    color:#1677ff;
+    font-weight:900;
+}
+
+
+/* =========================================================
+   18. NOTICE
+========================================================= */
+
+.notice{
+    padding:15px;
+
+    border-left:4px solid #1677ff;
+    border-radius:8px;
+
+    background:#eef6ff;
+
+    font-size:13px;
+    color:#566273;
+}
+
+.warning{
+    border-left-color:#f39c12;
+    background:#fff7e6;
+    color:#7f641e;
+}
+
+
+/* =========================================================
+   19. MODAL
+========================================================= */
+
+.modal-overlay{
+    position:fixed;
+    inset:0;
+
+    display:none;
+    align-items:center;
+    justify-content:center;
+
+    padding:25px;
+
+    background:rgba(18,26,38,.58);
+
+    z-index:999999;
+}
+
+.modal-overlay.show{
+    display:flex;
+}
+
+.modal{
+    width:100%;
+    max-width:900px;
+
+    max-height:90vh;
+    overflow:auto;
+
+    background:white;
+
+    border-radius:15px;
+
+    box-shadow:
+        0 30px 70px rgba(0,0,0,.28);
+}
+
+.modal-header{
+    padding:17px 20px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    border-bottom:1px solid #e9edf3;
+}
+
+.modal-title{
+    color:#1677ff;
+    font-weight:900;
+    font-size:18px;
+}
+
+.modal-close{
+    width:34px;
+    height:34px;
+
+    border:none;
+    border-radius:50%;
+
+    background:#f1f3f6;
+
+    cursor:pointer;
+
+    font-size:20px;
+}
+
+.modal-body{
+    padding:20px;
+}
+
+.modal-footer{
+    padding:15px 20px;
+
+    border-top:1px solid #e9edf3;
+
+    display:flex;
+    justify-content:flex-end;
+    gap:8px;
+}
+
+
+/* =========================================================
+   20. MEMBER POPUP
+========================================================= */
+
+.member-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:10px;
+}
+
+.member-row{
+    padding:12px;
+
+    border:1px solid #e7ecf2;
+    border-radius:8px;
+
+    background:#fbfdff;
+}
+
+.member-label{
+    font-size:11px;
+    color:#8490a0;
+    margin-bottom:4px;
+}
+
+.member-value{
+    font-size:14px;
+    font-weight:800;
+}
+
+
+/* =========================================================
+   21. REVIEW SETTINGS
+========================================================= */
+
+.settings-list{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:10px;
+}
+
+.setting-row{
+    display:grid;
+    grid-template-columns:100px 1fr;
+    gap:8px;
+
+    align-items:center;
+
+    padding:10px;
+
+    border:1px solid #e7ecf2;
+    border-radius:8px;
+}
+
+.currency{
+    font-weight:900;
+    color:#526071;
+}
+
+
+/* =========================================================
+   22. EXPLANATION GRID
+========================================================= */
+
+.explain-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:13px;
+}
+
+.explain-box{
+    padding:16px;
+
+    border:1px solid #e4eaf2;
+    border-radius:11px;
+
+    background:#fbfdff;
+}
+
+.explain-box h3{
+    color:#1677ff;
+    font-size:14px;
+    margin-bottom:7px;
+}
+
+.explain-box p{
+    color:#687386;
+    font-size:12px;
+    line-height:1.65;
+}
+
+
+/* =========================================================
+   23. FOOTER
+========================================================= */
+
+.footer{
+    padding:25px;
+    text-align:center;
+    color:#98a2b3;
+    font-size:12px;
+}
+
+
+/* =========================================================
+   24. RESPONSIVE
+========================================================= */
+
+@media(max-width:1100px){
+
+    .feature-grid,
+    .compare-grid,
+    .explain-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .filter-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+}
+
+@media(max-width:700px){
+
+    .page-header{
+        padding:
+            75px
+            20px
+            20px;
+
+        align-items:flex-start;
+        flex-direction:column;
+    }
+
+    .header-badge{
+        margin-left:0;
+        margin-top:10px;
+    }
+
+    .feature-grid,
+    .compare-grid,
+    .explain-grid,
+    .filter-grid,
+    .member-grid,
+    .settings-list{
+        grid-template-columns:1fr;
+    }
+
+    .flow{
+        flex-direction:column;
+    }
+
+    .flow-arrow{
+        transform:rotate(90deg);
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     NÚT QUAY LẠI
+========================================================= -->
+
+<button
+    class="back-btn"
+    onclick="goBack()"
+>
+    ⬅ Quay lại
+</button>
+
+
+<!-- =========================================================
+     HEADER
+========================================================= -->
+
+<header class="page-header">
+
+    <div class="header-main">
+
+        <div class="header-title">
+            ➕ TẠO LỆNH NẠP TIỀN
+        </div>
+
+        <div class="header-subtitle">
+            充值补单 · Hướng dẫn nghiệp vụ kiểm duyệt và quản lý bổ sung đơn
+        </div>
+
+    </div>
+
+    <div class="header-badge">
+        WEB ĐÀO TẠO NỘI BỘ
+    </div>
+
+</header>
+
+
+<!-- =========================================================
+     MỤC LỤC NHANH
+========================================================= -->
+
+<nav class="quick-nav">
+
+    <button onclick="goSection('intro')">
+        1. Giới thiệu
+    </button>
+
+    <button onclick="goSection('flow')">
+        2. Quy trình
+    </button>
+
+    <button onclick="goSection('backend')">
+        3. Backend mô phỏng
+    </button>
+
+    <button onclick="goSection('areas')">
+        4. Giải thích giao diện
+    </button>
+
+    <button onclick="goSection('fields')">
+        5. Trường dữ liệu
+    </button>
+
+    <button onclick="goSection('compare')">
+        6. Trước / Sau bổ sung
+    </button>
+
+    <button onclick="goSection('review')">
+        7. Kiểm duyệt
+    </button>
+
+    <button onclick="goSection('settings')">
+        8. Cài đặt kiểm duyệt
+    </button>
+
+    <button onclick="goSection('allOrders')">
+        9. Tất cả bổ sung đơn
+    </button>
+
+</nav>
+
+
+<main class="container">
+
+
+<!-- =========================================================
+     1. GIỚI THIỆU
+========================================================= -->
+
+<section
+    class="card"
+    id="intro"
+>
+
+    <div class="card-header">
+
+        <div class="card-icon">
+            📌
+        </div>
+
+        <div class="card-title">
+            1. Giới thiệu chức năng
+        </div>
+
+    </div>
+
+    <div class="card-body">
+
+        <div class="text">
+
+            Chức năng
+
+            <span class="highlight">
+                充值补单 - Bổ sung đơn nạp tiền
+            </span>
+
+            dùng để quản lý các yêu cầu bổ sung đơn.
+
+            Trong phần
+            <b>补单审核 - Kiểm duyệt bổ sung đơn</b>,
+            nhân viên có thể xem thông tin
+            <b>trước và sau bổ sung</b>
+            của tiền đơn hàng, tiền thưởng và tổng tiền cộng;
+            đồng thời xem thông tin nhận tiền,
+            người tạo yêu cầu, thời gian tạo,
+            trạng thái kiểm duyệt và thực hiện thao tác chi tiết.
+
+        </div>
+
+
+        <div class="feature-grid">
+
+            <div class="feature">
+
+                <div class="feature-title">
+                    💰 Tiền đơn hàng
+                </div>
+
+                <div class="feature-desc">
+                    Hiển thị số tiền đơn gốc và số tiền sau khi thực hiện bổ sung.
+                </div>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div class="feature-title">
+                    🎁 Tiền thưởng
+                </div>
+
+                <div class="feature-desc">
+                    Hiển thị tiền thưởng nạp trước bổ sung và tiền thưởng sau bổ sung.
+                </div>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div class="feature-title">
+                    📊 Tổng tiền cộng
+                </div>
+
+                <div class="feature-desc">
+                    Hiển thị tổng số tiền thực tế cộng vào tài khoản trước và sau bổ sung.
+                </div>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div class="feature-title">
+                    🏦 Thông tin nhận tiền
+                </div>
+
+                <div class="feature-desc">
+                    Cho phép người kiểm duyệt đối chiếu thông tin nhận tiền của đơn.
+                </div>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div class="feature-title">
+                    👤 Người tạo yêu cầu
+                </div>
+
+                <div class="feature-desc">
+                    Hiển thị tài khoản/người đã gửi yêu cầu bổ sung đơn.
+                </div>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div class="feature-title">
+                    ✅ Trạng thái kiểm duyệt
+                </div>
+
+                <div class="feature-desc">
+                    Cho biết yêu cầu đang chờ xử lý hoặc đã được xử lý.
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="tags">
+
+            <span class="tag">补单审核</span>
+
+            <span class="tag">全部补单</span>
+
+            <span class="tag">审核设置</span>
+
+            <span class="tag">刷新设置</span>
+
+            <span class="tag">导出报表</span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     2. QUY TRÌNH
+========================================================= -->
+
+<section
+    class="card"
+    id="flow"
+>
+
+    <div class="card-header">
+
+        <div class="card-icon">
+            🔄
+        </div>
+
+        <div class="card-title">
+            2. Quy trình kiểm duyệt bổ sung đơn
+        </div>
+
+    </div>
+
+    <div class="card-body">
+
+        <div class="text">
+            Dựa theo thao tác mô tả trong tài liệu:
+            nhân viên mở yêu cầu bổ sung,
+            nhấn <b>审核 - Kiểm duyệt</b>,
+            kiểm tra chi tiết và khi xác nhận không có sai sót thì nhấn
+            <b>Thông qua</b> để hoàn tất.
+        </div>
+
+
+        <div class="flow">
+
+            <div class="flow-step">
+                <strong>Bước 1</strong>
+                <span>Có yêu cầu bổ sung đơn</span>
+            </div>
+
+            <div class="flow-arrow">→</div>
+
+            <div class="flow-step">
+                <strong>Bước 2</strong>
+                <span>Tìm và mở yêu cầu</span>
+            </div>
+
+            <div class="flow-arrow">→</div>
+
+            <div class="flow-step">
+                <strong>Bước 3</strong>
+                <span>Nhấn Kiểm duyệt</span>
+            </div>
+
+            <div class="flow-arrow">→</div>
+
+            <div class="flow-step">
+                <strong>Bước 4</strong>
+                <span>Đối chiếu trước / sau</span>
+            </div>
+
+            <div class="flow-arrow">→</div>
+
+            <div class="flow-step">
+                <strong>Bước 5</strong>
+                <span>Thông qua nếu chính xác</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     3. BACKEND MÔ PHỎNG
+========================================================= -->
+
+<section
+    class="card"
+    id="backend"
+>
+
+    <div class="card-header">
+
+        <div class="card-icon">
+            🖥️
+        </div>
+
+        <div class="card-title">
+            3. Mô phỏng giao diện Backend
+        </div>
+
+    </div>
+
+    <div class="card-body">
+
+        <div class="text" style="margin-bottom:18px;">
+            Khung bên dưới mô phỏng lại hai khu vực chính trong PDF:
+            <b>补单审核 - Kiểm duyệt bổ sung đơn</b>
+            và
+            <b>全部补单 - Tất cả bổ sung đơn</b>.
+        </div>
+
+
+        <div class="backend">
+
+
+            <!-- TOP -->
+
+            <div class="backend-top">
+
+                <div>
+
+                    <div class="backend-name">
+                        充值补单
+                    </div>
+
+                    <div style="font-size:12px;color:#98a2b3;">
+                        Quản lý bổ sung đơn nạp tiền
+                    </div>
+
+                </div>
+
+                <div class="backend-help">
+                    📘 Hướng dẫn thao tác
+                </div>
+
+            </div>
+
+
+            <!-- TAB -->
+
+            <div class="backend-tabs">
+
+                <button
+                    class="backend-tab active"
+                    id="auditTab"
+                    onclick="switchBackend('audit')"
+                >
+                    补单审核
+                    <br>
+                    Kiểm duyệt bổ sung đơn
+                </button>
+
+                <button
+                    class="backend-tab"
+                    id="allTab"
+                    onclick="switchBackend('all')"
+                >
+                    全部补单
+                    <br>
+                    Tất cả bổ sung đơn
+                </button>
+
+            </div>
+
+
+            <!-- =================================================
+                 PANEL KIỂM DUYỆT
+            ================================================= -->
+
+            <div
+                class="backend-panel active"
+                id="auditPanel"
+            >
+
+
+                <!-- FILTER -->
+
+                <div class="filter-area">
+
+                    <div class="filter-title">
+                        🔍 Điều kiện tìm kiếm
+                    </div>
+
+
+                    <div class="filter-grid">
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Loại tiền thành viên
+                            </label>
+
+                            <select class="form-control">
+
+                                <option>Tất cả loại tiền</option>
+                                <option>VND</option>
+                                <option>USDT</option>
+                                <option>BRL</option>
+                                <option>MXN</option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Khoảng thời gian
+                            </label>
+
+                            <input
+                                class="form-control"
+                                type="date"
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Mã đơn duyệt
+                            </label>
+
+                            <input
+                                class="form-control"
+                                type="text"
+                                placeholder="Nhập mã đơn duyệt"
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Member ID
+                            </label>
+
+                            <input
+                                class="form-control"
+                                type="text"
+                                placeholder="Nhập Member ID"
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Tài khoản thành viên
+                            </label>
+
+                            <input
+                                class="form-control"
+                                type="text"
+                                placeholder="Nhập tài khoản"
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Người tạo yêu cầu
+                            </label>
+
+                            <input
+                                class="form-control"
+                                type="text"
+                                placeholder="Nhập người tạo"
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Trạng thái kiểm duyệt
+                            </label>
+
+                            <select class="form-control">
+
+                                <option>Tất cả trạng thái</option>
+                                <option>Chờ kiểm duyệt</option>
+                                <option>Đã thông qua</option>
+                                <option>Đã từ chối</option>
+
+                            </select>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="action-bar">
+
+
+                        <div class="action-left">
+
+                            <button class="btn btn-blue">
+                                🔍 Tìm kiếm
+                            </button>
+
+                            <button class="btn btn-blue">
+                                🔎 Tìm kiếm nâng cao
+                            </button>
+
+                            <button class="btn btn-gray">
+                                ↺ Đặt lại
+                            </button>
+
+                        </div>
+
+
+                        <div class="action-right">
+
+                            <button
+                                class="btn btn-blue"
+                                onclick="openSettings()"
+                            >
+                                ⚙ Cài đặt kiểm duyệt
+                            </button>
+
+
+                            <select
+                                class="form-control"
+                                id="refreshSelect"
+                                style="width:auto;"
+                                onchange="setRefresh()"
+                            >
+
+                                <option value="0">
+                                    Không tự động làm mới
+                                </option>
+
+                                <option value="15">
+                                    Chu kỳ 15 giây
+                                </option>
+
+                                <option value="30">
+                                    Chu kỳ 30 giây
+                                </option>
+
+                                <option value="60">
+                                    Chu kỳ 60 giây
+                                </option>
+
+                            </select>
+
+
+                            <button
+                                class="btn btn-gray"
+                                onclick="demoExport()"
+                            >
+                                📤 Xuất báo cáo
+                            </button>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+                <!-- TABLE -->
+
+                <div class="table-area">
+
+                    <div class="table-title">
+                        📋 Danh sách kiểm duyệt bổ sung đơn
+                    </div>
+
+                    <div class="table-scroll">
+
+                        <table class="data-table">
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>Mã đơn duyệt</th>
+
+                                    <th>Member ID</th>
+
+                                    <th>Tài khoản thành viên</th>
+
+                                    <th>Loại tiền thành viên</th>
+
+                                    <th>Tỷ lệ</th>
+
+                                    <th>Tiền đơn gốc</th>
+
+                                    <th>Tiền đơn sau bổ sung</th>
+
+                                    <th>Thưởng gốc</th>
+
+                                    <th>Thưởng sau bổ sung</th>
+
+                                    <th>Tổng cộng gốc</th>
+
+                                    <th>Tổng cộng sau bổ sung</th>
+
+                                    <th>Thông tin nhận tiền</th>
+
+                                    <th>Người tạo</th>
+
+                                    <th>Thời gian tạo</th>
+
+                                    <th>Trạng thái kiểm duyệt</th>
+
+                                    <th>Thao tác</th>
+
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody>
+
+                                <tr>
+
+                                    <td>
+                                        <span
+                                            class="link"
+                                            onclick="openOrderDetail()"
+                                        >
+                                            BD202608110001
+                                        </span>
+                                    </td>
+
+                                    <td>
+                                        <span
+                                            class="link"
+                                            onclick="openMember()"
+                                        >
+                                            1000888
+                                        </span>
+                                    </td>
+
+                                    <td>
+                                        <span
+                                            class="link"
+                                            onclick="openMember()"
+                                        >
+                                            user888
+                                        </span>
+                                    </td>
+
+                                    <td>VND</td>
+
+                                    <td>1 : 1000</td>
+
+                                    <td>1.000</td>
+
+                                    <td class="changed">
+                                        1.500
+                                    </td>
+
+                                    <td>100</td>
+
+                                    <td class="changed">
+                                        150
+                                    </td>
+
+                                    <td>1.100</td>
+
+                                    <td class="total-after">
+                                        1.650
+                                    </td>
+
+                                    <td>
+                                        Ngân hàng nhận tiền
+                                    </td>
+
+                                    <td>
+                                        Admin01
+                                    </td>
+
+                                    <td>
+                                        11/08/2026 16:10
+                                    </td>
+
+                                    <td>
+                                        <span class="status status-wait">
+                                            Chờ kiểm duyệt
+                                        </span>
+                                    </td>
+
+                                    <td>
+
+                                        <button
+                                            class="btn btn-blue"
+                                            onclick="openReview()"
+                                        >
+                                            Kiểm duyệt
+                                        </button>
+
+                                    </td>
+
+                                </tr>
+
+
+                                <tr>
+
+                                    <td>
+                                        <span
+                                            class="link"
+                                            onclick="openOrderDetail()"
+                                        >
+                                            BD202608110002
+                                        </span>
+                                    </td>
+
+                                    <td>
+                                        <span
+                                            class="link"
+                                            onclick="openMember()"
+                                        >
+                                            1000999
+                                        </span>
+                                    </td>
+
+                                    <td>
+                                        <span
+                                            class="link"
+                                            onclick="openMember()"
+                                        >
+                                            abc888
+                                        </span>
+                                    </td>
+
+                                    <td>USDT</td>
+
+                                    <td>1 : 1</td>
+
+                                    <td>100</td>
+
+                                    <td>100</td>
+
+                                    <td>10</td>
+
+                                    <td class="changed">
+                                        20
+                                    </td>
+
+                                    <td>110</td>
+
+                                    <td class="total-after">
+                                        120
+                                    </td>
+
+                                    <td>
+                                        Ví USDT
+                                    </td>
+
+                                    <td>
+                                        Admin02
+                                    </td>
+
+                                    <td>
+                                        11/08/2026 15:35
+                                    </td>
+
+                                    <td>
+                                        <span class="status status-pass">
+                                            Đã thông qua
+                                        </span>
+                                    </td>
+
+                                    <td>
+
+                                        <button
+                                            class="btn btn-gray"
+                                            onclick="openOrderDetail()"
+                                        >
+                                            Chi tiết
+                                        </button>
+
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 PANEL TẤT CẢ BỔ SUNG ĐƠN
+            ================================================= -->
+
+            <div
+                class="backend-panel"
+                id="allPanel"
+            >
+
+                <div class="filter-area">
+
+                    <div class="filter-title">
+                        🔍 Tra cứu tất cả bổ sung đơn
+                    </div>
+
+
+                    <div class="filter-grid">
+
+                        <div class="form-group">
+
+                            <label>
+                                Loại tiền thành viên
+                            </label>
+
+                            <select class="form-control">
+
+                                <option>Tất cả</option>
+                                <option>VND</option>
+                                <option>USDT</option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Thời gian
+                            </label>
+
+                            <input
+                                class="form-control"
+                                type="date"
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Member ID / Tài khoản
+                            </label>
+
+                            <input
+                                class="form-control"
+                                placeholder="Nhập Member ID hoặc tài khoản"
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Trạng thái
+                            </label>
+
+                            <select class="form-control">
+
+                                <option>Tất cả trạng thái</option>
+                                <option>Chờ kiểm duyệt</option>
+                                <option>Đã thông qua</option>
+                                <option>Đã từ chối</option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="action-bar">
+
+                        <div class="action-left">
+
+                            <button class="btn btn-blue">
+                                🔍 Tìm kiếm
+                            </button>
+
+                            <button class="btn btn-gray">
+                                ↺ Đặt lại
+                            </button>
+
+                        </div>
+
+                        <div class="action-right">
+
+                            <button
+                                class="btn btn-gray"
+                                onclick="demoExport()"
+                            >
+                                📤 Xuất báo cáo
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="table-area">
+
+                    <div class="table-title">
+                        📚 Tất cả bổ sung đơn
+                    </div>
+
+
+                    <div class="table-scroll">
+
+                        <table class="data-table">
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>Mã đơn duyệt</th>
+
+                                    <th>Member ID</th>
+
+                                    <th>Tài khoản</th>
+
+                                    <th>Loại tiền</th>
+
+                                    <th>Tiền đơn gốc</th>
+
+                                    <th>Tiền đơn sau</th>
+
+                                    <th>Thưởng gốc</th>
+
+                                    <th>Thưởng sau</th>
+
+                                    <th>Tổng gốc</th>
+
+                                    <th>Tổng sau</th>
+
+                                    <th>Thông tin nhận tiền</th>
+
+                                    <th>Người tạo</th>
+
+                                    <th>Thời gian tạo</th>
+
+                                    <th>Trạng thái</th>
+
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody>
+
+                                <tr>
+
+                                    <td>
+                                        BD202608110001
+                                    </td>
+
+                                    <td>1000888</td>
+
+                                    <td>user888</td>
+
+                                    <td>VND</td>
+
+                                    <td>1.000</td>
+
+                                    <td class="changed">
+                                        1.500
+                                    </td>
+
+                                    <td>100</td>
+
+                                    <td class="changed">
+                                        150
+                                    </td>
+
+                                    <td>1.100</td>
+
+                                    <td class="total-after">
+                                        1.650
+                                    </td>
+
+                                    <td>
+                                        Ngân hàng nhận tiền
+                                    </td>
+
+                                    <td>Admin01</td>
+
+                                    <td>
+                                        11/08/2026 16:10
+                                    </td>
+
+                                    <td>
+                                        <span class="status status-pass">
+                                            Đã thông qua
+                                        </span>
+                                    </td>
+
+                                </tr>
+
+
+                                <tr>
+
+                                    <td>
+                                        BD202608110003
+                                    </td>
+
+                                    <td>1000777</td>
+
+                                    <td>member777</td>
+
+                                    <td>USDT</td>
+
+                                    <td>50</td>
+
+                                    <td class="changed">
+                                        70
+                                    </td>
+
+                                    <td>0</td>
+
+                                    <td>0</td>
+
+                                    <td>50</td>
+
+                                    <td class="total-after">
+                                        70
+                                    </td>
+
+                                    <td>
+                                        Ví USDT
+                                    </td>
+
+                                    <td>Admin03</td>
+
+                                    <td>
+                                        11/08/2026 14:20
+                                    </td>
+
+                                    <td>
+                                        <span class="status status-wait">
+                                            Chờ kiểm duyệt
+                                        </span>
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     4. GIẢI THÍCH GIAO DIỆN
+========================================================= -->
+
+<section
+    class="card"
+    id="areas"
+>
+
+    <div class="card-header">
+
+        <div class="card-icon">
+            📖
+        </div>
+
+        <div class="card-title">
+            4. Giải thích từng khu vực Backend
+        </div>
+
+    </div>
+
+
+    <div class="card-body">
+
+        <div class="explain-grid">
+
+
+            <div class="explain-box">
+
+                <h3>
+                    ① 补单审核
+                </h3>
+
+                <p>
+                    Khu vực dùng để xem các yêu cầu bổ sung cần kiểm duyệt và thực hiện thao tác kiểm duyệt.
+                </p>
+
+            </div>
+
+
+            <div class="explain-box">
+
+                <h3>
+                    ② 全部补单
+                </h3>
+
+                <p>
+                    Khu vực dùng để xem toàn bộ các đơn bổ sung và lịch sử xử lý.
+                </p>
+
+            </div>
+
+
+            <div class="explain-box">
+
+                <h3>
+                    ③ Bộ lọc
+                </h3>
+
+                <p>
+                    Dùng để thu hẹp danh sách theo các thông tin liên quan của đơn và thành viên.
+                </p>
+
+            </div>
+
+
+            <div class="explain-box">
+
+                <h3>
+                    ④ Mã đơn duyệt
+                </h3>
+
+                <p>
+                    Bấm vào mã đơn để mở cửa sổ chi tiết đơn.
+                    Nếu đơn đang được người khác kiểm duyệt thì người dùng hiện tại không thể kiểm duyệt.
+                </p>
+
+            </div>
+
+
+            <div class="explain-box">
+
+                <h3>
+                    ⑤ Member ID / Tài khoản
+                </h3>
+
+                <p>
+                    Bấm vào để mở tổng quan thành viên,
+                    xem thông tin chi tiết, trạng thái và số dư.
+                </p>
+
+            </div>
+
+
+            <div class="explain-box">
+
+                <h3>
+                    ⑥ Trước / Sau bổ sung
+                </h3>
+
+                <p>
+                    So sánh tiền đơn hàng, tiền thưởng và tổng tiền cộng trước và sau khi bổ sung.
+                </p>
+
+            </div>
+
+
+            <div class="explain-box">
+
+                <h3>
+                    ⑦ Kiểm duyệt
+                </h3>
+
+                <p>
+                    Bấm Kiểm duyệt để mở chi tiết.
+                    Sau khi xác nhận chính xác thì nhấn Thông qua để hoàn thành.
+                </p>
+
+            </div>
+
+
+            <div class="explain-box">
+
+                <h3>
+                    ⑧ Cài đặt kiểm duyệt
+                </h3>
+
+                <p>
+                    Thiết lập số tiền cần kiểm duyệt theo từng loại tiền.
+                </p>
+
+            </div>
+
+
+            <div class="explain-box">
+
+                <h3>
+                    ⑨ Xuất báo cáo
+                </h3>
+
+                <p>
+                    Xuất thông tin đơn của thành viên ra Excel.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     5. GIẢI THÍCH TRƯỜNG DỮ LIỆU
+========================================================= -->
+
+<section
+    class="card"
+    id="fields"
+>
+
+    <div class="card-header">
+
+        <div class="card-icon">
+            🧾
+        </div>
+
+        <div class="card-title">
+            5. Giải thích chi tiết trường dữ liệu
+        </div>
+
+    </div>
+
+
+    <div class="card-body">
+
+        <table class="field-table">
+
+            <thead>
+
+                <tr>
+
+                    <th>Trường</th>
+
+                    <th>Giải thích theo tài liệu</th>
+
+                    <th>Cách đọc / thao tác</th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody>
+
+
+                <tr>
+
+                    <td class="field-name">
+                        审核单号
+                        <br>
+                        Mã đơn duyệt
+                    </td>
+
+                    <td>
+                        Bấm vào sẽ mở cửa sổ chi tiết của đơn,
+                        hiển thị thông tin chi tiết của đơn đó.
+                    </td>
+
+                    <td>
+                        Nếu người khác đang kiểm duyệt đơn,
+                        người dùng hiện tại không thể thực hiện kiểm duyệt.
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td class="field-name">
+                        会员ID
+                        <br>
+                        Member ID
+                    </td>
+
+                    <td>
+                        Bấm vào sẽ mở popup tổng quan thành viên.
+                    </td>
+
+                    <td>
+                        Popup hiển thị thông tin chi tiết,
+                        trạng thái, số dư và các thông tin liên quan của thành viên.
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td class="field-name">
+                        会员账号
+                        <br>
+                        Tài khoản thành viên
+                    </td>
+
+                    <td>
+                        Tài khoản game mà thành viên nhập khi đăng ký.
+                    </td>
+
+                    <td>
+                        Bấm vào mở tổng quan thành viên,
+                        giống thao tác với Member ID.
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td class="field-name">
+                        会员币种
+                        <br>
+                        Loại tiền thành viên
+                    </td>
+
+                    <td>
+                        Là loại tiền thành viên đã chọn khi đăng ký,
+                        đồng thời là loại tiền sử dụng cho số dư,
+                        cộng/trừ điểm và đặt cược.
+                    </td>
+
+                    <td>
+                        Một số loại tiền có tỷ lệ,
+                        ví dụ VND 1:1000, IDR 1:1000.
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td class="field-name">
+                        订单金额
+                        <br>
+                        Tiền đơn hàng
+                    </td>
+
+                    <td>
+                        Số tiền được gửi trong đơn.
+                        Chia thành số tiền đơn gốc và số tiền sau bổ sung.
+                    </td>
+
+                    <td>
+                        Giá trị sau bổ sung là số tiền thực tế được xử lý.
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td class="field-name">
+                        赠送金额
+                        <br>
+                        Tiền thưởng
+                    </td>
+
+                    <td>
+                        Khoản thưởng đi kèm giao dịch nạp.
+                    </td>
+
+                    <td>
+                        Hiển thị tiền thưởng gốc và tiền thưởng sau bổ sung.
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td class="field-name">
+                        总上分金额
+                        <br>
+                        Tổng tiền cộng
+                    </td>
+
+                    <td>
+                        Số tiền thực tế được cộng vào tài khoản.
+                        Chia thành giá trị gốc và giá trị sau bổ sung.
+                    </td>
+
+                    <td>
+                        Giá trị thực tế được tính theo số tiền nạp thành công thực tế của thành viên.
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td class="field-name">
+                        收款信息
+                        <br>
+                        Thông tin nhận tiền
+                    </td>
+
+                    <td>
+                        Thông tin nhận tiền tương ứng với đơn bổ sung.
+                    </td>
+
+                    <td>
+                        Dùng để đối chiếu khi kiểm duyệt.
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td class="field-name">
+                        申请人
+                        <br>
+                        Người tạo yêu cầu
+                    </td>
+
+                    <td>
+                        Người đã gửi yêu cầu bổ sung đơn.
+                    </td>
+
+                    <td>
+                        Dùng để xác định người thực hiện yêu cầu.
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td class="field-name">
+                        申请时间
+                        <br>
+                        Thời gian yêu cầu
+                    </td>
+
+                    <td>
+                        Thời điểm yêu cầu bổ sung được gửi.
+                    </td>
+
+                    <td>
+                        Dùng để theo dõi thời gian phát sinh.
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td class="field-name">
+                        审核状态
+                        <br>
+                        Trạng thái kiểm duyệt
+                    </td>
+
+                    <td>
+                        Trạng thái xử lý hiện tại của yêu cầu.
+                    </td>
+
+                    <td>
+                        Cho biết yêu cầu đang chờ hay đã được xử lý.
+                    </td>
+
+                </tr>
+
+
+            </tbody>
+
+        </table>
+
+
+        <div
+            class="notice"
+            style="margin-top:16px;"
+        >
+            <b>Ví dụ tỷ lệ VND trong tài liệu:</b>
+            thành viên VND nạp 1000 VND,
+            tỷ lệ 1:1000 →
+            1000 ÷ 1000 = 1.00 →
+            số tiền cộng là 1.00.
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     6. TRƯỚC / SAU BỔ SUNG
+========================================================= -->
+
+<section
+    class="card"
+    id="compare"
+>
+
+    <div class="card-header">
+
+        <div class="card-icon">
+            ⚖️
+        </div>
+
+        <div class="card-title">
+            6. Cách đọc thông tin trước và sau bổ sung
+        </div>
+
+    </div>
+
+
+    <div class="card-body">
+
+        <div class="text">
+            Ba nhóm giá trị chính cần đối chiếu là
+            <b>Tiền đơn hàng</b>,
+            <b>Tiền thưởng</b>
+            và
+            <b>Tổng tiền cộng</b>.
+        </div>
+
+
+        <div
+            class="compare-grid"
+            style="margin-top:18px;"
+        >
+
+
+            <div class="compare-box">
+
+                <div class="compare-title">
+                    💰 Tiền đơn hàng
+                </div>
+
+                <div class="compare-values">
+
+                    <div class="before">
+                        Gốc
+                        <br>
+                        1.000
+                    </div>
+
+                    <div>→</div>
+
+                    <div class="after">
+                        Sau bổ sung
+                        <br>
+                        1.500
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="compare-box">
+
+                <div class="compare-title">
+                    🎁 Tiền thưởng
+                </div>
+
+                <div class="compare-values">
+
+                    <div class="before">
+                        Gốc
+                        <br>
+                        100
+                    </div>
+
+                    <div>→</div>
+
+                    <div class="after">
+                        Sau bổ sung
+                        <br>
+                        150
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="compare-box">
+
+                <div class="compare-title">
+                    📊 Tổng tiền cộng
+                </div>
+
+                <div class="compare-values">
+
+                    <div class="before">
+                        Gốc
+                        <br>
+                        1.100
+                    </div>
+
+                    <div>→</div>
+
+                    <div
+                        class="after"
+                        style="color:#159456;background:#e7f8ee;"
+                    >
+                        Sau bổ sung
+                        <br>
+                        1.650
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     7. KIỂM DUYỆT
+========================================================= -->
+
+<section
+    class="card"
+    id="review"
+>
+
+    <div class="card-header">
+
+        <div class="card-icon">
+            ✅
+        </div>
+
+        <div class="card-title">
+            7. Thao tác Kiểm duyệt
+        </div>
+
+    </div>
+
+
+    <div class="card-body">
+
+        <div class="text">
+            Theo tài liệu:
+            bấm <b>审核 - Kiểm duyệt</b> để mở chi tiết kiểm duyệt.
+            Sau khi xác nhận thông tin không có sai sót,
+            bấm <b>Thông qua</b> để hoàn tất thao tác.
+        </div>
+
+
+        <div
+            class="flow"
+            style="margin-top:20px;"
+        >
+
+            <div class="flow-step">
+                <strong>1</strong>
+                <span>Bấm Kiểm duyệt</span>
+            </div>
+
+            <div class="flow-arrow">→</div>
+
+            <div class="flow-step">
+                <strong>2</strong>
+                <span>Xem chi tiết yêu cầu</span>
+            </div>
+
+            <div class="flow-arrow">→</div>
+
+            <div class="flow-step">
+                <strong>3</strong>
+                <span>Đối chiếu dữ liệu</span>
+            </div>
+
+            <div class="flow-arrow">→</div>
+
+            <div class="flow-step">
+                <strong>4</strong>
+                <span>Xác nhận chính xác</span>
+            </div>
+
+            <div class="flow-arrow">→</div>
+
+            <div class="flow-step">
+                <strong>5</strong>
+                <span>Nhấn Thông qua</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     8. CÀI ĐẶT KIỂM DUYỆT
+========================================================= -->
+
+<section
+    class="card"
+    id="settings"
+>
+
+    <div class="card-header">
+
+        <div class="card-icon">
+            ⚙️
+        </div>
+
+        <div class="card-title">
+            8. Cài đặt kiểm duyệt - 审核设置
+        </div>
+
+    </div>
+
+
+    <div class="card-body">
+
+        <div class="text">
+            Có thể thiết lập số tiền kiểm duyệt chi tiết
+            theo từng loại tiền.
+        </div>
+
+
+        <div
+            class="notice warning"
+            style="margin-top:16px;"
+        >
+            <b>Quy tắc trong PDF:</b>
+            số tiền nhỏ hơn hoặc bằng mức đã thiết lập
+            thì không cần kiểm duyệt và được trực tiếp thông qua.
+            <b>0 nghĩa là bắt buộc phải kiểm duyệt.</b>
+        </div>
+
+
+        <div
+            class="explain-grid"
+            style="margin-top:16px;"
+        >
+
+            <div class="explain-box">
+
+                <h3>
+                    Ví dụ 1
+                </h3>
+
+                <p>
+                    Ngưỡng kiểm duyệt = 100.
+                    Yêu cầu có số tiền ≤100 có thể trực tiếp thông qua.
+                </p>
+
+            </div>
+
+
+            <div class="explain-box">
+
+                <h3>
+                    Ví dụ 2
+                </h3>
+
+                <p>
+                    Ngưỡng kiểm duyệt = 0.
+                    Yêu cầu bắt buộc phải đi qua bước kiểm duyệt.
+                </p>
+
+            </div>
+
+
+            <div class="explain-box">
+
+                <h3>
+                    Theo từng loại tiền
+                </h3>
+
+                <p>
+                    Mỗi loại tiền có thể được thiết lập mức kiểm duyệt riêng.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     9. TẤT CẢ BỔ SUNG ĐƠN
+========================================================= -->
+
+<section
+    class="card"
+    id="allOrders"
+>
+
+    <div class="card-header">
+
+        <div class="card-icon">
+            📚
+        </div>
+
+        <div class="card-title">
+            9. Tất cả bổ sung đơn - 全部补单
+        </div>
+
+    </div>
+
+
+    <div class="card-body">
+
+        <div class="text">
+            Khu vực này có thể cấu hình tần suất làm mới trang
+            và xem thông tin trước/sau bổ sung của
+            tiền đơn hàng, tiền thưởng, tổng tiền cộng,
+            thông tin nhận tiền,
+            người tạo yêu cầu,
+            thời gian tạo và trạng thái kiểm duyệt.
+        </div>
+
+
+        <div
+            class="explain-grid"
+            style="margin-top:18px;"
+        >
+
+            <div class="explain-box">
+
+                <h3>
+                    🔄 Cài đặt làm mới
+                </h3>
+
+                <p>
+                    Thiết lập chu kỳ tự động làm mới trang đơn.
+                </p>
+
+            </div>
+
+
+            <div class="explain-box">
+
+                <h3>
+                    📤 Xuất báo cáo
+                </h3>
+
+                <p>
+                    Xuất dữ liệu thông tin đơn của thành viên ra Excel.
+                </p>
+
+            </div>
+
+
+            <div class="explain-box">
+
+                <h3>
+                    📋 Lịch sử bổ sung
+                </h3>
+
+                <p>
+                    Xem lại toàn bộ dữ liệu và trạng thái kiểm duyệt của các đơn bổ sung.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<div class="footer">
+    Tài liệu đào tạo nội bộ · Tạo Lệnh Nạp Tiền / 充值补单
+</div>
+
+
+</main>
+
+
+<!-- =========================================================
+     MODAL: CHI TIẾT ĐƠN
+========================================================= -->
+
+<div
+    class="modal-overlay"
+    id="orderModal"
+    onclick="closeOutside(event,'orderModal')"
+>
+
+    <div class="modal">
+
+        <div class="modal-header">
+
+            <div class="modal-title">
+                📋 Chi tiết đơn bổ sung
+            </div>
+
+            <button
+                class="modal-close"
+                onclick="closeModal('orderModal')"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <div class="modal-body">
+
+            <div class="member-grid">
+
+                <div class="member-row">
+
+                    <div class="member-label">
+                        Mã đơn duyệt
+                    </div>
+
+                    <div class="member-value">
+                        BD202608110001
+                    </div>
+
+                </div>
+
+
+                <div class="member-row">
+
+                    <div class="member-label">
+                        Member ID
+                    </div>
+
+                    <div class="member-value">
+                        1000888
+                    </div>
+
+                </div>
+
+
+                <div class="member-row">
+
+                    <div class="member-label">
+                        Tài khoản
+                    </div>
+
+                    <div class="member-value">
+                        user888
+                    </div>
+
+                </div>
+
+
+                <div class="member-row">
+
+                    <div class="member-label">
+                        Loại tiền
+                    </div>
+
+                    <div class="member-value">
+                        VND · 1:1000
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div
+                class="compare-grid"
+                style="margin-top:15px;"
+            >
+
+                <div class="compare-box">
+
+                    <div class="compare-title">
+                        Tiền đơn hàng
+                    </div>
+
+                    <div class="compare-values">
+
+                        <div class="before">
+                            1.000
+                        </div>
+
+                        <div>→</div>
+
+                        <div class="after">
+                            1.500
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="compare-box">
+
+                    <div class="compare-title">
+                        Tiền thưởng
+                    </div>
+
+                    <div class="compare-values">
+
+                        <div class="before">
+                            100
+                        </div>
+
+                        <div>→</div>
+
+                        <div class="after">
+                            150
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="compare-box">
+
+                    <div class="compare-title">
+                        Tổng tiền cộng
+                    </div>
+
+                    <div class="compare-values">
+
+                        <div class="before">
+                            1.100
+                        </div>
+
+                        <div>→</div>
+
+                        <div
+                            class="after"
+                            style="color:#159456;"
+                        >
+                            1.650
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="modal-footer">
+
+            <button
+                class="btn btn-gray"
+                onclick="closeModal('orderModal')"
+            >
+                Đóng
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     MODAL: MEMBER
+========================================================= -->
+
+<div
+    class="modal-overlay"
+    id="memberModal"
+    onclick="closeOutside(event,'memberModal')"
+>
+
+    <div class="modal">
+
+        <div class="modal-header">
+
+            <div class="modal-title">
+                👤 Tổng quan thành viên
+            </div>
+
+            <button
+                class="modal-close"
+                onclick="closeModal('memberModal')"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <div class="modal-body">
+
+            <div class="member-grid">
+
+                <div class="member-row">
+
+                    <div class="member-label">
+                        Member ID
+                    </div>
+
+                    <div class="member-value">
+                        1000888
+                    </div>
+
+                </div>
+
+
+                <div class="member-row">
+
+                    <div class="member-label">
+                        Tài khoản
+                    </div>
+
+                    <div class="member-value">
+                        user888
+                    </div>
+
+                </div>
+
+
+                <div class="member-row">
+
+                    <div class="member-label">
+                        Trạng thái
+                    </div>
+
+                    <div class="member-value">
+                        Hoạt động
+                    </div>
+
+                </div>
+
+
+                <div class="member-row">
+
+                    <div class="member-label">
+                        Số dư
+                    </div>
+
+                    <div class="member-value">
+                        Dữ liệu minh họa
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div
+                class="notice"
+                style="margin-top:14px;"
+            >
+                Theo PDF, khi bấm Member ID hoặc tài khoản,
+                hệ thống mở popup tổng quan thành viên và hiển thị
+                thông tin chi tiết, trạng thái, số dư.
+            </div>
+
+        </div>
+
+
+        <div class="modal-footer">
+
+            <button
+                class="btn btn-gray"
+                onclick="closeModal('memberModal')"
+            >
+                Đóng
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     MODAL: KIỂM DUYỆT
+========================================================= -->
+
+<div
+    class="modal-overlay"
+    id="reviewModal"
+    onclick="closeOutside(event,'reviewModal')"
+>
+
+    <div class="modal">
+
+        <div class="modal-header">
+
+            <div class="modal-title">
+                ✅ Chi tiết kiểm duyệt
+            </div>
+
+            <button
+                class="modal-close"
+                onclick="closeModal('reviewModal')"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <div class="modal-body">
+
+            <div class="notice">
+                Kiểm tra các thông tin trước và sau bổ sung.
+                Nếu xác nhận không có sai sót,
+                nhấn <b>Thông qua</b> để hoàn tất.
+            </div>
+
+
+            <div
+                class="compare-grid"
+                style="margin-top:15px;"
+            >
+
+                <div class="compare-box">
+
+                    <div class="compare-title">
+                        Tiền đơn hàng
+                    </div>
+
+                    <div class="compare-values">
+
+                        <div class="before">
+                            Gốc
+                            <br>
+                            1.000
+                        </div>
+
+                        <div>→</div>
+
+                        <div class="after">
+                            Sau
+                            <br>
+                            1.500
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="compare-box">
+
+                    <div class="compare-title">
+                        Tiền thưởng
+                    </div>
+
+                    <div class="compare-values">
+
+                        <div class="before">
+                            Gốc
+                            <br>
+                            100
+                        </div>
+
+                        <div>→</div>
+
+                        <div class="after">
+                            Sau
+                            <br>
+                            150
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="compare-box">
+
+                    <div class="compare-title">
+                        Tổng tiền cộng
+                    </div>
+
+                    <div class="compare-values">
+
+                        <div class="before">
+                            Gốc
+                            <br>
+                            1.100
+                        </div>
+
+                        <div>→</div>
+
+                        <div
+                            class="after"
+                            style="color:#159456;"
+                        >
+                            Sau
+                            <br>
+                            1.650
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div
+                class="member-grid"
+                style="margin-top:15px;"
+            >
+
+                <div class="member-row">
+
+                    <div class="member-label">
+                        Thông tin nhận tiền
+                    </div>
+
+                    <div class="member-value">
+                        Ngân hàng nhận tiền
+                    </div>
+
+                </div>
+
+
+                <div class="member-row">
+
+                    <div class="member-label">
+                        Người tạo yêu cầu
+                    </div>
+
+                    <div class="member-value">
+                        Admin01
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="modal-footer">
+
+            <button
+                class="btn btn-gray"
+                onclick="closeModal('reviewModal')"
+            >
+                Hủy
+            </button>
+
+            <button
+                class="btn btn-blue"
+                onclick="approveDemo()"
+            >
+                ✓ Thông qua
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     MODAL: CÀI ĐẶT KIỂM DUYỆT
+========================================================= -->
+
+<div
+    class="modal-overlay"
+    id="settingsModal"
+    onclick="closeOutside(event,'settingsModal')"
+>
+
+    <div class="modal">
+
+        <div class="modal-header">
+
+            <div class="modal-title">
+                ⚙ Cài đặt kiểm duyệt
+            </div>
+
+            <button
+                class="modal-close"
+                onclick="closeModal('settingsModal')"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <div class="modal-body">
+
+            <div class="notice warning">
+                Nhỏ hơn hoặc bằng mức tiền thiết lập:
+                không cần kiểm duyệt, trực tiếp thông qua.
+                <b>0 = bắt buộc kiểm duyệt.</b>
+            </div>
+
+
+            <div
+                class="settings-list"
+                style="margin-top:15px;"
+            >
+
+                <div class="setting-row">
+                    <div class="currency">BRL</div>
+                    <input class="form-control" value="0.00">
+                </div>
+
+                <div class="setting-row">
+                    <div class="currency">MXN</div>
+                    <input class="form-control" value="0.00">
+                </div>
+
+                <div class="setting-row">
+                    <div class="currency">COP</div>
+                    <input class="form-control" value="0.00">
+                </div>
+
+                <div class="setting-row">
+                    <div class="currency">CLP</div>
+                    <input class="form-control" value="0.00">
+                </div>
+
+                <div class="setting-row">
+                    <div class="currency">ARS</div>
+                    <input class="form-control" value="0.00">
+                </div>
+
+                <div class="setting-row">
+                    <div class="currency">USDT</div>
+                    <input class="form-control" value="0.00">
+                </div>
+
+                <div class="setting-row">
+                    <div class="currency">TRX</div>
+                    <input class="form-control" value="0.00">
+                </div>
+
+                <div class="setting-row">
+                    <div class="currency">NGN</div>
+                    <input class="form-control" value="0.00">
+                </div>
+
+                <div class="setting-row">
+                    <div class="currency">PEN</div>
+                    <input class="form-control" value="0.00">
+                </div>
+
+                <div class="setting-row">
+                    <div class="currency">USDC</div>
+                    <input class="form-control" value="0.00">
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="modal-footer">
+
+            <button
+                class="btn btn-gray"
+                onclick="closeModal('settingsModal')"
+            >
+                Hủy
+            </button>
+
+            <button
+                class="btn btn-blue"
+                onclick="saveSettingsDemo()"
+            >
+                Xác nhận
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+<script>
+
+
+/* =========================================================
+   QUAY LẠI
+========================================================= */
+
+function goBack(){
+
+    if(window.history.length > 1){
+
+        window.history.back();
+
+    }else{
+
+        window.location.href = "index.html";
+
+    }
+
+}
+
+
+/* =========================================================
+   NHẢY TỚI SECTION
+========================================================= */
+
+function goSection(id){
+
+    const el = document.getElementById(id);
+
+    if(el){
+
+        el.scrollIntoView({
+            behavior:"smooth",
+            block:"start"
+        });
+
+    }
+
+}
+
+
+/* =========================================================
+   TAB BACKEND
+========================================================= */
+
+function switchBackend(type){
+
+    const auditTab =
+        document.getElementById("auditTab");
+
+    const allTab =
+        document.getElementById("allTab");
+
+    const auditPanel =
+        document.getElementById("auditPanel");
+
+    const allPanel =
+        document.getElementById("allPanel");
+
+
+    if(type === "audit"){
+
+        auditTab.classList.add("active");
+
+        allTab.classList.remove("active");
+
+        auditPanel.classList.add("active");
+
+        allPanel.classList.remove("active");
+
+    }else{
+
+        allTab.classList.add("active");
+
+        auditTab.classList.remove("active");
+
+        allPanel.classList.add("active");
+
+        auditPanel.classList.remove("active");
+
+    }
+
+}
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+function openModal(id){
+
+    const modal =
+        document.getElementById(id);
+
+    if(modal){
+
+        modal.classList.add("show");
+
+    }
+
+}
+
+
+function closeModal(id){
+
+    const modal =
+        document.getElementById(id);
+
+    if(modal){
+
+        modal.classList.remove("show");
+
+    }
+
+}
+
+
+function closeOutside(event,id){
+
+    if(event.target.id === id){
+
+        closeModal(id);
+
+    }
+
+}
+
+
+function openOrderDetail(){
+
+    openModal("orderModal");
+
+}
+
+
+function openMember(){
+
+    openModal("memberModal");
+
+}
+
+
+function openReview(){
+
+    openModal("reviewModal");
+
+}
+
+
+function openSettings(){
+
+    openModal("settingsModal");
+
+}
+
+
+/* =========================================================
+   DEMO REVIEW
+========================================================= */
+
+function approveDemo(){
+
+    alert(
+        "Mô phỏng: Yêu cầu đã được xác nhận thông qua."
+    );
+
+    closeModal("reviewModal");
+
+}
+
+
+/* =========================================================
+   SETTINGS
+========================================================= */
+
+function saveSettingsDemo(){
+
+    alert(
+        "Mô phỏng: Đã lưu cài đặt kiểm duyệt."
+    );
+
+    closeModal("settingsModal");
+
+}
+
+
+/* =========================================================
+   REFRESH
+========================================================= */
+
+let refreshTimer = null;
+
+
+function setRefresh(){
+
+    const value =
+        Number(
+            document.getElementById("refreshSelect").value
+        );
+
+
+    if(refreshTimer){
+
+        clearInterval(refreshTimer);
+
+        refreshTimer = null;
+
+    }
+
+
+    if(value > 0){
+
+        refreshTimer =
+            setInterval(
+                function(){
+
+                    console.log(
+                        "Mô phỏng tự động làm mới danh sách"
+                    );
+
+                },
+                value * 1000
+            );
+
+    }
+
+}
+
+
+/* =========================================================
+   EXPORT
+========================================================= */
+
+function demoExport(){
+
+    alert(
+        "Mô phỏng chức năng Xuất báo cáo Excel."
+    );
+
+}
+
+
+/* =========================================================
+   ESC ĐÓNG MODAL
+========================================================= */
+
+document.addEventListener(
+    "keydown",
+    function(event){
+
+        if(event.key === "Escape"){
+
+            document
+            .querySelectorAll(".modal-overlay")
+            .forEach(
+                function(modal){
+
+                    modal.classList.remove("show");
+
+                }
+            );
+
+        }
+
+    }
+);
+
+
+</script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>XX8.COM - Lưu Trình Backend</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Segoe UI",Arial,sans-serif;
+}
+
+body{
+    min-height:100vh;
+    color:white;
+
+    background:
+        radial-gradient(
+            circle at 50% 15%,
+            rgba(255,30,90,.20),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #050507,
+            #130008,
+            #290010
+        );
+
+    overflow:hidden;
+}
+
+body::after{
+    content:"XX8";
+    position:fixed;
+    left:50%;
+    top:60%;
+    transform:translate(-50%,-50%);
+    font-size:380px;
+    font-weight:1000;
+    color:rgba(255,255,255,.018);
+    pointer-events:none;
+}
+
+/* HEADER */
+
+.header{
+    width:94%;
+    height:72px;
+    margin:18px auto;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 25px;
+
+    background:
+        rgba(255,255,255,.055);
+
+    border:
+        1px solid rgba(255,255,255,.11);
+
+    border-radius:22px;
+
+    backdrop-filter:blur(24px);
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.35);
+}
+
+.back{
+    padding:11px 22px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff275e,
+            #b90040
+        );
+
+    color:white;
+
+    border:none;
+    border-radius:14px;
+
+    cursor:pointer;
+
+    font-weight:800;
+
+    box-shadow:
+        0 0 22px rgba(255,39,94,.35);
+
+    transition:.25s;
+}
+
+.back:hover{
+    transform:translateY(-2px);
+    box-shadow:0 0 35px rgba(255,39,94,.65);
+}
+
+.brand{
+    font-size:30px;
+    font-weight:1000;
+}
+
+.brand span{
+    color:#ff2f65;
+}
+
+.header-title{
+    color:rgba(255,255,255,.72);
+    font-size:14px;
+    font-weight:700;
+    letter-spacing:1.5px;
+}
+
+.online{
+    padding:9px 16px;
+
+    border-radius:20px;
+
+    background:
+        rgba(0,255,150,.08);
+
+    border:
+        1px solid rgba(0,255,150,.18);
+
+    color:#48ef9d;
+
+    font-size:12px;
+    font-weight:800;
+}
+
+/* MAIN */
+
+.main{
+    width:94%;
+    height:calc(100vh - 125px);
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:
+        360px 1fr;
+
+    gap:25px;
+}
+
+/* LEFT */
+
+.sidebar{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+}
+
+.glass{
+    background:
+        rgba(255,255,255,.055);
+
+    border:
+        1px solid rgba(255,255,255,.11);
+
+    backdrop-filter:blur(24px);
+
+    border-radius:24px;
+
+    box-shadow:
+        0 25px 70px rgba(0,0,0,.30);
+}
+
+.sidebar-title{
+    padding:25px;
+}
+
+.sidebar-title h1{
+    color:#ff3d72;
+    font-size:30px;
+}
+
+.sidebar-title p{
+    margin-top:8px;
+    color:rgba(255,255,255,.45);
+    font-size:13px;
+}
+
+/* MENU CARD */
+
+.flow-card{
+    min-height:120px;
+
+    padding:20px;
+
+    display:flex;
+    align-items:center;
+    gap:18px;
+
+    cursor:pointer;
+
+    transition:.25s;
+}
+
+.flow-card:hover{
+    transform:translateY(-4px);
+
+    border-color:
+        rgba(255,50,105,.45);
+
+    box-shadow:
+        0 20px 50px rgba(255,20,80,.15);
+}
+
+.flow-icon{
+    width:68px;
+    height:68px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    flex-shrink:0;
+
+    border-radius:20px;
+
+    font-size:27px;
+}
+
+.flow-in{
+    background:
+        linear-gradient(
+            135deg,
+            #ff3970,
+            #bc003f
+        );
+}
+
+.flow-out{
+    background:
+        linear-gradient(
+            135deg,
+            #ff174f,
+            #ff668c
+        );
+}
+
+.flow-text h3{
+    font-size:18px;
+}
+
+.flow-text p{
+    margin-top:5px;
+    color:rgba(255,255,255,.45);
+    font-size:13px;
+}
+
+/* RIGHT */
+
+.info{
+    padding:28px;
+}
+
+.banner{
+    height:170px;
+
+    border-radius:24px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,25,85,.42),
+            rgba(0,0,0,.72)
+        );
+
+    border:
+        1px solid rgba(255,70,115,.24);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.06);
+}
+
+.banner i{
+    display:block;
+    margin-bottom:12px;
+    font-size:44px;
+    color:#ff4779;
+}
+
+.banner h2{
+    font-size:28px;
+}
+
+.section-title{
+    margin-top:25px;
+
+    color:#ff4779;
+
+    font-size:22px;
+}
+
+.description{
+    margin-top:9px;
+
+    color:
+        rgba(255,255,255,.48);
+
+    font-size:14px;
+}
+
+/* STATS */
+
+.stats{
+    margin-top:22px;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:14px;
+}
+
+.stat{
+    padding:20px;
+
+    text-align:center;
+
+    background:
+        rgba(255,255,255,.035);
+
+    border:
+        1px solid rgba(255,255,255,.07);
+
+    border-radius:18px;
+}
+
+.stat i{
+    color:#ff4779;
+    font-size:25px;
+}
+
+.stat strong{
+    display:block;
+    margin:8px 0 3px;
+    font-size:24px;
+}
+
+.stat span{
+    color:rgba(255,255,255,.45);
+    font-size:12px;
+}
+
+/* PROCESS */
+
+.process{
+    margin-top:20px;
+
+    padding:10px 16px;
+
+    background:
+        rgba(255,255,255,.03);
+
+    border:
+        1px solid rgba(255,255,255,.06);
+
+    border-radius:18px;
+}
+
+.process div{
+    padding:13px 5px;
+
+    border-bottom:
+        1px solid rgba(255,255,255,.07);
+
+    color:rgba(255,255,255,.70);
+
+    font-size:13px;
+}
+
+.process div:last-child{
+    border-bottom:none;
+}
+
+.process i{
+    width:30px;
+    color:#ff4779;
+}
+
+.status{
+    margin-top:18px;
+
+    padding:14px 16px;
+
+    border-radius:15px;
+
+    background:
+        rgba(0,255,150,.08);
+
+    border:
+        1px solid rgba(0,255,150,.13);
+
+    color:#48ef9d;
+
+    font-size:13px;
+    font-weight:800;
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+    body{
+        overflow:auto;
+    }
+
+    .main{
+        height:auto;
+        grid-template-columns:1fr;
+    }
+
+    .header-title,
+    .online{
+        display:none;
+    }
+
+    .stats{
+        grid-template-columns:1fr;
+    }
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<header class="header">
+
+    <button class="back" onclick="history.back()">
+        ← QUAY LẠI
+    </button>
+
+    <div class="brand">
+        XX8<span>.COM</span>
+    </div>
+
+    <div class="header-title">
+        HỆ THỐNG LƯU TRÌNH BACKEND
+    </div>
+
+    <div class="online">
+        ● SYSTEM ONLINE
+    </div>
+
+</header>
+
+
+<main class="main">
+
+
+<!-- LEFT -->
+
+<section class="sidebar">
+
+
+    <div class="sidebar-title glass">
+
+        <h1>
+            <i class="fa-solid fa-folder-open"></i>
+            LƯU TRÌNH XX8
+        </h1>
+
+        <p>
+            Quy trình hướng dẫn vận hành hệ thống Backend
+        </p>
+
+    </div>
+
+
+    <div
+        class="flow-card glass"
+        onclick="openPage('luu_trinh_nhap_khoan.html')"
+    >
+
+        <div class="flow-icon flow-in">
+
+            <i class="fa-solid fa-arrow-down"></i>
+
+        </div>
+
+        <div class="flow-text">
+
+            <h3>
+                Lưu trình nhập khoản
+            </h3>
+
+            <p>
+                Hướng dẫn xử lý đơn nạp tiền
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div
+        class="flow-card glass"
+        onclick="openPage('luu_trinh_xuat_khoan.html')"
+    >
+
+        <div class="flow-icon flow-out">
+
+            <i class="fa-solid fa-arrow-up"></i>
+
+        </div>
+
+        <div class="flow-text">
+
+            <h3>
+                Lưu trình xuất khoản
+            </h3>
+
+            <p>
+                Hướng dẫn xử lý đơn rút tiền
+            </p>
+
+        </div>
+
+    </div>
+
+
+</section>
+
+
+
+<!-- RIGHT -->
+
+<section class="info glass">
+
+
+    <div class="banner">
+
+        <div>
+
+            <i class="fa-solid fa-server"></i>
+
+            <h2>
+                HỆ THỐNG VẬN HÀNH XX8
+            </h2>
+
+        </div>
+
+    </div>
+
+
+    <h2 class="section-title">
+
+        <i class="fa-solid fa-circle-info"></i>
+        Thông tin lưu trình
+
+    </h2>
+
+
+    <p class="description">
+
+        Quản lý tài liệu, quy trình vận hành và hướng dẫn thao tác Backend.
+
+    </p>
+
+
+    <div class="stats">
+
+
+        <div class="stat">
+
+            <i class="fa-solid fa-file"></i>
+
+            <strong>
+                02
+            </strong>
+
+            <span>
+                TÀI LIỆU
+            </span>
+
+        </div>
+
+
+        <div class="stat">
+
+            <i class="fa-solid fa-shield-halved"></i>
+
+            <strong>
+                100%
+            </strong>
+
+            <span>
+                BẢO MẬT
+            </span>
+
+        </div>
+
+
+        <div class="stat">
+
+            <i class="fa-solid fa-bolt"></i>
+
+            <strong>
+                LIVE
+            </strong>
+
+            <span>
+                HOẠT ĐỘNG
+            </span>
+
+        </div>
+
+
+    </div>
+
+
+    <div class="process">
+
+        <div>
+            <i class="fa-solid fa-download"></i>
+            Quy trình nhập khoản thủ công
+        </div>
+
+        <div>
+            <i class="fa-solid fa-upload"></i>
+            Quy trình xử lý xuất khoản
+        </div>
+
+        <div>
+            <i class="fa-solid fa-book"></i>
+            Tài liệu hướng dẫn Backend
+        </div>
+
+        <div>
+            <i class="fa-solid fa-lock"></i>
+            Quy định vận hành hệ thống
+        </div>
+
+    </div>
+
+
+    <div class="status">
+
+        ● TÀI LIỆU ĐANG ĐƯỢC SỬ DỤNG
+
+    </div>
+
+
+</section>
+
+
+</main>
+
+
+<script>
+
+function openPage(url){
+
+    window.location.href=url;
+
+}
+
+</script>
+
+
+</body>
+
+</html>

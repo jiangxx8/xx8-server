@@ -1,0 +1,8328 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>
+Tổng Nạp Tiền Online - Admin
+</title>
+
+
+<style>
+
+
+/* ==========================
+ RESET
+========================== */
+
+
+*{
+
+    margin:0;
+
+    padding:0;
+
+    box-sizing:border-box;
+
+    font-family:
+    "Microsoft YaHei",
+    "Segoe UI",
+    Arial,
+    sans-serif;
+
+}
+
+
+
+body{
+
+    background:#f3f6fb;
+
+    color:#333;
+
+}
+
+
+
+/* ==========================
+ HEADER
+========================== */
+
+
+.header{
+
+
+    height:86px;
+
+    background:
+    linear-gradient(
+    135deg,
+    #1677ff,
+    #0052cc
+    );
+
+
+    display:flex;
+
+    align-items:center;
+
+    padding:0 35px;
+
+    color:white;
+
+
+}
+
+
+
+.logo-box{
+
+
+    width:55px;
+
+    height:55px;
+
+    background:white;
+
+    color:#1677ff;
+
+    border-radius:15px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:28px;
+
+    font-weight:bold;
+
+
+}
+
+
+
+.header-info{
+
+
+    margin-left:20px;
+
+
+}
+
+
+
+.header-title{
+
+
+    font-size:26px;
+
+    font-weight:800;
+
+
+}
+
+
+
+.header-desc{
+
+
+    margin-top:5px;
+
+    font-size:14px;
+
+    opacity:.85;
+
+
+}
+
+
+
+.back-btn{
+
+
+    margin-left:auto;
+
+    background:
+    rgba(255,255,255,.18);
+
+    border:1px solid
+    rgba(255,255,255,.3);
+
+    color:white;
+
+    padding:12px 25px;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    font-weight:bold;
+
+
+}
+
+
+
+
+/* ==========================
+ TAB MENU
+========================== */
+
+
+.tab-area{
+
+
+    width:95%;
+
+    margin:20px auto;
+
+    display:flex;
+
+    gap:12px;
+
+    flex-wrap:wrap;
+
+
+}
+
+
+
+.tab-item{
+
+
+    background:white;
+
+    border-radius:10px;
+
+    padding:12px 20px;
+
+    cursor:pointer;
+
+    border:
+
+    1px solid #e3eaf5;
+
+
+    font-size:14px;
+
+    font-weight:600;
+
+
+    transition:.25s;
+
+
+}
+
+
+
+.tab-item:hover{
+
+
+    color:white;
+
+    background:#1677ff;
+
+
+}
+
+
+
+.tab-item.active{
+
+
+    background:#1677ff;
+
+    color:white;
+
+
+}
+
+
+
+
+/* ==========================
+ MAIN
+========================== */
+
+
+.main{
+
+
+    width:95%;
+
+    margin:auto;
+
+
+}
+
+
+
+
+/* CARD */
+
+
+.card{
+
+
+    background:white;
+
+    border-radius:18px;
+
+    margin-bottom:22px;
+
+
+    box-shadow:
+
+    0 8px 25px
+
+    rgba(0,0,0,.06);
+
+
+    overflow:hidden;
+
+
+}
+
+
+
+.card-header{
+
+
+    padding:18px 25px;
+
+    font-size:20px;
+
+    font-weight:bold;
+
+    color:#1677ff;
+
+    border-bottom:
+
+    1px solid #eee;
+
+
+}
+
+
+
+.card-body{
+
+
+    padding:25px;
+
+
+}
+
+
+
+
+/* ==========================
+ GRID
+========================== */
+
+
+.grid-3{
+
+
+    display:grid;
+
+    grid-template-columns:
+
+    repeat(3,1fr);
+
+    gap:20px;
+
+
+}
+
+
+
+.box{
+
+
+    background:#fff;
+
+    border:
+
+    1px solid #e7edf7;
+
+
+    border-radius:14px;
+
+    padding:20px;
+
+
+}
+
+
+
+.box-title{
+
+
+    font-size:16px;
+
+    font-weight:bold;
+
+    color:#1677ff;
+
+    margin-bottom:12px;
+
+
+}
+
+
+
+.box-text{
+
+
+    color:#666;
+
+    line-height:1.8;
+
+    font-size:14px;
+
+
+}
+
+
+
+
+/* ==========================
+ BUTTON
+========================== */
+
+
+.btn{
+
+
+    border:none;
+
+    border-radius:8px;
+
+    padding:10px 20px;
+
+    cursor:pointer;
+
+    font-weight:bold;
+
+
+}
+
+
+
+.btn-primary{
+
+
+    background:#1677ff;
+
+    color:white;
+
+
+}
+
+
+
+.btn-success{
+
+
+    background:#13c2c2;
+
+    color:white;
+
+
+}
+
+
+
+.btn-danger{
+
+
+    background:#ff4d4f;
+
+    color:white;
+
+
+}
+
+
+
+
+
+/* ==========================
+ INPUT
+========================== */
+
+
+.input{
+
+
+    height:38px;
+
+    padding:0 12px;
+
+    border:
+
+    1px solid #d9e2f0;
+
+
+    border-radius:8px;
+
+    outline:none;
+
+
+}
+
+
+
+.input:focus{
+
+
+    border-color:#1677ff;
+
+
+}
+
+
+
+
+
+/* ==========================
+ TABLE
+========================== */
+
+
+.table-box{
+
+
+    overflow:auto;
+
+
+}
+
+
+
+table{
+
+
+    width:100%;
+
+    border-collapse:collapse;
+
+
+}
+
+
+
+th{
+
+
+    background:#f3f7ff;
+
+    padding:14px;
+
+    white-space:nowrap;
+
+
+}
+
+
+
+td{
+
+
+    padding:13px;
+
+    text-align:center;
+
+    border-bottom:
+
+    1px solid #eee;
+
+    white-space:nowrap;
+
+
+}
+
+
+
+
+tr:hover{
+
+
+    background:#fafcff;
+
+
+}
+
+
+
+
+/* ==========================
+ STATUS
+========================== */
+
+
+.status{
+
+
+    padding:5px 12px;
+
+    border-radius:20px;
+
+    font-size:13px;
+
+
+}
+
+
+
+.status-success{
+
+
+    color:#13c2c2;
+
+    background:#e6fffb;
+
+
+}
+
+
+
+.status-wait{
+
+
+    color:#fa8c16;
+
+    background:#fff7e6;
+
+
+}
+
+
+
+.status-error{
+
+
+    color:#ff4d4f;
+
+    background:#fff1f0;
+
+
+}
+
+
+
+
+
+/* ==========================
+ POPUP
+========================== */
+
+
+.mask{
+
+
+    display:none;
+
+    position:fixed;
+
+    inset:0;
+
+    background:
+
+    rgba(0,0,0,.45);
+
+    z-index:999;
+
+
+}
+
+
+
+.popup{
+
+
+    width:750px;
+
+    background:white;
+
+    border-radius:18px;
+
+    position:absolute;
+
+    top:50%;
+
+    left:50%;
+
+    transform:
+
+    translate(-50%,-50%);
+
+
+    padding:30px;
+
+
+}
+
+
+
+.popup-title{
+
+
+    font-size:22px;
+
+    color:#1677ff;
+
+    font-weight:bold;
+
+    margin-bottom:20px;
+
+
+}
+
+
+
+.close{
+
+
+    float:right;
+
+    cursor:pointer;
+
+    font-size:25px;
+
+
+}
+
+
+
+
+
+/* ==========================
+ RESPONSIVE
+========================== */
+
+
+@media(max-width:900px){
+
+
+.grid-3{
+
+
+grid-template-columns:1fr;
+
+
+}
+
+
+.popup{
+
+
+width:90%;
+
+
+}
+
+
+}
+
+
+
+</style>
+
+</head>
+
+
+<body>
+
+
+
+<!-- HEADER -->
+
+<div class="header">
+
+
+<div class="logo-box">
+
+💰
+
+</div>
+
+
+
+<div class="header-info">
+
+
+<div class="header-title">
+
+TỔNG NẠP TIỀN ONLINE
+
+</div>
+
+
+<div class="header-desc">
+
+Quản lý đơn nạp - Thanh toán - Callback - Thống kê
+
+</div>
+
+
+</div>
+
+
+
+<button class="back-btn"
+onclick="history.back()">
+
+← Quay lại
+
+</button>
+
+
+
+</div>
+
+
+
+
+
+<!-- TAB -->
+
+
+<div class="tab-area">
+
+
+<div class="tab-item active">
+
+📊 Tổng quan
+
+</div>
+
+
+<div class="tab-item">
+
+📋 Tất cả đơn hàng
+
+</div>
+
+
+<div class="tab-item">
+
+➕ Tạo đơn online
+
+</div>
+
+
+<div class="tab-item">
+
+🔄 Tạo bổ sung đơn
+
+</div>
+
+
+<div class="tab-item">
+
+🏦 Thanh toán bên thứ ba
+
+</div>
+
+
+<div class="tab-item">
+
+📂 Danh mục nạp
+
+</div>
+
+
+<div class="tab-item">
+
+⚙️ Cài đặt
+
+</div>
+
+
+<div class="tab-item">
+
+📈 Thống kê
+
+</div>
+
+
+<div class="tab-item">
+
+⚠️ Callback异常
+
+</div>
+
+
+
+</div>
+
+
+
+
+<!-- MAIN -->
+
+
+<div class="main">
+<!-- ==========================
+ PHẦN 2
+ DASHBOARD TỔNG QUAN
+========================== -->
+
+
+<div class="card">
+
+
+<div class="card-header">
+
+📊 Tổng quan nạp tiền online
+
+</div>
+
+
+
+<div class="card-body">
+
+
+
+<div class="grid-3">
+
+
+
+<!-- CARD 1 -->
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+👥 Người nạp thực tế
+
+</div>
+
+
+<div class="box-text">
+
+<h2 style="
+color:#1677ff;
+margin-bottom:10px;
+">
+
+12,580
+
+</h2>
+
+
+Số lượng hội viên
+đã phát sinh giao dịch nạp.
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+<!-- CARD 2 -->
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+📄 Tổng đơn nạp
+
+</div>
+
+
+<div class="box-text">
+
+
+<h2 style="
+color:#1677ff;
+margin-bottom:10px;
+">
+
+35,620
+
+</h2>
+
+
+Bao gồm đơn thành công,
+thất bại và đang xử lý.
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+<!-- CARD 3 -->
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+✅ Đơn thành công
+
+</div>
+
+
+<div class="box-text">
+
+
+<h2 style="
+color:#13c2c2;
+margin-bottom:10px;
+">
+
+34,900
+
+</h2>
+
+
+Đơn đã hoàn thành
+cộng tiền thành công.
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+<!-- CARD 4 -->
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+💰 Tổng tiền nạp
+
+</div>
+
+
+<div class="box-text">
+
+
+<h2 style="
+color:#fa8c16;
+margin-bottom:10px;
+">
+
+12,580,000
+
+</h2>
+
+
+Tổng giá trị nạp
+của toàn hệ thống.
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+<!-- CARD 5 -->
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+📈 Tỷ lệ thành công
+
+</div>
+
+
+<div class="box-text">
+
+
+<h2 style="
+color:#52c41a;
+margin-bottom:10px;
+">
+
+98.2%
+
+</h2>
+
+
+Tỷ lệ đơn nạp
+thành công.
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+<!-- CARD 6 -->
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+⏱ Request Timeout
+
+</div>
+
+
+<div class="box-text">
+
+
+<h2 style="
+color:#ff4d4f;
+margin-bottom:10px;
+">
+
+120
+
+</h2>
+
+
+Số lượng yêu cầu
+gọi thanh toán bị timeout.
+
+
+</div>
+
+
+</div>
+
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+<!-- ==========================
+ TRẠNG THÁI KÊNH NẠP
+========================== -->
+
+
+<div class="card">
+
+
+<div class="card-header">
+
+🏦 Trạng thái kênh thanh toán
+
+</div>
+
+
+
+<div class="card-body">
+
+
+
+<div class="table-box">
+
+
+<table>
+
+
+<thead>
+
+
+<tr>
+
+
+<th>
+
+Tên kênh
+
+</th>
+
+
+<th>
+
+Loại
+
+</th>
+
+
+<th>
+
+Thiết bị
+
+</th>
+
+
+<th>
+
+Trạng thái
+
+</th>
+
+
+<th>
+
+Tỷ lệ phí
+
+</th>
+
+
+<th>
+
+Giới hạn
+
+</th>
+
+
+</tr>
+
+
+</thead>
+
+
+
+
+<tbody>
+
+
+
+<tr>
+
+
+<td>
+
+USDT TRC20
+
+</td>
+
+
+<td>
+
+Crypto
+
+</td>
+
+
+<td>
+
+APP / PC
+
+</td>
+
+
+<td>
+
+
+<span class="status status-success">
+
+Đang hoạt động
+
+</span>
+
+
+</td>
+
+
+<td>
+
+0.5%
+
+</td>
+
+
+<td>
+
+10 - 50000
+
+</td>
+
+
+</tr>
+
+
+
+
+
+
+<tr>
+
+
+<td>
+
+Ngân hàng nội địa
+
+</td>
+
+
+<td>
+
+Bank
+
+</td>
+
+
+<td>
+
+Mobile
+
+</td>
+
+
+<td>
+
+
+<span class="status status-success">
+
+Đang hoạt động
+
+</span>
+
+
+</td>
+
+
+<td>
+
+1%
+
+</td>
+
+
+<td>
+
+100 - 100000
+
+</td>
+
+
+</tr>
+
+
+
+
+
+
+<tr>
+
+
+<td>
+
+Ví điện tử
+
+</td>
+
+
+<td>
+
+Wallet
+
+</td>
+
+
+<td>
+
+APP
+
+</td>
+
+
+<td>
+
+
+<span class="status status-wait">
+
+Bảo trì
+
+</span>
+
+
+</td>
+
+
+<td>
+
+1.2%
+
+</td>
+
+
+<td>
+
+50 - 50000
+
+</td>
+
+
+</tr>
+
+
+
+
+</tbody>
+
+
+</table>
+
+
+</div>
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+<!-- ==========================
+ HOẠT ĐỘNG GẦN ĐÂY
+========================== -->
+
+
+<div class="card">
+
+
+<div class="card-header">
+
+🔔 Hoạt động hệ thống gần đây
+
+</div>
+
+
+
+<div class="card-body">
+
+
+<div class="box-text">
+
+
+<p>
+
+✔ 10:30 - Đơn 202608120001
+nạp USDT thành công
+
+</p>
+
+
+<br>
+
+
+<p>
+
+✔ 10:45 - Kênh USDT TRC20
+callback thành công
+
+</p>
+
+
+<br>
+
+
+<p>
+
+⚠ 11:00 - 3 đơn chờ xử lý
+cần kiểm tra thủ công
+
+</p>
+
+
+<br>
+
+
+<p>
+
+✔ 11:15 - Nhân viên admin
+cập nhật cấu hình kênh
+
+</p>
+
+
+</div>
+
+
+
+</div>
+
+
+</div>
+<!-- ================================
+ PHẦN 3
+ TẤT CẢ ĐƠN HÀNG NẠP TIỀN ONLINE
+================================ -->
+
+
+<div class="card">
+
+
+<div class="card-header">
+
+📋 Tất cả đơn hàng nạp tiền
+
+</div>
+
+
+
+<div class="card-body">
+
+
+
+<!-- SEARCH AREA -->
+
+
+<div style="
+display:flex;
+gap:12px;
+flex-wrap:wrap;
+">
+
+
+
+<input class="input"
+placeholder="🔎 Mã đơn">
+
+
+
+<input class="input"
+placeholder="👤 ID hội viên">
+
+
+
+<input class="input"
+placeholder="🎮 Tài khoản">
+
+
+
+<select class="input">
+
+
+<option>
+
+Tất cả VIP
+
+</option>
+
+
+<option>
+
+VIP1
+
+</option>
+
+
+<option>
+
+VIP5
+
+</option>
+
+
+<option>
+
+VIP10
+
+</option>
+
+
+</select>
+
+
+
+
+<select class="input">
+
+
+<option>
+
+Tất cả trạng thái
+
+</option>
+
+
+<option>
+
+Chờ thanh toán
+
+</option>
+
+
+<option>
+
+Nạp thành công
+
+</option>
+
+
+<option>
+
+Nạp thất bại
+
+</option>
+
+
+<option>
+
+Đã hủy
+
+</option>
+
+
+</select>
+
+
+
+
+<select class="input">
+
+
+<option>
+
+Loại tiền
+
+</option>
+
+
+<option>
+
+USDT
+
+</option>
+
+
+<option>
+
+VND
+
+</option>
+
+
+<option>
+
+CNY
+
+</option>
+
+
+</select>
+
+
+
+
+<button class="btn btn-primary">
+
+🔍 Tìm kiếm
+
+</button>
+
+
+
+<button class="btn">
+
+🔄 Reset
+
+</button>
+
+
+
+<button class="btn btn-success">
+
+📥 Xuất Excel
+
+</button>
+
+
+
+</div>
+
+
+
+
+<br>
+
+
+
+
+
+<!-- TABLE -->
+
+
+<div class="table-box">
+
+
+<table>
+
+
+
+<thead>
+
+
+<tr>
+
+
+<th>
+订单号<br>
+Mã đơn
+</th>
+
+
+<th>
+会员ID<br>
+ID hội viên
+</th>
+
+
+<th>
+会员账号<br>
+Tài khoản
+</th>
+
+
+<th>
+创建时间<br>
+Thời gian tạo
+</th>
+
+
+<th>
+成功时间<br>
+Thời gian thành công
+</th>
+
+
+<th>
+VIP等级<br>
+VIP
+</th>
+
+
+<th>
+注册来源<br>
+Nguồn đăng ký
+</th>
+
+
+<th>
+充值币种<br>
+Loại tiền
+</th>
+
+
+<th>
+原始数量<br>
+Số lượng gốc
+</th>
+
+
+<th>
+汇率<br>
+Tỷ giá
+</th>
+
+
+<th>
+订单金额<br>
+Tiền đơn
+</th>
+
+
+<th>
+赠送金额<br>
+Tiền thưởng
+</th>
+
+
+<th>
+手续费<br>
+Phí
+</th>
+
+
+<th>
+总上分金额<br>
+Tổng cộng
+</th>
+
+
+<th>
+充值大类<br>
+Loại nạp
+</th>
+
+
+<th>
+第三方支付<br>
+Thanh toán
+</th>
+
+
+<th>
+通道名称<br>
+Tên kênh
+</th>
+
+
+<th>
+状态<br>
+Trạng thái
+</th>
+
+
+<th>
+操作<br>
+Thao tác
+</th>
+
+
+
+</tr>
+
+
+</thead>
+
+
+
+
+
+<tbody>
+
+
+
+<tr>
+
+
+
+<td>
+
+202608120001
+
+</td>
+
+
+
+<td>
+
+888888
+
+</td>
+
+
+
+<td>
+
+vip_user01
+
+</td>
+
+
+
+<td>
+
+2026-08-12
+10:20
+
+</td>
+
+
+
+<td>
+
+2026-08-12
+10:22
+
+</td>
+
+
+
+<td>
+
+VIP8
+
+</td>
+
+
+
+<td>
+
+APP
+
+</td>
+
+
+
+<td>
+
+USDT
+
+</td>
+
+
+
+<td>
+
+1000
+
+</td>
+
+
+
+<td>
+
+1:1
+
+</td>
+
+
+
+<td>
+
+1000
+
+</td>
+
+
+
+<td>
+
+100
+
+</td>
+
+
+
+<td>
+
+0
+
+</td>
+
+
+
+<td>
+
+1100
+
+</td>
+
+
+
+<td>
+
+虚拟币
+
+<br>
+
+Crypto
+
+</td>
+
+
+
+<td>
+
+USDT Pay
+
+</td>
+
+
+
+<td>
+
+TRC20
+
+</td>
+
+
+
+<td>
+
+
+<span class="status status-success">
+
+充值成功
+
+</span>
+
+
+</td>
+
+
+
+
+<td>
+
+
+<button class="btn btn-primary">
+
+详情
+
+</button>
+
+
+<br><br>
+
+
+<button class="btn">
+
+备注
+
+</button>
+
+
+</td>
+
+
+
+</tr>
+
+
+
+
+
+
+
+
+<tr>
+
+
+
+<td>
+
+202608120002
+
+</td>
+
+
+
+<td>
+
+666666
+
+</td>
+
+
+
+<td>
+
+test888
+
+</td>
+
+
+
+<td>
+
+2026-08-12
+11:00
+
+</td>
+
+
+
+<td>
+
+-
+
+</td>
+
+
+
+<td>
+
+VIP5
+
+</td>
+
+
+
+<td>
+
+网页
+
+</td>
+
+
+
+<td>
+
+VND
+
+</td>
+
+
+
+<td>
+
+5000000
+
+</td>
+
+
+
+<td>
+
+1:1000
+
+</td>
+
+
+
+<td>
+
+5000
+
+</td>
+
+
+
+<td>
+
+0
+
+</td>
+
+
+
+<td>
+
+10
+
+</td>
+
+
+
+<td>
+
+4990
+
+</td>
+
+
+
+<td>
+
+银行卡
+
+</td>
+
+
+
+<td>
+
+Bank Pay
+
+</td>
+
+
+
+<td>
+
+Viet Bank
+
+</td>
+
+
+
+<td>
+
+
+<span class="status status-wait">
+
+待支付
+
+</span>
+
+
+</td>
+
+
+
+
+<td>
+
+
+<button class="btn btn-primary">
+
+详情
+
+</button>
+
+
+<br><br>
+
+
+<button class="btn btn-danger">
+
+取消
+
+</button>
+
+
+</td>
+
+
+
+</tr>
+
+
+
+
+
+
+
+<tr>
+
+
+
+<td>
+
+202608120003
+
+</td>
+
+
+
+<td>
+
+999999
+
+</td>
+
+
+
+<td>
+
+agent888
+
+</td>
+
+
+
+<td>
+
+2026-08-12
+11:30
+
+</td>
+
+
+
+<td>
+
+-
+
+</td>
+
+
+
+<td>
+
+VIP10
+
+</td>
+
+
+
+<td>
+
+代理
+
+</td>
+
+
+
+<td>
+
+USDT
+
+</td>
+
+
+
+<td>
+
+3000
+
+</td>
+
+
+
+<td>
+
+1:1
+
+</td>
+
+
+
+<td>
+
+3000
+
+</td>
+
+
+
+<td>
+
+300
+
+</td>
+
+
+
+<td>
+
+0
+
+</td>
+
+
+
+<td>
+
+3300
+
+</td>
+
+
+
+<td>
+
+客服充值
+
+</td>
+
+
+
+<td>
+
+Manual
+
+</td>
+
+
+
+<td>
+
+客服专属
+
+</td>
+
+
+
+<td>
+
+
+<span class="status status-error">
+
+失败
+
+</span>
+
+
+</td>
+
+
+
+
+<td>
+
+
+<button class="btn btn-primary">
+
+详情
+
+</button>
+
+
+</td>
+
+
+
+</tr>
+
+
+
+</tbody>
+
+
+
+</table>
+
+
+</div>
+
+
+
+</div>
+
+
+</div>
+<!-- =================================
+ PHẦN 4
+ POPUP CHI TIẾT ĐƠN + THAO TÁC
+================================= -->
+
+
+
+<!-- POPUP CHI TIẾT ĐƠN -->
+
+
+<div class="mask" id="orderDetail">
+
+
+
+<div class="popup">
+
+
+<div class="popup-title">
+
+
+📄 Chi tiết đơn nạp
+
+
+<span class="close"
+onclick="closeOrder()">
+
+×
+
+
+</span>
+
+
+</div>
+
+
+
+
+
+<div class="grid-3">
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+📌 Thông tin cơ bản
+
+</div>
+
+
+<div class="box-text">
+
+
+Mã đơn:
+
+<br>
+
+<b>
+202608120001
+</b>
+
+
+<br><br>
+
+
+ID hội viên:
+
+<br>
+
+888888
+
+
+<br><br>
+
+
+Tài khoản:
+
+<br>
+
+vip_user01
+
+
+<br><br>
+
+
+VIP:
+
+<br>
+
+VIP8
+
+
+<br><br>
+
+
+Nguồn đăng ký:
+
+<br>
+
+APP
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+💰 Thông tin tiền
+
+</div>
+
+
+<div class="box-text">
+
+
+Số lượng gốc:
+
+<br>
+
+1000 USDT
+
+
+<br><br>
+
+
+Tỷ giá:
+
+<br>
+
+1 : 1
+
+
+<br><br>
+
+
+Tiền đơn:
+
+<br>
+
+1000
+
+
+<br><br>
+
+
+Tiền thưởng:
+
+<br>
+
+100
+
+
+<br><br>
+
+
+Tổng cộng:
+
+<br>
+
+1100
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+🏦 Thông tin thanh toán
+
+</div>
+
+
+<div class="box-text">
+
+
+Loại nạp:
+
+<br>
+
+Crypto
+
+
+<br><br>
+
+
+Thanh toán:
+
+<br>
+
+USDT Pay
+
+
+<br><br>
+
+
+Tên kênh:
+
+<br>
+
+TRC20
+
+
+<br><br>
+
+
+Phí:
+
+<br>
+
+0%
+
+
+<br><br>
+
+
+Trạng thái:
+
+<br>
+
+
+<span class="status status-success">
+
+Thành công
+
+</span>
+
+
+</div>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+<br>
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+📝 Lịch sử thao tác
+
+</div>
+
+
+
+<div class="box-text">
+
+
+10:20
+
+Admin tạo đơn
+
+
+<br><br>
+
+
+10:21
+
+Hệ thống gửi thanh toán
+
+
+<br><br>
+
+
+10:22
+
+Callback thành công
+
+
+<br><br>
+
+
+10:23
+
+Cộng tiền hoàn tất
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+<br>
+
+
+
+<button class="btn btn-primary">
+
+Xác nhận
+
+</button>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<!-- POPUP THÔNG TIN HỘI VIÊN -->
+
+
+<div class="mask" id="memberDetail">
+
+
+
+<div class="popup">
+
+
+<div class="popup-title">
+
+
+👤 Thông tin hội viên
+
+
+<span class="close"
+onclick="closeMember()">
+
+×
+
+
+</span>
+
+
+</div>
+
+
+
+
+<div class="grid-3">
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+账号信息
+
+</div>
+
+
+<div class="box-text">
+
+
+ID:
+
+888888
+
+
+<br><br>
+
+
+账号:
+
+vip_user01
+
+
+<br><br>
+
+
+VIP:
+
+VIP8
+
+
+<br><br>
+
+
+状态:
+
+正常
+
+
+</div>
+
+
+</div>
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+💰 Tài chính
+
+</div>
+
+
+<div class="box-text">
+
+
+Số dư:
+
+50000
+
+
+<br><br>
+
+
+Tổng nạp:
+
+500000
+
+
+<br><br>
+
+
+Số lần nạp:
+
+120
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+🏷 标签
+
+</div>
+
+
+<div class="box-text">
+
+
+VIP会员
+
+
+<br><br>
+
+
+高价值用户
+
+
+<br><br>
+
+
+APP注册
+
+
+</div>
+
+
+</div>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<!-- MENU THAO TÁC -->
+
+
+<div class="card">
+
+
+<div class="card-header">
+
+⚙️ Thao tác đơn hàng
+
+</div>
+
+
+<div class="card-body">
+
+
+
+<button class="btn">
+
+📝 Ghi chú
+
+</button>
+
+
+
+<button class="btn btn-primary"
+onclick="openSupplement()">
+
+➕ Tạo bổ sung đơn
+
+</button>
+
+
+
+<button class="btn">
+
+🔄 Làm mới callback
+
+</button>
+
+
+
+<button class="btn btn-success">
+
+💰 Ép nhập tiền
+
+</button>
+
+
+
+<button class="btn btn-danger">
+
+❌ Ép hủy
+
+</button>
+
+
+
+<button class="btn btn-primary"
+onclick="openOrder()">
+
+👁 Xem chi tiết
+
+</button>
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+<!-- POPUP BỔ SUNG NHANH -->
+
+
+<div class="mask" id="supplement">
+
+
+
+<div class="popup">
+
+
+<div class="popup-title">
+
+
+➕ Tạo bổ sung đơn
+
+
+<span class="close"
+onclick="closeSupplement()">
+
+×
+
+
+</span>
+
+
+</div>
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+Mã đơn liên kết
+
+</div>
+
+
+
+<input class="input"
+value="202608120001">
+
+
+
+<br><br>
+
+
+
+<div class="box-title">
+
+Lý do bổ sung
+
+</div>
+
+
+
+<input class="input"
+placeholder="Nhập lý do">
+
+
+
+<br><br>
+
+
+
+<div class="box-title">
+
+Số tiền bổ sung
+
+</div>
+
+
+
+<input class="input"
+placeholder="金额">
+
+
+
+<br><br>
+
+
+
+<div class="box-title">
+
+Ghi chú
+
+</div>
+
+
+
+<textarea
+style="
+width:100%;
+height:80px;
+border-radius:8px;
+border:1px solid #ddd;
+padding:10px;
+"></textarea>
+
+
+</div>
+
+
+
+
+<br>
+
+
+
+<button class="btn btn-success">
+
+Xác nhận bổ sung
+
+</button>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<script>
+
+
+function openOrder(){
+
+document.getElementById(
+"orderDetail"
+).style.display="block";
+
+}
+
+
+
+function closeOrder(){
+
+document.getElementById(
+"orderDetail"
+).style.display="none";
+
+}
+
+
+
+
+function openMember(){
+
+document.getElementById(
+"memberDetail"
+).style.display="block";
+
+}
+
+
+function closeMember(){
+
+document.getElementById(
+"memberDetail"
+).style.display="none";
+
+}
+
+
+
+function openSupplement(){
+
+document.getElementById(
+"supplement"
+).style.display="block";
+
+}
+
+
+
+function closeSupplement(){
+
+document.getElementById(
+"supplement"
+).style.display="none";
+
+}
+
+
+
+</script>
+<!-- =====================================
+ PHẦN 5
+ TẠO ĐƠN NẠP ONLINE
+===================================== -->
+
+
+<div class="card">
+
+
+<div class="card-header">
+
+➕ Tạo đơn nạp online
+
+</div>
+
+
+
+<div class="card-body">
+
+
+
+
+
+<!-- TÌM HỘI VIÊN -->
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+👤 Tìm kiếm hội viên
+
+</div>
+
+
+<div style="
+display:flex;
+gap:15px;
+flex-wrap:wrap;
+">
+
+
+
+<input class="input"
+placeholder="Nhập ID hội viên">
+
+
+
+<input class="input"
+placeholder="Nhập tài khoản">
+
+
+
+<button class="btn btn-primary">
+
+🔍 Xác nhận
+
+</button>
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+<br>
+
+
+
+
+
+
+<!-- THÔNG TIN HỘI VIÊN -->
+
+
+<div class="grid-3">
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+👤 Thông tin hội viên
+
+</div>
+
+
+
+<div class="box-text">
+
+
+ID:
+
+888888
+
+
+<br><br>
+
+
+Tài khoản:
+
+vip_user01
+
+
+<br><br>
+
+
+VIP等级:
+
+VIP8
+
+
+<br><br>
+
+
+Cấp hội viên:
+
+A cấp
+
+
+<br><br>
+
+
+Trạng thái:
+
+<span class="status status-success">
+
+Bình thường
+
+</span>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+💰 Thông tin tiền
+
+</div>
+
+
+
+<div class="box-text">
+
+
+Loại tiền:
+
+
+<br>
+
+
+<select class="input">
+
+
+<option>
+
+USDT
+
+</option>
+
+
+<option>
+
+VND
+
+</option>
+
+
+<option>
+
+CNY
+
+</option>
+
+
+</select>
+
+
+
+
+<br><br>
+
+
+Số dư hiện tại:
+
+<br>
+
+
+50000
+
+
+<br><br>
+
+
+Tỷ giá:
+
+
+<br>
+
+
+1 : 1
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+🎁 Ưu đãi
+
+</div>
+
+
+<div class="box-text">
+
+
+VIP được hưởng:
+
+
+<br>
+
+
+10%
+
+
+<br><br>
+
+
+Giới hạn thưởng:
+
+
+<br>
+
+
+1000
+
+
+<br><br>
+
+
+Trạng thái:
+
+
+<br>
+
+
+<span class="status status-success">
+
+Có thể nhận
+
+</span>
+
+
+
+</div>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+<br>
+
+
+
+
+
+
+<!-- FORM TẠO ĐƠN -->
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+📝 Thông tin tạo đơn
+
+</div>
+
+
+
+
+<div class="grid-3">
+
+
+
+
+
+<div>
+
+
+<p>
+
+Số tiền nạp
+
+</p>
+
+
+<br>
+
+
+<input class="input"
+placeholder="Nhập số tiền">
+
+
+</div>
+
+
+
+
+
+<div>
+
+
+<p>
+
+Tiền thưởng
+
+</p>
+
+
+<br>
+
+
+<input class="input"
+placeholder="Nhập tiền thưởng">
+
+
+</div>
+
+
+
+
+
+
+<div>
+
+
+<p>
+
+Kênh nạp
+
+</p>
+
+
+<br>
+
+
+<select class="input">
+
+
+<option>
+
+USDT TRC20
+
+</option>
+
+
+<option>
+
+Ngân hàng
+
+</option>
+
+
+<option>
+
+Ví điện tử
+
+</option>
+
+
+
+</select>
+
+
+</div>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<br>
+
+
+
+
+
+<!-- HẠN MỨC -->
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+📌 Kiểm tra hạn mức
+
+</div>
+
+
+
+<div class="grid-3">
+
+
+<div class="box">
+
+
+<h3 style="color:#1677ff">
+
+Hạn mức tối thiểu
+
+</h3>
+
+
+<p>
+
+100
+
+</p>
+
+
+</div>
+
+
+
+<div class="box">
+
+
+<h3 style="color:#1677ff">
+
+Hạn mức tối đa
+
+</h3>
+
+
+<p>
+
+100000
+
+</p>
+
+
+</div>
+
+
+
+
+<div class="box">
+
+
+<h3 style="color:#1677ff">
+
+Còn lại
+
+</h3>
+
+
+<p>
+
+500000
+
+</p>
+
+
+</div>
+
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<br>
+
+
+
+
+
+<!-- GHI CHÚ -->
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+📝 Ghi chú đơn
+
+</div>
+
+
+
+<textarea
+style="
+width:100%;
+height:100px;
+border-radius:10px;
+border:1px solid #ddd;
+padding:12px;
+font-size:14px;
+"
+placeholder="
+Nhập ghi chú tạo đơn
+">
+
+</textarea>
+
+
+</div>
+
+
+
+
+
+
+
+<br>
+
+
+
+
+
+<!-- BUTTON -->
+
+
+<button class="btn btn-success">
+
+✅ Xác nhận tạo đơn
+
+</button>
+
+
+
+<button class="btn">
+
+取消
+
+</button>
+
+
+
+
+</div>
+
+
+
+</div>
+<!-- =====================================
+ PHẦN 6
+ TẠO BỔ SUNG ĐƠN
+===================================== -->
+
+
+<div class="card">
+
+
+<div class="card-header">
+
+🔄 Tạo bổ sung đơn
+
+</div>
+
+
+
+
+<div class="card-body">
+
+
+
+
+
+
+<!-- TÌM ĐƠN -->
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+🔍 Tìm đơn cần bổ sung
+
+</div>
+
+
+
+<div style="
+display:flex;
+gap:15px;
+flex-wrap:wrap;
+">
+
+
+
+<input class="input"
+placeholder="Nhập mã đơn">
+
+
+
+<button class="btn btn-primary">
+
+Tìm kiếm
+
+</button>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+<br>
+
+
+
+
+
+
+<!-- THÔNG TIN ĐƠN -->
+
+
+<div class="grid-3">
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+📄 Thông tin đơn cũ
+
+</div>
+
+
+
+<div class="box-text">
+
+
+Mã đơn:
+
+<br>
+
+202608120002
+
+
+<br><br>
+
+
+Hội viên:
+
+<br>
+
+666666
+
+
+<br><br>
+
+
+Tài khoản:
+
+<br>
+
+test888
+
+
+<br><br>
+
+
+Trạng thái:
+
+<br>
+
+
+<span class="status status-error">
+
+Thanh toán thất bại
+
+</span>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+💰 Thông tin tiền
+
+</div>
+
+
+
+<div class="box-text">
+
+
+Tiền đơn:
+
+<br>
+
+5000
+
+
+<br><br>
+
+
+Tiền thưởng:
+
+<br>
+
+0
+
+
+<br><br>
+
+
+Tiền thực tế:
+
+<br>
+
+4990
+
+
+<br><br>
+
+
+Loại tiền:
+
+<br>
+
+VND
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+🏦 Thanh toán
+
+</div>
+
+
+
+<div class="box-text">
+
+
+Loại nạp:
+
+<br>
+
+Ngân hàng
+
+
+<br><br>
+
+
+Tên kênh:
+
+<br>
+
+Viet Bank
+
+
+<br><br>
+
+
+Thanh toán:
+
+<br>
+
+Bank Pay
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<br>
+
+
+
+
+
+
+
+<!-- CẤU HÌNH BỔ SUNG -->
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+⚙️ Cấu hình bổ sung đơn
+
+</div>
+
+
+
+
+<div class="grid-3">
+
+
+
+
+
+
+<div>
+
+
+<p>
+
+Lý do bổ sung
+
+</p>
+
+
+<br>
+
+
+<select class="input">
+
+
+<option>
+
+Thanh toán thành công nhưng chưa cộng tiền
+
+</option>
+
+
+<option>
+
+Sai số tiền
+
+</option>
+
+
+<option>
+
+Callback lỗi
+
+</option>
+
+
+<option>
+
+Xử lý thủ công
+
+</option>
+
+
+</select>
+
+
+</div>
+
+
+
+
+
+
+
+<div>
+
+
+<p>
+
+Cập nhật ưu đãi
+
+</p>
+
+
+<br>
+
+
+<input class="input"
+placeholder="Nhập tiền thưởng">
+
+
+</div>
+
+
+
+
+
+
+
+<div>
+
+
+<p>
+
+Hệ số kiểm tra
+
+</p>
+
+
+<br>
+
+
+<input class="input"
+value="1">
+
+
+</div>
+
+
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<br>
+
+
+
+
+
+
+<!-- GHI CHÚ -->
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+📝 Ghi chú bổ sung
+
+</div>
+
+
+
+
+<textarea
+
+style="
+width:100%;
+height:100px;
+padding:12px;
+border-radius:10px;
+border:1px solid #ddd;
+"
+
+placeholder="
+Nhập nội dung ghi chú bổ sung để truy xuất sau này
+">
+
+</textarea>
+
+
+
+</div>
+
+
+
+
+
+
+
+<br>
+
+
+
+
+
+
+<!-- HẠN MỨC -->
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+📊 Kiểm tra hạn mức
+
+</div>
+
+
+
+<div class="grid-3">
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+Hạn mức hiện tại
+
+</div>
+
+
+<div class="box-text">
+
+100000
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+Số tiền bổ sung
+
+</div>
+
+
+<div class="box-text">
+
+5000
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+Sau khi bổ sung
+
+</div>
+
+
+<div class="box-text">
+
+95000
+
+</div>
+
+
+</div>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<br>
+
+
+
+
+
+<button class="btn btn-success">
+
+✅ Xác nhận bổ sung đơn
+
+</button>
+
+
+
+
+<button class="btn">
+
+取消
+
+</button>
+
+
+
+
+
+</div>
+
+
+</div>
+<!-- =====================================
+ PHẦN 7
+ THANH TOÁN BÊN THỨ BA
+===================================== -->
+
+
+<div class="card">
+
+
+<div class="card-header">
+
+🏦 Quản lý thanh toán bên thứ ba
+
+</div>
+
+
+
+
+<div class="card-body">
+
+
+
+
+
+<!-- SEARCH -->
+
+
+<div style="
+display:flex;
+gap:12px;
+flex-wrap:wrap;
+">
+
+
+
+<input class="input"
+placeholder="🔍 Tìm tên kênh">
+
+
+
+<select class="input">
+
+
+<option>
+
+Tất cả trạng thái
+
+</option>
+
+
+<option>
+
+Đang bật
+
+</option>
+
+
+<option>
+
+Đã tắt
+
+</option>
+
+
+</select>
+
+
+
+
+<button class="btn btn-primary">
+
+Tìm kiếm
+
+</button>
+
+
+
+
+<button class="btn btn-success">
+
+➕ Thêm bên thứ ba
+
+</button>
+
+
+
+</div>
+
+
+
+
+<br>
+
+
+
+
+
+
+
+<!-- TABLE KÊNH -->
+
+
+<div class="table-box">
+
+
+<table>
+
+
+<thead>
+
+
+<tr>
+
+
+<th>
+
+Tên kênh
+
+</th>
+
+
+<th>
+
+Nhà cung cấp
+
+</th>
+
+
+<th>
+
+Thiết bị
+
+</th>
+
+
+<th>
+
+VIP áp dụng
+
+</th>
+
+
+<th>
+
+Giới hạn đơn
+
+</th>
+
+
+<th>
+
+Phí kênh
+
+</th>
+
+
+<th>
+
+Trạng thái
+
+</th>
+
+
+<th>
+
+Thao tác
+
+</th>
+
+
+</tr>
+
+
+</thead>
+
+
+
+
+<tbody>
+
+
+
+
+<tr>
+
+
+<td>
+
+USDT TRC20
+
+</td>
+
+
+
+<td>
+
+USDT Pay
+
+</td>
+
+
+
+<td>
+
+APP / PC
+
+</td>
+
+
+
+<td>
+
+VIP1 - VIP10
+
+</td>
+
+
+
+<td>
+
+10 ~ 50000
+
+</td>
+
+
+
+<td>
+
+0.5%
+
+</td>
+
+
+
+<td>
+
+
+<span class="status status-success">
+
+Đang bật
+
+</span>
+
+
+</td>
+
+
+
+<td>
+
+
+<button class="btn btn-primary"
+onclick="openChannel()">
+
+Cấu hình
+
+</button>
+
+
+<br><br>
+
+
+<button class="btn">
+
+Xem Key
+
+</button>
+
+
+</td>
+
+
+
+</tr>
+
+
+
+
+
+
+
+<tr>
+
+
+<td>
+
+Ngân hàng nội địa
+
+</td>
+
+
+
+<td>
+
+Bank Pay
+
+</td>
+
+
+
+<td>
+
+Mobile
+
+</td>
+
+
+
+<td>
+
+Toàn bộ
+
+</td>
+
+
+
+<td>
+
+100 ~ 100000
+
+</td>
+
+
+
+<td>
+
+1%
+
+</td>
+
+
+
+<td>
+
+
+<span class="status status-success">
+
+Đang bật
+
+</span>
+
+
+</td>
+
+
+
+<td>
+
+
+<button class="btn btn-primary">
+
+Sửa
+
+</button>
+
+
+</td>
+
+
+
+</tr>
+
+
+
+
+
+
+<tr>
+
+
+<td>
+
+Ví điện tử
+
+</td>
+
+
+
+<td>
+
+Wallet Pay
+
+</td>
+
+
+
+<td>
+
+Android
+
+</td>
+
+
+
+<td>
+
+VIP3+
+
+</td>
+
+
+
+<td>
+
+50 ~ 30000
+
+</td>
+
+
+
+<td>
+
+1.2%
+
+</td>
+
+
+
+<td>
+
+
+<span class="status status-wait">
+
+Đã tắt
+
+</span>
+
+
+</td>
+
+
+
+<td>
+
+
+<button class="btn">
+
+Khôi phục
+
+</button>
+
+
+</td>
+
+
+
+</tr>
+
+
+
+
+
+
+</tbody>
+
+
+</table>
+
+
+</div>
+
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- POPUP CẤU HÌNH KÊNH -->
+
+
+<div class="mask"
+id="channelPopup">
+
+
+
+<div class="popup">
+
+
+<div class="popup-title">
+
+
+⚙️ Cấu hình kênh thanh toán
+
+
+<span class="close"
+onclick="closeChannel()">
+
+×
+
+
+</span>
+
+
+</div>
+
+
+
+
+
+
+<div class="grid-3">
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+Thông tin cơ bản
+
+</div>
+
+
+
+<div class="box-text">
+
+
+Tên kênh
+
+
+<br>
+
+
+<input class="input"
+value="USDT TRC20">
+
+
+<br><br>
+
+
+Thiết bị
+
+
+<br>
+
+
+<select class="input">
+
+
+<option>
+
+PC
+
+</option>
+
+
+<option>
+
+Android
+
+</option>
+
+
+<option>
+
+iOS
+
+</option>
+
+
+</select>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+Giới hạn
+
+</div>
+
+
+
+<div class="box-text">
+
+
+Thấp nhất
+
+
+<br>
+
+
+<input class="input"
+value="10">
+
+
+<br><br>
+
+
+Cao nhất
+
+
+<br>
+
+
+<input class="input"
+value="50000">
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+VIP & Phí
+
+</div>
+
+
+
+<div class="box-text">
+
+
+VIP:
+
+
+<br>
+
+
+<input class="input"
+value="VIP1-VIP10">
+
+
+<br><br>
+
+
+Phí:
+
+
+<br>
+
+
+<input class="input"
+value="0.5%">
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+</div>
+
+
+
+
+
+<br>
+
+
+
+
+<button class="btn btn-success">
+
+Lưu cấu hình
+
+</button>
+
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- POPUP THÊM BÊN THỨ BA -->
+
+
+<div class="card">
+
+
+<div class="card-header">
+
+➕ Thêm mới bên thứ ba
+
+</div>
+
+
+
+
+<div class="card-body">
+
+
+
+<div class="grid-3">
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+Thông tin nhà cung cấp
+
+</div>
+
+
+<div class="box-text">
+
+
+Tên thanh toán:
+
+
+<br>
+
+
+<input class="input">
+
+
+<br><br>
+
+
+Tên thương mại:
+
+
+<br>
+
+
+<input class="input">
+
+
+<br><br>
+
+
+Merchant ID:
+
+
+<br>
+
+
+<input class="input">
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+API Config
+
+</div>
+
+
+<div class="box-text">
+
+
+Địa chỉ đặt đơn:
+
+
+<br>
+
+
+<input class="input">
+
+
+<br><br>
+
+
+Địa chỉ truy vấn:
+
+
+<br>
+
+
+<input class="input">
+
+
+<br><br>
+
+
+IP Callback:
+
+
+<br>
+
+
+<input class="input">
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+Key bảo mật
+
+</div>
+
+
+<div class="box-text">
+
+
+Merchant Secret:
+
+
+<br>
+
+
+<input class="input">
+
+
+<br><br>
+
+
+Private Key:
+
+
+<br>
+
+
+<input class="input">
+
+
+<br><br>
+
+
+Public Key:
+
+
+<br>
+
+
+<input class="input">
+
+
+</div>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+<br>
+
+
+
+<button class="btn btn-success">
+
+Lưu bên thứ ba
+
+</button>
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+<script>
+
+
+function openChannel(){
+
+document.getElementById(
+"channelPopup"
+).style.display="block";
+
+}
+
+
+
+function closeChannel(){
+
+document.getElementById(
+"channelPopup"
+).style.display="none";
+
+}
+
+
+
+</script>
+<!-- =====================================
+ PHẦN 8
+ CẤU HÌNH DANH MỤC NẠP + CÀI ĐẶT
+===================================== -->
+
+
+
+<div class="card">
+
+
+<div class="card-header">
+
+📂 Cấu hình danh mục nạp tiền
+
+</div>
+
+
+
+
+<div class="card-body">
+
+
+
+
+
+<div style="
+display:flex;
+justify-content:space-between;
+align-items:center;
+">
+
+
+<div>
+
+
+<input class="input"
+placeholder="🔍 Tìm danh mục">
+
+
+<button class="btn btn-primary">
+
+Tìm kiếm
+
+</button>
+
+
+</div>
+
+
+
+<button class="btn btn-success">
+
+➕ Thêm danh mục
+
+</button>
+
+
+
+</div>
+
+
+
+
+<br>
+
+
+
+
+
+
+<div class="table-box">
+
+
+<table>
+
+
+<thead>
+
+
+<tr>
+
+
+<th>
+
+Tên danh mục
+
+</th>
+
+
+<th>
+
+Icon
+
+</th>
+
+
+<th>
+
+Loại tiền hỗ trợ
+
+</th>
+
+
+<th>
+
+Sắp xếp
+
+</th>
+
+
+<th>
+
+Trạng thái
+
+</th>
+
+
+<th>
+
+Blacklist
+
+</th>
+
+
+<th>
+
+Gộp kênh
+
+</th>
+
+
+<th>
+
+Thao tác
+
+</th>
+
+
+</tr>
+
+
+</thead>
+
+
+
+
+<tbody>
+
+
+
+<tr>
+
+
+<td>
+
+💵 USDT充值
+
+<br>
+
+Nạp USDT
+
+</td>
+
+
+
+<td>
+
+💰
+
+</td>
+
+
+
+<td>
+
+USDT
+
+</td>
+
+
+
+<td>
+
+1
+
+</td>
+
+
+
+<td>
+
+
+<span class="status status-success">
+
+Đang mở
+
+</span>
+
+
+</td>
+
+
+
+<td>
+
+Không
+
+</td>
+
+
+
+<td>
+
+
+<span class="status status-success">
+
+Bật
+
+</span>
+
+
+</td>
+
+
+
+<td>
+
+
+<button class="btn btn-primary">
+
+Sửa
+
+</button>
+
+
+</td>
+
+
+
+</tr>
+
+
+
+
+
+
+<tr>
+
+
+<td>
+
+🏦 Ngân hàng
+
+</td>
+
+
+
+<td>
+
+🏦
+
+</td>
+
+
+
+<td>
+
+VND / CNY
+
+</td>
+
+
+
+<td>
+
+2
+
+</td>
+
+
+
+<td>
+
+
+<span class="status status-success">
+
+Đang mở
+
+</span>
+
+
+</td>
+
+
+
+<td>
+
+Có
+
+</td>
+
+
+
+<td>
+
+Tắt
+
+</td>
+
+
+
+<td>
+
+
+<button class="btn btn-primary">
+
+Sửa
+
+</button>
+
+
+</td>
+
+
+
+</tr>
+
+
+
+</tbody>
+
+
+</table>
+
+
+</div>
+
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- ==============================
+ CHI TIẾT CẤU HÌNH DANH MỤC
+============================== -->
+
+
+<div class="card">
+
+
+<div class="card-header">
+
+⚙️ Chi tiết cấu hình danh mục
+
+</div>
+
+
+
+
+<div class="card-body">
+
+
+
+
+
+<div class="grid-3">
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+📌 Thông tin cơ bản
+
+</div>
+
+
+
+<div class="box-text">
+
+
+Tên danh mục
+
+
+<br>
+
+<input class="input"
+value="USDT充值">
+
+
+<br><br>
+
+
+Icon
+
+
+<br>
+
+<input class="input"
+value="💰">
+
+
+<br><br>
+
+
+Trạng thái
+
+
+<br>
+
+<select class="input">
+
+
+<option>
+
+Mở
+
+</option>
+
+
+<option>
+
+Tắt
+
+</option>
+
+
+</select>
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+🔗 Cấu hình kênh
+
+</div>
+
+
+
+<div class="box-text">
+
+
+Gộp kênh
+
+
+<br>
+
+
+<select class="input">
+
+
+<option>
+
+Bật
+
+</option>
+
+
+<option>
+
+Tắt
+
+</option>
+
+
+</select>
+
+
+
+<br><br>
+
+
+Blacklist
+
+
+<br>
+
+
+<select class="input">
+
+
+<option>
+
+Không
+
+</option>
+
+
+<option>
+
+Có
+
+</option>
+
+
+</select>
+
+
+<br><br>
+
+
+Sắp xếp
+
+
+<br>
+
+
+<input class="input"
+value="1">
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+🎁 Ưu đãi
+
+</div>
+
+
+
+<div class="box-text">
+
+
+Tiền đề xuất
+
+
+<br>
+
+
+<input class="input"
+value="1000">
+
+
+<br><br>
+
+
+Tỷ lệ thưởng
+
+
+<br>
+
+
+<input class="input"
+value="10%">
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+</div>
+
+
+
+<br>
+
+
+
+<button class="btn btn-success">
+
+Lưu cấu hình
+
+</button>
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- ==============================
+ CÀI ĐẶT NẠP TIỀN
+============================== -->
+
+
+<div class="card">
+
+
+<div class="card-header">
+
+⚙️ Cài đặt nạp tiền
+
+</div>
+
+
+
+<div class="card-body">
+
+
+
+
+
+<div class="grid-3">
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+📊 Hệ số kiểm tra
+
+</div>
+
+
+
+<div class="box-text">
+
+
+Kiểm tra vốn
+
+
+<br>
+
+
+<input class="input"
+value="1">
+
+
+<br><br>
+
+
+Kiểm tra thưởng
+
+
+<br>
+
+
+<input class="input"
+value="1">
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+⏱ Giới hạn tần suất
+
+</div>
+
+
+
+<div class="box-text">
+
+
+Số lần nạp
+
+
+<br>
+
+
+<input class="input"
+value="30">
+
+
+<br><br>
+
+
+Thời gian
+
+
+<br>
+
+
+<select class="input">
+
+
+<option>
+
+1 phút
+
+</option>
+
+
+<option>
+
+5 phút
+
+</option>
+
+
+</select>
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+🏷 Hiển thị ưu đãi
+
+</div>
+
+
+
+<div class="box-text">
+
+
+Hiển thị badge thưởng
+
+
+<br>
+
+
+<select class="input">
+
+
+<option>
+
+Bật
+
+</option>
+
+
+<option>
+
+Tắt
+
+</option>
+
+
+</select>
+
+
+
+<br><br>
+
+
+Số đơn nạp cùng lúc
+
+
+<br>
+
+
+<input class="input"
+value="0">
+
+
+</div>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+<br>
+
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+💳 Cấu hình thanh toán nâng cao
+
+</div>
+
+
+
+
+<div class="grid-3">
+
+
+
+
+
+<div>
+
+
+付款人钱包地址
+
+
+<br>
+
+
+<select class="input">
+
+
+<option>
+
+Bật
+
+</option>
+
+
+<option>
+
+Tắt
+
+</option>
+
+
+</select>
+
+
+</div>
+
+
+
+
+
+<div>
+
+
+Kiểm tra hành vi
+
+
+<br>
+
+
+<select class="input">
+
+
+<option>
+
+Bật
+
+</option>
+
+
+<option>
+
+Tắt
+
+</option>
+
+
+</select>
+
+
+</div>
+
+
+
+
+
+<div>
+
+
+Callback quá hạn
+
+
+<br>
+
+
+<select class="input">
+
+
+<option>
+
+Cho phép callback
+
+</option>
+
+
+<option>
+
+Không cho phép
+
+</option>
+
+
+</select>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+</div>
+
+
+
+
+
+
+<br>
+
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+⚠️ Xử lý sai lệch callback
+
+</div>
+
+
+
+<div class="grid-3">
+
+
+
+<div>
+
+
+Callback thấp
+
+
+<br>
+
+
+<select class="input">
+
+
+<option>
+
+Tự động cộng tiền
+
+</option>
+
+
+<option>
+
+Xử lý thủ công
+
+</option>
+
+
+</select>
+
+
+
+</div>
+
+
+
+
+
+
+<div>
+
+
+Callback cao
+
+
+<br>
+
+
+<select class="input">
+
+
+<option>
+
+Xử lý thủ công
+
+</option>
+
+
+<option>
+
+Tự động cộng tiền
+
+</option>
+
+
+</select>
+
+
+
+</div>
+
+
+
+
+
+
+<div>
+
+
+Tỷ lệ cho phép
+
+
+<br>
+
+
+<input class="input"
+value="0%">
+
+
+</div>
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+<br>
+
+
+
+
+<button class="btn btn-primary">
+
+Lưu tất cả cài đặt
+
+</button>
+
+
+
+
+</div>
+
+
+</div>
+<!-- =====================================
+ PHẦN 9
+ KÊNH ĐÃ TẮT + THỐNG KÊ BÊN THỨ BA
+===================================== -->
+
+
+
+<!-- ==========================
+ KÊNH ĐÃ TẮT
+========================== -->
+
+
+<div class="card">
+
+
+<div class="card-header">
+
+🚫 Kênh thanh toán đã tắt
+
+</div>
+
+
+
+
+<div class="card-body">
+
+
+
+
+
+<div class="table-box">
+
+
+<table>
+
+
+
+<thead>
+
+
+<tr>
+
+
+<th>
+
+Tên kênh
+
+</th>
+
+
+<th>
+
+Nhà cung cấp
+
+</th>
+
+
+<th>
+
+Lý do tắt
+
+</th>
+
+
+<th>
+
+Người thao tác
+
+</th>
+
+
+<th>
+
+Thời gian tắt
+
+</th>
+
+
+<th>
+
+Trạng thái
+
+</th>
+
+
+<th>
+
+Thao tác
+
+</th>
+
+
+</tr>
+
+
+
+</thead>
+
+
+
+
+
+<tbody>
+
+
+
+<tr>
+
+
+
+<td>
+
+Ví điện tử Wallet Pay
+
+</td>
+
+
+
+<td>
+
+Wallet Provider
+
+</td>
+
+
+
+<td>
+
+Bảo trì hệ thống
+
+</td>
+
+
+
+<td>
+
+admin01
+
+</td>
+
+
+
+<td>
+
+2026-08-12 09:30
+
+</td>
+
+
+
+<td>
+
+
+<span class="status status-wait">
+
+Đã tắt
+
+</span>
+
+
+</td>
+
+
+
+<td>
+
+
+<button class="btn btn-success">
+
+Khôi phục
+
+</button>
+
+
+</td>
+
+
+
+</tr>
+
+
+
+
+
+
+<tr>
+
+
+
+<td>
+
+Bank Channel 02
+
+</td>
+
+
+
+<td>
+
+Bank Pay
+
+</td>
+
+
+
+<td>
+
+Callback bất thường
+
+</td>
+
+
+
+<td>
+
+admin02
+
+</td>
+
+
+
+<td>
+
+2026-08-11 22:10
+
+</td>
+
+
+
+<td>
+
+
+<span class="status status-wait">
+
+Đã tắt
+
+</span>
+
+
+</td>
+
+
+
+<td>
+
+
+<button class="btn btn-success">
+
+Mở lại
+
+</button>
+
+
+</td>
+
+
+
+</tr>
+
+
+
+
+
+</tbody>
+
+
+
+</table>
+
+
+</div>
+
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- ==========================
+ THỐNG KÊ BÊN THỨ BA
+========================== -->
+
+
+<div class="card">
+
+
+<div class="card-header">
+
+📈 Thống kê thanh toán bên thứ ba
+
+</div>
+
+
+
+
+
+<div class="card-body">
+
+
+
+
+
+<div class="grid-3">
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+👥 Người nạp thực tế
+
+</div>
+
+
+
+<div class="box-text">
+
+
+<h2 style="
+color:#1677ff;
+">
+
+12,580
+
+</h2>
+
+
+Số lượng thành viên phát sinh nạp tiền
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+📄 Tổng số đơn
+
+</div>
+
+
+
+<div class="box-text">
+
+
+<h2 style="
+color:#1677ff;
+">
+
+35,620
+
+</h2>
+
+
+Tổng số đơn tạo trong hệ thống
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+✅ Đơn thành công
+
+</div>
+
+
+
+<div class="box-text">
+
+
+<h2 style="
+color:#13c2c2;
+">
+
+34,900
+
+</h2>
+
+
+Đã hoàn thành cộng tiền
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+💰 Tổng tiền nạp
+
+</div>
+
+
+
+<div class="box-text">
+
+
+<h2 style="
+color:#fa8c16;
+">
+
+12,580,000
+
+</h2>
+
+
+Tổng giá trị giao dịch
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+📊 Tỷ lệ thành công
+
+</div>
+
+
+
+<div class="box-text">
+
+
+<h2 style="
+color:#52c41a;
+">
+
+98.2%
+
+</h2>
+
+
+Hiệu suất thanh toán
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+⏱ Request Timeout
+
+</div>
+
+
+
+<div class="box-text">
+
+
+<h2 style="
+color:#ff4d4f;
+">
+
+120
+
+</h2>
+
+
+Yêu cầu quá thời gian phản hồi
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- ==========================
+ BIỂU ĐỒ HIỆU SUẤT
+========================== -->
+
+
+<div class="card">
+
+
+<div class="card-header">
+
+📊 Phân tích 30 phút gần nhất
+
+</div>
+
+
+
+
+<div class="card-body">
+
+
+
+
+
+<div class="grid-3">
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+Request thành công
+
+</div>
+
+
+<div class="box-text">
+
+
+<div style="
+height:120px;
+background:
+linear-gradient(
+90deg,
+#1677ff 80%,
+#e8f1ff 80%
+);
+border-radius:10px;
+">
+
+</div>
+
+
+<br>
+
+
+<b>
+
+80%
+
+</b>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+Request thất bại
+
+</div>
+
+
+<div class="box-text">
+
+
+<div style="
+height:120px;
+background:
+linear-gradient(
+90deg,
+#ff4d4f 15%,
+#fff1f0 15%
+);
+border-radius:10px;
+">
+
+
+</div>
+
+
+<br>
+
+
+<b>
+
+15%
+
+</b>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+Timeout
+
+</div>
+
+
+<div class="box-text">
+
+
+<div style="
+height:120px;
+background:
+linear-gradient(
+90deg,
+#fa8c16 5%,
+#fff7e6 5%
+);
+border-radius:10px;
+">
+
+
+</div>
+
+
+<br>
+
+
+<b>
+
+5%
+
+</b>
+
+
+</div>
+
+
+</div>
+
+
+
+
+</div>
+
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- ==========================
+ BẢNG CHI TIẾT KÊNH
+========================== -->
+
+
+<div class="card">
+
+
+<div class="card-header">
+
+🏦 Chi tiết hiệu suất từng kênh
+
+</div>
+
+
+
+
+
+<div class="card-body">
+
+
+
+<div class="table-box">
+
+
+<table>
+
+
+
+<thead>
+
+
+<tr>
+
+
+<th>
+
+Kênh
+
+</th>
+
+
+<th>
+
+Tổng Request
+
+</th>
+
+
+<th>
+
+Thành công
+
+</th>
+
+
+<th>
+
+Thất bại
+
+</th>
+
+
+<th>
+
+Timeout
+
+</th>
+
+
+<th>
+
+Tỷ lệ
+
+</th>
+
+
+</tr>
+
+
+
+</thead>
+
+
+
+
+
+<tbody>
+
+
+
+<tr>
+
+
+<td>
+
+USDT TRC20
+
+</td>
+
+
+<td>
+
+12000
+
+</td>
+
+
+<td>
+
+11800
+
+</td>
+
+
+<td>
+
+100
+
+</td>
+
+
+<td>
+
+100
+
+</td>
+
+
+<td>
+
+98.3%
+
+</td>
+
+
+
+</tr>
+
+
+
+
+
+
+<tr>
+
+
+<td>
+
+Bank Pay
+
+</td>
+
+
+<td>
+
+8000
+
+</td>
+
+
+<td>
+
+7800
+
+</td>
+
+
+<td>
+
+150
+
+</td>
+
+
+<td>
+
+50
+
+</td>
+
+
+<td>
+
+97.5%
+
+</td>
+
+
+
+</tr>
+
+
+
+
+
+
+</tbody>
+
+
+
+</table>
+
+
+</div>
+
+
+
+</div>
+
+
+</div>
+<!-- =====================================
+ PHẦN 10
+ CALLBACK BẤT THƯỜNG + JAVASCRIPT
+===================================== -->
+
+
+
+<div class="card">
+
+
+<div class="card-header">
+
+⚠️ Callback bất thường
+
+</div>
+
+
+
+
+
+<div class="card-body">
+
+
+
+
+
+<div class="table-box">
+
+
+<table>
+
+
+<thead>
+
+
+<tr>
+
+
+<th>
+
+Mã bên thứ ba
+
+</th>
+
+
+<th>
+
+Mã đơn hệ thống
+
+</th>
+
+
+<th>
+
+Số tiền đơn
+
+</th>
+
+
+<th>
+
+Số tiền Callback
+
+</th>
+
+
+<th>
+
+Tiền thưởng
+
+</th>
+
+
+<th>
+
+Ví gửi
+
+</th>
+
+
+<th>
+
+Ví nhận
+
+</th>
+
+
+<th>
+
+Trạng thái
+
+</th>
+
+
+<th>
+
+Thao tác
+
+</th>
+
+
+
+</tr>
+
+
+
+</thead>
+
+
+
+
+
+
+<tbody>
+
+
+
+<tr>
+
+
+
+<td>
+
+THIRD889922
+
+</td>
+
+
+
+<td>
+
+202608120099
+
+</td>
+
+
+
+<td>
+
+500 USDT
+
+</td>
+
+
+
+<td>
+
+500 USDT
+
+</td>
+
+
+
+<td>
+
+50
+
+</td>
+
+
+
+<td>
+
+TX88ABC999
+
+</td>
+
+
+
+<td>
+
+USER888
+
+</td>
+
+
+
+<td>
+
+
+<span class="status status-wait">
+
+Chờ xử lý
+
+</span>
+
+
+</td>
+
+
+
+<td>
+
+
+<button class="btn btn-primary"
+onclick="openCallback()">
+
+Xử lý
+
+</button>
+
+
+</td>
+
+
+
+</tr>
+
+
+
+
+
+
+<tr>
+
+
+
+<td>
+
+THIRD778899
+
+</td>
+
+
+
+<td>
+
+202608120100
+
+</td>
+
+
+
+<td>
+
+1000 USDT
+
+</td>
+
+
+
+<td>
+
+800 USDT
+
+</td>
+
+
+
+<td>
+
+0
+
+</td>
+
+
+
+<td>
+
+TX9988AA
+
+</td>
+
+
+
+<td>
+
+USER666
+
+</td>
+
+
+
+<td>
+
+
+<span class="status status-error">
+
+Sai lệch
+
+</span>
+
+
+</td>
+
+
+
+<td>
+
+
+<button class="btn btn-primary">
+
+Kiểm tra
+
+</button>
+
+
+</td>
+
+
+
+</tr>
+
+
+
+
+</tbody>
+
+
+
+</table>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+<!-- POPUP CALLBACK -->
+
+
+<div class="mask"
+id="callbackPopup">
+
+
+
+<div class="popup">
+
+
+<div class="popup-title">
+
+
+⚠️ Xử lý Callback
+
+
+<span class="close"
+onclick="closeCallback()">
+
+×
+
+
+</span>
+
+
+</div>
+
+
+
+
+
+
+<div class="grid-3">
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+Thông tin đơn
+
+</div>
+
+
+<div class="box-text">
+
+
+Mã đơn:
+
+
+<br>
+
+202608120099
+
+
+<br><br>
+
+
+Bên thứ ba:
+
+<br>
+
+THIRD889922
+
+
+<br><br>
+
+
+Số tiền:
+
+<br>
+
+500 USDT
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+Thông tin Callback
+
+</div>
+
+
+<div class="box-text">
+
+
+Callback nhận:
+
+
+<br>
+
+500 USDT
+
+
+<br><br>
+
+
+Ví gửi:
+
+
+<br>
+
+TX88ABC999
+
+
+<br><br>
+
+
+Ví nhận:
+
+
+<br>
+
+USER888
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+Xử lý
+
+</div>
+
+
+<div class="box-text">
+
+
+<select class="input">
+
+
+<option>
+
+Cộng tiền
+
+</option>
+
+
+<option>
+
+Từ chối
+
+</option>
+
+
+<option>
+
+Kiểm tra thủ công
+
+</option>
+
+
+</select>
+
+
+<br><br>
+
+
+
+<textarea
+
+style="
+width:100%;
+height:80px;
+border-radius:8px;
+border:1px solid #ddd;
+padding:10px;
+"
+
+placeholder="Nhập ghi chú">
+
+</textarea>
+
+
+
+</div>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+<br>
+
+
+
+
+<button class="btn btn-success">
+
+Xác nhận xử lý
+
+</button>
+
+
+
+<button class="btn btn-danger">
+
+Từ chối
+
+</button>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- TOAST -->
+
+
+<div id="toast"
+style="
+display:none;
+position:fixed;
+right:30px;
+bottom:30px;
+background:#1677ff;
+color:white;
+padding:15px 25px;
+border-radius:10px;
+z-index:9999;
+box-shadow:0 5px 20px rgba(0,0,0,.2);
+">
+
+Thao tác thành công
+
+</div>
+
+
+
+
+
+
+
+
+
+
+<script>
+
+
+/* ======================
+ POPUP ORDER
+====================== */
+
+
+function showToast(text){
+
+
+let toast=document.getElementById("toast");
+
+
+toast.innerHTML=text;
+
+
+toast.style.display="block";
+
+
+setTimeout(()=>{
+
+
+toast.style.display="none";
+
+
+},2500);
+
+
+
+}
+
+
+
+
+
+
+function openCallback(){
+
+
+document.getElementById(
+"callbackPopup"
+).style.display="block";
+
+
+}
+
+
+
+
+
+function closeCallback(){
+
+
+document.getElementById(
+"callbackPopup"
+).style.display="none";
+
+
+}
+
+
+
+
+
+
+
+
+/* CLICK NGOÀI ĐÓNG POPUP */
+
+
+window.onclick=function(e){
+
+
+let popup1=document.getElementById(
+"callbackPopup"
+);
+
+
+
+let popup2=document.getElementById(
+"orderDetail"
+);
+
+
+
+if(e.target==popup1){
+
+
+popup1.style.display="none";
+
+
+}
+
+
+
+if(e.target==popup2){
+
+
+popup2.style.display="none";
+
+
+}
+
+
+
+}
+
+
+
+
+
+
+
+/* ======================
+ TAB
+====================== */
+
+
+let tabs=document.querySelectorAll(
+".tab-item"
+);
+
+
+
+tabs.forEach(tab=>{
+
+
+tab.onclick=function(){
+
+
+
+tabs.forEach(t=>{
+
+
+t.classList.remove(
+"active"
+);
+
+
+
+});
+
+
+
+this.classList.add(
+"active"
+);
+
+
+
+showToast(
+"Đã chuyển module: "
++
+this.innerText
+);
+
+
+
+}
+
+
+
+});
+
+
+
+
+
+
+/* BUTTON DEMO */
+
+
+document.querySelectorAll(
+".btn"
+).forEach(btn=>{
+
+
+btn.addEventListener(
+"click",
+function(){
+
+
+if(
+this.innerText.includes("Lưu")
+||
+this.innerText.includes("Xác nhận")
+||
+this.innerText.includes("Tạo")
+){
+
+
+showToast(
+"Thao tác đã hoàn tất"
+);
+
+
+}
+
+
+
+});
+
+
+});
+
+
+
+</script>
+
+
+
+
+
+</div>
+
+
+</body>
+
+
+</html>

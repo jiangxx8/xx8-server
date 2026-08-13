@@ -7,10 +7,11 @@ const app = express();
 
 
 // =====================
-// PORT RENDER
+// PORT
 // =====================
 
 const PORT = process.env.PORT || 3000;
+
 
 
 // =====================
@@ -22,17 +23,15 @@ app.use(cors());
 app.use(express.json());
 
 app.use(express.urlencoded({
-    extended: true
+    extended:true
 }));
 
 
 
-// =====================
-// PATH
-// =====================
 
-const ROOT_PATH = __dirname;
-
+// =====================
+// CONFIG
+// =====================
 
 const configPath = path.join(
     __dirname,
@@ -40,10 +39,6 @@ const configPath = path.join(
 );
 
 
-
-// =====================
-// CONFIG
-// =====================
 
 function getConfig(){
 
@@ -61,31 +56,41 @@ function getConfig(){
 function saveConfig(data){
 
     fs.writeFileSync(
+
         configPath,
+
         JSON.stringify(
             data,
             null,
             2
         )
+
     );
 
 }
 
 
 
+
 // =====================
-// GET CLIENT IP
+// GET IP
 // =====================
 
 function getClientIP(req){
 
 
     let ip =
-        req.headers["x-forwarded-for"]
-        ||
-        req.socket.remoteAddress
-        ||
-        "";
+
+    req.headers["x-forwarded-for"]
+
+    ||
+
+    req.socket.remoteAddress
+
+    ||
+
+    "";
+
 
 
     if(ip.includes(",")){
@@ -93,6 +98,7 @@ function getClientIP(req){
         ip = ip.split(",")[0];
 
     }
+
 
 
     ip = ip.replace(
@@ -107,23 +113,30 @@ function getClientIP(req){
 
 
 
-// =====================
-// PAGE ROUTE
-// =====================
+
+
+// =================================================
+// PAGE
+// =================================================
 
 
 // LOGIN
 
 app.get("/",(req,res)=>{
 
+
     res.sendFile(
+
         path.join(
-            ROOT_PATH,
+            __dirname,
             "login.html"
         )
+
     );
 
+
 });
+
 
 
 
@@ -132,14 +145,19 @@ app.get("/",(req,res)=>{
 
 app.get("/index.html",(req,res)=>{
 
+
     res.sendFile(
+
         path.join(
-            ROOT_PATH,
+            __dirname,
             "login.html"
         )
+
     );
 
+
 });
+
 
 
 
@@ -148,21 +166,27 @@ app.get("/index.html",(req,res)=>{
 
 app.get("/admin",(req,res)=>{
 
+
     res.sendFile(
+
         path.join(
-            ROOT_PATH,
+            __dirname,
             "admin.html"
         )
+
     );
+
 
 });
 
 
 
 
-// =====================
+
+
+// =================================================
 // LOGIN API
-// =====================
+// =================================================
 
 
 app.post("/api/login",(req,res)=>{
@@ -178,13 +202,13 @@ app.post("/api/login",(req,res)=>{
 
 
 
-    const config =
-    getConfig();
+
+    const config = getConfig();
 
 
 
-    const userIP =
-    getClientIP(req);
+    const userIP = getClientIP(req);
+
 
 
 
@@ -192,8 +216,15 @@ app.post("/api/login",(req,res)=>{
     // CHECK IP
 
     if(
+
+        config.allowIP
+
+        &&
+
         !config.allowIP.includes(userIP)
+
     ){
+
 
         return res.json({
 
@@ -205,12 +236,16 @@ app.post("/api/login",(req,res)=>{
 
         });
 
+
     }
 
 
 
 
+
+
     // CHECK ACCOUNT
+
 
     if(
 
@@ -222,6 +257,7 @@ app.post("/api/login",(req,res)=>{
 
     ){
 
+
         return res.json({
 
             success:false,
@@ -230,44 +266,50 @@ app.post("/api/login",(req,res)=>{
 
         });
 
+
     }
 
 
 
 
-    res.json({
+
+    return res.json({
 
         success:true,
 
-        message:"Login success",
+        message:"Đăng nhập thành công",
 
         redirect:"/admin"
 
     });
 
 
+
 });
 
 
 
 
-// =====================
+
+
+
+// =================================================
 // IP LIST
-// =====================
+// =================================================
 
 
 app.get("/api/ip-list",(req,res)=>{
 
 
-    const config =
-    getConfig();
+    const config = getConfig();
 
 
 
     res.json({
 
         allowIP:
-        config.allowIP
+
+        config.allowIP || []
 
     });
 
@@ -278,9 +320,11 @@ app.get("/api/ip-list",(req,res)=>{
 
 
 
-// =====================
+
+
+// =================================================
 // ADD IP
-// =====================
+// =================================================
 
 
 app.post("/api/add-ip",(req,res)=>{
@@ -294,33 +338,41 @@ app.post("/api/add-ip",(req,res)=>{
 
 
 
+
     if(!ip){
+
 
         return res.json({
 
             success:false,
 
-            message:"Missing IP"
+            message:"Thiếu IP"
 
         });
+
 
     }
 
 
 
 
-    const config =
-    getConfig();
+
+    const config = getConfig();
 
 
 
     if(
+
         !config.allowIP.includes(ip)
+
     ){
+
 
         config.allowIP.push(ip);
 
+
         saveConfig(config);
+
 
     }
 
@@ -332,9 +384,11 @@ app.post("/api/add-ip",(req,res)=>{
         success:true,
 
         allowIP:
+
         config.allowIP
 
     });
+
 
 
 });
@@ -343,9 +397,12 @@ app.post("/api/add-ip",(req,res)=>{
 
 
 
-// =====================
-// REMOVE IP
-// =====================
+
+
+
+// =================================================
+// DELETE IP
+// =================================================
 
 
 app.post("/api/remove-ip",(req,res)=>{
@@ -359,8 +416,8 @@ app.post("/api/remove-ip",(req,res)=>{
 
 
 
-    const config =
-    getConfig();
+    const config = getConfig();
+
 
 
 
@@ -374,7 +431,9 @@ app.post("/api/remove-ip",(req,res)=>{
 
 
 
+
     saveConfig(config);
+
 
 
 
@@ -383,9 +442,11 @@ app.post("/api/remove-ip",(req,res)=>{
         success:true,
 
         allowIP:
+
         config.allowIP
 
     });
+
 
 
 });
@@ -393,16 +454,22 @@ app.post("/api/remove-ip",(req,res)=>{
 
 
 
-// =====================
-// STATIC FILE
-// CSS JS IMAGE HTML
-// =====================
+
+
+
+
+// =================================================
+// STATIC
+// CSS JS IMAGE
+// =================================================
 
 
 app.use(
 
     express.static(
-        ROOT_PATH
+
+        __dirname
+
     )
 
 );
@@ -410,9 +477,13 @@ app.use(
 
 
 
-// =====================
-// START SERVER
-// =====================
+
+
+
+
+// =================================================
+// START
+// =================================================
 
 
 app.listen(
@@ -421,9 +492,13 @@ app.listen(
 
     ()=>{
 
+
         console.log(
+
             `Server running on port ${PORT}`
+
         );
+
 
     }
 

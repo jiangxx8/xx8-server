@@ -79,37 +79,21 @@ function saveConfig(data){
 
 function getClientIP(req){
 
-
     let ip =
-
     req.headers["x-forwarded-for"]
-
     ||
-
-    req.socket.remoteAddress
-
-    ||
-
-    "";
-
+    req.socket.remoteAddress;
 
 
     if(ip.includes(",")){
-
-        ip =
-        ip.split(",")[0];
-
+        ip = ip.split(",")[0];
     }
 
 
-
-    ip = ip.replace(
-        "::ffff:",
-        ""
-    );
+    ip = ip.replace("::ffff:","");
 
 
-    return ip;
+    return ip.trim();
 
 }
 
@@ -206,6 +190,24 @@ app.post("/api/login",(req,res)=>{
 
 
     const config = getConfig();
+    const userIP = getClientIP(req);
+    console.log("LOGIN IP:", userIP);
+    console.log("ALLOW IP:", config.allowIP);
+
+
+if(!config.allowIP.includes(userIP)){
+
+    return res.json({
+
+        success:false,
+
+        message:"IP chưa được cấp quyền",
+
+        ip:userIP
+
+    });
+
+}
 
 
 

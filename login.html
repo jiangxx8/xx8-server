@@ -1,0 +1,1588 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>
+XX8.COM SECURITY TERMINAL
+</title>
+
+
+<style>
+
+*{
+
+margin:0;
+
+padding:0;
+
+box-sizing:border-box;
+
+font-family:
+"Segoe UI",
+Arial,
+sans-serif;
+
+}
+
+
+body{
+
+height:100vh;
+
+overflow:hidden;
+
+
+background:
+
+radial-gradient(
+circle at center,
+#30000f,
+#030303 75%
+);
+
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+
+color:white;
+
+
+}
+
+
+
+/* ======================
+ SERVER ROOM BACKGROUND
+====================== */
+
+
+.server-bg{
+
+position:absolute;
+
+width:100%;
+
+height:100%;
+
+overflow:hidden;
+
+
+background:
+
+
+linear-gradient(
+
+90deg,
+
+rgba(255,0,80,.08),
+
+transparent 30%,
+
+transparent 70%,
+
+rgba(255,0,80,.08)
+
+);
+
+
+}
+
+
+
+
+.server-light{
+
+
+position:absolute;
+
+
+width:900px;
+
+height:900px;
+
+
+left:50%;
+
+top:50%;
+
+
+transform:
+
+translate(-50%,-50%);
+
+
+
+background:
+
+radial-gradient(
+
+circle,
+
+rgba(255,0,80,.35),
+
+transparent 65%
+
+);
+
+
+
+filter:
+
+blur(60px);
+
+
+animation:
+
+lightPulse 4s infinite;
+
+
+
+}
+
+
+
+@keyframes lightPulse{
+
+
+0%{
+
+opacity:.4;
+
+scale:1;
+
+
+}
+
+
+50%{
+
+opacity:.9;
+
+scale:1.2;
+
+
+}
+
+
+100%{
+
+opacity:.4;
+
+scale:1;
+
+
+}
+
+
+}
+
+
+
+
+/* DATA LASER */
+
+
+.data-lines span{
+
+
+position:absolute;
+
+
+height:2px;
+
+width:100%;
+
+
+background:
+
+linear-gradient(
+
+90deg,
+
+transparent,
+
+#ff0055,
+
+transparent
+
+);
+
+
+
+animation:
+
+moveLine 4s linear infinite;
+
+
+}
+
+
+
+.data-lines span:nth-child(1){
+
+top:20%;
+
+animation-delay:1s;
+
+}
+
+
+.data-lines span:nth-child(2){
+
+top:40%;
+
+animation-delay:3s;
+
+}
+
+
+
+.data-lines span:nth-child(3){
+
+top:60%;
+
+animation-delay:2s;
+
+}
+
+
+
+.data-lines span:nth-child(4){
+
+top:80%;
+
+animation-delay:4s;
+
+}
+
+
+
+@keyframes moveLine{
+
+
+from{
+
+transform:translateX(-100%);
+
+}
+
+
+to{
+
+transform:translateX(100%);
+
+}
+
+
+}
+
+
+
+
+
+
+/* ======================
+AI CORE
+====================== */
+
+
+.ai-core{
+
+
+position:absolute;
+
+
+width:600px;
+
+height:600px;
+
+
+left:50%;
+
+top:50%;
+
+
+transform:
+
+translate(-50%,-50%);
+
+
+
+}
+
+
+
+
+.core-ring{
+
+
+position:absolute;
+
+
+left:50%;
+
+top:50%;
+
+
+transform:
+
+translate(-50%,-50%);
+
+
+
+border-radius:50%;
+
+
+
+border:
+
+1px solid #ff0055;
+
+
+
+box-shadow:
+
+0 0 40px #ff0055;
+
+
+}
+
+
+
+.ring-a{
+
+
+width:500px;
+
+height:500px;
+
+
+animation:
+
+spin 18s linear infinite;
+
+
+}
+
+
+
+.ring-b{
+
+
+width:380px;
+
+height:380px;
+
+
+border-style:dashed;
+
+
+animation:
+
+spinReverse 12s linear infinite;
+
+
+}
+
+
+
+
+.ring-c{
+
+
+width:260px;
+
+height:260px;
+
+
+animation:
+
+spin 8s linear infinite;
+
+
+}
+
+
+
+
+
+.core-center{
+
+
+position:absolute;
+
+
+left:50%;
+
+top:50%;
+
+
+transform:
+
+translate(-50%,-50%);
+
+
+
+font-size:80px;
+
+
+font-weight:900;
+
+
+
+color:#fff;
+
+
+
+text-shadow:
+
+
+0 0 30px #ff0055;
+
+
+
+animation:
+
+coreGlow 2s infinite;
+
+
+
+}
+
+
+
+@keyframes spin{
+
+
+from{
+
+transform:
+translate(-50%,-50%)
+rotate(0);
+
+}
+
+
+to{
+
+transform:
+translate(-50%,-50%)
+rotate(360deg);
+
+}
+
+
+}
+
+
+
+@keyframes spinReverse{
+
+
+from{
+
+transform:
+translate(-50%,-50%)
+rotate(360deg);
+
+}
+
+
+to{
+
+transform:
+translate(-50%,-50%)
+rotate(0);
+
+}
+
+
+}
+
+
+
+
+@keyframes coreGlow{
+
+
+0%{
+
+opacity:.5;
+
+}
+
+
+50%{
+
+opacity:1;
+
+}
+
+
+100%{
+
+opacity:.5;
+
+}
+
+
+
+}
+
+
+
+
+
+/* ======================
+HUD
+====================== */
+
+
+.hud{
+
+
+position:absolute;
+
+
+top:50%;
+
+
+transform:
+
+translateY(-50%);
+
+
+
+font-size:14px;
+
+
+letter-spacing:3px;
+
+
+color:#aaa;
+
+
+
+}
+
+
+
+.hud.left{
+
+left:40px;
+
+}
+
+
+
+.hud.right{
+
+right:40px;
+
+}
+
+
+
+.hud div{
+
+
+margin-top:20px;
+
+
+color:#fff;
+
+
+}
+
+
+
+.hud span{
+
+
+color:#ff0055;
+
+
+}
+
+
+
+
+
+/* ======================
+TERMINAL CARD
+====================== */
+
+
+.terminal{
+
+
+position:relative;
+
+
+z-index:10;
+
+
+width:450px;
+
+
+padding:45px;
+
+
+
+background:
+
+
+linear-gradient(
+
+145deg,
+
+rgba(255,255,255,.12),
+
+rgba(0,0,0,.65)
+
+);
+
+
+
+border:
+
+1px solid rgba(255,0,80,.8);
+
+
+
+border-radius:30px;
+
+
+
+
+backdrop-filter:
+
+blur(25px);
+
+
+
+box-shadow:
+
+
+0 0 80px rgba(255,0,80,.6),
+
+
+inset 0 0 40px rgba(255,0,80,.25);
+
+
+
+transform-style:preserve-3d;
+
+
+animation:
+
+terminalIn 1.2s;
+
+
+
+}
+
+
+
+@keyframes terminalIn{
+
+
+from{
+
+opacity:0;
+
+transform:
+
+translateY(80px)
+rotateX(25deg);
+
+
+}
+
+
+
+to{
+
+opacity:1;
+
+transform:none;
+
+
+}
+
+
+}
+
+
+
+
+.top-line{
+
+
+height:3px;
+
+
+background:
+
+linear-gradient(
+
+90deg,
+
+transparent,
+
+#ff0055,
+
+transparent
+
+);
+
+
+
+margin-bottom:30px;
+
+
+}
+
+
+
+
+
+.brand{
+
+
+text-align:center;
+
+
+font-size:65px;
+
+
+font-weight:900;
+
+
+
+letter-spacing:4px;
+
+
+}
+
+
+
+.brand span{
+
+
+color:#ff0055;
+
+
+}
+
+
+
+
+.subtitle{
+
+
+text-align:center;
+
+
+margin-top:10px;
+
+
+margin-bottom:35px;
+
+
+
+letter-spacing:5px;
+
+
+font-size:13px;
+
+
+color:#ff8ca8;
+
+
+}
+
+
+
+
+/* SCANNER */
+
+
+.scan{
+
+
+position:absolute;
+
+
+left:0;
+
+top:0;
+
+
+height:3px;
+
+
+width:100%;
+
+
+background:#ff0055;
+
+
+box-shadow:
+
+0 0 20px #ff0055;
+
+
+
+animation:
+
+scanner 3s infinite;
+
+
+}
+
+
+
+@keyframes scanner{
+
+
+0%{
+
+top:0;
+
+}
+
+
+100%{
+
+top:100%;
+
+
+}
+
+
+
+}
+
+
+
+
+
+/* INPUT */
+
+
+.form input{
+
+
+width:100%;
+
+
+padding:17px;
+
+
+margin-bottom:18px;
+
+
+
+background:
+
+rgba(0,0,0,.7);
+
+
+
+border:
+
+1px solid #ff0055;
+
+
+
+border-radius:12px;
+
+
+color:white;
+
+
+font-size:16px;
+
+
+}
+
+
+
+
+.form input:focus{
+
+
+outline:none;
+
+
+box-shadow:
+
+0 0 25px #ff0055;
+
+
+}
+
+
+
+
+
+/* BUTTON */
+
+
+button{
+
+
+width:100%;
+
+
+padding:17px;
+
+
+border:none;
+
+
+border-radius:12px;
+
+
+background:
+
+
+linear-gradient(
+
+90deg,
+
+#ff0055,
+
+#ff3366
+
+);
+
+
+
+color:white;
+
+
+font-weight:bold;
+
+
+font-size:17px;
+
+
+
+cursor:pointer;
+
+
+
+box-shadow:
+
+0 0 40px #ff0055;
+
+
+}
+
+
+
+button:hover{
+
+
+transform:
+
+translateY(-5px);
+
+
+}
+
+
+
+
+#msg{
+
+
+text-align:center;
+
+
+margin-top:15px;
+
+
+color:#ff7799;
+
+
+}
+
+
+
+
+
+.footer-status{
+
+
+display:flex;
+
+
+justify-content:center;
+
+
+gap:12px;
+
+
+margin-top:30px;
+
+
+font-size:11px;
+
+
+
+}
+
+
+
+.footer-status div{
+
+
+padding:8px 12px;
+
+
+border-radius:20px;
+
+
+border:
+
+1px solid #ff0055;
+
+
+background:
+
+rgba(255,0,80,.15);
+
+
+
+}
+
+
+.ip-check{
+
+cursor:pointer;
+
+}
+
+
+.ip-check:hover{
+
+color:#ff0055;
+
+transform:scale(1.05);
+
+transition:0.3s;
+
+}</style>
+
+
+</head>
+
+
+<body>
+
+
+<!-- SERVER BACKGROUND -->
+
+
+<div class="server-bg">
+
+
+<div class="server-light"></div>
+
+
+<div class="data-lines">
+
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+
+</div>
+
+
+
+<!-- AI CORE -->
+
+
+<div class="ai-core">
+
+
+<div class="core-ring ring-a"></div>
+
+<div class="core-ring ring-b"></div>
+
+<div class="core-ring ring-c"></div>
+
+
+<div class="core-center">
+
+
+XX8
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+<!-- LEFT HUD -->
+
+
+<div class="hud left">
+
+
+<div>
+
+SYSTEM
+
+</div>
+
+
+<span>
+
+ONLINE
+
+</span>
+
+
+<div>
+
+DATABASE
+
+</div>
+
+
+<span>
+
+SECURE
+
+</span>
+
+
+</div>
+
+
+
+
+
+
+<!-- RIGHT HUD -->
+
+
+<div class="hud right">
+
+
+<div>
+
+NETWORK
+
+</div>
+
+
+<span>
+
+PROTECTED
+
+</span>
+
+
+<div>
+
+ACCESS
+
+</div>
+
+
+<span>
+
+VERIFIED
+
+</span>
+
+
+</div>
+
+
+
+
+
+
+<!-- LOGIN PANEL -->
+
+
+<div class="terminal">
+
+
+
+<div class="top-line"></div>
+
+
+
+<div class="brand">
+
+
+XX8<span>.COM</span>
+
+
+</div>
+
+
+
+<div class="subtitle">
+
+
+CYBER SECURITY TERMINAL
+
+
+</div>
+
+
+
+
+<div class="scan"></div>
+
+
+
+
+
+<div class="form">
+
+
+
+<input
+
+id="username"
+
+placeholder="ENTER USER ID"
+
+>
+
+
+
+<input
+
+id="password"
+
+type="password"
+
+placeholder="ENTER PASSWORD"
+
+
+>
+
+
+
+<button onclick="login()">
+
+
+AUTHENTICATE
+
+
+</button>
+
+
+
+<div id="msg"></div>
+
+
+</div>
+
+
+
+
+
+<div class="footer-status">
+
+
+<div>
+
+🟢 SERVER ONLINE
+
+</div>
+
+
+<div onclick="openAdmin()" class="ip-check">
+
+🔒 IP CHECK
+
+</div>
+
+
+<div>
+
+⭐ VIP ACCESS
+
+</div>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+<script>
+
+
+async function login(){
+
+
+    const username =
+    document.getElementById("username").value;
+
+
+    const password =
+    document.getElementById("password").value;
+
+
+    const msg =
+    document.getElementById("msg");
+
+
+    const btn =
+    document.querySelector("button");
+
+
+
+
+    if(username === "" || password === ""){
+
+
+        msg.innerHTML =
+        "⚠ VUI LÒNG NHẬP ĐẦY ĐỦ THÔNG TIN";
+
+
+        return;
+
+
+    }
+
+
+
+
+    btn.innerHTML =
+    "CHECKING SECURITY...";
+
+
+    btn.disabled=true;
+
+
+
+    msg.style.color="#ffcc00";
+
+
+    msg.innerHTML =
+    "🔐 ĐANG XÁC THỰC TÀI KHOẢN + IP...";
+
+
+
+
+
+
+    try{
+
+
+        const response = await fetch(
+        "/api/login",
+        {
+
+
+            method:"POST",
+
+
+            headers:{
+
+
+                "Content-Type":
+                "application/json"
+
+
+            },
+
+
+            body:JSON.stringify({
+
+
+                username:username,
+
+
+                password:password
+
+
+            })
+
+
+        });
+
+
+
+
+
+        const data =
+        await response.json();
+
+
+
+
+
+
+        if(data.success){
+
+
+
+            msg.style.color="#00ff88";
+
+
+
+            msg.innerHTML =
+
+            "✓ ACCESS GRANTED<br>"+
+            "SECURITY VERIFIED";
+
+
+
+
+
+            localStorage.setItem(
+
+                "login",
+
+                "true"
+
+            );
+
+
+
+
+
+
+            setTimeout(()=>{
+
+
+                window.location.href =
+                "index.html";
+
+
+            },1500);
+
+
+
+
+
+        }
+
+        else{
+
+
+
+            msg.style.color="#ff3366";
+
+
+
+            msg.innerHTML =
+
+
+            "⛔ ACCESS DENIED<br>"+
+
+            data.message +
+
+
+            (data.ip ?
+
+            "<br>IP: "+data.ip
+
+            :
+
+            "");
+
+
+
+
+
+            btn.disabled=false;
+
+
+            btn.innerHTML =
+            "AUTHENTICATE";
+
+
+
+        }
+
+
+
+
+
+
+    }
+
+    catch(error){
+
+
+
+        msg.style.color="#ff3366";
+
+
+        msg.innerHTML =
+
+        "⚠ SERVER NOT CONNECTED";
+
+
+
+        btn.disabled=false;
+
+
+        btn.innerHTML =
+        "AUTHENTICATE";
+
+
+
+    }
+
+
+
+
+
+}
+
+
+</script>
+
+
+<script>
+
+function openAdmin(){
+
+    window.location.href="/admin";
+
+}
+
+</script>
+
+
+</body>
+
+</html>
